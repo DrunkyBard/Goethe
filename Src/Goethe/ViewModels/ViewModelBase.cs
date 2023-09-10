@@ -1,7 +1,8 @@
 ﻿using ReactiveUI;
+using ReactiveUI.Validation.Helpers;
 
 namespace Goethe.ViewModels;
 
-public class ViewModelBase : ReactiveObject
+public class ViewModelBase : ReactiveValidationObject
 {
 }

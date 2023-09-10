@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Goethe.Views.SpecialCharacters"
+             Name="This">
+    
+    <StackPanel Orientation="Horizontal">
+        <Button Content="Ä" Command="{Binding #This.CopyCharacter}" CommandParameter="Ä" />
+        <Button Content="ä" Command="{Binding #This.CopyCharacter}" CommandParameter="ä" />
+        
+        <Button Content="Ö" Command="{Binding #This.CopyCharacter}" CommandParameter="Ö" />
+        <Button Content="ö" Command="{Binding #This.CopyCharacter}" CommandParameter="ö" />
+        
+        <Button Content="Ü" Command="{Binding #This.CopyCharacter}" CommandParameter="Ü" />
+        <Button Content="ü" Command="{Binding #This.CopyCharacter}" CommandParameter="ü" />
+        
+        <Button Content="ß" Command="{Binding #This.CopyCharacter}" CommandParameter="ß" />
+    </StackPanel>
+</UserControl>

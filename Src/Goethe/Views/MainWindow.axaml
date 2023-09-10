@@ -7,6 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Goethe.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Goethe">
+        Title="Goethe"
+        Background="{StaticResource MainBackground}">
         <views:MainView />
 </Window>

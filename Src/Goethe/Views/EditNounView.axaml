@@ -1,0 +1,215 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:m="clr-namespace:Goethe.Model"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="EditNounView" DataType="{x:Type vm:NounViewModel}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Gender:" HorizontalAlignment="Left" />
+
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="GenderSelection" Content="M"
+                                 IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.M}}" />
+                    <RadioButton GroupName="GenderSelection" Content="F"
+                                 IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.F}}" />
+                    <RadioButton GroupName="GenderSelection" Content="N"
+                                 IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.N}}" />
+                </StackPanel>
+            </StackPanel>
+
+            <WrapPanel>
+                <Grid
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                    ColumnDefinitions="Auto, Auto, Auto">
+
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Singular"
+                           HorizontalAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Nom." />
+                    <Label Grid.Row="1" Grid.Column="1">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Nominative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Singular.Nominative}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Gen." />
+                    <Label Grid.Row="2" Grid.Column="1">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Genitive}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Genitive}" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="Dat." />
+                    <Label Grid.Row="3" Grid.Column="1">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Dative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Singular.Dative}" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="Acc." />
+                    <Label Grid.Row="4" Grid.Column="1">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Accusative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Singular.Accusative}" />
+                </Grid>
+
+                <Grid
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                    ColumnDefinitions="Auto, Auto">
+
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Plural"
+                           HorizontalAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Nominative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Plural.Nominative}" />
+
+                    <Label Grid.Row="2" Grid.Column="0">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Genitive}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Plural.Genitive}" />
+
+                    <Label Grid.Row="3" Grid.Column="0">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Dative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Plural.Dative}" />
+
+                    <Label Grid.Row="4" Grid.Column="0">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Accusative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Plural.Accusative}" />
+                </Grid>
+            </WrapPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Translation: " />
+                <TextBox Text="{Binding Translation}" />
+                <Button Content="Add" Command="{Binding AddTranslationCommand}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Topic: " />
+                <TextBox Text="{Binding Topic}" />
+                <Button Content="Add" Command="{Binding AddTopicCommand}" />
+            </StackPanel>
+
+            <Label Content="Translations:" />
+
+            <ItemsControl ItemsSource="{Binding Translations}">
+                <ItemsControl.Styles>
+                    <Style Selector="Button#RemoveTranslationBtn">
+                        <Setter Property="Command" Value="{Binding RemoveTranslationCommand}" />
+                    </Style>
+
+                    <Style Selector="Button#RemoveTopicBtn">
+                        <Setter Property="Command" Value="{Binding RemoveTopicCommand}" />
+                    </Style>
+                </ItemsControl.Styles>
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+
+                                <Button
+                                    Name="RemoveTranslationBtn"
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Label Content="Topics:" />
+
+            <ItemsControl ItemsSource="{Binding Topics}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    Name="RemoveTopicBtn"
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

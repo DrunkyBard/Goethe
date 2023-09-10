@@ -3,14 +3,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Goethe.ViewModels"
+             xmlns:b="clr-namespace:Goethe.Behaviors"
+             xmlns:v="clr-namespace:Goethe.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Goethe.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Goethe/Views/DictionaryView.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Interaction.Behaviors>
+        <b:AddDataTemplateBehavior DataTemplates="{StaticResource DictionaryView}" />
+    </Interaction.Behaviors>
+    
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+            <StackPanel Orientation="Vertical">
+                <Button Content="Wörterbuch"
+                        Command="{Binding ShowDictionary}"/>
+            </StackPanel>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:NewWordViewModel}">
+            <v:NewWordView />
+        </DataTemplate>
+    </UserControl.DataTemplates>
+    
+    <ContentControl Content="{Binding Presenter}" />
 </UserControl>

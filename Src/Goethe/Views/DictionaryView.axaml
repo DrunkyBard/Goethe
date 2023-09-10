@@ -1,0 +1,93 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:m="clr-namespace:Goethe.Model"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplates x:Key="DictionaryView">
+        <DataTemplate DataType="{x:Type vm:DictionaryViewModel}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Home"
+                            Command="{Binding ShowHome}" />
+
+                    <Button Content="Add new word" Command="{Binding AddNewWordCommand}" />
+                </StackPanel>
+
+                <TextBox Text="{Binding Filter}" HorizontalAlignment="Left" />
+
+                <TextBlock Text="{Binding Nouns.Count}" />
+
+                <ScrollViewer>
+                    <WrapPanel Orientation="Horizontal">
+                        <StackPanel
+                            Classes="wordTable"
+                            Orientation="Vertical"
+                            IsVisible="{Binding Nouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                            <TextBlock Classes="title" Text="Nouns" HorizontalAlignment="Center" />
+
+                            <!-- <DataGrid -->
+                            <!--     ItemsSource="{Binding Nouns, Mode=TwoWay}" -->
+                            <!--     HorizontalAlignment="Center" -->
+                            <!--     GridLinesVisibility="All"> -->
+                            <!--     <DataGrid.Columns> -->
+                            <!--         <DataGridTextColumn Header="" Binding="{Binding Gender, Converter={x:Static c:GenderToDefArticleConverter.Instance}, Mode=OneWay}"  /> -->
+                            <!--         <DataGridTextColumn Header="Noun" Binding="{Binding Singular.Nominative}"  /> -->
+                            <!--     </DataGrid.Columns> -->
+                            <!-- </DataGrid> -->
+
+                            <TreeView
+                                Classes="notTree"
+                                ItemsSource="{Binding Nouns}">
+                                <TreeView.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type m:Noun}">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Left"
+                                                       HorizontalAlignment="Left"
+                                                       Text="{Binding, Converter={x:Static c:NounToStringConverter.Instance}, Mode=OneWay}" />
+                                            
+                                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                                <Button Content="r" />
+                                                <Button Content="e" />
+                                                <Button Content="d" />
+                                            </StackPanel>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                        </StackPanel>
+                        
+                        <StackPanel
+                            Classes="wordTable"
+                            Orientation="Vertical"
+                            IsVisible="{Binding Verbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                            <TextBlock Classes="title" Text="Verbs" HorizontalAlignment="Center" />
+                            <TreeView
+                                Classes="notTree"
+                                ItemsSource="{Binding Verbs}">
+                                <TreeView.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type m:Verb}">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Left"
+                                                       HorizontalAlignment="Left"
+                                                       Text="{Binding Infinitive}" />
+                                            
+                                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                                <Button Content="r" />
+                                                <Button Content="e" />
+                                                <Button Content="d" />
+                                            </StackPanel>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                        </StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </DataTemplate>
+    </DataTemplates>
+</ResourceDictionary>

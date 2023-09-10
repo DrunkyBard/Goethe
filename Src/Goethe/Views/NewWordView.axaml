@@ -1,0 +1,110 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Goethe.ViewModels"
+             xmlns:m="clr-namespace:Goethe.Model"
+             xmlns:c="clr-namespace:Goethe.Converters"
+             xmlns:s="clr-namespace:System;assembly=System.Runtime"
+             xmlns:views="clr-namespace:Goethe.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Goethe.Views.NewWordView"
+             x:DataType="vm:NewWordViewModel"
+             Name="This">
+    <Design.DataContext>
+        <!-- ReSharper disable once Xaml.ConstructorWarning -->
+        <vm:NewWordViewModel />
+    </Design.DataContext>
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Goethe/Views/EditNounView.axaml" />
+                <ResourceInclude Source="avares://Goethe/Views/EditVerbView.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid ColumnDefinitions="*, *" RowDefinitions="*, Auto">
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <views:SpecialCharacters />
+
+            <ComboBox SelectedItem="{Binding WordType}"
+                      ItemsSource="{x:Static vm:NewWordViewModel.WordTypes}" />
+            
+            <ContentControl
+                Content="{Binding Noun}"
+                ContentTemplate="{StaticResource EditNounView}"
+                IsVisible="{Binding WordType, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:WordType.Noun}}" />
+            
+            <ContentControl 
+                Content="{Binding Verb}"
+                ContentTemplate="{StaticResource EditVerbView}"
+                IsVisible="{Binding WordType, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:WordType.Verb}}" />
+
+            <Button Content="Add" Command="{Binding AddNewWordCommand}"
+                    IsVisible="{Binding !IsEdit^}" />
+            
+            <Button Content="Save edit" Command="{Binding SaveEditWordCommand}"
+                    IsVisible="{Binding IsEdit^}" />
+                
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+            <TextBlock Text="New words" />
+
+            <ScrollViewer>
+                <WrapPanel>
+                    <StackPanel Orientation="Vertical"
+                                IsVisible="{Binding NewNouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                        <TextBlock Text="Nouns" />
+
+                        <ItemsControl ItemsSource="{Binding NewNouns}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:NounViewModel}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Singular.Nominative}" HorizontalAlignment="Left" />
+                                        <Button Content="e" HorizontalAlignment="Right"
+                                                Command="{Binding #This.ViewModel.EditWordCommand}"
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="x" HorizontalAlignment="Right"
+                                                Command="{Binding #This.ViewModel.RemoveWordCommand}"
+                                                CommandParameter="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical"
+                                IsVisible="{Binding NewVerbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                        <TextBlock Text="Verbs" />
+
+                        <ItemsControl ItemsSource="{Binding NewVerbs}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:VerbViewModel}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Infinitive}" HorizontalAlignment="Left" />
+                                        <Button Content="e" HorizontalAlignment="Right"
+                                                Command="{Binding #This.ViewModel.EditWordCommand}"
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="x" HorizontalAlignment="Right"
+                                                Command="{Binding #This.ViewModel.RemoveWordCommand}"
+                                                CommandParameter="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </WrapPanel>
+            </ScrollViewer>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Button Content="Save" Command="{Binding SaveCommand}" />
+            <Button Content="Cancel" Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

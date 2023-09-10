@@ -1,0 +1,115 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="EditVerbView" DataType="{x:Type vm:VerbViewModel}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Infinitive:" HorizontalAlignment="Left" />
+                <TextBox Text="{Binding Infinitive}" />
+            </StackPanel>
+
+            <WrapPanel Orientation="Horizontal">
+                <WrapPanel.DataTemplates>
+                    <DataTemplate DataType="{x:Type vm:ConjugationsViewModel}">
+                        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+                            <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="ich" />
+                            <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Ich}" />
+
+                            <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="du" />
+                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Du}" />
+
+                            <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="er/sie/es" />
+                            <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ErSieEs}" />
+
+                            <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="wir" />
+                            <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Wir}" />
+
+                            <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="ihr" />
+                            <TextBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Ihr}" />
+
+                            <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="sie/Sie" />
+                            <TextBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Sie}" />
+                        </Grid>
+                    </DataTemplate>
+                </WrapPanel.DataTemplates>
+
+                <StackPanel Orientation="Vertical">
+                    <Label HorizontalAlignment="Center" Content="Present" />
+                    <ContentControl Content="{Binding Present}" />
+                </StackPanel>
+            </WrapPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Translation: " />
+                <TextBox Text="{Binding Translation}" />
+                <Button Content="Add" Command="{Binding AddTranslationCommand}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Topic: " />
+                <TextBox Text="{Binding Topic}" />
+                <Button Content="Add" Command="{Binding AddTopicCommand}" />
+            </StackPanel>
+
+            <Label Content="Translations:" />
+
+            <ItemsControl ItemsSource="{Binding Translations}">
+                <ItemsControl.Styles>
+                    <Style Selector="Button#RemoveTranslationBtn">
+                        <Setter Property="Command" Value="{Binding RemoveTranslationCommand}" />
+                    </Style>
+
+                    <Style Selector="Button#RemoveTopicBtn">
+                        <Setter Property="Command" Value="{Binding RemoveTopicCommand}" />
+                    </Style>
+                </ItemsControl.Styles>
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Label Content="Topics:" />
+
+            <ItemsControl ItemsSource="{Binding Topics}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>
