@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading;
@@ -9,44 +10,64 @@ using DynamicData;
 using DynamicData.Binding;
 using Goethe.Common;
 using Goethe.DataProviders.File;
-using Goethe.Model;
 using ReactiveUI;
 
 namespace Goethe.ViewModels;
 
 public class DictionaryViewModel : ViewModelBase
 {
-    private string _filter;
+    private readonly Action<ViewModelBase> _changeView;
+    private          string                _filter;
 
     public ICommand ShowHome { get; set; }
 
     public DictionaryFileRepository Repo { get; set; }
 
-    public ReadOnlyObservableCollection<Noun>        Nouns        { get; }
-    public ReadOnlyObservableCollection<Verb>        Verbs        { get; }
-    public ReadOnlyObservableCollection<Pronoun>     Pronouns     { get; }
-    public ReadOnlyObservableCollection<Adjective>   Adjectives   { get; }
-    public ReadOnlyObservableCollection<Preposition> Prepositions { get; }
-    public ReadOnlyObservableCollection<Conjunction> Conjunctions { get; }
-    public ReadOnlyObservableCollection<Particle>    Particles    { get; }
+    public ReadOnlyObservableCollection<NounViewModel>        Nouns        { get; }
+    public ReadOnlyObservableCollection<VerbViewModel>        Verbs        { get; }
+    public ReadOnlyObservableCollection<PronounViewModel>     Pronouns     { get; }
+    public ReadOnlyObservableCollection<AdjectiveViewModel>   Adjectives   { get; }
+    public ReadOnlyObservableCollection<PrepositionViewModel> Prepositions { get; }
+    public ReadOnlyObservableCollection<ConjunctionViewModel> Conjunctions { get; }
+    public ReadOnlyObservableCollection<ParticleViewModel>    Particles    { get; }
 
-    public ObservableCollection<Noun>        EditedNouns        { get; }
-    public ObservableCollection<Verb>        EditedVerbs        { get; }
-    public ObservableCollection<Pronoun>     EditedPronouns     { get; }
-    public ObservableCollection<Adjective>   EditedAdjectives   { get; }
-    public ObservableCollection<Preposition> EditedPrepositions { get; }
-    public ObservableCollection<Conjunction> EditedConjunctions { get; }
-    public ObservableCollection<Particle>    EditedParticles    { get; }
-    
-    public ObservableCollection<Noun>        NounsToRemove        { get; }
-    public ObservableCollection<Verb>        VerbsToRemove        { get; }
-    public ObservableCollection<Pronoun>     PronounsToRemove     { get; }
-    public ObservableCollection<Adjective>   AdjectivesToRemove   { get; }
-    public ObservableCollection<Preposition> PrepositionsToRemove { get; }
-    public ObservableCollection<Conjunction> ConjunctionsToRemove { get; }
-    public ObservableCollection<Particle>    ParticlesToRemove    { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedNouns        { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedVerbs        { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedPronouns     { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedAdjectives   { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedPrepositions { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedConjunctions { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedParticles    { get; }
+
+    public ReadOnlyObservableCollection<NounViewModel>        NounsToRemove        { get; }
+    public ReadOnlyObservableCollection<VerbViewModel>        VerbsToRemove        { get; }
+    public ReadOnlyObservableCollection<PronounViewModel>     PronounsToRemove     { get; }
+    public ReadOnlyObservableCollection<AdjectiveViewModel>   AdjectivesToRemove   { get; }
+    public ReadOnlyObservableCollection<PrepositionViewModel> PrepositionsToRemove { get; }
+    public ReadOnlyObservableCollection<ConjunctionViewModel> ConjunctionsToRemove { get; }
+    public ReadOnlyObservableCollection<ParticleViewModel>    ParticlesToRemove    { get; }
+
+    public IObservable<bool> HasEdits { get; }
+
+    public IObservable<bool> HasDeletions { get; }
+
+    public IObservable<bool> HasChanges { get; }
 
     public ICommand AddNewWordCommand { get; }
+
+    public ReactiveCommand<WordViewModel, Unit> RemoveWordCommand { get; }
+
+    public ReactiveCommand<WordViewModel, Unit> EditWordCommand { get; }
+    
+    public ReactiveCommand<OldNewWordViewModel, Unit> ContinueEditWordCommand { get; }
+
+    public ReactiveCommand<OldNewWordViewModel, Unit> CancelWordEditCommand { get; }
+
+    public ReactiveCommand<WordViewModel, Unit> CancelWordDeletionCommand { get; }
+
+    public ICommand SaveCommand { get; }
+    
+    public ICommand DiscardAllCommand { get; }
 
     public string Filter
     {
@@ -65,52 +86,102 @@ public class DictionaryViewModel : ViewModelBase
         Code.NotNull(changeView);
         Code.NotNull(wordsRepository);
 
+        _changeView = changeView;
+
         Repo     = wordsRepository;
         ShowHome = ReactiveCommand.Create(showHome);
-        AddNewWordCommand = ReactiveCommand.Create(() =>
-        {
-            var vm = new NewWordViewModel(() => changeView(this), wordsRepository);
-            changeView(vm);
-        });
 
-        var nounsSub = BuildWordsSubscription(
+        SaveCommand               = ReactiveCommand.Create(Save);
+        AddNewWordCommand         = ReactiveCommand.Create(AddNewWord);
+        RemoveWordCommand         = ReactiveCommand.Create<WordViewModel>(RemoveWord);
+        EditWordCommand           = ReactiveCommand.Create<WordViewModel>(EditWord);
+        ContinueEditWordCommand   = ReactiveCommand.Create<OldNewWordViewModel>(EditWord);
+        CancelWordEditCommand     = ReactiveCommand.Create<OldNewWordViewModel>(CancelWordEdit);
+        CancelWordDeletionCommand = ReactiveCommand.Create<WordViewModel>(CancelWordRemove);
+        
+        DiscardAllCommand = ReactiveCommand.Create(DiscardAll);
+
+        var subs = new List<IDisposable>();
+
+        BuildWordsSubscription(
             Repo.CorrectNouns,
-            BuildFilter(Noun.GetFilter),
-            Noun.Comparer,
-            out var nouns);
-        var verbsSub = BuildWordsSubscription(
+            BuildFilter(NounViewModel.GetFilter),
+            NounViewModel.Comparer,
+            m => new NounViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var nouns,
+            out var toEditNouns,
+            out var toRemoveNouns,
+            subs);
+        BuildWordsSubscription(
             Repo.CorrectVerbs,
-            BuildFilter(Verb.GetFilter),
-            Verb.Comparer,
-            out var verbs);
-        var pronounSub = BuildWordsSubscription(
+            BuildFilter(VerbViewModel.GetFilter),
+            VerbViewModel.Comparer,
+            m => new VerbViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var verbs,
+            out var toEditVerbs,
+            out var toRemoveVerbs,
+            subs);
+        BuildWordsSubscription(
             Repo.CorrectPronouns,
-            BuildFilter(Pronoun.GetFilter),
-            Pronoun.Comparer,
-            out var pronouns);
-        var adjectiveSub = BuildWordsSubscription(
+            BuildFilter(PronounViewModel.GetFilter),
+            PronounViewModel.Comparer,
+            m => new PronounViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var pronouns,
+            out var toEditPronouns,
+            out var toRemovePronouns,
+            subs);
+        BuildWordsSubscription(
             Repo.CorrectAdjectives,
-            BuildFilter(Adjective.GetFilter),
-            Adjective.Comparer,
-            out var adjectives);
-        var prepositionSub = BuildWordsSubscription(
+            BuildFilter(AdjectiveViewModel.GetFilter),
+            AdjectiveViewModel.Comparer,
+            m => new AdjectiveViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var adjectives,
+            out var toEditAdjectives,
+            out var toRemoveAdjectives,
+            subs);
+        BuildWordsSubscription(
             Repo.CorrectPrepositions,
-            BuildFilter(Preposition.GetFilter),
-            Preposition.Comparer,
-            out var prepositions);
-        var conjunctionSub = BuildWordsSubscription(
+            BuildFilter(PrepositionViewModel.GetFilter),
+            PrepositionViewModel.Comparer,
+            m => new PrepositionViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var prepositions,
+            out var toEditPrepositions,
+            out var toRemovePrepositions,
+            subs);
+        BuildWordsSubscription(
             Repo.CorrectConjunctions,
-            BuildFilter(Conjunction.GetFilter),
-            Conjunction.Comparer,
-            out var conjunctions);
-        var particleSub = BuildWordsSubscription(
+            BuildFilter(ConjunctionViewModel.GetFilter),
+            ConjunctionViewModel.Comparer,
+            m => new ConjunctionViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var conjunctions,
+            out var toEditConjunctions,
+            out var toRemoveConjunctions,
+            subs);
+        BuildWordsSubscription(
             Repo.CorrectParticles,
-            BuildFilter(Particle.GetFilter),
-            Particle.Comparer,
-            out var particles);
+            BuildFilter(ParticleViewModel.GetFilter),
+            ParticleViewModel.Comparer,
+            m => new ParticleViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var particles,
+            out var toEditParticles,
+            out var toRemoveParticles,
+            subs);
 
-        _cleanup = new CompositeDisposable(nounsSub, verbsSub, pronounSub, adjectiveSub, prepositionSub, conjunctionSub,
-                                           particleSub);
+        _cleanup = new CompositeDisposable(subs);
 
         Nouns        = nouns;
         Verbs        = verbs;
@@ -119,21 +190,107 @@ public class DictionaryViewModel : ViewModelBase
         Prepositions = prepositions;
         Conjunctions = conjunctions;
         Particles    = particles;
+
+        EditedNouns        = toEditNouns;
+        EditedVerbs        = toEditVerbs;
+        EditedPronouns     = toEditPronouns;
+        EditedAdjectives   = toEditAdjectives;
+        EditedPrepositions = toEditPrepositions;
+        EditedConjunctions = toEditConjunctions;
+        EditedParticles    = toEditParticles;
+
+        HasEdits = this.WhenAny(
+            x => x.EditedNouns.Count,
+            x => x.EditedVerbs.Count,
+            x => x.EditedPronouns.Count,
+            x => x.EditedAdjectives.Count,
+            x => x.EditedPrepositions.Count,
+            x => x.EditedConjunctions.Count,
+            x => x.EditedParticles.Count,
+            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount) =>
+                nounCount.Value > 0 || verbCount.Value > 0 ||
+                pronounCount.Value > 0 || adjCount.Value > 0 ||
+                prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0);
+
+        HasDeletions = this.WhenAny(
+            x => x.NounsToRemove.Count,
+            x => x.VerbsToRemove.Count,
+            x => x.PronounsToRemove.Count,
+            x => x.AdjectivesToRemove.Count,
+            x => x.PrepositionsToRemove.Count,
+            x => x.ConjunctionsToRemove.Count,
+            x => x.ParticlesToRemove.Count,
+            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount) =>
+                nounCount.Value > 0 || verbCount.Value > 0 ||
+                pronounCount.Value > 0 || adjCount.Value > 0 ||
+                prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0);
+
+        HasChanges = HasEdits.CombineLatest(HasDeletions, (hasEdits, hasDeletion) => hasEdits || hasDeletion);
+
+        NounsToRemove        = toRemoveNouns;
+        VerbsToRemove        = toRemoveVerbs;
+        PronounsToRemove     = toRemovePronouns;
+        AdjectivesToRemove   = toRemoveAdjectives;
+        PrepositionsToRemove = toRemovePrepositions;
+        ConjunctionsToRemove = toRemoveConjunctions;
+        ParticlesToRemove    = toRemoveParticles;
     }
 
-    private IDisposable BuildWordsSubscription<T>(
-        SourceList<T>                       source,
-        IObservable<Func<T, bool>>          filter,
-        IComparer<T>                        comparer,
-        out ReadOnlyObservableCollection<T> collection)
+    private void BuildWordsSubscription<TModel, TViewModel>(
+        SourceList<TModel>                                                source,
+        IObservable<Func<TViewModel, bool>>                               filter,
+        IComparer<TViewModel>                                             comparer,
+        Func<TModel, TViewModel>                                          map,
+        Func<TViewModel, TViewModel>                                      copy,
+        Action<TViewModel, TViewModel>                                    replace,
+        out ReadOnlyObservableCollection<TViewModel>                      collection,
+        out ReadOnlyObservableCollection<OldNewWordViewModel> toEditCollection,
+        out ReadOnlyObservableCollection<TViewModel>                      toRemoveCollection,
+        List<IDisposable>                                                 subs) where TViewModel : WordViewModel
     {
-        return source
-               .Connect()
-               .Filter(filter)
-               .Sort(comparer)
-               .ObserveOn(SynchronizationContext.Current)
-               .Bind(out collection)
-               .Subscribe();
+        var shared = source
+                     .Connect()
+                     .Transform(map)
+                     .Publish();
+
+        var allWordsSub = shared
+                          .Filter(filter)
+                          .Sort(comparer)
+                          .ObserveOn(SynchronizationContext.Current)
+                          .Bind(out collection)
+                          .Subscribe();
+
+        var toDeleteSub = shared
+                          // .AutoRefresh(propertyChangeThrottle: TimeSpan.FromMilliseconds(250))
+                          .ObserveOn(SynchronizationContext.Current)
+                          .FilterOnObservable(x => x.WhenValueChanged(y => y.ToDelete))
+                          .Filter(x => x.ToDelete)
+                          .Bind(out toRemoveCollection)
+                          .Subscribe();
+
+        var toEditSub = shared
+                        // .AutoRefresh(propertyChangeThrottle: TimeSpan.FromMilliseconds(250))
+                        // .Filter(x => x.ToEdit)
+                        .ObserveOn(SynchronizationContext.Current)
+                        .FilterOnObservable(x => x.WhenValueChanged(y => y.ToEdit))
+                        .Filter(x => x.ToEdit)
+                        .Transform(newWord =>
+                        {
+                            var oldWord = copy(newWord);
+                            var vm = new OldNewWordViewModel(oldWord, newWord);
+                            EditWord(vm);
+                            
+                            return vm;
+                        })
+                        .Bind(out toEditCollection)
+                        .Subscribe();
+
+        var all = shared.Connect();
+
+        subs.Add(all);
+        subs.Add(allWordsSub);
+        subs.Add(toDeleteSub);
+        subs.Add(toEditSub);
     }
 
     private IObservable<Func<T, bool>> BuildFilter<T>(Func<string?, Func<T, bool>> getFilter) =>
@@ -141,4 +298,109 @@ public class DictionaryViewModel : ViewModelBase
             .WhenValueChanged(x => x.Filter)
             .Throttle(TimeSpan.FromMilliseconds(300))
             .Select(getFilter);
+
+    public void AddNewWord()
+    {
+        var vm = new NewWordViewModel(() => _changeView(this), Repo);
+        _changeView(vm);
+    }
+
+    private void RevertWord(WordViewModel oldWord, WordViewModel newWord)
+    {
+        if (oldWord is NounViewModel oldNoun && newWord is NounViewModel newNoun)
+        {
+            newNoun.Replace(oldNoun);
+        }
+        else if (oldWord is VerbViewModel oldVerb && newWord is VerbViewModel newVerb)
+        {
+            newVerb.Replace(oldVerb);
+        }
+        else
+        {
+            throw new NotSupportedException($"Old word type: {oldWord.GetType()}, new word type: {newWord.GetType()}");
+        }
+    }
+
+    private void EditWord(WordViewModel vm) => vm.ToEdit = true;
+
+    private void EditWord(OldNewWordViewModel vm)
+    {
+        var oldWord = vm.OldWord;
+        var newWord = vm.NewWord;
+
+        newWord.ToEdit = true;
+
+        void CancelEdit()
+        {
+            RevertWord(oldWord, newWord);
+            newWord.ToEdit = false;
+            _changeView(this);
+        }
+
+        var editWordVm = new EditWordViewModel(newWord, CancelEdit, () => _changeView(this));
+        _changeView(editWordVm);
+    }
+
+    private void RemoveWord(WordViewModel wordViewModel)
+    {
+        wordViewModel.ToDelete = true;
+    }
+
+    private void CancelWordEdit(OldNewWordViewModel vm)
+    {
+        var oldWord = vm.OldWord;
+        var newWord = vm.NewWord;
+        
+        RevertWord(oldWord, newWord);
+        newWord.ToEdit = false;
+    }
+
+    private void CancelWordRemove(WordViewModel wordViewModel)
+    {
+        wordViewModel.ToDelete = false;
+    }
+
+    private void Save()
+    {
+    }
+
+    private void DiscardEditSet(ReadOnlyObservableCollection<OldNewWordViewModel> wordSet)
+    {
+        while (wordSet.Count != 0)
+        {
+            var word    = wordSet[0];
+            var oldWord = word.OldWord;
+            var newWord = word.NewWord;
+
+            RevertWord(oldWord, newWord);
+            newWord.ToEdit = false;
+        }
+    }
+
+    private void DiscardToRemoveSet<T>(ReadOnlyObservableCollection<T> wordSet) where T : WordViewModel
+    {
+        while (wordSet.Count != 0)
+        {
+            wordSet[0].ToDelete = false;
+        }
+    }
+
+    private void DiscardAll()
+    {
+        DiscardEditSet(EditedNouns);
+        DiscardEditSet(EditedVerbs);
+        DiscardEditSet(EditedPronouns);
+        DiscardEditSet(EditedAdjectives);
+        DiscardEditSet(EditedPrepositions);
+        DiscardEditSet(EditedConjunctions);
+        DiscardEditSet(EditedParticles);
+        
+        DiscardToRemoveSet(NounsToRemove);
+        DiscardToRemoveSet(VerbsToRemove);
+        DiscardToRemoveSet(PronounsToRemove);
+        DiscardToRemoveSet(AdjectivesToRemove);
+        DiscardToRemoveSet(PrepositionsToRemove);
+        DiscardToRemoveSet(ConjunctionsToRemove);
+        DiscardToRemoveSet(ParticlesToRemove);
+    }
 }

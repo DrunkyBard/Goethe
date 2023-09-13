@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:b="clr-namespace:Goethe.Behaviors"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="EditNounView.axaml" />
+        <ResourceInclude Source="EditVerbView.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <DataTemplate x:Key="EditWordView" DataType="{x:Type vm:EditWordViewModel}">
+        <Grid RowDefinitions="*,Auto">
+            <ContentControl Grid.Row="0" Content="{Binding Word}">
+                <Interaction.Behaviors>
+                    <b:AddDataTemplate Template="{StaticResource EditNounView}" />
+                    <b:AddDataTemplate Template="{StaticResource EditVerbView}" />
+                </Interaction.Behaviors>
+            </ContentControl>
+            
+            <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Save" Command="{Binding SaveEditCommand}" />
+                <Button Content="Cancel" Command="{Binding CancelEditCommand}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

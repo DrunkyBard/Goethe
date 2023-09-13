@@ -1,5 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reactive;
+using System.Reactive.Subjects;
+using DynamicData;
+using Goethe.Common;
 using Goethe.Model;
 using ReactiveUI;
 using ReactiveUI.Validation.Extensions;
@@ -8,12 +14,33 @@ namespace Goethe.ViewModels;
 
 public abstract class WordViewModel : ViewModelBase
 {
+    public readonly int Id;
+
     private string _translation;
     private string _topic;
+
+    private bool _toEdit;
+    private bool _toDelete;
+    
+    protected Subject<Unit> FireChange;
+    
+    public IObservable<Unit> ChangeSignal => FireChange;
 
     public ObservableCollection<string> Translations { get; }
 
     public ObservableCollection<string> Topics { get; }
+
+    public bool ToDelete
+    {
+        get => _toDelete;
+        set => this.RaiseAndSetIfChanged(ref _toDelete, value);
+    }
+
+    public bool ToEdit
+    {
+        get => _toEdit;
+        set => this.RaiseAndSetIfChanged(ref _toEdit, value);
+    }
 
     public string Translation
     {
@@ -26,6 +53,96 @@ public abstract class WordViewModel : ViewModelBase
         get => _topic;
         set => this.RaiseAndSetIfChanged(ref _topic, value);
     }
+
+    public ReactiveCommand<Unit, Unit> AddTranslationCommand { get; }
+
+    public ReactiveCommand<Unit, Unit> AddTopicCommand { get; }
+
+    public ReactiveCommand<string, Unit> RemoveTranslationCommand { get; }
+
+    public ReactiveCommand<string, Unit> RemoveTopicCommand { get; }
+
+    protected WordViewModel(
+        int                 id,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics)
+    {
+        FireChange = new Subject<Unit>();
+        
+        Id = id;
+
+        _translation = string.Empty;
+        _topic       = string.Empty;
+        Translations = new(translations);
+        Topics       = new(topics);
+        
+        Translations.CollectionChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Topics.CollectionChanged       += (_, _) => FireChange.OnNext(Unit.Default);
+
+        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
+        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
+        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
+        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
+
+        this.ValidationRule(
+            x => x.Translations.Count,
+            x => x > 0,
+            "Noun doesn't have any translations");
+
+        this.ValidationRule(
+            x => x.Topics.Count,
+            x => x > 0,
+            "Noun doesn't belong to any topic");
+    }
+
+    private void RemoveTranslation(string translation)
+    {
+        Translations.Remove(translation);
+    }
+
+    private void RemoveTopic(string topic)
+    {
+        Topics.Remove(topic);
+    }
+
+    private void TryAddTranslation()
+    {
+        if (string.IsNullOrWhiteSpace(Translation))
+        {
+            return;
+        }
+
+        Translations.Add(Translation);
+        Translation = string.Empty;
+    }
+
+    private void TryAddTopic()
+    {
+        if (string.IsNullOrWhiteSpace(Topic))
+        {
+            return;
+        }
+
+        Topics.Add(Topic);
+        Topic = string.Empty;
+    }
+
+    public void Clear()
+    {
+        ToEdit   = false;
+        ToDelete = false;
+
+        Translations.Clear();
+        Topics.Clear();
+
+        ClearInternal();
+    }
+
+    protected abstract void ClearInternal();
+    
+    // protected WordViewModel() : this(0, Enumerable.Empty<string>(), Enumerable.Empty<string>())
+    // {
+    // }
 }
 
 public sealed class DeclensionViewModel : ViewModelBase
@@ -114,6 +231,14 @@ public sealed class DeclensionViewModel : ViewModelBase
         Genitive   = string.Empty;
         Dative     = string.Empty;
         Accusative = string.Empty;
+    }
+
+    public void Replace(DeclensionViewModel declensionViewModel)
+    {
+        Nominative = declensionViewModel.Nominative;
+        Genitive   = declensionViewModel.Genitive;
+        Dative     = declensionViewModel.Dative;
+        Accusative = declensionViewModel.Accusative;
     }
 }
 
@@ -234,19 +359,27 @@ public sealed class ConjugationsViewModel : ViewModelBase
         Ihr     = string.Empty;
         Sie     = string.Empty;
     }
+
+    public void Replace(ConjugationsViewModel conjugationsViewModel)
+    {
+        Ich     = conjugationsViewModel.Ich;
+        Du      = conjugationsViewModel.Du;
+        ErSieEs = conjugationsViewModel.ErSieEs;
+        Wir     = conjugationsViewModel.Wir;
+        Ihr     = conjugationsViewModel.Ihr;
+        Sie     = conjugationsViewModel.Sie;
+    }
 }
 
-public sealed class NounViewModel : ViewModelBase
+public sealed class NounViewModel : WordViewModel
 {
+    public static IComparer<NounViewModel> Comparer
+        = new FuncComparer<NounViewModel>(
+            (x, y) => string.Compare(x?.Singular.Nominative,
+                                     y?.Singular.Nominative,
+                                     StringComparison.OrdinalIgnoreCase));
+
     private Gender _gender;
-    private string _translation;
-    private string _topic;
-
-    public readonly int Id;
-
-    public ObservableCollection<string> Translations { get; }
-
-    public ObservableCollection<string> Topics { get; }
 
     public DeclensionViewModel Singular { get; }
 
@@ -257,26 +390,6 @@ public sealed class NounViewModel : ViewModelBase
         get => _gender;
         set => this.RaiseAndSetIfChanged(ref _gender, value);
     }
-
-    public string Translation
-    {
-        get => _translation;
-        set => this.RaiseAndSetIfChanged(ref _translation, value);
-    }
-
-    public string Topic
-    {
-        get => _topic;
-        set => this.RaiseAndSetIfChanged(ref _topic, value);
-    }
-
-    public ReactiveCommand<Unit, Unit> AddTranslationCommand { get; }
-
-    public ReactiveCommand<Unit, Unit> AddTopicCommand { get; }
-
-    public ReactiveCommand<string, Unit> RemoveTranslationCommand { get; }
-
-    public ReactiveCommand<string, Unit> RemoveTopicCommand { get; }
 
     private void BindValidation()
     {
@@ -289,123 +402,108 @@ public sealed class NounViewModel : ViewModelBase
             m => m.Plural.HasErrors,
             m => !m,
             "Plural form is not valid");
+    }
 
-        this.ValidationRule(
-            x => x.Translations.Count,
-            x => x > 0,
-            "Noun doesn't have any translations");
+    private NounViewModel(
+        int                 id,
+        Gender              gender,
+        DeclensionViewModel singular,
+        DeclensionViewModel plural,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        Gender = gender;
 
-        this.ValidationRule(
-            x => x.Topics.Count,
-            x => x > 0,
-            "Noun doesn't belong to any topic");
+        Singular = singular;
+        Plural   = plural;
+        
+        PropertyChanged          += (_, _) => FireChange.OnNext(Unit.Default);
+        Singular.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Plural.PropertyChanged   += (_, _) => FireChange.OnNext(Unit.Default);
+
+        BindValidation();
     }
 
     public NounViewModel()
+        : this(
+            0,
+            Gender.M,
+            new(), new(),
+            Enumerable.Empty<string>(), Enumerable.Empty<string>())
     {
-        Gender = Gender.M;
-
-        Singular     = new DeclensionViewModel();
-        Plural       = new DeclensionViewModel();
-        Translations = new ObservableCollection<string>();
-        Topics       = new ObservableCollection<string>();
-
-        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
-        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
-        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
-        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
-
-        BindValidation();
     }
 
     public NounViewModel(Noun nounModel)
+        : this(
+            nounModel.Id,
+            nounModel.Gender,
+            new(nounModel.Singular),
+            new(nounModel.Plural),
+            nounModel.Translations,
+            nounModel.Topics)
     {
-        Id = nounModel.Id;
-
-        Singular     = new DeclensionViewModel(nounModel.Singular);
-        Plural       = new DeclensionViewModel(nounModel.Plural);
-        Gender       = nounModel.Gender;
-        Translations = new ObservableCollection<string>(nounModel.Translations);
-        Topics       = new ObservableCollection<string>(nounModel.Topics);
-
-        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
-        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
-        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
-        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
-
-        BindValidation();
     }
 
     private NounViewModel(NounViewModel nounViewModel)
+        : this(
+            nounViewModel.Id,
+            nounViewModel.Gender,
+            nounViewModel.Singular.Copy(),
+            nounViewModel.Plural.Copy(),
+            nounViewModel.Translations,
+            nounViewModel.Topics)
     {
-        Singular     = nounViewModel.Singular.Copy();
-        Plural       = nounViewModel.Plural.Copy();
-        Gender       = nounViewModel.Gender;
-        Translations = new ObservableCollection<string>(nounViewModel.Translations);
-        Topics       = new ObservableCollection<string>(nounViewModel.Topics);
-
-        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
-        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
-        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
-        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
-
-        BindValidation();
     }
 
-    public NounViewModel Copy() => new NounViewModel(this);
-
-    private void RemoveTranslation(string translation)
+    public void Replace(NounViewModel nounViewModel)
     {
-        Translations.Remove(translation);
+        Gender = nounViewModel.Gender;
+        Singular.Replace(nounViewModel.Singular);
+        Plural.Replace(nounViewModel.Plural);
+
+        Translations.Clear();
+        Translations.AddRange(nounViewModel.Translations);
+
+        Topics.Clear();
+        Topics.AddRange(nounViewModel.Topics);
     }
 
-    private void RemoveTopic(string topic)
+    public NounViewModel Copy() => new(this);
+
+    protected override void ClearInternal()
     {
-        Topics.Remove(topic);
-    }
-
-    private void TryAddTranslation()
-    {
-        if (string.IsNullOrWhiteSpace(Translation))
-        {
-            return;
-        }
-
-        Translations.Add(Translation);
-        Translation = string.Empty;
-    }
-
-    private void TryAddTopic()
-    {
-        if (string.IsNullOrWhiteSpace(Topic))
-        {
-            return;
-        }
-
-        Topics.Add(Topic);
-        Topic = string.Empty;
-    }
-
-    public void Clear()
-    {
-        Gender = default;
+        Gender = Gender.M;
         Topic  = string.Empty;
 
         Singular.Clear();
         Plural.Clear();
-        Translations.Clear();
-        Topics.Clear();
+    }
+
+    public static Func<NounViewModel, bool> GetFilter(string? filter)
+    {
+        return noun =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return noun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
     }
 }
 
-public sealed class VerbViewModel : ViewModelBase
+public sealed class VerbViewModel : WordViewModel
 {
-    public int Id { get; private set; }
+    public static IComparer<VerbViewModel> Comparer
+        = new FuncComparer<VerbViewModel>(
+            (x, y) => string.Compare(
+                x?.Infinitive,
+                y?.Infinitive,
+                StringComparison.OrdinalIgnoreCase));
 
     private string _infinitive = string.Empty;
     private bool   _isRegular;
-    private string _translation;
-    private string _topic;
 
     public string Infinitive
     {
@@ -419,31 +517,7 @@ public sealed class VerbViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _isRegular, value);
     }
 
-    public string Translation
-    {
-        get => _translation;
-        set => this.RaiseAndSetIfChanged(ref _translation, value);
-    }
-
-    public string Topic
-    {
-        get => _topic;
-        set => this.RaiseAndSetIfChanged(ref _topic, value);
-    }
-
     public ConjugationsViewModel Present { get; }
-
-    public ObservableCollection<string> Translations { get; }
-
-    public ObservableCollection<string> Topics { get; }
-
-    public ReactiveCommand<Unit, Unit> AddTranslationCommand { get; }
-
-    public ReactiveCommand<Unit, Unit> AddTopicCommand { get; }
-
-    public ReactiveCommand<string, Unit> RemoveTranslationCommand { get; }
-
-    public ReactiveCommand<string, Unit> RemoveTopicCommand { get; }
 
     private void BindValidation()
     {
@@ -453,125 +527,497 @@ public sealed class VerbViewModel : ViewModelBase
             "Should not be empty");
 
         this.ValidationRule(
-            x => x.Translations.Count,
-            x => x > 0,
-            "Verb doesn't have any translations");
+            x => x.Present.HasErrors,
+            x => !x,
+            "Present conjugations have errors");
+    }
 
-        this.ValidationRule(
-            x => x.Topics.Count,
-            x => x > 0,
-            "Verb doesn't belong to any topic");
+    private VerbViewModel(
+        int                   id,
+        bool                  isRegular,
+        string                infinitive,
+        ConjugationsViewModel present,
+        IEnumerable<string>   translations,
+        IEnumerable<string>   topics) : base(id, translations, topics)
+    {
+        IsRegular  = isRegular;
+        Infinitive = infinitive;
+        Present    = present;
+        
+        PropertyChanged         += (_,      _) => FireChange.OnNext(Unit.Default);
+        Present.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+
+        BindValidation();
     }
 
     public VerbViewModel()
+        : this(
+            0,
+            false,
+            string.Empty,
+            new(),
+            Enumerable.Empty<string>(),
+            Enumerable.Empty<string>())
     {
-        Infinitive   = string.Empty;
-        Present      = new ConjugationsViewModel();
-        Translations = new ObservableCollection<string>();
-        Topics       = new ObservableCollection<string>();
-
-        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
-        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
-        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
-        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
-
-        BindValidation();
     }
 
     public VerbViewModel(Verb verbModel)
+        : this(
+            verbModel.Id,
+            verbModel.IsRegular,
+            verbModel.Infinitive,
+            new(verbModel.Present),
+            verbModel.Translations,
+            verbModel.Topics)
     {
-        Id           = verbModel.Id;
-        IsRegular    = verbModel.IsRegular;
-        Present      = new ConjugationsViewModel(verbModel.Present);
-        Translations = new ObservableCollection<string>(verbModel.Translations);
-        Topics       = new ObservableCollection<string>(verbModel.Topics);
-
-        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
-        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
-        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
-        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
-
-        BindValidation();
     }
 
     private VerbViewModel(VerbViewModel viewModel)
+        : this(
+            viewModel.Id,
+            viewModel.IsRegular,
+            viewModel.Infinitive,
+            viewModel.Present.Copy(),
+            viewModel.Translations,
+            viewModel.Topics)
     {
-        Infinitive   = viewModel.Infinitive;
-        IsRegular    = viewModel.IsRegular;
-        Present      = viewModel.Present.Copy();
-        Translations = new ObservableCollection<string>(viewModel.Translations);
-        Topics       = new ObservableCollection<string>(viewModel.Topics);
-
-        AddTranslationCommand    = ReactiveCommand.Create(TryAddTranslation);
-        AddTopicCommand          = ReactiveCommand.Create(TryAddTopic);
-        RemoveTranslationCommand = ReactiveCommand.Create<string>(RemoveTranslation);
-        RemoveTopicCommand       = ReactiveCommand.Create<string>(RemoveTopic);
-
-        BindValidation();
     }
 
     public VerbViewModel Copy() => new VerbViewModel(this);
 
-    public void Clear()
+    protected override void ClearInternal()
     {
-        Id         = default;
         Infinitive = string.Empty;
         IsRegular  = default;
 
         Present.Clear();
+    }
+
+    public void Replace(VerbViewModel verbViewModel)
+    {
+        IsRegular = verbViewModel.IsRegular;
+        Infinitive = verbViewModel.Infinitive;
+        Present.Replace(verbViewModel.Present);
+        
         Translations.Clear();
+        Translations.AddRange(verbViewModel.Translations);
+        
         Topics.Clear();
+        Topics.AddRange(verbViewModel.Topics);
     }
 
-    private void RemoveTranslation(string translation)
+    public static Func<VerbViewModel, bool> GetFilter(string? filter)
     {
-        Translations.Remove(translation);
-    }
-
-    private void RemoveTopic(string topic)
-    {
-        Topics.Remove(topic);
-    }
-
-    private void TryAddTranslation()
-    {
-        if (string.IsNullOrWhiteSpace(Translation))
+        return verb =>
         {
-            return;
-        }
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
 
-        Translations.Add(Translation);
-        Translation = string.Empty;
+            return verb.Infinitive.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
     }
+}
 
-    private void TryAddTopic()
+public sealed class AdjectiveViewModel : WordViewModel
+{
+    public static IComparer<AdjectiveViewModel> Comparer
+        = new FuncComparer<AdjectiveViewModel>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
+    
+    private string _text;
+
+    public string Text
     {
-        if (string.IsNullOrWhiteSpace(Topic))
-        {
-            return;
-        }
+        get => _text;
+        set => this.RaiseAndSetIfChanged(ref _text, value);
+    }
 
-        Topics.Add(Topic);
-        Topic = string.Empty;
+    private AdjectiveViewModel(
+        int                 id,
+        string              text,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        _text = text;
+
+        this.ValidationRule(
+            x => x.Text,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+    }
+
+    public AdjectiveViewModel(Adjective model)
+        : this(
+            model.Id,
+            model.Text,
+            model.Translations,
+            new[] { "Adjectives" })
+    {
+    }
+
+    public AdjectiveViewModel(AdjectiveViewModel viewModel)
+        : this(
+            viewModel.Id,
+            viewModel.Text,
+            viewModel.Translations,
+            viewModel.Topics)
+    {
+    }
+
+    protected override void ClearInternal()
+    {
+        Text = string.Empty;
+    }
+    
+    public static Func<AdjectiveViewModel, bool> GetFilter(string? filter)
+    {
+        return adj =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return adj.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
+    }
+    
+    public AdjectiveViewModel Copy() => new(this);
+
+    public void Replace(AdjectiveViewModel viewModel)
+    {
+        Text = viewModel.Text;
+        
+        Translations.Clear();
+        Translations.AddRange(viewModel.Translations);
+        
+        Topics.Clear();
+        Topics.AddRange(viewModel.Topics);
     }
 }
 
-public sealed class AdjectiveViewModel : ViewModelBase
+public sealed class ConjunctionViewModel : WordViewModel
 {
+    public static IComparer<ConjunctionViewModel> Comparer
+        = new FuncComparer<ConjunctionViewModel>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
+    
+    private string _text;
+
+    public string Text
+    {
+        get => _text;
+        set => this.RaiseAndSetIfChanged(ref _text, value);
+    }
+
+    private ConjunctionViewModel(
+        int                 id,
+        string              text,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        _text = text;
+
+        this.ValidationRule(
+            x => x.Text,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+    }
+
+    public ConjunctionViewModel(Conjunction model)
+        : this(
+            model.Id,
+            model.Text,
+            model.Translations,
+            new[] { "Conjunctions" })
+    {
+    }
+
+    public ConjunctionViewModel(ConjunctionViewModel viewModel)
+        : this(
+            viewModel.Id,
+            viewModel.Text,
+            viewModel.Translations,
+            viewModel.Topics)
+    {
+    }
+
+    protected override void ClearInternal()
+    {
+        Text = string.Empty;
+    }
+    
+    public static Func<ConjunctionViewModel, bool> GetFilter(string? filter)
+    {
+        return conjunction =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return conjunction.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
+    }
+    
+    public ConjunctionViewModel Copy() => new(this);
+
+    public void Replace(ConjunctionViewModel viewModel)
+    {
+        Text = viewModel.Text;
+        
+        Translations.Clear();
+        Translations.AddRange(viewModel.Translations);
+        
+        Topics.Clear();
+        Topics.AddRange(viewModel.Topics);
+    }
 }
 
-public sealed class ConjunctionViewModel : ViewModelBase
+public sealed class ParticleViewModel : WordViewModel
 {
+    public static IComparer<ParticleViewModel> Comparer
+        = new FuncComparer<ParticleViewModel>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
+    
+    private string _text;
+
+    public string Text
+    {
+        get => _text;
+        set => this.RaiseAndSetIfChanged(ref _text, value);
+    }
+
+    private ParticleViewModel(
+        int                 id,
+        string              text,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        _text = text;
+
+        this.ValidationRule(
+            x => x.Text,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+    }
+
+    public ParticleViewModel(Particle model)
+        : this(
+            model.Id,
+            model.Text,
+            model.Translations,
+            new[] { "Conjunctions" })
+    {
+    }
+
+    public ParticleViewModel(ParticleViewModel viewModel)
+        : this(
+            viewModel.Id,
+            viewModel.Text,
+            viewModel.Translations,
+            viewModel.Topics)
+    {
+    }
+
+    protected override void ClearInternal()
+    {
+        Text = string.Empty;
+    }
+    
+    public static Func<ParticleViewModel, bool> GetFilter(string? filter)
+    {
+        return particle =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return particle.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
+    }
+    
+    public ParticleViewModel Copy() => new(this);
+
+    public void Replace(ParticleViewModel viewModel)
+    {
+        Text = viewModel.Text;
+        
+        Translations.Clear();
+        Translations.AddRange(viewModel.Translations);
+    }
 }
 
-public sealed class ParticleViewModel : ViewModelBase
+public sealed class PrepositionViewModel : WordViewModel
 {
+    public static IComparer<PrepositionViewModel> Comparer =
+        new FuncComparer<PrepositionViewModel>(
+            (x, y) => string.Compare(x?.Text, y?.Text, StringComparison.CurrentCultureIgnoreCase));
+    
+    private string _text;
+
+    public string Text
+    {
+        get => _text;
+        set => this.RaiseAndSetIfChanged(ref _text, value);
+    }
+
+    private PrepositionViewModel(
+        int                 id,
+        string              text,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        _text = text;
+
+        this.ValidationRule(
+            x => x.Text,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+    }
+
+    public PrepositionViewModel(Preposition model)
+        : this(
+            model.Id,
+            model.Text,
+            model.Translations,
+            new[] { "Conjunctions" })
+    {
+    }
+
+    public PrepositionViewModel(PrepositionViewModel viewModel)
+        : this(
+            viewModel.Id,
+            viewModel.Text,
+            viewModel.Translations,
+            viewModel.Topics)
+    {
+    }
+
+    protected override void ClearInternal()
+    {
+        Text = string.Empty;
+    }
+    
+    public static Func<PrepositionViewModel, bool> GetFilter(string? filter)
+    {
+        return preposition =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return preposition.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
+    }
+    
+    public PrepositionViewModel Copy() => new(this);
+
+    public void Replace(PrepositionViewModel viewModel)
+    {
+        Text = viewModel.Text;
+        
+        Translations.Clear();
+        Translations.AddRange(viewModel.Translations);
+        
+        Topics.Clear();
+        Topics.AddRange(viewModel.Topics);
+    }
 }
 
-public sealed class PrepositionViewModel : ViewModelBase
+public sealed class PronounViewModel : WordViewModel
 {
-}
+    public static IComparer<PronounViewModel> Comparer
+        = new FuncComparer<PronounViewModel>(
+            (x, y) => string.Compare(x?.Singular, y?.Singular, StringComparison.OrdinalIgnoreCase));
+    
+    private string _singular;
+    private string _plural;
 
-public sealed class PronounViewModel : ViewModelBase
-{
+    public string Singular
+    {
+        get => _singular;
+        set => this.RaiseAndSetIfChanged(ref _singular, value);
+    }
+
+    public string Plural
+    {
+        get => _plural;
+        set => this.RaiseAndSetIfChanged(ref _plural, value);
+    }
+
+    private PronounViewModel(
+        int                 id,
+        string              singular,
+        string              plural,
+        IEnumerable<string> translations,
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        _singular = singular;
+        _plural   = plural;
+
+        this.ValidationRule(
+            x => x.Singular,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+
+        this.ValidationRule(
+            x => x.Plural,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+    }
+
+    public PronounViewModel(Pronoun model)
+        : this(
+            model.Id,
+            model.Singular,
+            model.Plural,
+            model.Translations,
+            new[] { "Pronouns" })
+    {
+    }
+
+    public PronounViewModel(PronounViewModel viewModel)
+        : this(
+            viewModel.Id,
+            viewModel.Singular,
+            viewModel.Plural,
+            viewModel.Translations,
+            viewModel.Topics)
+    {
+    }
+
+    protected override void ClearInternal()
+    {
+        Singular = string.Empty;
+        Plural   = string.Empty;
+    }
+    
+    public static Func<PronounViewModel, bool> GetFilter(string? filter)
+    {
+        return pronoun =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return pronoun.Singular.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || pronoun.Plural.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
+    }
+    
+    public PronounViewModel Copy() => new(this);
+
+    public void Replace(PronounViewModel viewModel)
+    {
+        Singular = viewModel.Singular;
+        Plural = viewModel.Plural;
+        
+        Translations.Clear();
+        Translations.AddRange(viewModel.Translations);
+        
+        Topics.Clear();
+        Topics.AddRange(viewModel.Topics);
+    }
 }

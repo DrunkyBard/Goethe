@@ -109,7 +109,7 @@ public sealed class Adjective
                 return true;
             }
 
-            return adj.Text.StartsWith(filter);
+            return adj.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -149,7 +149,7 @@ public sealed class Pronoun
                 return true;
             }
 
-            return pronoun.Singular.StartsWith(filter) || pronoun.Plural.StartsWith(filter);
+            return pronoun.Singular.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || pronoun.Plural.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -186,7 +186,7 @@ public sealed class Preposition
                 return true;
             }
 
-            return preposition.Text.StartsWith(filter);
+            return preposition.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -222,7 +222,7 @@ public sealed class Conjunction
                 return true;
             }
 
-            return conjunction.Text.StartsWith(filter);
+            return conjunction.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -258,7 +258,7 @@ public sealed class Particle
                 return true;
             }
 
-            return particle.Text.StartsWith(filter);
+            return particle.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -332,7 +332,7 @@ public sealed class Noun
                 return true;
             }
 
-            return noun.Singular.Nominative.StartsWith(filter);
+            return noun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 
@@ -439,7 +439,7 @@ public sealed class Verb
                 return true;
             }
 
-            return verb.Infinitive.StartsWith(filter);
+            return verb.Infinitive.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }

@@ -4,6 +4,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:vm="clr-namespace:Goethe.ViewModels"
                     xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:v="clr-namespace:Goethe.Views"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
     <DataTemplate x:Key="EditVerbView" DataType="{x:Type vm:VerbViewModel}">
         <StackPanel Orientation="Vertical">
@@ -57,17 +58,8 @@
 
             <Label Content="Translations:" />
 
-            <ItemsControl ItemsSource="{Binding Translations}">
-                <ItemsControl.Styles>
-                    <Style Selector="Button#RemoveTranslationBtn">
-                        <Setter Property="Command" Value="{Binding RemoveTranslationCommand}" />
-                    </Style>
-
-                    <Style Selector="Button#RemoveTopicBtn">
-                        <Setter Property="Command" Value="{Binding RemoveTopicCommand}" />
-                    </Style>
-                </ItemsControl.Styles>
-
+            <ItemsControl Name="TranslationItemsContainer" ItemsSource="{Binding Translations}"
+                          v:WordAttachedProperty.Word="{Binding}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -80,6 +72,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
                                 <Button
+                                    Command="{Binding Path=(v:WordAttachedProperty.Word).RemoveTranslationCommand, ElementName=TranslationItemsContainer}"
                                     CommandParameter="{Binding}"
                                     Content="x" />
                             </StackPanel>
@@ -90,7 +83,8 @@
 
             <Label Content="Topics:" />
 
-            <ItemsControl ItemsSource="{Binding Topics}">
+            <ItemsControl Name="TopicItemsContainer" ItemsSource="{Binding Topics}"
+                          v:WordAttachedProperty.Word="{Binding}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -103,6 +97,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
                                 <Button
+                                    Command="{Binding (v:WordAttachedProperty.Word).RemoveTopicCommand, ElementName=TopicItemsContainer}"
                                     CommandParameter="{Binding}"
                                     Content="x" />
                             </StackPanel>

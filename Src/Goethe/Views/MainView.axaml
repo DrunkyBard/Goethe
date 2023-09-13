@@ -18,12 +18,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://Goethe/Views/DictionaryView.axaml" />
+                <ResourceInclude Source="avares://Goethe/Views/EditWordView.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     
     <Interaction.Behaviors>
         <b:AddDataTemplateBehavior DataTemplates="{StaticResource DictionaryView}" />
+        <b:AddDataTemplate Template="{StaticResource EditWordView}" />
     </Interaction.Behaviors>
     
     <UserControl.DataTemplates>

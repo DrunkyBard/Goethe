@@ -1,0 +1,88 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    xmlns:v="clr-namespace:Goethe.Views"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="WordsToEditList" DataType="{x:Type vm:DictionaryViewModel}">
+        <StackPanel Orientation="Vertical" IsVisible="{Binding HasEdits}">
+            <TextBlock Classes="title" Text="To Edit" />
+
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedNouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Nouns" />
+
+                <ItemsControl 
+                    Name="EditNounsList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedNouns}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock
+                                        Text="{Binding NewWord, Converter={x:Static c:NounToStringConverter.Instance}, Mode=OneWay}"
+                                        DockPanel.Dock="Left" />
+
+                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditNounsList}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditNounsList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedVerbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Verbs" />
+
+                <ItemsControl 
+                    Name="EditVerbsList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedVerbs}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <DockPanel.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:VerbViewModel}">
+                                            <TextBlock Text="{Binding Infinitive}" />
+                                        </DataTemplate>
+                                    </DockPanel.DataTemplates>
+                                    
+                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditVerbsList}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditVerbsList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

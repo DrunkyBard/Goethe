@@ -1,0 +1,78 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:m="clr-namespace:Goethe.Model"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    xmlns:b="clr-namespace:Goethe.Behaviors"
+                    xmlns:v="clr-namespace:Goethe.Views"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="WordsToRemoveList" DataType="{x:Type vm:DictionaryViewModel}">
+        <StackPanel Orientation="Vertical" IsVisible="{Binding HasDeletions}">
+            <TextBlock Classes="title" Text="To Delete" />
+
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding NounsToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Nouns" />
+
+                <ItemsControl 
+                    Name="NounsToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding NounsToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:NounViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock
+                                        Text="{Binding, Converter={x:Static c:NounToStringConverter.Instance}, Mode=OneWay}"
+                                        DockPanel.Dock="Left" />
+
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=NounsToRemoveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding VerbsToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Verbs" />
+
+                <ItemsControl 
+                    Name="VerbsToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding VerbsToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:VerbViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Infinitive}" DockPanel.Dock="Left" />
+
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=VerbsToRemoveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>
