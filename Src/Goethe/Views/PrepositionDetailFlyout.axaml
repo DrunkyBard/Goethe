@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="PrepositionDetailView" DataType="{x:Type vm:PrepositionViewModel}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Classes="title" Text="{Binding Text}" HorizontalAlignment="Center" />
+            
+            <ItemsControl ItemsSource="{Binding Translations}" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <TextBlock
+                            Text="{Binding Converter={x:Static c:TranslationWithSeparatorConverter.Instance}}"
+                            FontStyle="Italic" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

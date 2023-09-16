@@ -21,9 +21,9 @@ public abstract class WordViewModel : ViewModelBase
 
     private bool _toEdit;
     private bool _toDelete;
-    
+
     protected Subject<Unit> FireChange;
-    
+
     public IObservable<Unit> ChangeSignal => FireChange;
 
     public ObservableCollection<string> Translations { get; }
@@ -41,6 +41,8 @@ public abstract class WordViewModel : ViewModelBase
         get => _toEdit;
         set => this.RaiseAndSetIfChanged(ref _toEdit, value);
     }
+
+    public IObservable<bool> IsDeletedOrModified { get; }
 
     public string Translation
     {
@@ -68,14 +70,19 @@ public abstract class WordViewModel : ViewModelBase
         IEnumerable<string> topics)
     {
         FireChange = new Subject<Unit>();
-        
+
         Id = id;
+
+        IsDeletedOrModified = this.WhenAny(
+            x => x.ToDelete,
+            x => x.ToEdit,
+            (toDeleteChange, toEditChange) => toDeleteChange.Value || toEditChange.Value);
 
         _translation = string.Empty;
         _topic       = string.Empty;
         Translations = new(translations);
         Topics       = new(topics);
-        
+
         Translations.CollectionChanged += (_, _) => FireChange.OnNext(Unit.Default);
         Topics.CollectionChanged       += (_, _) => FireChange.OnNext(Unit.Default);
 
@@ -87,12 +94,7 @@ public abstract class WordViewModel : ViewModelBase
         this.ValidationRule(
             x => x.Translations.Count,
             x => x > 0,
-            "Noun doesn't have any translations");
-
-        this.ValidationRule(
-            x => x.Topics.Count,
-            x => x > 0,
-            "Noun doesn't belong to any topic");
+            "Word doesn't have any translations");
     }
 
     private void RemoveTranslation(string translation)
@@ -139,10 +141,43 @@ public abstract class WordViewModel : ViewModelBase
     }
 
     protected abstract void ClearInternal();
-    
+
     // protected WordViewModel() : this(0, Enumerable.Empty<string>(), Enumerable.Empty<string>())
     // {
     // }
+}
+
+public sealed class DeclensionsViewModel
+{
+    public DeclensionViewModel Masculine { get; }
+    
+    public DeclensionViewModel Feminine { get; }
+    
+    public DeclensionViewModel Neutral { get; }
+    
+    public DeclensionViewModel Plural { get; }
+
+    public DeclensionsViewModel()
+        :this(
+            new DeclensionViewModel(),
+            new DeclensionViewModel(),
+            new DeclensionViewModel(),
+            new DeclensionViewModel())
+    {
+        
+    }
+
+    public DeclensionsViewModel(
+        DeclensionViewModel masculine,
+        DeclensionViewModel feminine,
+        DeclensionViewModel neutral,
+        DeclensionViewModel plural)
+    {
+        Masculine = masculine;
+        Feminine = feminine;
+        Neutral = neutral;
+        Plural = plural;
+    }
 }
 
 public sealed class DeclensionViewModel : ViewModelBase
@@ -217,7 +252,7 @@ public sealed class DeclensionViewModel : ViewModelBase
     }
 
     public DeclensionViewModel Copy() =>
-        new DeclensionViewModel
+        new()
         {
             Nominative = _nominative,
             Genitive   = _genitive,
@@ -240,6 +275,8 @@ public sealed class DeclensionViewModel : ViewModelBase
         Dative     = declensionViewModel.Dative;
         Accusative = declensionViewModel.Accusative;
     }
+
+    public Declension ToModel() => new(_nominative, _genitive, _dative, _accusative);
 }
 
 public sealed class ConjugationsViewModel : ViewModelBase
@@ -416,7 +453,7 @@ public sealed class NounViewModel : WordViewModel
 
         Singular = singular;
         Plural   = plural;
-        
+
         PropertyChanged          += (_, _) => FireChange.OnNext(Unit.Default);
         Singular.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
         Plural.PropertyChanged   += (_, _) => FireChange.OnNext(Unit.Default);
@@ -543,8 +580,8 @@ public sealed class VerbViewModel : WordViewModel
         IsRegular  = isRegular;
         Infinitive = infinitive;
         Present    = present;
-        
-        PropertyChanged         += (_,      _) => FireChange.OnNext(Unit.Default);
+
+        PropertyChanged         += (_, _) => FireChange.OnNext(Unit.Default);
         Present.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
 
         BindValidation();
@@ -583,7 +620,7 @@ public sealed class VerbViewModel : WordViewModel
     {
     }
 
-    public VerbViewModel Copy() => new VerbViewModel(this);
+    public VerbViewModel Copy() => new(this);
 
     protected override void ClearInternal()
     {
@@ -595,13 +632,13 @@ public sealed class VerbViewModel : WordViewModel
 
     public void Replace(VerbViewModel verbViewModel)
     {
-        IsRegular = verbViewModel.IsRegular;
+        IsRegular  = verbViewModel.IsRegular;
         Infinitive = verbViewModel.Infinitive;
         Present.Replace(verbViewModel.Present);
-        
+
         Translations.Clear();
         Translations.AddRange(verbViewModel.Translations);
-        
+
         Topics.Clear();
         Topics.AddRange(verbViewModel.Topics);
     }
@@ -620,56 +657,333 @@ public sealed class VerbViewModel : WordViewModel
     }
 }
 
+public sealed class PredicativeViewModel : ViewModelBase
+{
+    private string _masculine = string.Empty;
+    private string _feminine  = string.Empty;
+    private string _neutral   = string.Empty;
+    private string _plural    = string.Empty;
+
+    public string Masculine
+    {
+        get => _masculine;
+        set => this.RaiseAndSetIfChanged(ref _masculine, value);
+    }
+
+    public string Feminine
+    {
+        get => _feminine;
+        set => this.RaiseAndSetIfChanged(ref _feminine, value);
+    }
+
+    public string Neutral
+    {
+        get => _neutral;
+        set => this.RaiseAndSetIfChanged(ref _neutral, value);
+    }
+
+    public string Plural
+    {
+        get => _plural;
+        set => this.RaiseAndSetIfChanged(ref _plural, value);
+    }
+
+    private void BindValidation()
+    {
+        const string notEmpty = "Should not be empty";
+
+        this.ValidationRule(
+            x => x.Masculine,
+            nom => !string.IsNullOrWhiteSpace(nom),
+            notEmpty);
+
+        this.ValidationRule(
+            x => x.Feminine,
+            gen => !string.IsNullOrWhiteSpace(gen),
+            notEmpty);
+
+        this.ValidationRule(
+            x => x.Neutral,
+            dat => !string.IsNullOrWhiteSpace(dat),
+            notEmpty);
+
+        this.ValidationRule(
+            x => x.Plural,
+            acc => !string.IsNullOrWhiteSpace(acc),
+            notEmpty);
+    }
+
+    public PredicativeViewModel(
+        string masculine,
+        string feminine,
+        string neutral,
+        string plural)
+    {
+        Code.NotNullOrWhitespace(masculine);
+        Code.NotNullOrWhitespace(feminine);
+        Code.NotNullOrWhitespace(neutral);
+        Code.NotNullOrWhitespace(plural);
+
+        Masculine = masculine;
+        Feminine  = feminine;
+        Neutral   = neutral;
+        Plural    = plural;
+
+        BindValidation();
+    }
+
+    public PredicativeViewModel()
+    {
+        BindValidation();
+    }
+
+    public PredicativeViewModel(Predicative declensionModel)
+    {
+        Masculine = declensionModel.Masculine;
+        Feminine  = declensionModel.Feminine;
+        Neutral   = declensionModel.Neutral;
+        Plural    = declensionModel.Plural;
+
+        BindValidation();
+    }
+
+    public PredicativeViewModel Copy() =>
+        new()
+        {
+            Masculine = _masculine,
+            Feminine  = _feminine,
+            Neutral   = _neutral,
+            Plural    = _plural
+        };
+
+    public void Clear()
+    {
+        Masculine = string.Empty;
+        Feminine  = string.Empty;
+        Neutral   = string.Empty;
+        Plural    = string.Empty;
+    }
+
+    public void Replace(DeclensionViewModel declensionViewModel)
+    {
+        Masculine = declensionViewModel.Nominative;
+        Feminine  = declensionViewModel.Genitive;
+        Neutral   = declensionViewModel.Dative;
+        Plural    = declensionViewModel.Accusative;
+    }
+    
+    public Predicative ToModel() => new(_masculine, _feminine, _neutral, _plural);
+}
+
 public sealed class AdjectiveViewModel : WordViewModel
 {
     public static IComparer<AdjectiveViewModel> Comparer
-        = new FuncComparer<AdjectiveViewModel>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
-    
-    private string _text;
+        = new FuncComparer<AdjectiveViewModel>(
+            (x, y) => string.Compare(x?.Adjective, y?.Adjective, StringComparison.OrdinalIgnoreCase));
 
-    public string Text
+    private string _adjective;
+    
+    private DeclensionsViewModel _strong;
+    private DeclensionsViewModel _weak;
+    private DeclensionsViewModel _mixed;
+
+    public DeclensionsViewModel Strong { get; }
+    
+    public DeclensionsViewModel Weak { get;  }
+    
+    public DeclensionsViewModel Mixed { get; }
+
+    public PredicativeViewModel Predicative    { get; }
+
+    public string Adjective
     {
-        get => _text;
-        set => this.RaiseAndSetIfChanged(ref _text, value);
+        get => _adjective;
+        set => this.RaiseAndSetIfChanged(ref _adjective, value);
+    }
+
+    private void BindValidation()
+    {
+        this.ValidationRule(
+            x => x.Adjective,
+            t => !string.IsNullOrWhiteSpace(t),
+            "Should not be empty");
+        
+        this.ValidationRule(
+            x => x.Strong.Masculine.HasErrors,
+            x => !x,
+            "Strong masculine inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Strong.Feminine.HasErrors,
+            x => !x,
+            "Strong feminine inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Strong.Neutral.HasErrors,
+            x => !x,
+            "Strong neutral inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Strong.Plural.HasErrors,
+            x => !x,
+            "Strong plural inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Weak.Masculine.HasErrors,
+            x => !x,
+            "Weak masculine inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Weak.Feminine.HasErrors,
+            x => !x,
+            "Weak feminine inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Weak.Neutral.HasErrors,
+            x => !x,
+            "Weak neutral inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Weak.Plural.HasErrors,
+            x => !x,
+            "Weak plural inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Mixed.Masculine.HasErrors,
+            x => !x,
+            "Mixed masculine inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Mixed.Feminine.HasErrors,
+            x => !x,
+            "Mixed feminine inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Mixed.Neutral.HasErrors,
+            x => !x,
+            "Mixed neutral inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Mixed.Plural.HasErrors,
+            x => !x,
+            "Mixed plural inflection is not valid");
+        
+        this.ValidationRule(
+            x => x.Predicative.HasErrors,
+            x => !x,
+            "Predicative is not valid");
     }
 
     private AdjectiveViewModel(
-        int                 id,
-        string              text,
-        IEnumerable<string> translations,
-        IEnumerable<string> topics) : base(id, translations, topics)
+        int                 id, string adjective,
+        DeclensionsViewModel strong, DeclensionsViewModel weak, DeclensionsViewModel mixed,
+        PredicativeViewModel predicative,
+        IEnumerable<string> translations, IEnumerable<string> topics) : base(id, translations, topics)
     {
-        _text = text;
+        _adjective = adjective;
 
-        this.ValidationRule(
-            x => x.Text,
-            t => !string.IsNullOrWhiteSpace(t),
-            "Should not be empty");
+        Strong = strong;
+        Weak   = weak;
+        Mixed  = mixed;
+        
+        Predicative = predicative;
+
+        BindValidation();
     }
 
-    public AdjectiveViewModel(Adjective model)
+    public AdjectiveViewModel()
         : this(
-            model.Id,
-            model.Text,
-            model.Translations,
-            new[] { "Adjectives" })
+            0,
+            string.Empty,
+            new DeclensionsViewModel(),
+            new DeclensionsViewModel(),
+            new DeclensionsViewModel(),
+            new PredicativeViewModel(),
+            Enumerable.Empty<string>(),
+            Enumerable.Empty<string>())
     {
     }
 
-    public AdjectiveViewModel(AdjectiveViewModel viewModel)
+    public AdjectiveViewModel(Adjective m)
         : this(
-            viewModel.Id,
-            viewModel.Text,
-            viewModel.Translations,
-            viewModel.Topics)
+            m.Id, m.Adj,
+            new(
+                new(m.StrongMasculineInflection), 
+                new(m.StrongFeminineInflection),
+                new(m.StrongNeutralInflection),
+                new(m.StrongPluralInflection)),
+            
+            new(
+                new(m.WeakMasculineInflection), 
+                new(m.WeakFeminineInflection),
+                new(m.WeakNeutralInflection),
+                new(m.WeakPluralInflection)),
+            
+            new(
+                new(m.MixedMasculineInflection), 
+                new(m.MixedFeminineInflection),
+                new(m.MixedNeutralInflection),
+                new(m.MixedPluralInflection)),
+            
+            new(m.Predicative),
+            
+            m.Translations,
+            m.Topics)
+    {
+    }
+
+    public AdjectiveViewModel(AdjectiveViewModel vm)
+        : this(
+            vm.Id,
+            vm.Adjective,
+            
+            new(
+                vm.Strong.Masculine.Copy(), 
+                vm.Strong.Feminine.Copy(), 
+                vm.Strong.Neutral.Copy(), 
+                vm.Strong.Plural.Copy()),
+            
+            new(
+                vm.Weak.Masculine.Copy(), 
+                vm.Weak.Feminine.Copy(), 
+                vm.Weak.Neutral.Copy(), 
+                vm.Weak.Plural.Copy()),
+            
+            new(
+                vm.Mixed.Masculine.Copy(), 
+                vm.Mixed.Feminine.Copy(), 
+                vm.Mixed.Neutral.Copy(), 
+                vm.Mixed.Plural.Copy()),
+            
+            vm.Predicative.Copy(),
+            
+            vm.Translations,
+            vm.Topics)
     {
     }
 
     protected override void ClearInternal()
     {
-        Text = string.Empty;
+        Adjective = string.Empty;
+        
+        Strong.Masculine.Clear();
+        Strong.Feminine.Clear();
+        Strong.Neutral.Clear();
+        Strong.Plural.Clear();
+        
+        Weak.Masculine.Clear();
+        Weak.Feminine.Clear();
+        Weak.Neutral.Clear();
+        Weak.Plural.Clear();
+        
+        Mixed.Masculine.Clear();
+        Mixed.Feminine.Clear();
+        Mixed.Neutral.Clear();
+        Mixed.Plural.Clear();
+        
+        Predicative.Clear();
     }
-    
+
     public static Func<AdjectiveViewModel, bool> GetFilter(string? filter)
     {
         return adj =>
@@ -679,19 +993,19 @@ public sealed class AdjectiveViewModel : WordViewModel
                 return true;
             }
 
-            return adj.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return adj.Adjective.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
-    
+
     public AdjectiveViewModel Copy() => new(this);
 
     public void Replace(AdjectiveViewModel viewModel)
     {
-        Text = viewModel.Text;
-        
+        Adjective = viewModel.Adjective;
+
         Translations.Clear();
         Translations.AddRange(viewModel.Translations);
-        
+
         Topics.Clear();
         Topics.AddRange(viewModel.Topics);
     }
@@ -700,8 +1014,9 @@ public sealed class AdjectiveViewModel : WordViewModel
 public sealed class ConjunctionViewModel : WordViewModel
 {
     public static IComparer<ConjunctionViewModel> Comparer
-        = new FuncComparer<ConjunctionViewModel>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
-    
+        = new FuncComparer<ConjunctionViewModel>(
+            (x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
+
     private string _text;
 
     public string Text
@@ -724,12 +1039,21 @@ public sealed class ConjunctionViewModel : WordViewModel
             "Should not be empty");
     }
 
+    public ConjunctionViewModel()
+        : this(
+            0,
+            string.Empty,
+            Enumerable.Empty<string>(),
+            Enumerable.Empty<string>())
+    {
+    }
+
     public ConjunctionViewModel(Conjunction model)
         : this(
             model.Id,
             model.Text,
             model.Translations,
-            new[] { "Conjunctions" })
+            model.Topics)
     {
     }
 
@@ -746,7 +1070,7 @@ public sealed class ConjunctionViewModel : WordViewModel
     {
         Text = string.Empty;
     }
-    
+
     public static Func<ConjunctionViewModel, bool> GetFilter(string? filter)
     {
         return conjunction =>
@@ -759,16 +1083,16 @@ public sealed class ConjunctionViewModel : WordViewModel
             return conjunction.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
-    
+
     public ConjunctionViewModel Copy() => new(this);
 
     public void Replace(ConjunctionViewModel viewModel)
     {
         Text = viewModel.Text;
-        
+
         Translations.Clear();
         Translations.AddRange(viewModel.Translations);
-        
+
         Topics.Clear();
         Topics.AddRange(viewModel.Topics);
     }
@@ -777,8 +1101,9 @@ public sealed class ConjunctionViewModel : WordViewModel
 public sealed class ParticleViewModel : WordViewModel
 {
     public static IComparer<ParticleViewModel> Comparer
-        = new FuncComparer<ParticleViewModel>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
-    
+        = new FuncComparer<ParticleViewModel>(
+            (x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
+
     private string _text;
 
     public string Text
@@ -801,12 +1126,21 @@ public sealed class ParticleViewModel : WordViewModel
             "Should not be empty");
     }
 
+    public ParticleViewModel()
+        : this(
+            0,
+            string.Empty,
+            Enumerable.Empty<string>(),
+            Enumerable.Empty<string>())
+    {
+    }
+    
     public ParticleViewModel(Particle model)
         : this(
             model.Id,
             model.Text,
             model.Translations,
-            new[] { "Conjunctions" })
+            model.Topics)
     {
     }
 
@@ -823,7 +1157,7 @@ public sealed class ParticleViewModel : WordViewModel
     {
         Text = string.Empty;
     }
-    
+
     public static Func<ParticleViewModel, bool> GetFilter(string? filter)
     {
         return particle =>
@@ -836,13 +1170,13 @@ public sealed class ParticleViewModel : WordViewModel
             return particle.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
-    
+
     public ParticleViewModel Copy() => new(this);
 
     public void Replace(ParticleViewModel viewModel)
     {
         Text = viewModel.Text;
-        
+
         Translations.Clear();
         Translations.AddRange(viewModel.Translations);
     }
@@ -853,7 +1187,7 @@ public sealed class PrepositionViewModel : WordViewModel
     public static IComparer<PrepositionViewModel> Comparer =
         new FuncComparer<PrepositionViewModel>(
             (x, y) => string.Compare(x?.Text, y?.Text, StringComparison.CurrentCultureIgnoreCase));
-    
+
     private string _text;
 
     public string Text
@@ -876,12 +1210,21 @@ public sealed class PrepositionViewModel : WordViewModel
             "Should not be empty");
     }
 
+    public PrepositionViewModel()
+        : this(
+            0,
+            string.Empty,
+            Enumerable.Empty<string>(),
+            Enumerable.Empty<string>())
+    {
+    }
+    
     public PrepositionViewModel(Preposition model)
         : this(
             model.Id,
             model.Text,
             model.Translations,
-            new[] { "Conjunctions" })
+            model.Topics)
     {
     }
 
@@ -898,7 +1241,7 @@ public sealed class PrepositionViewModel : WordViewModel
     {
         Text = string.Empty;
     }
-    
+
     public static Func<PrepositionViewModel, bool> GetFilter(string? filter)
     {
         return preposition =>
@@ -911,16 +1254,16 @@ public sealed class PrepositionViewModel : WordViewModel
             return preposition.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
-    
+
     public PrepositionViewModel Copy() => new(this);
 
     public void Replace(PrepositionViewModel viewModel)
     {
         Text = viewModel.Text;
-        
+
         Translations.Clear();
         Translations.AddRange(viewModel.Translations);
-        
+
         Topics.Clear();
         Topics.AddRange(viewModel.Topics);
     }
@@ -930,18 +1273,18 @@ public sealed class PronounViewModel : WordViewModel
 {
     public static IComparer<PronounViewModel> Comparer
         = new FuncComparer<PronounViewModel>(
-            (x, y) => string.Compare(x?.Singular, y?.Singular, StringComparison.OrdinalIgnoreCase));
-    
-    private string _singular;
-    private string _plural;
+            (x, y) => string.Compare(x?.Singular.Nominative, y?.Singular.Nominative, StringComparison.OrdinalIgnoreCase));
 
-    public string Singular
+    private DeclensionViewModel _singular;
+    private DeclensionViewModel _plural;
+
+    public DeclensionViewModel Singular
     {
         get => _singular;
         set => this.RaiseAndSetIfChanged(ref _singular, value);
     }
 
-    public string Plural
+    public DeclensionViewModel Plural
     {
         get => _plural;
         set => this.RaiseAndSetIfChanged(ref _plural, value);
@@ -949,8 +1292,8 @@ public sealed class PronounViewModel : WordViewModel
 
     private PronounViewModel(
         int                 id,
-        string              singular,
-        string              plural,
+        DeclensionViewModel singular,
+        DeclensionViewModel plural,
         IEnumerable<string> translations,
         IEnumerable<string> topics) : base(id, translations, topics)
     {
@@ -958,31 +1301,41 @@ public sealed class PronounViewModel : WordViewModel
         _plural   = plural;
 
         this.ValidationRule(
-            x => x.Singular,
-            t => !string.IsNullOrWhiteSpace(t),
-            "Should not be empty");
+            x => x.Singular.HasErrors,
+            t => !t,
+            "Singular declension is not valid");
 
         this.ValidationRule(
-            x => x.Plural,
-            t => !string.IsNullOrWhiteSpace(t),
-            "Should not be empty");
+            x => x.Plural.HasErrors,
+            t => !t,
+            "Plural declension is not valid");
+    }
+
+    public PronounViewModel()
+        : this(
+            0,
+            new DeclensionViewModel(),
+            new DeclensionViewModel(),
+            Enumerable.Empty<string>(),
+            Enumerable.Empty<string>())
+    {
     }
 
     public PronounViewModel(Pronoun model)
         : this(
             model.Id,
-            model.Singular,
-            model.Plural,
+            new(model.Singular),
+            new(model.Plural),
             model.Translations,
-            new[] { "Pronouns" })
+            model.Topics)
     {
     }
 
     public PronounViewModel(PronounViewModel viewModel)
         : this(
             viewModel.Id,
-            viewModel.Singular,
-            viewModel.Plural,
+            viewModel.Singular.Copy(),
+            viewModel.Plural.Copy(),
             viewModel.Translations,
             viewModel.Topics)
     {
@@ -990,10 +1343,10 @@ public sealed class PronounViewModel : WordViewModel
 
     protected override void ClearInternal()
     {
-        Singular = string.Empty;
-        Plural   = string.Empty;
+        Singular.Clear();
+        Plural.Clear();
     }
-    
+
     public static Func<PronounViewModel, bool> GetFilter(string? filter)
     {
         return pronoun =>
@@ -1003,20 +1356,21 @@ public sealed class PronounViewModel : WordViewModel
                 return true;
             }
 
-            return pronoun.Singular.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || pronoun.Plural.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return pronoun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
+                   pronoun.Plural.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
-    
+
     public PronounViewModel Copy() => new(this);
 
     public void Replace(PronounViewModel viewModel)
     {
         Singular = viewModel.Singular;
-        Plural = viewModel.Plural;
-        
+        Plural   = viewModel.Plural;
+
         Translations.Clear();
         Translations.AddRange(viewModel.Translations);
-        
+
         Topics.Clear();
         Topics.AddRange(viewModel.Topics);
     }

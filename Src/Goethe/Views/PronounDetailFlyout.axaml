@@ -1,0 +1,65 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="PronounDetailView" DataType="{x:Type vm:PronounViewModel}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Classes="title" Text="{Binding Singular.Nominative}" HorizontalAlignment="Center" />
+            
+            <ItemsControl ItemsSource="{Binding Translations}" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <TextBlock
+                            Text="{Binding Converter={x:Static c:TranslationWithSeparatorConverter.Instance}}"
+                            FontStyle="Italic" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <Grid RowDefinitions="Auto,8,Auto,5,Auto,5,Auto,5,Auto"
+                  ColumnDefinitions="Auto,10,Auto,20,Auto">
+                <Grid.Styles>
+                    <Style Selector="Label">
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                    </Style>
+
+                    <Style Selector="TextBox">
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                    </Style>
+                </Grid.Styles>
+
+                <Label Classes="subTitle scarlett" Grid.Row="0" Grid.Column="2"
+                       Content="Singular" HorizontalAlignment="Left" />
+
+                <Label Classes="subTitle scarlett" Grid.Row="0" Grid.Column="4"
+                       Content="Plural" HorizontalAlignment="Left" />
+
+                <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Nom." />
+                <Label Grid.Row="2" Grid.Column="2" Content="{Binding Singular.Nominative}" />
+                <Label Grid.Row="2" Grid.Column="4" Content="{Binding Plural.Nominative}" />
+
+                <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Gen." />
+                <Label Grid.Row="4" Grid.Column="2" Content="{Binding Singular.Genitive}" />
+                <Label Grid.Row="4" Grid.Column="4" Content="{Binding Plural.Genitive}" />
+
+                <Label Classes="decl" Grid.Row="6" Grid.Column="0" Content="Dat." />
+                <Label Grid.Row="6" Grid.Column="2" Content="{Binding Singular.Dative}" />
+                <Label Grid.Row="6" Grid.Column="4" Content="{Binding Plural.Dative}" />
+
+                <Label Classes="decl" Grid.Row="8" Grid.Column="0" Content="Acc." />
+                <Label Grid.Row="8" Grid.Column="2" Content="{Binding Singular.Accusative}" />
+                <Label Grid.Row="8" Grid.Column="4" Content="{Binding Plural.Accusative}" />
+            </Grid>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

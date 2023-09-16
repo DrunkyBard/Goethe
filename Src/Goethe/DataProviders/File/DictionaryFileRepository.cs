@@ -81,14 +81,31 @@ public class DictionaryFileRepository
 
     public async Task SaveNewWords(
         IReadOnlyList<NounViewModel> newNounViewModels,
-        IReadOnlyList<VerbViewModel> newVerbViewModels)
+        IReadOnlyList<VerbViewModel> newVerbViewModels,
+        IReadOnlyList<AdjectiveViewModel> newAdjViewModels,
+        IReadOnlyList<PronounViewModel> newPronounViewModels,
+        IReadOnlyList<PrepositionViewModel> newPrepositionsViewModels,
+        IReadOnlyList<ConjunctionViewModel> newConjunctionsViewModels,
+        IReadOnlyList<ParticleViewModel> newParticlesViewModels)
     {
-        var saveNounsTask = _nounDictFile.PersistNewWords(newNounViewModels);
-        var saveVerbsTask = _verbDictFile.PersistNewWords(newVerbViewModels);
+        var saveNounsTask     = _nounDictFile.PersistNewWords(newNounViewModels);
+        var saveVerbsTask     = _verbDictFile.PersistNewWords(newVerbViewModels);
+        var saveAdjsTask      = _adjectiveDictFile.PersistNewWords(newAdjViewModels);
+        var savePronounsTask  = _pronounDictFile.PersistNewWords(newPronounViewModels);
+        var savePrepsTask     = _prepositionDictFile.PersistNewWords(newPrepositionsViewModels);
+        var saveConjsTask     = _conjunctionDictFile.PersistNewWords(newConjunctionsViewModels);
+        var saveParticlesTask = _particleDictFile.PersistNewWords(newParticlesViewModels);
         
-        await Task.WhenAll(saveNounsTask, saveVerbsTask).ConfigureAwait(true);
+        await Task.WhenAll(
+            saveNounsTask, saveVerbsTask, saveAdjsTask, 
+            savePronounsTask, savePrepsTask, saveConjsTask, saveParticlesTask).ConfigureAwait(true);
         
         CorrectNouns.AddRange(saveNounsTask.Result);
         CorrectVerbs.AddRange(saveVerbsTask.Result);
+        CorrectAdjectives.AddRange(saveAdjsTask.Result);
+        CorrectPronouns.AddRange(savePronounsTask.Result);
+        CorrectPrepositions.AddRange(savePrepsTask.Result);
+        CorrectConjunctions.AddRange(saveConjsTask.Result);
+        CorrectParticles.AddRange(saveParticlesTask.Result);
     }
 }

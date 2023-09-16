@@ -50,7 +50,7 @@ public sealed class VerbFileHandler : BaseFileHandler<Verb, VerbViewModel>
         var isVerbValid = isInfinitiveValid && isRegularityValid &&
                           isPresentIchValid && isPresentDuValid && isPresentErEsValid && isPresentWirValid &&
                           isPresentIhrValid && isPresentSieValid &&
-                          translations.Length != 0 && topics.Length != 0;
+                          translations.Length != 0;
 
         if (!isVerbValid)
         {
@@ -72,28 +72,31 @@ public sealed class VerbFileHandler : BaseFileHandler<Verb, VerbViewModel>
     public override (Verb newWord, string fileInput) HandleNewWords(int id, VerbViewModel newWordViewModel)
     {
         var presentConjugation = new Conjugations(
-            newWordViewModel.Present.Ich,
-            newWordViewModel.Present.Du,
-            newWordViewModel.Present.ErSieEs,
-            newWordViewModel.Present.Wir,
-            newWordViewModel.Present.Ihr,
-            newWordViewModel.Present.Sie);
+            newWordViewModel.Present.Ich.Trim(),
+            newWordViewModel.Present.Du.Trim(),
+            newWordViewModel.Present.ErSieEs.Trim(),
+            newWordViewModel.Present.Wir.Trim(),
+            newWordViewModel.Present.Ihr.Trim(),
+            newWordViewModel.Present.Sie.Trim());
 
-        var translations = string.Join(',', newWordViewModel.Translations);
-        var topics       = string.Join(',', newWordViewModel.Topics);
+        var translations = newWordViewModel.Translations.Select(t => t.Trim()).ToArray();
+        var topics       = newWordViewModel.Topics.Select(t => t.Trim()).ToArray();
+
+        var translationInput = string.Join(',', translations);
+        var topicInput       = string.Join(',', topics);
 
         var newVerb = new Verb(
             id,
             newWordViewModel.Infinitive,
             newWordViewModel.IsRegular,
             presentConjugation,
-            newWordViewModel.Translations.ToArray(),
-            newWordViewModel.Topics.ToArray());
-        
+            translations,
+            topics);
+
         var fileInput = $"{newVerb.Infinitive} | {newVerb.IsRegular} | " +
                         $"{newVerb.Present.Ich} | {newVerb.Present.Du} | {newVerb.Present.ErSieEs} | {newVerb.Present.Wir} | {newVerb.Present.Ihr} | {newVerb.Present.Sie} | " +
-                        $"{translations} | {topics}";
-        
+                        $"{translationInput} | {topicInput}";
+
         return (newVerb, fileInput);
     }
 }

@@ -83,6 +83,162 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedAdjectives.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Adjectives" />
+
+                <ItemsControl 
+                    Name="EditAdjectiveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedAdjectives}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <DockPanel.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
+                                            <TextBlock Text="{Binding Adjective}" />
+                                        </DataTemplate>
+                                    </DockPanel.DataTemplates>
+                                    
+                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditAdjectiveList}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditAdjectiveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedPronouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Pronouns" />
+
+                <ItemsControl 
+                    Name="EditPronounList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedPronouns}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <DockPanel.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:PronounViewModel}">
+                                            <TextBlock Text="{Binding Singular.Nominative}" />
+                                        </DataTemplate>
+                                    </DockPanel.DataTemplates>
+                                    
+                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditPronounList}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditPronounList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedPrepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Prepositions" />
+
+                <ItemsControl 
+                    Name="EditPrepositionList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedPrepositions}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <DockPanel.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
+                                            <TextBlock Text="{Binding Text}" />
+                                        </DataTemplate>
+                                    </DockPanel.DataTemplates>
+                                    
+                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditPrepositionList}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditPrepositionList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedConjunctions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Conjunctions" />
+
+                <ItemsControl 
+                    Name="EditConjunctionList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedConjunctions}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <DockPanel.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
+                                            <TextBlock Text="{Binding Text}" />
+                                        </DataTemplate>
+                                    </DockPanel.DataTemplates>
+                                    
+                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditConjunctionList}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditConjunctionList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

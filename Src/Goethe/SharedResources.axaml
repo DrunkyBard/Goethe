@@ -3,6 +3,8 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:c="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
     <s:Int32 x:Key="Zero">0</s:Int32>
+    <c:StringFormatConverter x:Key="StringFormat" />
 </ResourceDictionary>

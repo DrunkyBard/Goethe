@@ -23,11 +23,11 @@ public class EditWordViewModel : ViewModelBase
 
     public ICommand CancelEditCommand { get; }
     
-    public EditWordViewModel(WordViewModel word, Action cancelEdit, Action backToDictionary)
+    public EditWordViewModel(WordViewModel word, Action cancelEdit, Action save)
     {
         Code.NotNull(word);
         Code.NotNull(cancelEdit);
-        Code.NotNull(backToDictionary);
+        Code.NotNull(save);
         
         Word = word;
         
@@ -38,7 +38,7 @@ public class EditWordViewModel : ViewModelBase
             .DistinctUntilChanged()
             .StartWith(false);
         
-        SaveEditCommand = ReactiveCommand.Create(backToDictionary, canSave);
+        SaveEditCommand = ReactiveCommand.Create(save, canSave);
         
         CancelEditCommand = ReactiveCommand.Create(cancelEdit);
     }

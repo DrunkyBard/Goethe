@@ -8,6 +8,7 @@
         x:Class="Goethe.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Goethe"
-        Background="{StaticResource MainBackground}">
+        Background="{StaticResource MainBackground}"
+        MinWidth="600" MinHeight="600">
         <views:MainView />
 </Window>

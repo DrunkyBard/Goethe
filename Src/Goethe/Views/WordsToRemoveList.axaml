@@ -73,6 +73,126 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding AdjectivesToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Adjectives" />
+
+                <ItemsControl 
+                    Name="AdjsToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding AdjectivesToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Adjective}" DockPanel.Dock="Left" />
+
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=AdjsToRemoveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding PronounsToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Pronouns" />
+
+                <ItemsControl 
+                    Name="PronounsToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding PronounsToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:PronounViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Singular.Nominative}" DockPanel.Dock="Left" />
+
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=PronounsToRemoveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding PrepositionsToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Prepositions" />
+
+                <ItemsControl 
+                    Name="PrepsToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding PronounsToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Text}" DockPanel.Dock="Left" />
+
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=PrepsToRemoveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding ConjunctionsToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Conjunctions" />
+
+                <ItemsControl 
+                    Name="ConjsToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding ConjunctionsToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
+                            <Border CornerRadius="1">
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Text}" DockPanel.Dock="Left" />
+
+                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=ConjsToRemoveList}"
+                                            CommandParameter="{Binding}"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

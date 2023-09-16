@@ -1,0 +1,237 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:m="clr-namespace:Goethe.Model"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="NounDetailFlyout" DataType="{x:Type vm:NounViewModel}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Classes="title" HorizontalAlignment="Center">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{x:Static c:NounToStringConverter.Instance}">
+                        <Binding Path="Gender" />
+                        <Binding Path="Singular.Nominative" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            
+            <ItemsControl ItemsSource="{Binding Translations}" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <TextBlock
+                            Text="{Binding Converter={x:Static c:TranslationWithSeparatorConverter.Instance}}"
+                            FontStyle="Italic" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,20,Auto,Auto,20,Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                           Content="Singular"
+                           Classes="title scarlett"
+                           HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                    <Label Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
+                           Content="Plural"
+                           Classes="title scarlett"
+                           HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Classes="decl"
+                           Content="Nom."
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="1" Grid.Column="2"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Nominative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="3" Content="{Binding Singular.Nominative}"
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="1" Grid.Column="5"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Nominative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="6" Content="{Binding Plural.Nominative}"
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                           Classes="decl"
+                           Content="Gen."
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="2" Grid.Column="2"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Genitive}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="2" Grid.Column="3" Content="{Binding Singular.Genitive}"
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="2" Grid.Column="5"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Genitive}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="2" Grid.Column="6" Content="{Binding Plural.Genitive}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                           Classes="decl"
+                           Content="Dat."
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="3" Grid.Column="2"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Dative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="3" Grid.Column="3" Content="{Binding Singular.Dative}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="3" Grid.Column="5"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Dative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="3" Grid.Column="6" Content="{Binding Plural.Dative}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="4" Grid.Column="0"
+                           Classes="decl"
+                           Content="Acc."
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="4" Grid.Column="2"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Singular}" />
+                                <Binding Source="{x:Static m:DeclensionType.Accusative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="4" Grid.Column="3" Content="{Binding Singular.Accusative}"
+                           HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="4" Grid.Column="5"
+                           HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Accusative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+
+                    <Label Grid.Row="4" Grid.Column="6" Content="{Binding Plural.Accusative}"
+                           HorizontalAlignment="Left" />
+
+                </Grid>
+            </ScrollViewer>
+        </StackPanel>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="VerbDetailFlyout" DataType="{x:Type vm:VerbViewModel}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Classes="title" Text="{Binding Infinitive}" HorizontalAlignment="Center" />
+            
+            <ItemsControl ItemsSource="{Binding Translations}" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <TextBlock
+                            Text="{Binding Converter={x:Static c:TranslationWithSeparatorConverter.Instance}}"
+                            FontStyle="Italic" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                           Classes="title scarlett" Content="Present" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="ich" HorizontalAlignment="Left" />
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Present.Ich}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="du" HorizontalAlignment="Left" />
+                    <Label Grid.Row="2" Grid.Column="1" Content="{Binding Present.Du}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="er/sie/es" HorizontalAlignment="Left" />
+                    <Label Grid.Row="3" Grid.Column="1" Content="{Binding Present.ErSieEs}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="wir" HorizontalAlignment="Left" />
+                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding Present.Wir}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="ihr" HorizontalAlignment="Left" />
+                    <Label Grid.Row="5" Grid.Column="1" Content="{Binding Present.Ihr}" HorizontalAlignment="Left" />
+
+                    <Label Grid.Row="6" Grid.Column="0" Content="sie/Sie" HorizontalAlignment="Left" />
+                    <Label Grid.Row="6" Grid.Column="1" Content="{Binding Present.Sie}" HorizontalAlignment="Left" />
+                </Grid>
+            </ScrollViewer>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

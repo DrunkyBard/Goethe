@@ -109,8 +109,6 @@ public sealed class DictionaryFile<TWord, TViewModel> where TWord : notnull
 
                 _lastWordId++;
             }
-            
-            textWriter.Dispose();
         }
     }
 
@@ -137,7 +135,7 @@ public sealed class DictionaryFile<TWord, TViewModel> where TWord : notnull
         
         using (var textWriter = new StreamWriter(_file, Encoding.UTF8, leaveOpen: true))
         {
-            await textWriter.WriteLineAsync(sBuilder.ToString());
+            await textWriter.WriteLineAsync(sBuilder.ToString().Trim());
         }
 
         return newWordsList;

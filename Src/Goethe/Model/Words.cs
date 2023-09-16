@@ -84,20 +84,82 @@ public sealed class Adjective
         = new FuncEqualityComparer<Adjective>((x, y) => x.Id == y.Id, x => x.Id);
 
     public static IComparer<Adjective> Comparer
-        = new FuncComparer<Adjective>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
+        = new FuncComparer<Adjective>((x, y) => string.Compare(x?.Adj, y?.Adj, StringComparison.OrdinalIgnoreCase));
 
     public int      Id           { get; }
-    public string   Text         { get; }
+    public string   Adj          { get; }
     public string[] Translations { get; }
+    public string[] Topics       { get; }
 
-    public Adjective(int id, string text, string[] translations)
+    public Declension StrongMasculineInflection { get; }
+    public Declension StrongFeminineInflection  { get; }
+    public Declension StrongNeutralInflection   { get; }
+    public Declension StrongPluralInflection    { get; }
+
+    public Declension WeakMasculineInflection { get; }
+    public Declension WeakFeminineInflection  { get; }
+    public Declension WeakNeutralInflection   { get; }
+    public Declension WeakPluralInflection    { get; }
+
+    public Declension MixedMasculineInflection { get; }
+    public Declension MixedFeminineInflection  { get; }
+    public Declension MixedNeutralInflection   { get; }
+    public Declension MixedPluralInflection    { get; }
+
+    public Predicative Predicative { get; }
+
+    public Adjective(
+        int         id,              string     adjective,
+        Declension  strongMasculine, Declension strongFeminine, Declension strongNeutral, Declension strongPlural,
+        Declension  weakMasculine,   Declension weakFeminine,   Declension weakNeutral,   Declension weakPlural,
+        Declension  mixedMasculine,  Declension mixedFeminine,  Declension mixedNeutral,  Declension mixedPlural,
+        Predicative predicative,
+        string[]    translations, string[] topics)
     {
-        Code.NotNullOrWhitespace(text);
-        Code.NotNull(translations);
+        Code.NotNullOrWhitespace(adjective);
 
-        Id           = id;
-        Text         = text;
+        Code.NotNull(strongMasculine);
+        Code.NotNull(strongFeminine);
+        Code.NotNull(strongNeutral);
+        Code.NotNull(strongPlural);
+
+        Code.NotNull(weakMasculine);
+        Code.NotNull(weakFeminine);
+        Code.NotNull(weakNeutral);
+        Code.NotNull(weakPlural);
+
+        Code.NotNull(mixedMasculine);
+        Code.NotNull(mixedFeminine);
+        Code.NotNull(mixedNeutral);
+        Code.NotNull(mixedPlural);
+
+        Code.NotNull(predicative);
+
+        Code.NotNull(translations);
+        Code.NotNull(topics);
+
+        Id  = id;
+        Adj = adjective;
+
+        StrongMasculineInflection = strongMasculine;
+        StrongFeminineInflection  = strongFeminine;
+        StrongNeutralInflection   = strongNeutral;
+        StrongPluralInflection    = strongPlural;
+
+        WeakMasculineInflection = weakMasculine;
+        WeakFeminineInflection  = weakFeminine;
+        WeakNeutralInflection   = weakNeutral;
+        WeakPluralInflection    = weakPlural;
+
+        MixedMasculineInflection = mixedMasculine;
+        MixedFeminineInflection  = mixedFeminine;
+        MixedNeutralInflection   = mixedNeutral;
+        MixedPluralInflection    = mixedPlural;
+
+        Predicative = predicative;
+
         Translations = translations;
+        Topics       = topics;
     }
 
     public static Func<Adjective, bool> GetFilter(string? filter)
@@ -109,7 +171,7 @@ public sealed class Adjective
                 return true;
             }
 
-            return adj.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return adj.Adj.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -121,23 +183,26 @@ public sealed class Pronoun
 
     public static IComparer<Pronoun> Comparer
         = new FuncComparer<Pronoun>(
-            (x, y) => string.Compare(x?.Singular, y?.Singular, StringComparison.OrdinalIgnoreCase));
+            (x, y) => string.Compare(x?.Singular?.Nominative, y?.Singular?.Nominative, StringComparison.OrdinalIgnoreCase));
 
-    public int      Id           { get; }
-    public string   Singular     { get; }
-    public string   Plural       { get; }
-    public string[] Translations { get; }
+    public int        Id           { get; }
+    public Declension Singular     { get; }
+    public Declension Plural       { get; }
+    public string[]   Translations { get; }
+    public string[]   Topics       { get; }
 
-    public Pronoun(int id, string singular, string plural, string[] translations)
+    public Pronoun(int id, Declension singular, Declension plural, string[] translations, string[] topics)
     {
-        Code.NotNullOrWhitespace(singular);
-        Code.NotNullOrWhitespace(plural);
+        Code.NotNull(singular);
+        Code.NotNull(plural);
         Code.NotNull(translations);
+        Code.NotNull(topics);
 
         Id           = id;
         Singular     = singular;
         Plural       = plural;
         Translations = translations;
+        Topics       = topics;
     }
 
     public static Func<Pronoun, bool> GetFilter(string? filter)
@@ -149,7 +214,8 @@ public sealed class Pronoun
                 return true;
             }
 
-            return pronoun.Singular.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || pronoun.Plural.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return pronoun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
+                   pronoun.Plural.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
     }
 }
@@ -166,15 +232,18 @@ public sealed class Preposition
     public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
+    public string[] Topics       { get; }
 
-    public Preposition(int id, string text, string[] translations)
+    public Preposition(int id, string text, string[] translations, string[] topics)
     {
         Code.NotNullOrWhitespace(text);
         Code.NotNull(translations);
+        Code.NotNull(topics);
 
         Id           = id;
         Text         = text;
         Translations = translations;
+        Topics       = topics;
     }
 
     public static Func<Preposition, bool> GetFilter(string? filter)
@@ -202,15 +271,18 @@ public sealed class Conjunction
     public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
+    public string[] Topics       { get; }
 
-    public Conjunction(int id, string text, string[] translations)
+    public Conjunction(int id, string text, string[] translations, string[] topics)
     {
         Code.NotNullOrWhitespace(text);
         Code.NotNull(translations);
+        Code.NotNull(topics);
 
         Id           = id;
         Text         = text;
         Translations = translations;
+        Topics       = topics;
     }
 
     public static Func<Conjunction, bool> GetFilter(string? filter)
@@ -238,15 +310,18 @@ public sealed class Particle
     public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
+    public string[] Topics       { get; }
 
-    public Particle(int id, string text, string[] translations)
+    public Particle(int id, string text, string[] translations, string[] topics)
     {
         Code.NotNullOrWhitespace(text);
         Code.NotNull(translations);
+        Code.NotNull(topics);
 
         Id           = id;
         Text         = text;
         Translations = translations;
+        Topics       = topics;
     }
 
     public static Func<Particle, bool> GetFilter(string? filter)
@@ -372,6 +447,31 @@ public readonly struct Conjugations
         Wir     = wir;
         Ihr     = ihr;
         Sie     = sie;
+    }
+}
+
+public sealed class Predicative
+{
+    public string Masculine { get; }
+    public string Feminine  { get; }
+    public string Neutral   { get; }
+    public string Plural    { get; }
+
+    public Predicative(
+        string masculine,
+        string feminine,
+        string neutral,
+        string plural)
+    {
+        Code.NotNullOrWhitespace(masculine);
+        Code.NotNullOrWhitespace(feminine);
+        Code.NotNullOrWhitespace(neutral);
+        Code.NotNullOrWhitespace(plural);
+
+        Masculine = masculine;
+        Feminine  = feminine;
+        Neutral   = neutral;
+        Plural    = plural;
     }
 }
 

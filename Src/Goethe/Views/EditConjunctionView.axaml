@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:v="clr-namespace:Goethe.Views"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="EditConjunctionView" DataType="{x:Type vm:ConjunctionViewModel}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Conjunction: " />
+                <TextBox Text="{Binding Text}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
+                <Label Content="Translation: " />
+                <TextBox Text="{Binding Translation}" />
+                <Button Content="Add" Command="{Binding AddTranslationCommand}" />
+
+                <Label Content="Topic: " Margin="10,0,0,0" />
+                <TextBox Text="{Binding Topic}" />
+                <Button Content="Add" Command="{Binding AddTopicCommand}" />
+            </StackPanel>
+
+            <Label Content="Translations:" />
+
+            <ItemsControl Name="TranslationItemsContainer" ItemsSource="{Binding Translations}"
+                          v:WordAttachedProperty.Word="{Binding}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    Command="{Binding Path=(v:WordAttachedProperty.Word).RemoveTranslationCommand, ElementName=TranslationItemsContainer}"
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Label Content="Topics:" />
+
+            <ItemsControl Name="TopicItemsContainer" ItemsSource="{Binding Topics}"
+                          v:WordAttachedProperty.Word="{Binding}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    Command="{Binding (v:WordAttachedProperty.Word).RemoveTopicCommand, ElementName=TopicItemsContainer}"
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

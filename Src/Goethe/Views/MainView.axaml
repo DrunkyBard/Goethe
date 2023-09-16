@@ -13,7 +13,7 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,24 +22,24 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    
+
     <Interaction.Behaviors>
         <b:AddDataTemplateBehavior DataTemplates="{StaticResource DictionaryView}" />
         <b:AddDataTemplate Template="{StaticResource EditWordView}" />
     </Interaction.Behaviors>
-    
+
     <UserControl.DataTemplates>
         <DataTemplate DataType="{x:Type vm:HomeViewModel}">
             <StackPanel Orientation="Vertical">
                 <Button Content="Wörterbuch"
-                        Command="{Binding ShowDictionary}"/>
+                        Command="{Binding ShowDictionary}" />
             </StackPanel>
         </DataTemplate>
-        
+
         <DataTemplate DataType="{x:Type vm:NewWordViewModel}">
             <v:NewWordView />
         </DataTemplate>
     </UserControl.DataTemplates>
-    
+
     <ContentControl Content="{Binding Presenter}" />
 </UserControl>

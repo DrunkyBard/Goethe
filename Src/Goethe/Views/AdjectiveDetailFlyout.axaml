@@ -1,0 +1,341 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:m="clr-namespace:Goethe.Model"
+                    xmlns:c="clr-namespace:Goethe.Converters"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
+                    xmlns:r="clr-namespace:Goethe.Resources"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="AdjInflectionDetailView" DataType="{x:Type vm:DeclensionsViewModel}">
+        <Grid RowDefinitions="Auto,8,Auto,5,Auto,5,Auto,5,Auto"
+              ColumnDefinitions="Auto,10,Auto,Auto,20,Auto,Auto,20,Auto,Auto,20,Auto,Auto">
+            <Grid.Styles>
+                <Style Selector="Label">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                </Style>
+
+                <Style Selector="Label">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                </Style>
+            </Grid.Styles>
+
+            <Label Classes="subTitle" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                   Content="Masculine" HorizontalAlignment="Center" />
+            <Label Classes="subTitle" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
+                   Content="Feminine" HorizontalAlignment="Center" />
+            <Label Classes="subTitle" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="2"
+                   Content="Neutral" HorizontalAlignment="Center" />
+            <Label Classes="subTitle" Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
+                   Content="Plural" HorizontalAlignment="Center" />
+
+            <!--  -->
+
+            <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Nom." />
+
+            <Label Grid.Row="2" Grid.Column="2" Classes="nomMascAr" />
+            <Label Grid.Row="2" Grid.Column="3" Content="{Binding Masculine.Nominative}" />
+
+            <Label Grid.Row="2" Grid.Column="5" Classes="nomFemAr" />
+            <Label Grid.Row="2" Grid.Column="6" Content="{Binding Feminine.Nominative}" />
+
+            <Label Grid.Row="2" Grid.Column="8" Classes="nomNeutAr" />
+            <Label Grid.Row="2" Grid.Column="9" Content="{Binding Neutral.Nominative}" />
+
+            <Label Grid.Row="2" Grid.Column="11" Classes="nomPlAr" />
+            <Label Grid.Row="2" Grid.Column="12" Content="{Binding Plural.Nominative}" />
+
+            <!--  -->
+
+            <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Gen." />
+
+            <Label Grid.Row="4" Grid.Column="2" Classes="genMascAr" />
+            <Label Grid.Row="4" Grid.Column="3" Content="{Binding Masculine.Genitive}" />
+
+            <Label Grid.Row="4" Grid.Column="5" Classes="genFemAr" />
+            <Label Grid.Row="4" Grid.Column="6" Content="{Binding Feminine.Genitive}" />
+
+            <Label Grid.Row="4" Grid.Column="8" Classes="genNeutAr" />
+            <Label Grid.Row="4" Grid.Column="9" Content="{Binding Neutral.Genitive}" />
+
+            <Label Grid.Row="4" Grid.Column="11" Classes="genPlAr" />
+            <Label Grid.Row="4" Grid.Column="12" Content="{Binding Plural.Genitive}" />
+
+            <!--  -->
+
+            <Label Classes="decl" Grid.Row="6" Grid.Column="0" Content="Dat." />
+
+            <Label Grid.Row="6" Grid.Column="2" Classes="datMascAr" />
+            <Label Grid.Row="6" Grid.Column="3" Content="{Binding Masculine.Dative}" />
+
+            <Label Grid.Row="6" Grid.Column="5" Classes="datFemAr" />
+            <Label Grid.Row="6" Grid.Column="6" Content="{Binding Feminine.Dative}" />
+
+            <Label Grid.Row="6" Grid.Column="8" Classes="datNeutAr" />
+            <Label Grid.Row="6" Grid.Column="9" Content="{Binding Neutral.Dative}" />
+
+            <Label Grid.Row="6" Grid.Column="11" Classes="datPlAr" />
+            <Label Grid.Row="6" Grid.Column="12" Content="{Binding Plural.Dative}" />
+
+            <!--  -->
+
+            <Label Classes="decl" Grid.Row="8" Grid.Column="0" Content="Acc." />
+
+            <Label Grid.Row="8" Grid.Column="2" Classes="accMascAr" />
+            <Label Grid.Row="8" Grid.Column="3" Content="{Binding Masculine.Accusative}" />
+
+            <Label Grid.Row="8" Grid.Column="5" Classes="accFemAr" />
+            <Label Grid.Row="8" Grid.Column="6" Content="{Binding Feminine.Accusative}" />
+
+            <Label Grid.Row="8" Grid.Column="8" Classes="accNeutAr" />
+            <Label Grid.Row="8" Grid.Column="9" Content="{Binding Neutral.Accusative}" />
+
+            <Label Grid.Row="8" Grid.Column="11" Classes="accPlAr" />
+            <Label Grid.Row="8" Grid.Column="12" Content="{Binding Plural.Accusative}" />
+
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="InflectionDetailView" DataType="{x:Type vm:PredicativeViewModel}">
+        <Grid
+            RowDefinitions="Auto,8,Auto,5,Auto,5,Auto"
+            ColumnDefinitions="Auto,10,Auto,Auto,20,Auto,Auto">
+
+            <Label Classes="subTitle" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="Singular"
+                   HorizontalAlignment="Center" />
+            <Label Classes="subTitle" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" Content="Plural"
+                   HorizontalAlignment="Center" />
+
+            <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Masc." />
+            <Label Grid.Row="2" Grid.Column="2" Content="er ist" />
+            <Label Grid.Row="2" Grid.Column="3" Content="{Binding Masculine}" />
+
+            <Label Grid.Row="2" Grid.Column="5" Content="sie sind" />
+            <Label Grid.Row="2" Grid.Column="6" Content="{Binding Plural}" />
+
+            <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Fem." />
+            <Label Grid.Row="4" Grid.Column="2" Content="sie ist" />
+            <Label Grid.Row="4" Grid.Column="3" Content="{Binding Feminine}" />
+
+            <Label Classes="decl" Grid.Row="6" Grid.Column="0" Content="Neut." />
+            <Label Grid.Row="6" Grid.Column="2" Content="er ist" />
+            <Label Grid.Row="6" Grid.Column="3" Content="{Binding Neutral}" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="AdjectiveDetailView" DataType="{x:Type vm:AdjectiveViewModel}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Classes="title" HorizontalAlignment="Center" Text="{Binding Adjective}" />
+
+            <ItemsControl ItemsSource="{Binding Translations}" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <TextBlock
+                            Text="{Binding Converter={x:Static c:TranslationWithSeparatorConverter.Instance}}"
+                            FontStyle="Italic" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+                    <Grid Grid.Row="0" RowDefinitions="Auto,Auto,Auto,Auto">
+                        <Label Classes="title scarlett" Grid.Row="0" Content="Strong declension"
+                               HorizontalAlignment="Left" />
+
+                        <TextBlock Classes="desc" Grid.Row="1" HorizontalAlignment="Left"
+                                   Text="{CompiledBinding Adjective, StringFormat={x:Static r:Strings.Adj_StrongInflection_Description}}" />
+
+                        <Border Grid.Row="2" Height="2" Background="DarkGray" Margin="0,3,0,0" />
+
+                        <ContentControl Grid.Row="3" HorizontalAlignment="Left"
+                                        Content="{Binding Strong}"
+                                        ContentTemplate="{StaticResource AdjInflectionDetailView}" />
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,10,0,0" RowDefinitions="Auto,Auto,Auto,Auto">
+                        <Label Classes="title scarlett" Grid.Row="0" Content="Weak declension"
+                               HorizontalAlignment="Left" />
+
+                        <TextBlock Classes="desc" Grid.Row="1" HorizontalAlignment="Left"
+                                   Text="{CompiledBinding Adjective, StringFormat={x:Static r:Strings.Adj_WeakInflection_Description}}" />
+
+                        <Border Grid.Row="2" Height="2" Background="DarkGray" Margin="0,3,0,0" />
+
+                        <ContentControl Grid.Row="3" HorizontalAlignment="Left"
+                                        Content="{Binding Weak}"
+                                        ContentTemplate="{StaticResource AdjInflectionDetailView}">
+                            <ContentControl.Styles>
+                                <Style Selector="Label.nomMascAr">
+                                    <Setter Property="Content" Value="der" />
+                                </Style>
+
+                                <Style Selector="Label.nomFemAr">
+                                    <Setter Property="Content" Value="die" />
+                                </Style>
+
+                                <Style Selector="Label.nomNeutAr">
+                                    <Setter Property="Content" Value="das" />
+                                </Style>
+
+                                <Style Selector="Label.nomPlAr">
+                                    <Setter Property="Content" Value="die" />
+                                </Style>
+
+                                <Style Selector="Label.genMascAr">
+                                    <Setter Property="Content" Value="des" />
+                                </Style>
+
+                                <Style Selector="Label.genFemAr">
+                                    <Setter Property="Content" Value="der" />
+                                </Style>
+
+                                <Style Selector="Label.genNeutAr">
+                                    <Setter Property="Content" Value="des" />
+                                </Style>
+
+                                <Style Selector="Label.genPlAr">
+                                    <Setter Property="Content" Value="der" />
+                                </Style>
+
+                                <Style Selector="Label.datMascAr">
+                                    <Setter Property="Content" Value="dem" />
+                                </Style>
+
+                                <Style Selector="Label.datFemAr">
+                                    <Setter Property="Content" Value="der" />
+                                </Style>
+
+                                <Style Selector="Label.datNeutAr">
+                                    <Setter Property="Content" Value="dem" />
+                                </Style>
+
+                                <Style Selector="Label.datPlAr">
+                                    <Setter Property="Content" Value="den" />
+                                </Style>
+
+                                <Style Selector="Label.accMascAr">
+                                    <Setter Property="Content" Value="den" />
+                                </Style>
+
+                                <Style Selector="Label.accFemAr">
+                                    <Setter Property="Content" Value="die" />
+                                </Style>
+
+                                <Style Selector="Label.accNeutAr">
+                                    <Setter Property="Content" Value="das" />
+                                </Style>
+
+                                <Style Selector="Label.accPlAr">
+                                    <Setter Property="Content" Value="die" />
+                                </Style>
+                            </ContentControl.Styles>
+                        </ContentControl>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="0,10,0,0" RowDefinitions="Auto,Auto,Auto,Auto">
+                        <Label Classes="title scarlett" Grid.Row="0" Content="Mixed declension"
+                               HorizontalAlignment="Left" />
+
+                        <TextBlock Classes="desc" Grid.Row="1" HorizontalAlignment="Left"
+                                   Text="{CompiledBinding Adjective, StringFormat={x:Static r:Strings.Adj_MixedInflection_Description}}" />
+
+                        <Border Grid.Row="2" Height="2" Background="DarkGray" Margin="0,3,0,0" />
+
+                        <ContentControl Grid.Row="3" HorizontalAlignment="Left"
+                                        Content="{Binding Mixed}"
+                                        ContentTemplate="{StaticResource AdjInflectionDetailView}">
+                            <ContentControl.Styles>
+                                <Style Selector="Label.nomMascAr">
+                                    <Setter Property="Content" Value="ein" />
+                                </Style>
+
+                                <Style Selector="Label.nomFemAr">
+                                    <Setter Property="Content" Value="eine" />
+                                </Style>
+
+                                <Style Selector="Label.nomNeutAr">
+                                    <Setter Property="Content" Value="ein" />
+                                </Style>
+
+                                <Style Selector="Label.nomPlAr">
+                                    <Setter Property="Content" Value="keine" />
+                                </Style>
+
+                                <Style Selector="Label.genMascAr">
+                                    <Setter Property="Content" Value="eines" />
+                                </Style>
+
+                                <Style Selector="Label.genFemAr">
+                                    <Setter Property="Content" Value="einer" />
+                                </Style>
+
+                                <Style Selector="Label.genNeutAr">
+                                    <Setter Property="Content" Value="eines" />
+                                </Style>
+
+                                <Style Selector="Label.genPlAr">
+                                    <Setter Property="Content" Value="keiner" />
+                                </Style>
+
+                                <Style Selector="Label.datMascAr">
+                                    <Setter Property="Content" Value="einem" />
+                                </Style>
+
+                                <Style Selector="Label.datFemAr">
+                                    <Setter Property="Content" Value="einer" />
+                                </Style>
+
+                                <Style Selector="Label.datNeutAr">
+                                    <Setter Property="Content" Value="einem" />
+                                </Style>
+
+                                <Style Selector="Label.datPlAr">
+                                    <Setter Property="Content" Value="keinen" />
+                                </Style>
+
+                                <Style Selector="Label.accMascAr">
+                                    <Setter Property="Content" Value="einen" />
+                                </Style>
+
+                                <Style Selector="Label.accFemAr">
+                                    <Setter Property="Content" Value="eine" />
+                                </Style>
+
+                                <Style Selector="Label.accNeutAr">
+                                    <Setter Property="Content" Value="ein" />
+                                </Style>
+
+                                <Style Selector="Label.accPlAr">
+                                    <Setter Property="Content" Value="keine" />
+                                </Style>
+                            </ContentControl.Styles>
+                        </ContentControl>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="0,10,0,0" RowDefinitions="Auto,Auto,Auto,Auto">
+                        <Label Classes="title scarlett" Grid.Row="0" Content="Predicative use"
+                               HorizontalAlignment="Left" />
+
+                        <TextBlock Classes="desc" Grid.Row="1" HorizontalAlignment="Left"
+                                   Text="{CompiledBinding Adjective, StringFormat={x:Static r:Strings.Adj_Predicative_Description}}" />
+
+                        <Border Grid.Row="2" Height="2" Background="DarkGray" Margin="0,3,0,0" />
+
+                        <ContentControl Grid.Row="3" HorizontalAlignment="Left"
+                                        Content="{Binding Predicative}"
+                                        ContentTemplate="{StaticResource InflectionDetailView}" />
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

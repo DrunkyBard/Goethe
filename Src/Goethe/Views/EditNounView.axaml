@@ -25,13 +25,15 @@
 
             <WrapPanel>
                 <Grid
+                    Margin="0,0,20,0"
                     RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-                    ColumnDefinitions="Auto, Auto, Auto">
+                    ColumnDefinitions="Auto, 40, Auto">
 
-                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Singular"
-                           HorizontalAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Content="Singular"
+                           Classes="title scarlett"
+                           HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="Nom." />
+                    <Label Classes="decl" Grid.Row="1" Grid.Column="0" Content="Nom." />
                     <Label Grid.Row="1" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
@@ -44,7 +46,7 @@
                     </Label>
                     <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Singular.Nominative}" />
 
-                    <Label Grid.Row="2" Grid.Column="0" Content="Gen." />
+                    <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Gen." />
                     <Label Grid.Row="2" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
@@ -57,7 +59,7 @@
                     </Label>
                     <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Genitive}" />
 
-                    <Label Grid.Row="3" Grid.Column="0" Content="Dat." />
+                    <Label Classes="decl" Grid.Row="3" Grid.Column="0" Content="Dat." />
                     <Label Grid.Row="3" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
@@ -70,7 +72,7 @@
                     </Label>
                     <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Singular.Dative}" />
 
-                    <Label Grid.Row="4" Grid.Column="0" Content="Acc." />
+                    <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Acc." />
                     <Label Grid.Row="4" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
@@ -85,13 +87,14 @@
                 </Grid>
 
                 <Grid
+                    Margin="0,0,20,0"
                     RowDefinitions="Auto, Auto, Auto, Auto, Auto"
-                    ColumnDefinitions="Auto, Auto">
+                    ColumnDefinitions="40, Auto">
 
-                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Plural"
-                           HorizontalAlignment="Center" />
+                    <Label Classes="title scarlett" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Plural"
+                           HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-                    <Label Grid.Row="1" Grid.Column="0">
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -103,7 +106,7 @@
                     </Label>
                     <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Plural.Nominative}" />
 
-                    <Label Grid.Row="2" Grid.Column="0">
+                    <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -115,7 +118,7 @@
                     </Label>
                     <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Plural.Genitive}" />
 
-                    <Label Grid.Row="3" Grid.Column="0">
+                    <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -127,7 +130,7 @@
                     </Label>
                     <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Plural.Dative}" />
 
-                    <Label Grid.Row="4" Grid.Column="0">
+                    <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -140,19 +143,20 @@
                     <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Plural.Accusative}" />
                 </Grid>
             </WrapPanel>
-
-            <StackPanel Orientation="Horizontal">
+            
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
                 <Label Content="Translation: " />
                 <TextBox Text="{Binding Translation}" />
                 <Button Content="Add" Command="{Binding AddTranslationCommand}" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Topic: " />
+                
+                <Label Content="Topic: " Margin="10,0,0,0" />
                 <TextBox Text="{Binding Topic}" />
                 <Button Content="Add" Command="{Binding AddTopicCommand}" />
             </StackPanel>
 
+            <Border>
+                
+            </Border>
             <Label Content="Translations:" />
 
             <ItemsControl Name="TranslationItemsContainer" ItemsSource="{Binding Translations}"

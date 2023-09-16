@@ -1,0 +1,107 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:Goethe.ViewModels"
+                    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:v="clr-namespace:Goethe.Views"
+                    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <DataTemplate x:Key="EditPronounView" DataType="{x:Type vm:PronounViewModel}">
+        <StackPanel Orientation="Vertical">
+            <Grid RowDefinitions="Auto,8,Auto,5,Auto,5,Auto,5,Auto"
+                  ColumnDefinitions="Auto,10,Auto,20,Auto">
+                <Grid.Styles>
+                    <Style Selector="Label">
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                    </Style>
+
+                    <Style Selector="TextBox">
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                    </Style>
+                </Grid.Styles>
+
+                <Label Classes="subTitle scarlett" Grid.Row="0" Grid.Column="2"
+                       Content="Singular" HorizontalAlignment="Left" />
+
+                <Label Classes="subTitle scarlett" Grid.Row="0" Grid.Column="4"
+                       Content="Plural" HorizontalAlignment="Left" />
+
+                <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Nom." />
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Nominative}" />
+                <TextBox Grid.Row="2" Grid.Column="4" Text="{Binding Plural.Nominative}" />
+
+                <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Gen." />
+                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Singular.Genitive}" />
+                <TextBox Grid.Row="4" Grid.Column="4" Text="{Binding Plural.Genitive}" />
+
+                <Label Classes="decl" Grid.Row="6" Grid.Column="0" Content="Dat." />
+                <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Singular.Dative}" />
+                <TextBox Grid.Row="6" Grid.Column="4" Text="{Binding Plural.Dative}" />
+
+                <Label Classes="decl" Grid.Row="8" Grid.Column="0" Content="Acc." />
+                <TextBox Grid.Row="8" Grid.Column="2" Text="{Binding Singular.Accusative}" />
+                <TextBox Grid.Row="8" Grid.Column="4" Text="{Binding Plural.Accusative}" />
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
+                <Label Content="Translation: " />
+                <TextBox Text="{Binding Translation}" />
+                <Button Content="Add" Command="{Binding AddTranslationCommand}" />
+
+                <Label Content="Topic: " Margin="10,0,0,0" />
+                <TextBox Text="{Binding Topic}" />
+                <Button Content="Add" Command="{Binding AddTopicCommand}" />
+            </StackPanel>
+
+            <Label Content="Translations:" />
+
+            <ItemsControl Name="TranslationItemsContainer" ItemsSource="{Binding Translations}"
+                          v:WordAttachedProperty.Word="{Binding}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    Command="{Binding Path=(v:WordAttachedProperty.Word).RemoveTranslationCommand, ElementName=TranslationItemsContainer}"
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Label Content="Topics:" />
+
+            <ItemsControl Name="TopicItemsContainer" ItemsSource="{Binding Topics}"
+                          v:WordAttachedProperty.Word="{Binding}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Left" />
+                                <Button
+                                    Command="{Binding (v:WordAttachedProperty.Word).RemoveTopicCommand, ElementName=TopicItemsContainer}"
+                                    CommandParameter="{Binding}"
+                                    Content="x" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

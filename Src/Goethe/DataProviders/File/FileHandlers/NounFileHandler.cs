@@ -9,7 +9,7 @@ namespace Goethe.DataProviders.File.FileHandlers;
 public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
 {
     public override string Header =>
-        "# gender | s nom. | s gen. | s dat. | s acc. | pl nom. | pl gen. | pl dat. | pl acc. | " +
+        "# gender | sg nom. | sg gen. | sg dat. | sg acc. | pl nom. | pl gen. | pl dat. | pl acc. | " +
         "translations (comma-separated) | topics (comma-separated)";
 
     private static readonly string[] _tokens =
@@ -54,7 +54,7 @@ public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
         var isNounValid = isValidGender &&
                           isValidSNom && isValidSGen && isValidSDat && isValidSAcc &&
                           isValidPlNom && isValidPlGen && isValidPlDat && isValidPlAcc &&
-                          translations.Length != 0 && topics.Length != 0;
+                          translations.Length != 0;
 
         if (!isNounValid)
         {
@@ -85,25 +85,25 @@ public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
     public override (Noun newWord, string fileInput) HandleNewWords(int id, NounViewModel newWordViewModel)
     {
         var singularDeclension = new Declension(
-            newWordViewModel.Singular.Nominative,
-            newWordViewModel.Singular.Genitive,
-            newWordViewModel.Singular.Dative,
-            newWordViewModel.Singular.Accusative);
+            newWordViewModel.Singular.Nominative.Trim(),
+            newWordViewModel.Singular.Genitive.Trim(),
+            newWordViewModel.Singular.Dative.Trim(),
+            newWordViewModel.Singular.Accusative.Trim());
         var pluralDeclension = new Declension(
-            newWordViewModel.Singular.Nominative,
-            newWordViewModel.Singular.Genitive,
-            newWordViewModel.Singular.Dative,
-            newWordViewModel.Singular.Accusative);
+            newWordViewModel.Plural.Nominative.Trim(),
+            newWordViewModel.Plural.Genitive.Trim(),
+            newWordViewModel.Plural.Dative.Trim(),
+            newWordViewModel.Plural.Accusative.Trim());
         var newNoun = new Noun(
             id,
             newWordViewModel.Gender,
             singularDeclension,
             pluralDeclension,
-            newWordViewModel.Translations.ToArray(),
-            newWordViewModel.Topics.ToArray());
+            newWordViewModel.Translations.Select(t => t.Trim()).ToArray(),
+            newWordViewModel.Topics.Select(t => t.Trim()).ToArray());
 
         var translationsInput = string.Join(',', newNoun.Translations);
-        var topicsInput       = string.Join(',', newNoun.Translations);
+        var topicsInput       = string.Join(',', newNoun.Topics);
 
         var fileInput = $"{newNoun.Gender} | " +
                         $"{newNoun.Singular.Nominative} | {newNoun.Singular.Genitive} | {newNoun.Singular.Dative} | {newNoun.Singular.Accusative} | " +

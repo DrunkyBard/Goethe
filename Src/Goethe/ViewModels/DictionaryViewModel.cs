@@ -315,6 +315,26 @@ public class DictionaryViewModel : ViewModelBase
         {
             newVerb.Replace(oldVerb);
         }
+        else if (oldWord is AdjectiveViewModel oldAdj && newWord is AdjectiveViewModel newAdj)
+        {
+            newAdj.Replace(oldAdj);
+        }
+        else if (oldWord is PronounViewModel oldPronoun && newWord is PronounViewModel newPronoun)
+        {
+            newPronoun.Replace(oldPronoun);
+        }
+        else if (oldWord is PrepositionViewModel oldPreposition && newWord is PrepositionViewModel newPreposition)
+        {
+            newPreposition.Replace(oldPreposition);
+        }
+        else if (oldWord is ConjunctionViewModel oldConj && newWord is ConjunctionViewModel newConj)
+        {
+            newConj.Replace(oldConj);
+        }
+        else if (oldWord is ParticleViewModel oldParticle && newWord is ParticleViewModel newParticle)
+        {
+            newParticle.Replace(oldParticle);
+        }
         else
         {
             throw new NotSupportedException($"Old word type: {oldWord.GetType()}, new word type: {newWord.GetType()}");
@@ -337,7 +357,12 @@ public class DictionaryViewModel : ViewModelBase
             _changeView(this);
         }
 
-        var editWordVm = new EditWordViewModel(newWord, CancelEdit, () => _changeView(this));
+        void Save()
+        {
+            _changeView(this);
+        }
+
+        var editWordVm = new EditWordViewModel(newWord, CancelEdit, Save);
         _changeView(editWordVm);
     }
 
