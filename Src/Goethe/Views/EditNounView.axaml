@@ -44,7 +44,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Singular.Nominative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="1" Grid.Column="2" Text="{Binding Singular.Nominative}" />
 
                     <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Gen." />
                     <Label Grid.Row="2" Grid.Column="1">
@@ -57,7 +57,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Genitive}" />
+                    <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Genitive}" />
 
                     <Label Classes="decl" Grid.Row="3" Grid.Column="0" Content="Dat." />
                     <Label Grid.Row="3" Grid.Column="1">
@@ -70,7 +70,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Singular.Dative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="3" Grid.Column="2" Text="{Binding Singular.Dative}" />
 
                     <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Acc." />
                     <Label Grid.Row="4" Grid.Column="1">
@@ -83,7 +83,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Singular.Accusative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="2" Text="{Binding Singular.Accusative}" />
                 </Grid>
 
                 <Grid
@@ -104,7 +104,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Plural.Nominative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="1" Grid.Column="1" Text="{Binding Plural.Nominative}" />
 
                     <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
@@ -116,7 +116,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Plural.Genitive}" />
+                    <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="1" Text="{Binding Plural.Genitive}" />
 
                     <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
@@ -128,7 +128,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Plural.Dative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="3" Grid.Column="1" Text="{Binding Plural.Dative}" />
 
                     <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
@@ -140,24 +140,35 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Plural.Accusative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="1" Text="{Binding Plural.Accusative}" />
                 </Grid>
             </WrapPanel>
             
             <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
                 <Label Content="Translation: " />
                 <TextBox Text="{Binding Translation}" />
-                <Button Content="Add" Command="{Binding AddTranslationCommand}" />
+                <Button Command="{Binding AddTranslationCommand}" Margin="5,0">
+                    <Button.Content>
+                        <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
+                    </Button.Content>
+                </Button>
                 
                 <Label Content="Topic: " Margin="10,0,0,0" />
                 <TextBox Text="{Binding Topic}" />
-                <Button Content="Add" Command="{Binding AddTopicCommand}" />
+                <Button Command="{Binding AddTopicCommand}">
+                    <Button.Content>
+                        <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
+                    </Button.Content>
+                </Button>
             </StackPanel>
 
             <Border>
                 
             </Border>
             <Label Content="Translations:" />
+            <Label Content="Should have at least one translation"
+                   Classes="desc"
+                   IsVisible="{Binding Translations.Count, Converter={c:EqualsConverter}, ConverterParameter={StaticResource Zero}}" />
 
             <ItemsControl Name="TranslationItemsContainer" ItemsSource="{Binding Translations}"
                           v:WordAttachedProperty.Word="{Binding}">

@@ -5,12 +5,13 @@
                     xmlns:vm="clr-namespace:Goethe.ViewModels"
                     xmlns:s="clr-namespace:System;assembly=System.Runtime"
                     xmlns:v="clr-namespace:Goethe.Views"
+                    xmlns:c="clr-namespace:Goethe.Converters"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
     <DataTemplate x:Key="EditVerbView" DataType="{x:Type vm:VerbViewModel}">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Infinitive: " HorizontalAlignment="Left" />
-                <TextBox Text="{Binding Infinitive}" />
+                <TextBox Classes="notEmpty" Text="{Binding Infinitive}" />
             </StackPanel>
 
             <WrapPanel Orientation="Horizontal">
@@ -18,22 +19,22 @@
                     <DataTemplate DataType="{x:Type vm:ConjugationsViewModel}">
                         <Grid RowDefinitions="Auto,5,Auto,5,Auto,5,Auto,5,Auto,5,Auto" ColumnDefinitions="Auto, Auto">
                             <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="ich" />
-                            <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Ich}" />
+                            <TextBox Classes="notEmpty" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Ich}" />
 
                             <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="du" />
-                            <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Du}" />
+                            <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Du}" />
 
                             <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="er/sie/es" />
-                            <TextBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ErSieEs}" />
+                            <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ErSieEs}" />
 
                             <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Content="wir" />
-                            <TextBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Wir}" />
+                            <TextBox Classes="notEmpty" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Wir}" />
 
                             <Label Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" Content="ihr" />
-                            <TextBox Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Ihr}" />
+                            <TextBox Classes="notEmpty" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Ihr}" />
 
                             <Label Grid.Row="10" Grid.Column="0" HorizontalAlignment="Left" Content="sie/Sie" />
-                            <TextBox Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Sie}" />
+                            <TextBox Classes="notEmpty" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Sie}" />
                         </Grid>
                     </DataTemplate>
                 </WrapPanel.DataTemplates>
@@ -47,14 +48,25 @@
             <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
                 <Label Content="Translation: " />
                 <TextBox Text="{Binding Translation}" />
-                <Button Content="Add" Command="{Binding AddTranslationCommand}" />
+                <Button Command="{Binding AddTranslationCommand}" Margin="5,0">
+                    <Button.Content>
+                        <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
+                    </Button.Content>
+                </Button>
                 
                 <Label Content="Topic: " Margin="10,0,0,0" />
                 <TextBox Text="{Binding Topic}" />
-                <Button Content="Add" Command="{Binding AddTopicCommand}" />
+                <Button Command="{Binding AddTopicCommand}">
+                    <Button.Content>
+                        <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
+                    </Button.Content>
+                </Button>
             </StackPanel>
 
             <Label Content="Translations:" />
+            <Label Content="Should have at least one translation"
+                   Classes="desc"
+                   IsVisible="{Binding Translations.Count, Converter={c:EqualsConverter}, ConverterParameter={StaticResource Zero}}" />
 
             <ItemsControl Name="TranslationItemsContainer" ItemsSource="{Binding Translations}"
                           v:WordAttachedProperty.Word="{Binding}">

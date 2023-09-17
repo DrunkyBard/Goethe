@@ -7,6 +7,41 @@
         <SolidColorBrush x:Key="MainBackground" Color="#FF282828" />
         <SolidColorBrush x:Key="MainForeground" Color="#FFDEDEDE" />
     </Styles.Resources>
+    
+    <Style Selector="Button">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="#3D3D3D" />
+    </Style>
+    
+    <Style Selector="Button:pressed ContentPresenter">
+        <Setter Property="Background" Value="#4D4D4D" />
+    </Style>
+    
+    <Style Selector="TextBox.notEmpty">
+        <Setter Property="Watermark" Value="" />
+    </Style>
+    
+    <Style Selector="TextBox.notEmpty:empty">
+        <Setter Property="Watermark" Value="Non empty" />
+    </Style>
+    
+    <Style Selector="TextBox.notEmpty DataValidationErrors">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Name="PART_ContentPresenter"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}"
+                                  Padding="{TemplateBinding Padding}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
  
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource MainForeground}" />
@@ -19,6 +54,11 @@
     </Style>
     
     <Style Selector="TextBlock.desc">
+        <Setter Property="Foreground" Value="#AAA398" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+    
+    <Style Selector="Label.desc">
         <Setter Property="Foreground" Value="#AAA398" />
         <Setter Property="FontSize" Value="12" />
     </Style>
@@ -47,6 +87,7 @@
     
     <Style Selector="TextBox">
         <Setter Property="Width" Value="150" />
+        <Setter Property="MaxLength" Value="70" />
     </Style>
     
     <Style Selector="Label">
@@ -61,13 +102,57 @@
         <Setter Property="IsVisible" Value="False" />
     </Style>
     
-    <Style Selector="StackPanel.wordTable">
-        <Setter Property="Margin" Value="15,10,20,20" />
+    <Style Selector="TreeView.notTree">
+        <Setter Property="MaxHeight" Value="350" />
     </Style>
     
-    <Style Selector="FlyoutPresenter.AdjDetailFlyout">
+    <Style Selector="Border.wordTableBorder">
+        <Setter Property="BorderThickness" Value="0,1,1,1" />
+        <Setter Property="Margin" Value="0,0,20,20" />
+        <Setter Property="BorderBrush" Value="#C0C0C6" />
+    </Style>
+    
+    <Style Selector="TreeView.notTree TreeViewItem">
+        <Setter Property="Padding" Value="5,0,0,0" />
+    </Style>
+    
+    <Style Selector="StackPanel.wordTable">
+        <Setter Property="Margin" Value="0,10,20,20" />
+    </Style>
+    
+    <Style Selector="FlyoutPresenter.detailFlyout">
         <Setter Property="Padding" Value="20" />
         <Setter Property="MaxWidth" Value="800" />
         <Setter Property="MaxHeight" Value="400" />
     </Style>
+    
+    <Style Selector="Button.wordCtrl">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Opacity" Value="0.0" />
+        
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.1" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="TreeViewItem:pointerover DockPanel.dictWordEntry Button.wordCtrl">
+        <Setter Property="Opacity" Value="1.0" />
+    </Style>
+    
+    <Style Selector="TreeViewItem DockPanel.dictWordEntry TextBlock">
+        <Setter Property="Margin" Value="0,0,15,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    
+    <Style Selector="StackPanel.StackPanel">
+        <Setter Property="Margin" Value="0,0,20,0" />
+    </Style>
+    
+    <!-- <Style Selector="Button.wordCtrl:pointerover"> -->
+    <!--     <Setter Property="Opacity" Value="1.0" /> -->
+    <!-- </Style> -->
 </Styles>

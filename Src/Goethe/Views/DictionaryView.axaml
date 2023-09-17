@@ -17,294 +17,477 @@
         <ResourceInclude Source="PrepositionDetailFlyout.axaml" />
         <ResourceInclude Source="ConjunctionDetailFlyout.axaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <DataTemplates x:Key="DictionaryView">
         <DataTemplate DataType="{x:Type vm:DictionaryViewModel}">
             <Grid ColumnDefinitions="*,Auto">
-                <StackPanel Grid.Column="0" Orientation="Vertical">
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,5,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Home"
-                                Command="{Binding ShowHome}" />
+                        <Button Command="{Binding ShowHome}">
+                            <Button.Content>
+                                <DockPanel>
+                                    <Svg Width="16" Height="16" Path="../Icons/home (1).svg" HorizontalAlignment="Left"
+                                         VerticalAlignment="Center" DockPanel.Dock="Left" />
+                                    <Label Content="Home" DockPanel.Dock="Right" VerticalAlignment="Center"
+                                           Margin="5,0,0,0" />
+                                </DockPanel>
+                            </Button.Content>
+                        </Button>
 
-                        <Button Content="Add new word" Command="{Binding AddNewWordCommand}" />
+                        <Button Command="{Binding AddNewWordCommand}">
+                            <Button.Content>
+                                <DockPanel>
+                                    <Svg Width="16" Height="16" Path="../Icons/plus-small.svg"
+                                         HorizontalAlignment="Left" VerticalAlignment="Center" DockPanel.Dock="Left" />
+                                    <Label Content="Add new word" DockPanel.Dock="Right" VerticalAlignment="Center"
+                                           Margin="5,0,0,0" />
+                                </DockPanel>
+                            </Button.Content>
+                        </Button>
                     </StackPanel>
 
-                    <TextBox Text="{Binding Filter}" HorizontalAlignment="Left" />
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Svg Width="16" Height="16" Path="../Icons/filter.svg" VerticalAlignment="Center"
+                             HorizontalAlignment="Left" />
+                        <TextBox Text="{Binding Filter}" VerticalAlignment="Center" HorizontalAlignment="Right"
+                                 Margin="5,0,0,0" />
+                    </StackPanel>
 
-                    <TextBlock Text="{Binding Verbs.Count}" HorizontalAlignment="Left" />
-
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                                  Margin="0,10,0,0">
                         <!-- <Interaction.Behaviors> -->
                         <!--     <b:SetBoundsRelativelyToParent /> -->
                         <!-- </Interaction.Behaviors> -->
 
                         <WrapPanel Orientation="Horizontal">
-                            <StackPanel
-                                Classes="wordTable"
-                                Orientation="Vertical"
-                                IsVisible="{Binding Nouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                                <TextBlock Classes="title" Text="Nouns" HorizontalAlignment="Center" />
+                            <Border Classes="wordTableBorder"
+                                    IsVisible="{Binding Nouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
 
-                                <!-- <DataGrid -->
-                                <!--     ItemsSource="{Binding Nouns, Mode=TwoWay}" -->
-                                <!--     HorizontalAlignment="Center" -->
-                                <!--     GridLinesVisibility="All"> -->
-                                <!--     <DataGrid.Columns> -->
-                                <!--         <DataGridTextColumn Header="" Binding="{Binding Gender, Converter={x:Static c:GenderToDefArticleConverter.Instance}, Mode=OneWay}"  /> -->
-                                <!--         <DataGridTextColumn Header="Noun" Binding="{Binding Singular.Nominative}"  /> -->
-                                <!--     </DataGrid.Columns> -->
-                                <!-- </DataGrid> -->
+                                    <TextBlock Classes="title" Text="Nouns" HorizontalAlignment="Center" />
 
-                                <TreeView
-                                    Name="NounsList"
-                                    Classes="notTree"
-                                    v:WordAttachedProperty.Dictionary="{Binding}"
-                                    ItemsSource="{Binding Nouns}">
-                                    <TreeView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type vm:NounViewModel}">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           HorizontalAlignment="Left">
-                                                    <TextBlock.Text>
-                                                        <MultiBinding Converter="{x:Static c:NounToStringConverter.Instance}">
-                                                            <Binding Path="Gender"/>
-                                                            <Binding Path="Singular.Nominative"/>
-                                                        </MultiBinding>
-                                                    </TextBlock.Text>
-                                                </TextBlock>
+                                    <!-- <DataGrid -->
+                                    <!--     ItemsSource="{Binding Nouns, Mode=TwoWay}" -->
+                                    <!--     HorizontalAlignment="Center" -->
+                                    <!--     GridLinesVisibility="All"> -->
+                                    <!--     <DataGrid.Columns> -->
+                                    <!--         <DataGridTextColumn Header="" Binding="{Binding Gender, Converter={x:Static c:GenderToDefArticleConverter.Instance}, Mode=OneWay}"  /> -->
+                                    <!--         <DataGridTextColumn Header="Noun" Binding="{Binding Singular.Nominative}"  /> -->
+                                    <!--     </DataGrid.Columns> -->
+                                    <!-- </DataGrid> -->
 
-                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                                            HorizontalAlignment="Right">
-                                                    <Button Content="r" ToolTip.Tip="Remove"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="e" ToolTip.Tip="Edit"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="d" ToolTip.Tip="Details">
-                                                        <Button.Flyout>
-                                                            <Flyout Placement="Right">
-                                                                <ContentControl MaxWidth="300" Content="{Binding}" ContentTemplate="{StaticResource NounDetailFlyout}" />
-                                                            </Flyout>
-                                                        </Button.Flyout>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </TreeView.ItemTemplate>
-                                </TreeView>
-                            </StackPanel>
+                                    <TreeView
+                                        Name="NounsList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Nouns}">
 
-                            <StackPanel
-                                Classes="wordTable"
-                                Orientation="Vertical"
-                                IsVisible="{Binding Verbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                                <TextBlock Classes="title" Text="Verbs" HorizontalAlignment="Center" />
-                                <TreeView
-                                    Name="VerbsList"
-                                    Classes="notTree"
-                                    v:WordAttachedProperty.Dictionary="{Binding}"
-                                    ItemsSource="{Binding Verbs}">
-                                    <TreeView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type vm:VerbViewModel}">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           HorizontalAlignment="Left"
-                                                           Text="{Binding Infinitive}" />
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:NounViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left">
+                                                        <TextBlock.Text>
+                                                            <MultiBinding
+                                                                Converter="{x:Static c:NounToStringConverter.Instance}">
+                                                                <Binding Path="Gender" />
+                                                                <Binding Path="Singular.Nominative" />
+                                                            </MultiBinding>
+                                                        </TextBlock.Text>
+                                                    </TextBlock>
 
-                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                                            HorizontalAlignment="Right">
-                                                    <Button Content="r" ToolTip.Tip="Remove"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=VerbsList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="e" ToolTip.Tip="Edit"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=VerbsList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="d" ToolTip.Tip="Details">
-                                                        <Button.Flyout>
-                                                            <Flyout Placement="Right">
-                                                                <ContentControl MaxWidth="300" Content="{Binding}" ContentTemplate="{StaticResource VerbDetailFlyout}" />
-                                                            </Flyout>
-                                                        </Button.Flyout>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </TreeView.ItemTemplate>
-                                </TreeView>
-                            </StackPanel>
-                            
-                            <StackPanel
-                                Classes="wordTable"
-                                Orientation="Vertical"
-                                IsVisible="{Binding Adjectives.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                                <TextBlock Classes="title" Text="Adjectives" HorizontalAlignment="Center" />
-                                <TreeView
-                                    Name="AdjList"
-                                    Classes="notTree"
-                                    v:WordAttachedProperty.Dictionary="{Binding}"
-                                    ItemsSource="{Binding Adjectives}">
-                                    <TreeView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           HorizontalAlignment="Left"
-                                                           Text="{Binding Adjective}" />
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
 
-                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                                            HorizontalAlignment="Right">
-                                                    <Button Content="r" ToolTip.Tip="Remove"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=AdjList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="e" ToolTip.Tip="Edit"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=AdjList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="d" ToolTip.Tip="Details">
-                                                        <Button.Flyout>
-                                                            <Flyout Placement="Right" FlyoutPresenterClasses="AdjDetailFlyout">
-                                                                <ContentControl Content="{Binding}" ContentTemplate="{StaticResource AdjectiveDetailView}" />
-                                                            </Flyout>
-                                                        </Button.Flyout>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </TreeView.ItemTemplate>
-                                </TreeView>
-                            </StackPanel>
-                            
-                            <StackPanel
-                                Classes="wordTable"
-                                Orientation="Vertical"
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource NounDetailFlyout}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Classes="wordTableBorder"
+                                    IsVisible="{Binding Verbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Verbs" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="VerbsList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Verbs}">
+
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:VerbViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Infinitive}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource VerbDetailFlyout}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Classes="wordTableBorder" 
+                                    IsVisible="{Binding Adjectives.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Adjectives" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="AdjList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Adjectives}">
+
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Adjective}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right"
+                                                                        FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource AdjectiveDetailView}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                Classes="wordTableBorder"
                                 IsVisible="{Binding Pronouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                                <TextBlock Classes="title" Text="Pronouns" HorizontalAlignment="Center" />
-                                <TreeView
-                                    Name="PronounList"
-                                    Classes="notTree"
-                                    v:WordAttachedProperty.Dictionary="{Binding}"
-                                    ItemsSource="{Binding Pronouns}">
-                                    <TreeView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type vm:PronounViewModel}">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           HorizontalAlignment="Left"
-                                                           Text="{Binding Singular.Nominative}" />
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Pronouns" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="PronounList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Pronouns}">
 
-                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                                            HorizontalAlignment="Right">
-                                                    <Button Content="r" ToolTip.Tip="Remove"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=PronounList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="e" ToolTip.Tip="Edit"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=PronounList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="d" ToolTip.Tip="Details">
-                                                        <Button.Flyout>
-                                                            <Flyout Placement="Right">
-                                                                <ContentControl Content="{Binding}" ContentTemplate="{StaticResource PronounDetailView}" />
-                                                            </Flyout>
-                                                        </Button.Flyout>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </TreeView.ItemTemplate>
-                                </TreeView>
-                            </StackPanel>
-                            
-                            <StackPanel
-                                Classes="wordTable"
-                                Orientation="Vertical"
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:PronounViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Singular.Nominative}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource PronounDetailView}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                Classes="wordTableBorder"
                                 IsVisible="{Binding Prepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                                <TextBlock Classes="title" Text="Prepositions" HorizontalAlignment="Center" />
-                                <TreeView
-                                    Name="PrepositionList"
-                                    Classes="notTree"
-                                    v:WordAttachedProperty.Dictionary="{Binding}"
-                                    ItemsSource="{Binding Prepositions}">
-                                    <TreeView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           HorizontalAlignment="Left"
-                                                           Text="{Binding Text}" />
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Prepositions" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="PrepositionList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Prepositions}">
 
-                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                                            HorizontalAlignment="Right">
-                                                    <Button Content="r" ToolTip.Tip="Remove"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=PrepositionList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="e" ToolTip.Tip="Edit"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=PrepositionList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="d" ToolTip.Tip="Details">
-                                                        <Button.Flyout>
-                                                            <Flyout Placement="Right">
-                                                                <ContentControl Content="{Binding}" ContentTemplate="{StaticResource PrepositionDetailView}" />
-                                                            </Flyout>
-                                                        </Button.Flyout>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </TreeView.ItemTemplate>
-                                </TreeView>
-                            </StackPanel>
-                            
-                            <StackPanel
-                                Classes="wordTable"
-                                Orientation="Vertical"
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Text}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource PrepositionDetailView}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+
+                            <Border 
+                                Classes="wordTableBorder"
                                 IsVisible="{Binding Conjunctions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                                <TextBlock Classes="title" Text="Conjunctions" HorizontalAlignment="Center" />
-                                <TreeView
-                                    Name="ConjunctionList"
-                                    Classes="notTree"
-                                    v:WordAttachedProperty.Dictionary="{Binding}"
-                                    ItemsSource="{Binding Conjunctions}">
-                                    <TreeView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           HorizontalAlignment="Left"
-                                                           Text="{Binding Text}" />
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Conjunctions" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="ConjunctionList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Conjunctions}">
 
-                                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                                            HorizontalAlignment="Right">
-                                                    <Button Content="r" ToolTip.Tip="Remove"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=ConjunctionList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="e" ToolTip.Tip="Edit"
-                                                            IsVisible="{Binding !IsDeletedOrModified^}"
-                                                            Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=ConjunctionList}"
-                                                            CommandParameter="{Binding}" />
-                                                    <Button Content="d" ToolTip.Tip="Details">
-                                                        <Button.Flyout>
-                                                            <Flyout Placement="Right">
-                                                                <ContentControl Content="{Binding}" ContentTemplate="{StaticResource ConjunctionDetailView}" />
-                                                            </Flyout>
-                                                        </Button.Flyout>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </TreeView.ItemTemplate>
-                                </TreeView>
-                            </StackPanel>
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Text}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource ConjunctionDetailView}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+
                         </WrapPanel>
                     </ScrollViewer>
                 </StackPanel>
-                
+
                 <Grid Grid.Column="1" RowDefinitions="*, Auto" IsVisible="{Binding HasChanges^}">
                     <ScrollViewer Grid.Row="0">
                         <StackPanel Orientation="Vertical">
@@ -312,8 +495,8 @@
                             <ContentControl Content="{Binding}" ContentTemplate="{StaticResource WordsToEditList}" />
                         </StackPanel>
                     </ScrollViewer>
-                    
-                    <StackPanel Grid.Row="1" >
+
+                    <StackPanel Grid.Row="1">
                         <Button Content="Save" />
                         <Button Content="Discard all" Command="{Binding DiscardAllCommand}" />
                     </StackPanel>
