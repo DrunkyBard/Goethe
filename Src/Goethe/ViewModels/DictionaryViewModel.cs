@@ -74,6 +74,8 @@ public class DictionaryViewModel : ViewModelBase
         get => _filter;
         set => this.RaiseAndSetIfChanged(ref _filter, value);
     }
+    
+    public IObservable<int> TotalWords { get; }
 
     private IDisposable _cleanup;
 
@@ -100,7 +102,7 @@ public class DictionaryViewModel : ViewModelBase
         CancelWordDeletionCommand = ReactiveCommand.Create<WordViewModel>(CancelWordRemove);
         
         DiscardAllCommand = ReactiveCommand.Create(DiscardAll);
-
+        
         var subs = new List<IDisposable>();
 
         BuildWordsSubscription(
@@ -224,6 +226,17 @@ public class DictionaryViewModel : ViewModelBase
                 nounCount.Value > 0 || verbCount.Value > 0 ||
                 pronounCount.Value > 0 || adjCount.Value > 0 ||
                 prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0);
+        
+        TotalWords = this.WhenAny(
+            x => x.Nouns.Count,
+            x => x.Verbs.Count,
+            x => x.Pronouns.Count,
+            x => x.Adjectives.Count,
+            x => x.Prepositions.Count,
+            x => x.Conjunctions.Count,
+            x => x.Particles.Count,
+            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount) =>
+                nounCount.Value + verbCount.Value + pronounCount.Value + adjCount.Value + prepCount.Value + conjCount.Value + partCount.Value);
 
         HasChanges = HasEdits.CombineLatest(HasDeletions, (hasEdits, hasDeletion) => hasEdits || hasDeletion);
 
