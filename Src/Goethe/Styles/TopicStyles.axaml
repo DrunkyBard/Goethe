@@ -1,0 +1,33 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    
+    <Style Selector="TextBlock">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+    
+    <Style Selector="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+    
+    <Style Selector="TextBlock.title">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    
+    <Style Selector="Label.title">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    
+    <Style Selector="TextBlock.subTitle">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    
+    <Style Selector="Label.subTitle">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    
+    <Style Selector="Label.decl">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+</Styles>

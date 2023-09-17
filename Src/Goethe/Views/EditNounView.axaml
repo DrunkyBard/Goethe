@@ -11,30 +11,27 @@
     <DataTemplate x:Key="EditNounView" DataType="{x:Type vm:NounViewModel}">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Gender:" HorizontalAlignment="Left" />
-
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="GenderSelection" Content="M"
-                                 IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.M}}" />
-                    <RadioButton GroupName="GenderSelection" Content="F"
-                                 IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.F}}" />
-                    <RadioButton GroupName="GenderSelection" Content="N"
-                                 IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.N}}" />
-                </StackPanel>
+                <RadioButton GroupName="GenderSelection" Content="M"
+                             HorizontalContentAlignment="Center"
+                             IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.M}}" />
+                <RadioButton GroupName="GenderSelection" Content="F"
+                             IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.F}}" />
+                <RadioButton GroupName="GenderSelection" Content="N"
+                             IsChecked="{Binding Gender, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:Gender.N}}" />
             </StackPanel>
 
             <WrapPanel>
                 <Grid
                     Margin="0,0,20,0"
-                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                    RowDefinitions="Auto,5,Auto,5,Auto,5,Auto,5,Auto,Auto"
                     ColumnDefinitions="Auto, 40, Auto">
 
                     <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Content="Singular"
                            Classes="title scarlett"
                            HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-                    <Label Classes="decl" Grid.Row="1" Grid.Column="0" Content="Nom." />
-                    <Label Grid.Row="1" Grid.Column="1">
+                    <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Nom." />
+                    <Label Grid.Row="2" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -44,10 +41,10 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="1" Grid.Column="2" Text="{Binding Singular.Nominative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Nominative}" />
 
-                    <Label Classes="decl" Grid.Row="2" Grid.Column="0" Content="Gen." />
-                    <Label Grid.Row="2" Grid.Column="1">
+                    <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Gen." />
+                    <Label Grid.Row="4" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -57,10 +54,10 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="2" Text="{Binding Singular.Genitive}" />
+                    <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="2" Text="{Binding Singular.Genitive}" />
 
-                    <Label Classes="decl" Grid.Row="3" Grid.Column="0" Content="Dat." />
-                    <Label Grid.Row="3" Grid.Column="1">
+                    <Label Classes="decl" Grid.Row="6" Grid.Column="0" Content="Dat." />
+                    <Label Grid.Row="6" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -70,10 +67,10 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="3" Grid.Column="2" Text="{Binding Singular.Dative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="6" Grid.Column="2" Text="{Binding Singular.Dative}" />
 
-                    <Label Classes="decl" Grid.Row="4" Grid.Column="0" Content="Acc." />
-                    <Label Grid.Row="4" Grid.Column="1">
+                    <Label Classes="decl" Grid.Row="8" Grid.Column="0" Content="Acc." />
+                    <Label Grid.Row="8" Grid.Column="1">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -83,28 +80,16 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="2" Text="{Binding Singular.Accusative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="8" Grid.Column="2" Text="{Binding Singular.Accusative}" />
                 </Grid>
 
                 <Grid
                     Margin="0,0,20,0"
-                    RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                    RowDefinitions="Auto,5,Auto,5,Auto,5,Auto,5,Auto"
                     ColumnDefinitions="40, Auto">
 
                     <Label Classes="title scarlett" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Plural"
                            HorizontalAlignment="Left" VerticalAlignment="Center" />
-
-                    <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
-                        <Label.Content>
-                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
-                                          Mode="OneWay">
-                                <Binding Path="Gender" />
-                                <Binding Source="{x:Static m:NounForm.Plural}" />
-                                <Binding Source="{x:Static m:DeclensionType.Nominative}" />
-                            </MultiBinding>
-                        </Label.Content>
-                    </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="1" Grid.Column="1" Text="{Binding Plural.Nominative}" />
 
                     <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
@@ -112,13 +97,25 @@
                                           Mode="OneWay">
                                 <Binding Path="Gender" />
                                 <Binding Source="{x:Static m:NounForm.Plural}" />
+                                <Binding Source="{x:Static m:DeclensionType.Nominative}" />
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="1" Text="{Binding Plural.Nominative}" />
+
+                    <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">
+                        <Label.Content>
+                            <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
+                                          Mode="OneWay">
+                                <Binding Path="Gender" />
+                                <Binding Source="{x:Static m:NounForm.Plural}" />
                                 <Binding Source="{x:Static m:DeclensionType.Genitive}" />
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="2" Grid.Column="1" Text="{Binding Plural.Genitive}" />
+                    <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="1" Text="{Binding Plural.Genitive}" />
 
-                    <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
+                    <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -128,9 +125,9 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="3" Grid.Column="1" Text="{Binding Plural.Dative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="6" Grid.Column="1" Text="{Binding Plural.Dative}" />
 
-                    <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">
+                    <Label Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left">
                         <Label.Content>
                             <MultiBinding Converter="{x:Static c:GenderToDeclensionArticleConverter.Instance}"
                                           Mode="OneWay">
@@ -140,7 +137,7 @@
                             </MultiBinding>
                         </Label.Content>
                     </Label>
-                    <TextBox Classes="notEmpty" Grid.Row="4" Grid.Column="1" Text="{Binding Plural.Accusative}" />
+                    <TextBox Classes="notEmpty" Grid.Row="8" Grid.Column="1" Text="{Binding Plural.Accusative}" />
                 </Grid>
             </WrapPanel>
             
@@ -155,7 +152,7 @@
                 
                 <Label Content="Topic: " Margin="10,0,0,0" />
                 <TextBox Text="{Binding Topic}" />
-                <Button Command="{Binding AddTopicCommand}">
+                <Button Command="{Binding AddTopicCommand}" Margin="5,0">
                     <Button.Content>
                         <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
                     </Button.Content>

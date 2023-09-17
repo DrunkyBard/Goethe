@@ -1,0 +1,122 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Goethe.ViewModels"
+             xmlns:b="clr-namespace:Goethe.Behaviors"
+             xmlns:v="clr-namespace:Goethe.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Goethe.Views.TopicView"
+             Focusable="True"
+             x:DataType="vm:TopicViewModel">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="WordDetailFlyouts.axaml" />
+                <ResourceInclude Source="AdjectiveDetailFlyout.axaml" />
+                <ResourceInclude Source="PronounDetailFlyout.axaml" />
+                <ResourceInclude Source="PrepositionDetailFlyout.axaml" />
+                <ResourceInclude Source="ConjunctionDetailFlyout.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <UserControl.Styles>
+        <StyleInclude Source="../Styles/TopicStyles.axaml"/>
+    </UserControl.Styles>
+    
+    <UserControl.KeyBindings>
+        <KeyBinding  Gesture="Left" Command="{Binding PreviousWordCommand}"/>
+        <KeyBinding  Gesture="Right" Command="{Binding NextWordCommand}"/>
+        
+        <KeyBinding  Gesture="Home" Command="{Binding ToFirstWordCommand}"/>
+        <KeyBinding  Gesture="End" Command="{Binding ToFinalWordCommand}"/>
+    </UserControl.KeyBindings>
+    
+    <!-- <Interaction.Behaviors> -->
+    <!--     <b:HandleKeyBinding KeyInput="Left" Command="{Binding PreviousWordCommand}" /> -->
+    <!--     <b:HandleKeyBinding KeyInput="Right" Command="{Binding NextWordCommand}" /> -->
+    <!-- </Interaction.Behaviors> -->
+
+    <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="30,*,30" Focusable="True">
+        <Interaction.Behaviors>
+            <b:SetFocusBehavior />
+        </Interaction.Behaviors>
+        
+        <Button
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+            Command="{Binding ShowHomeCommand}">
+            <Button.Content>
+                <DockPanel>
+                    <Svg Width="16" Height="16" Path="../Icons/home (1).svg" HorizontalAlignment="Left"
+                         VerticalAlignment="Center" DockPanel.Dock="Left" />
+                    <Label Content="Home" DockPanel.Dock="Right" VerticalAlignment="Center"
+                           Margin="5,0,0,0" />
+                </DockPanel>
+            </Button.Content>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="0"
+                IsVisible="{Binding CanBack^}"
+                Command="{Binding PreviousWordCommand}">
+            <Svg Width="32" Height="32" Path="../Icons/angle-left.svg" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="2"
+                IsVisible="{Binding CanForward^}"
+                Command="{Binding NextWordCommand}">
+            <Svg Width="32" Height="32" Path="../Icons/angle-right.svg" />
+        </Button>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1"
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <ContentControl Content="{Binding CurrentWord}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <ContentControl.DataTemplates>
+                        <DataTemplate DataType="{x:Type vm:NounViewModel}">
+                            <TextBlock Classes="title" Text="Noun" />
+                        </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:VerbViewModel}">
+                            <TextBlock Classes="title" Text="Verb" />
+                        </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
+                            <TextBlock Classes="title" Text="Adjective" />
+                        </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:PronounViewModel}">
+                            <TextBlock Classes="title" Text="Pronoun" />
+                        </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
+                            <TextBlock Classes="title" Text="Conjunction" />
+                        </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
+                            <TextBlock Classes="title" Text="Preposition" />
+                        </DataTemplate>
+                    </ContentControl.DataTemplates>
+                </ContentControl>
+                
+                <ContentControl Content="{Binding CurrentWord}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Interaction.Behaviors>
+                        <b:AddDataTemplate Template="{StaticResource NounDetailFlyout}" />
+                        <b:AddDataTemplate Template="{StaticResource VerbDetailFlyout}" />
+                        <b:AddDataTemplate Template="{StaticResource AdjectiveDetailView}" />
+                        <b:AddDataTemplate Template="{StaticResource PronounDetailView}" />
+                        <b:AddDataTemplate Template="{StaticResource PrepositionDetailView}" />
+                        <b:AddDataTemplate Template="{StaticResource ConjunctionDetailView}" />
+                    </Interaction.Behaviors>
+                </ContentControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Label Content="{Binding CurrentWordIdx}" />
+            <Label Content="/" />
+            <Label Content="{Binding Words.Count}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

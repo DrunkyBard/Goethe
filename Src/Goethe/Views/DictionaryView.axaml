@@ -44,6 +44,11 @@
                                 </DockPanel>
                             </Button.Content>
                         </Button>
+                        
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="Total words: " />
+                            <TextBlock Text="{Binding TotalWords^}" />
+                        </StackPanel>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
@@ -67,6 +72,9 @@
                                     <TextBlock Classes="title" Text="Nouns" HorizontalAlignment="Center" />
 
                                     <!-- <DataGrid -->
+                                    <!--     Name="NounsList" -->
+                                    <!--     MaxHeight="350" -->
+                                    <!--     v:WordAttachedProperty.Dictionary="{Binding}" -->
                                     <!--     ItemsSource="{Binding Nouns, Mode=TwoWay}" -->
                                     <!--     HorizontalAlignment="Center" -->
                                     <!--     GridLinesVisibility="All"> -->
@@ -81,7 +89,7 @@
                                         Classes="notTree"
                                         v:WordAttachedProperty.Dictionary="{Binding}"
                                         ItemsSource="{Binding Nouns}">
-
+                                    
                                         <TreeView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <StackPanel Classes="notTreePanel" />
@@ -90,6 +98,24 @@
                                         <TreeView.ItemTemplate>
                                             <DataTemplate DataType="{x:Type vm:NounViewModel}">
                                                 <DockPanel Classes="dictWordEntry">
+                                                    <Interaction.Behaviors>
+                                                        <DataTriggerBehavior Binding="{Binding ToDelete}" ComparisonCondition="Equal" Value="True">
+                                                            <AddClassAction ClassName="toDelete" />
+                                                        </DataTriggerBehavior>
+                                                        
+                                                        <DataTriggerBehavior Binding="{Binding ToDelete}" ComparisonCondition="Equal" Value="False">
+                                                            <RemoveClassAction ClassName="toDelete" />
+                                                        </DataTriggerBehavior>
+                                                        
+                                                        <DataTriggerBehavior Binding="{Binding ToEdit}" ComparisonCondition="Equal" Value="True">
+                                                            <AddClassAction ClassName="toEdit" />
+                                                        </DataTriggerBehavior>
+                                                        
+                                                        <DataTriggerBehavior Binding="{Binding ToEdit}" ComparisonCondition="Equal" Value="False">
+                                                            <RemoveClassAction ClassName="toEdit" />
+                                                        </DataTriggerBehavior>
+                                                    </Interaction.Behaviors>
+                                                    
                                                     <TextBlock DockPanel.Dock="Left"
                                                                HorizontalAlignment="Left">
                                                         <TextBlock.Text>
@@ -100,7 +126,7 @@
                                                             </MultiBinding>
                                                         </TextBlock.Text>
                                                     </TextBlock>
-
+                                    
                                                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
                                                                 HorizontalAlignment="Right">
                                                         <Button ToolTip.Tip="Remove" Classes="wordCtrl"
@@ -113,7 +139,7 @@
                                                                      HorizontalAlignment="Left" VerticalAlignment="Top" />
                                                             </Button.Content>
                                                         </Button>
-
+                                    
                                                         <Button ToolTip.Tip="Edit" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
                                                                 Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
@@ -123,13 +149,13 @@
                                                                      HorizontalAlignment="Left" VerticalAlignment="Top" />
                                                             </Button.Content>
                                                         </Button>
-
+                                    
                                                         <Button ToolTip.Tip="Details" Classes="wordCtrl">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
                                                                      HorizontalAlignment="Left" VerticalAlignment="Top" />
                                                             </Button.Content>
-
+                                    
                                                             <Button.Flyout>
                                                                 <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
                                                                     <ContentControl Content="{Binding}"
@@ -488,17 +514,21 @@
                     </ScrollViewer>
                 </StackPanel>
 
-                <Grid Grid.Column="1" RowDefinitions="*, Auto" IsVisible="{Binding HasChanges^}">
+                <Grid Grid.Column="1" RowDefinitions="*, Auto" IsVisible="{Binding HasChanges^}" MaxWidth="350">
                     <ScrollViewer Grid.Row="0">
                         <StackPanel Orientation="Vertical">
-                            <ContentControl Content="{Binding}" ContentTemplate="{StaticResource WordsToRemoveList}" />
-                            <ContentControl Content="{Binding}" ContentTemplate="{StaticResource WordsToEditList}" />
+                            <ContentControl Margin="0,0,20,0" Content="{Binding}" ContentTemplate="{StaticResource WordsToRemoveList}" />
+                            <ContentControl Margin="0,0,20,0" Content="{Binding}" ContentTemplate="{StaticResource WordsToEditList}" />
                         </StackPanel>
                     </ScrollViewer>
 
-                    <StackPanel Grid.Row="1">
-                        <Button Content="Save" />
-                        <Button Content="Discard all" Command="{Binding DiscardAllCommand}" />
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button ToolTip.Tip="Save">
+                            <Svg Width="16" Height="16" Path="../Icons/disk.svg" />
+                        </Button>
+                        <Button ToolTip.Tip="Discard all" Command="{Binding DiscardAllCommand}">
+                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Grid>

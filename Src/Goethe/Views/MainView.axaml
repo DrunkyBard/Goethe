@@ -29,11 +29,12 @@
     </Interaction.Behaviors>
     
     <UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:TopicViewModel}">
+            <v:TopicView />
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:HomeViewModel}">
-            <StackPanel Orientation="Vertical">
-                <Button Content="Wörterbuch"
-                        Command="{Binding ShowDictionary}"/>
-            </StackPanel>
+            <v:HomeView />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:NewWordViewModel}">

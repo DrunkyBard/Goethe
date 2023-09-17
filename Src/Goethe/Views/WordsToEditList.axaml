@@ -8,7 +8,7 @@
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
     <DataTemplate x:Key="WordsToEditList" DataType="{x:Type vm:DictionaryViewModel}">
         <StackPanel Orientation="Vertical" IsVisible="{Binding HasEdits}">
-            <TextBlock Classes="title" Text="To Edit" />
+            <TextBlock Classes="title" HorizontalAlignment="Left"  Text="To Edit" />
 
             <StackPanel Orientation="Vertical"
                         IsVisible="{Binding EditedNouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
@@ -20,19 +20,29 @@
                     ItemsSource="{Binding EditedNouns}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
                                     <TextBlock
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
                                         Text="{Binding NewWord, Converter={x:Static c:NounToStringConverter.Instance}, Mode=OneWay}"
                                         DockPanel.Dock="Left" />
 
-                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditNounsList}"
-                                            CommandParameter="{Binding}"/>
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditNounsList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -55,23 +65,31 @@
                     ItemsSource="{Binding EditedVerbs}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <DockPanel.DataTemplates>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
                                         <DataTemplate DataType="{x:Type vm:VerbViewModel}">
-                                            <TextBlock Text="{Binding Infinitive}" />
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Infinitive}" />
                                         </DataTemplate>
-                                    </DockPanel.DataTemplates>
+                                    </Grid.DataTemplates>
                                     
-                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
 
-                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditVerbsList}"
-                                            CommandParameter="{Binding}"/>
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditVerbsList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -94,23 +112,31 @@
                     ItemsSource="{Binding EditedAdjectives}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <DockPanel.DataTemplates>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
                                         <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
                                             <TextBlock Text="{Binding Adjective}" />
                                         </DataTemplate>
-                                    </DockPanel.DataTemplates>
+                                    </Grid.DataTemplates>
                                     
-                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
 
-                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditAdjectiveList}"
-                                            CommandParameter="{Binding}"/>
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditAdjectiveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -133,23 +159,31 @@
                     ItemsSource="{Binding EditedPronouns}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <DockPanel.DataTemplates>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
                                         <DataTemplate DataType="{x:Type vm:PronounViewModel}">
-                                            <TextBlock Text="{Binding Singular.Nominative}" />
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Singular.Nominative}" />
                                         </DataTemplate>
-                                    </DockPanel.DataTemplates>
+                                    </Grid.DataTemplates>
                                     
-                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
 
-                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditPronounList}"
-                                            CommandParameter="{Binding}"/>
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditPronounList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -172,23 +206,31 @@
                     ItemsSource="{Binding EditedPrepositions}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <DockPanel.DataTemplates>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
                                         <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
-                                            <TextBlock Text="{Binding Text}" />
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Text}" />
                                         </DataTemplate>
-                                    </DockPanel.DataTemplates>
+                                    </Grid.DataTemplates>
                                     
-                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
 
-                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditPrepositionList}"
-                                            CommandParameter="{Binding}"/>
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditPrepositionList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -211,23 +253,31 @@
                     ItemsSource="{Binding EditedConjunctions}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <DockPanel.DataTemplates>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
                                         <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
-                                            <TextBlock Text="{Binding Text}" />
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Text}" />
                                         </DataTemplate>
-                                    </DockPanel.DataTemplates>
+                                    </Grid.DataTemplates>
                                     
-                                    <ContentControl Content="{Binding NewWord}" DockPanel.Dock="Left" />
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
 
-                                    <Button Content="e" ToolTip.Tip="Edit" DockPanel.Dock="Right" 
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditConjunctionList}"
-                                            CommandParameter="{Binding}"/>
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditConjunctionList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

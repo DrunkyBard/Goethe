@@ -164,8 +164,13 @@ public sealed class DeclensionsViewModel
             new DeclensionViewModel(),
             new DeclensionViewModel())
     {
-        
     }
+
+    public static DeclensionsViewModel Empty() => new DeclensionsViewModel(
+        DeclensionViewModel.Empty(),
+        DeclensionViewModel.Empty(),
+        DeclensionViewModel.Empty(),
+        DeclensionViewModel.Empty());
 
     public DeclensionsViewModel(
         DeclensionViewModel masculine,
@@ -240,6 +245,14 @@ public sealed class DeclensionViewModel : ViewModelBase
     {
         BindValidation();
     }
+    
+    public static DeclensionViewModel Empty() => new DeclensionViewModel
+    {
+        Nominative = "-",
+        Genitive   = "-",
+        Dative     = "-",
+        Accusative = "-"
+    };
 
     public DeclensionViewModel(Declension declensionModel)
     {
@@ -713,6 +726,8 @@ public sealed class PredicativeViewModel : ViewModelBase
             notEmpty);
     }
 
+    public static PredicativeViewModel Empty() => new("-", "-", "-", "-");
+
     public PredicativeViewModel(
         string masculine,
         string feminine,
@@ -875,10 +890,11 @@ public sealed class AdjectiveViewModel : WordViewModel
     }
 
     private AdjectiveViewModel(
-        int                 id, string adjective,
+        int                  id,
+        string               adjective,
         DeclensionsViewModel strong, DeclensionsViewModel weak, DeclensionsViewModel mixed,
         PredicativeViewModel predicative,
-        IEnumerable<string> translations, IEnumerable<string> topics) : base(id, translations, topics)
+        IEnumerable<string>  translations, IEnumerable<string> topics) : base(id, translations, topics)
     {
         _adjective = adjective;
 
@@ -887,6 +903,25 @@ public sealed class AdjectiveViewModel : WordViewModel
         Mixed  = mixed;
         
         Predicative = predicative;
+        
+        PropertyChanged                 += (_,      _) => FireChange.OnNext(Unit.Default);
+        
+        Strong.Feminine.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Strong.Masculine.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Strong.Plural.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Strong.Neutral.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        
+        Weak.Feminine.PropertyChanged  += (_, _) => FireChange.OnNext(Unit.Default);
+        Weak.Masculine.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Weak.Plural.PropertyChanged    += (_, _) => FireChange.OnNext(Unit.Default);
+        Weak.Neutral.PropertyChanged   += (_, _) => FireChange.OnNext(Unit.Default);
+        
+        Mixed.Feminine.PropertyChanged  += (_, _) => FireChange.OnNext(Unit.Default);
+        Mixed.Masculine.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Mixed.Plural.PropertyChanged    += (_, _) => FireChange.OnNext(Unit.Default);
+        Mixed.Neutral.PropertyChanged   += (_, _) => FireChange.OnNext(Unit.Default);
+
+        Predicative.PropertyChanged   += (_, _) => FireChange.OnNext(Unit.Default);
 
         BindValidation();
     }
@@ -895,10 +930,10 @@ public sealed class AdjectiveViewModel : WordViewModel
         : this(
             0,
             string.Empty,
-            new DeclensionsViewModel(),
-            new DeclensionsViewModel(),
-            new DeclensionsViewModel(),
-            new PredicativeViewModel(),
+            DeclensionsViewModel.Empty(),
+            DeclensionsViewModel.Empty(),
+            DeclensionsViewModel.Empty(),
+            PredicativeViewModel.Empty(),
             Enumerable.Empty<string>(),
             Enumerable.Empty<string>())
     {
@@ -1032,6 +1067,8 @@ public sealed class ConjunctionViewModel : WordViewModel
         IEnumerable<string> topics) : base(id, translations, topics)
     {
         _text = text;
+        
+        PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
 
         this.ValidationRule(
             x => x.Text,
@@ -1119,6 +1156,8 @@ public sealed class ParticleViewModel : WordViewModel
         IEnumerable<string> topics) : base(id, translations, topics)
     {
         _text = text;
+        
+        PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
 
         this.ValidationRule(
             x => x.Text,
@@ -1203,6 +1242,8 @@ public sealed class PrepositionViewModel : WordViewModel
         IEnumerable<string> topics) : base(id, translations, topics)
     {
         _text = text;
+        
+        PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
 
         this.ValidationRule(
             x => x.Text,
@@ -1299,6 +1340,11 @@ public sealed class PronounViewModel : WordViewModel
     {
         _singular = singular;
         _plural   = plural;
+        
+        PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        
+        Singular.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+        Plural.PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
 
         this.ValidationRule(
             x => x.Singular.HasErrors,

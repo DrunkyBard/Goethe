@@ -10,7 +10,7 @@
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
     <DataTemplate x:Key="WordsToRemoveList" DataType="{x:Type vm:DictionaryViewModel}">
         <StackPanel Orientation="Vertical" IsVisible="{Binding HasDeletions}">
-            <TextBlock Classes="title" Text="To Delete" />
+            <TextBlock Classes="title" Text="To Delete" HorizontalAlignment="Left" />
 
             <StackPanel Orientation="Vertical"
                         IsVisible="{Binding NounsToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
@@ -22,16 +22,22 @@
                     ItemsSource="{Binding NounsToRemove}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:NounViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
                                     <TextBlock
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
                                         Text="{Binding, Converter={x:Static c:NounToStringConverter.Instance}, Mode=OneWay}"
                                         DockPanel.Dock="Left" />
 
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=NounsToRemoveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -54,14 +60,18 @@
                     ItemsSource="{Binding VerbsToRemove}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:VerbViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Infinitive}" DockPanel.Dock="Left" />
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Infinitive}" DockPanel.Dock="Left" />
 
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=VerbsToRemoveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -84,14 +94,18 @@
                     ItemsSource="{Binding AdjectivesToRemove}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Adjective}" DockPanel.Dock="Left" />
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Adjective}" DockPanel.Dock="Left" />
 
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=AdjsToRemoveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -114,14 +128,18 @@
                     ItemsSource="{Binding PronounsToRemove}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:PronounViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Singular.Nominative}" DockPanel.Dock="Left" />
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Singular.Nominative}" DockPanel.Dock="Left" />
 
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=PronounsToRemoveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -144,14 +162,18 @@
                     ItemsSource="{Binding PronounsToRemove}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Text}" DockPanel.Dock="Left" />
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Text}" DockPanel.Dock="Left" />
 
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=PrepsToRemoveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -174,14 +196,18 @@
                     ItemsSource="{Binding ConjunctionsToRemove}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
-                            <Border CornerRadius="1">
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Text}" DockPanel.Dock="Left" />
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Text}" DockPanel.Dock="Left" />
 
-                                    <Button Content="c" ToolTip.Tip="Cancel" DockPanel.Dock="Right"
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
                                             Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=ConjsToRemoveList}"
-                                            CommandParameter="{Binding}"/>
-                                </DockPanel>
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

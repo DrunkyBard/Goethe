@@ -6,7 +6,7 @@
              xmlns:m="clr-namespace:Goethe.Model"
              xmlns:c="clr-namespace:Goethe.Converters"
              xmlns:s="clr-namespace:System;assembly=System.Runtime"
-             xmlns:views="clr-namespace:Goethe.Views"
+             xmlns:v="clr-namespace:Goethe.Views"
              xmlns:b="clr-namespace:Goethe.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Goethe.Views.NewWordView"
@@ -32,17 +32,19 @@
     
     <Grid RowDefinitions="*, Auto" ColumnDefinitions="2*, *">
         <Grid RowDefinitions="Auto,*" Grid.Row="0" Grid.Column="0" >
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,5,0,0">
                 <ComboBox SelectedItem="{Binding WordType}"
                           ItemsSource="{x:Static vm:NewWordViewModel.WordTypes}" />
                 
-                <views:SpecialCharacters />
-                
-                <Button Content="Add" Command="{Binding AddNewWordCommand}"
-                        IsVisible="{Binding !IsEdit^}" />
+                <Button ToolTip.Tip="Add" Command="{Binding AddNewWordCommand}"
+                        IsVisible="{Binding !IsEdit^}">
+                    <Svg Width="16" Height="16" Path="../Icons/plus.svg" />
+                </Button>
     
-                <Button Content="Save edit" Command="{Binding SaveEditWordCommand}"
-                        IsVisible="{Binding IsEdit^}" />
+                <Button ToolTip.Tip="Save edit" Command="{Binding SaveEditWordCommand}"
+                        IsVisible="{Binding IsEdit^}">
+                    <Svg Width="16" Height="16" Path="../Icons/disk (1).svg" />
+                </Button>
             </StackPanel>
             
     
@@ -55,7 +57,7 @@
                         <!--     <b:SetBoundsRelativelyToParent /> -->
                         <!-- </Interaction.Behaviors> -->
                     
-                        <StackPanel Margin="10,20,20,20">
+                        <StackPanel Margin="10,10,20,20">
                             <ContentControl
                                 Content="{Binding Noun}"
                                 ContentTemplate="{StaticResource EditNounView}"
@@ -92,25 +94,29 @@
         </Grid>
     
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-            <TextBlock Text="New words" />
+            <TextBlock Classes="title" Text="New words" />
     
             <ScrollViewer>
                 <WrapPanel>
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewNouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Nouns" />
+                        <TextBlock Classes="subTitle" Text="Nouns" />
     
                         <ItemsControl ItemsSource="{Binding NewNouns}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:NounViewModel}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Singular.Nominative}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Singular.Nominative}" HorizontalAlignment="Left" />
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -119,19 +125,23 @@
     
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewVerbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Verbs" />
+                        <TextBlock Classes="subTitle" Text="Verbs" />
     
                         <ItemsControl ItemsSource="{Binding NewVerbs}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:VerbViewModel}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Infinitive}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Infinitive}" HorizontalAlignment="Left" />
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -140,19 +150,23 @@
     
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewAdjectives.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Adjectives" />
+                        <TextBlock Classes="subTitle" Text="Adjectives" />
     
                         <ItemsControl ItemsSource="{Binding NewAdjectives}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:AdjectiveViewModel}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Adjective}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Adjective}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -161,19 +175,23 @@
                     
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewPronouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Pronouns" />
+                        <TextBlock Classes="subTitle" Text="Pronouns" />
     
                         <ItemsControl ItemsSource="{Binding NewPronouns}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:PronounViewModel}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Singular.Nominative}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Singular.Nominative}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -182,19 +200,23 @@
                     
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewPrepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Prepositions" />
+                        <TextBlock Classes="subTitle" Text="Prepositions" />
     
                         <ItemsControl ItemsSource="{Binding NewPrepositions}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Text}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Text}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -203,19 +225,23 @@
                     
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewConjunctions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Conjunctions" />
+                        <TextBlock Classes="subTitle" Text="Conjunctions" />
     
                         <ItemsControl ItemsSource="{Binding NewConjunctions}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:ConjunctionViewModel}">
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
                                         <TextBlock Text="{Binding Text}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -224,19 +250,23 @@
                     
                     <StackPanel Orientation="Vertical"
                                 IsVisible="{Binding NewParticles.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
-                        <TextBlock Text="Particles" />
+                        <TextBlock Classes="subTitle" Text="Particles" />
     
                         <ItemsControl ItemsSource="{Binding NewParticles}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:ParticleViewModel}">
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
                                         <TextBlock Text="{Binding Text}" HorizontalAlignment="Left" />
-                                        <Button Content="e" HorizontalAlignment="Right"
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
-                                                CommandParameter="{Binding}" />
-                                        <Button Content="x" HorizontalAlignment="Right"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.RemoveWordCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -246,15 +276,21 @@
             </ScrollViewer>
         </StackPanel>
     
-        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                Background="Red"
-                HorizontalAlignment="Stretch" VerticalAlignment="Center">
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+              HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            
+            <v:SpecialCharacters HorizontalAlignment="Left" />
     
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Save" Command="{Binding SaveCommand}" />
-                <Button Content="Cancel" Command="{Binding CancelCommand}" />
+                
+                <Button ToolTip.Tip="Save" Command="{Binding SaveCommand}">
+                    <Svg Width="16" Height="16" Path="../Icons/disk.svg" />
+                </Button>
+                <Button ToolTip.Tip="Cancel" Command="{Binding CancelCommand}">
+                    <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                </Button>
             </StackPanel>
     
-        </Border>
+        </Grid>
     </Grid>
 </UserControl>

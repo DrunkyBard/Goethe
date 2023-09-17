@@ -4,6 +4,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:vm="clr-namespace:Goethe.ViewModels"
                     xmlns:b="clr-namespace:Goethe.Behaviors"
+                    xmlns:v="clr-namespace:Goethe.Views"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="EditNounView.axaml" />
@@ -15,11 +16,12 @@
     </ResourceDictionary.MergedDictionaries>
     
     <DataTemplate x:Key="EditWordView" DataType="{x:Type vm:EditWordViewModel}">
-        <Grid RowDefinitions="*,Auto">
+        <Grid Name="PART_EditWordGrid" RowDefinitions="*,Auto">
             <ScrollViewer Grid.Row="0"
                           HorizontalScrollBarVisibility="Auto"
                           VerticalScrollBarVisibility="Auto">
-                <ContentControl Content="{Binding Word}">
+                <ContentControl Content="{Binding Word}"
+                                Margin="5,10,20,20">
                     <Interaction.Behaviors>
                         <b:AddDataTemplate Template="{StaticResource EditNounView}" />
                         <b:AddDataTemplate Template="{StaticResource EditVerbView}" />
@@ -31,10 +33,27 @@
                 </ContentControl>
             </ScrollViewer>
             
-            <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Content="Save" Command="{Binding SaveEditCommand}" />
-                <Button Content="Cancel" Command="{Binding CancelEditCommand}" />
-            </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            
+                <v:SpecialCharacters HorizontalAlignment="Left" />
+    
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                
+                    <Button ToolTip.Tip="Save" Command="{Binding SaveEditCommand}">
+                        <Svg Width="16" Height="16" Path="../Icons/disk.svg" />
+                    </Button>
+                    <Button ToolTip.Tip="Cancel" Command="{Binding CancelEditCommand}">
+                        <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                    </Button>
+                </StackPanel>
+    
+            </Grid>
+            
+            <!-- <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal"> -->
+            <!--     <Button Content="Save" Command="{Binding SaveEditCommand}" /> -->
+            <!--     <Button Content="Cancel" Command="{Binding CancelEditCommand}" /> -->
+            <!-- </StackPanel> -->
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

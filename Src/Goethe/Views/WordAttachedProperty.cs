@@ -12,6 +12,9 @@ public class WordAttachedProperty
     public static readonly AttachedProperty<DictionaryViewModel> DictionaryProperty =
         AvaloniaProperty.RegisterAttached<Control, Control, DictionaryViewModel>("Dictionary");
     
+    public static readonly AttachedProperty<HomeViewModel> HomeProperty =
+        AvaloniaProperty.RegisterAttached<Control, Control, HomeViewModel>("Home");
+    
     public static WordViewModel GetWord(Control control)
         => control.GetValue(WordProperty);
     
@@ -23,4 +26,10 @@ public class WordAttachedProperty
     
     public static void SetDictionary(Control control, DictionaryViewModel viewModel)
         => control.SetValue(DictionaryProperty, viewModel);
+    
+    public static HomeViewModel GetHome(Control control)
+        => control.GetValue(HomeProperty);
+    
+    public static void SetHome(Control control, HomeViewModel viewModel)
+        => control.SetValue(HomeProperty, viewModel);
 }

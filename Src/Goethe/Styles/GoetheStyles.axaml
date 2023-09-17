@@ -1,13 +1,22 @@
 <Styles xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:viewModels="clr-namespace:Goethe.ViewModels">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Goethe.ViewModels"
+        xmlns:s="clr-namespace:System;assembly=System.Runtime">
     <Styles.Resources>
         <SolidColorBrush x:Key="MainBackground" Color="#FF282828" />
         <SolidColorBrush x:Key="MainForeground" Color="#FFDEDEDE" />
     </Styles.Resources>
     
+    <Style Selector="DockPanel.toDelete">
+        <Setter Property="Background" Value="#64FF0000" />
+    </Style>
+    
+    <Style Selector="DockPanel.toEdit">
+        <Setter Property="Background" Value="#64FFFF00" />
+    </Style>
+
     <Style Selector="Button">
         <Setter Property="Background" Value="Transparent" />
     </Style>
@@ -15,19 +24,51 @@
     <Style Selector="Button:pointerover">
         <Setter Property="Background" Value="#3D3D3D" />
     </Style>
-    
+
     <Style Selector="Button:pressed ContentPresenter">
         <Setter Property="Background" Value="#4D4D4D" />
     </Style>
     
+    <Style Selector="Button.path">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    
+    <Style Selector="Button.path:pointerover ContentPresenter">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    
+    <Style Selector="Button.path:pressed">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="RenderTransform" Value="scale(0.7)" />
+    </Style>
+    
+    <Style Selector="Button.path Path">
+        <Setter Property="Fill" Value="#88888C" />
+    </Style>
+    
+    <Style Selector="Button.path:pointerover Path">
+        <Setter Property="Fill" Value="#C0C0C6" />
+    </Style>
+    
+    <Style Selector="Button.topicBtn">
+        <Setter Property="Background" Value="#4EFFFFFF" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="10,10,5,10" />
+    </Style>
+
     <Style Selector="TextBox.notEmpty">
         <Setter Property="Watermark" Value="" />
     </Style>
-    
+
     <Style Selector="TextBox.notEmpty:empty">
         <Setter Property="Watermark" Value="Non empty" />
     </Style>
-    
+
     <Style Selector="TextBox.notEmpty DataValidationErrors">
         <Setter Property="Template">
             <ControlTemplate>
@@ -42,94 +83,102 @@
             </ControlTemplate>
         </Setter>
     </Style>
- 
+
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource MainForeground}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
     </Style>
-    
+
     <Style Selector="TextBlock.title">
         <Setter Property="Margin" Value="0,10,0,10" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
-    
+
     <Style Selector="TextBlock.desc">
         <Setter Property="Foreground" Value="#AAA398" />
         <Setter Property="FontSize" Value="12" />
     </Style>
-    
+
     <Style Selector="Label.desc">
         <Setter Property="Foreground" Value="#AAA398" />
         <Setter Property="FontSize" Value="12" />
     </Style>
-    
+
     <Style Selector="Label.title">
         <Setter Property="Margin" Value="0,10,0,10" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
-    
+
     <Style Selector="Label.subTitle">
         <Setter Property="Margin" Value="0,5,0,0" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
     
+    <Style Selector="TextBlock.subTitle">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
     <Style Selector="Label.decl">
         <Setter Property="FontSize" Value="13" />
         <Setter Property="FontStyle" Value="Italic" />
         <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
-    
+
     <Style Selector="Label.scarlett">
         <Setter Property="Foreground" Value="#FF4081" />
     </Style>
-    
+
     <Style Selector="TextBox">
         <Setter Property="Width" Value="150" />
         <Setter Property="MaxLength" Value="70" />
     </Style>
-    
+
     <Style Selector="Label">
         <Setter Property="Foreground" Value="{StaticResource MainForeground}" />
     </Style>
-    
+
     <Style Selector="DataGridColumnHeader">
         <Setter Property="Background" Value="Transparent" />
     </Style>
-    
+
     <Style Selector="TreeView.notTree Panel#PART_ExpandCollapseChevronContainer">
         <Setter Property="IsVisible" Value="False" />
     </Style>
-    
+
     <Style Selector="TreeView.notTree">
         <Setter Property="MaxHeight" Value="350" />
     </Style>
-    
+
     <Style Selector="Border.wordTableBorder">
-        <Setter Property="BorderThickness" Value="0,1,1,1" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
         <Setter Property="Margin" Value="0,0,20,20" />
         <Setter Property="BorderBrush" Value="#C0C0C6" />
     </Style>
-    
+
     <Style Selector="TreeView.notTree TreeViewItem">
         <Setter Property="Padding" Value="5,0,0,0" />
     </Style>
-    
+
     <Style Selector="StackPanel.wordTable">
         <Setter Property="Margin" Value="0,10,20,20" />
     </Style>
-    
+
     <Style Selector="FlyoutPresenter.detailFlyout">
         <Setter Property="Padding" Value="20" />
         <Setter Property="MaxWidth" Value="800" />
         <Setter Property="MaxHeight" Value="400" />
     </Style>
-    
+
     <Style Selector="Button.wordCtrl">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Opacity" Value="0.0" />
-        
+
         <Setter Property="Transitions">
             <Setter.Value>
                 <Transitions>
@@ -138,21 +187,76 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <Style Selector="TreeViewItem:pointerover DockPanel.dictWordEntry Button.wordCtrl">
+
+    <Style Selector="Border.dictWordEntry:pointerover Button.wordCtrl">
         <Setter Property="Opacity" Value="1.0" />
     </Style>
     
+    <Style Selector="StackPanel.dictWordEntry:pointerover Button.wordCtrl">
+        <Setter Property="Opacity" Value="1.0" />
+    </Style>
+    
+    <Style Selector="StackPanel.dictWordEntry TextBlock">
+        <Setter Property="Margin" Value="0,0,5,0" />
+    </Style>
+
+    <Style Selector="TreeViewItem:pointerover DockPanel.dictWordEntry Button.wordCtrl">
+        <Setter Property="Opacity" Value="1.0" />
+    </Style>
+
     <Style Selector="TreeViewItem DockPanel.dictWordEntry TextBlock">
         <Setter Property="Margin" Value="0,0,15,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
-    
+
     <Style Selector="StackPanel.StackPanel">
         <Setter Property="Margin" Value="0,0,20,0" />
     </Style>
-    
+
     <!-- <Style Selector="Button.wordCtrl:pointerover"> -->
     <!--     <Setter Property="Opacity" Value="1.0" /> -->
     <!-- </Style> -->
+
+    <Style Selector="RadioButton">
+        <Setter Property="MinWidth" Value="25" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <Border
+                    Name="RootBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid RowDefinitions="*,2">
+                        <Grid.DataTemplates>
+                            <DataTemplate DataType="{x:Type s:String}">
+                                <TextBlock Classes="subTitle" Text="{Binding}" />
+                            </DataTemplate>
+                        </Grid.DataTemplates>
+                        
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Grid.Row="0"
+                            Margin="0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            RecognizesAccessKey="True" />
+
+                        <Border Grid.Row="1" Background="#10A2E0" IsVisible="{TemplateBinding IsChecked}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+
+        </Setter>
+    </Style>
+    
+    <Style Selector="ComboBox">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
 </Styles>
