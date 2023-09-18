@@ -30,6 +30,8 @@
                     IsVisible="{Binding Repo.CorrectConjunctions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
             <Button Classes="topicBtn" Content="Prepositions" Command="{Binding StartPrepositionsCommand}" 
                     IsVisible="{Binding Repo.CorrectPrepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
+            <Button Classes="topicBtn" Content="Adverbs" Command="{Binding StartAdverbsCommand}" 
+                    IsVisible="{Binding Repo.CorrectAdverbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
         </WrapPanel>
 
         <ItemsControl

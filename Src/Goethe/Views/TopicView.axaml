@@ -97,6 +97,10 @@
                         <DataTemplate DataType="{x:Type vm:PrepositionViewModel}">
                             <TextBlock Classes="title" Text="Preposition" />
                         </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:AdverbViewModel}">
+                            <TextBlock Classes="title" Text="Adverb" />
+                        </DataTemplate>
                     </ContentControl.DataTemplates>
                 </ContentControl>
                 

@@ -567,7 +567,7 @@
                                                             <Button.Flyout>
                                                                 <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
                                                                     <ContentControl Content="{Binding}"
-                                                                        ContentTemplate="{StaticResource ConjunctionDetailView}" />
+                                                                        ContentTemplate="{StaticResource AdverbDetailView}" />
                                                                 </Flyout>
                                                             </Button.Flyout>
                                                         </Button>
