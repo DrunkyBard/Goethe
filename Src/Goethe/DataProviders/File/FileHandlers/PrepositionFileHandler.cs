@@ -9,7 +9,7 @@ public class PrepositionFileHandler : BaseFileHandler<Preposition, PrepositionVi
 {
     public override string Header => "# preposition | translations (comma-separated) | topics (comma-separated)";
 
-    private static readonly string[] _tokens = { "Preposition", "Translations" };
+    private static readonly string[] _tokens = { "Preposition", "Translations", "Topics" };
 
     protected override string[] Tokens => _tokens;
 

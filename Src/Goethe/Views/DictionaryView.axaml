@@ -16,6 +16,7 @@
         <ResourceInclude Source="PronounDetailFlyout.axaml" />
         <ResourceInclude Source="PrepositionDetailFlyout.axaml" />
         <ResourceInclude Source="ConjunctionDetailFlyout.axaml" />
+        <ResourceInclude Source="AdverbDetailFlyout.axaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplates x:Key="DictionaryView">
@@ -198,7 +199,7 @@
                                                                 HorizontalAlignment="Right">
                                                         <Button ToolTip.Tip="Remove" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=VerbsList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16"
@@ -209,7 +210,7 @@
 
                                                         <Button ToolTip.Tip="Edit" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=VerbsList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
@@ -265,7 +266,7 @@
                                                                 HorizontalAlignment="Right">
                                                         <Button ToolTip.Tip="Remove" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=AdjList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16"
@@ -276,7 +277,7 @@
 
                                                         <Button ToolTip.Tip="Edit" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=AdjList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
@@ -334,7 +335,7 @@
                                                                 HorizontalAlignment="Right">
                                                         <Button ToolTip.Tip="Remove" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=PronounList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16"
@@ -345,7 +346,7 @@
 
                                                         <Button ToolTip.Tip="Edit" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=PronounList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
@@ -402,7 +403,7 @@
                                                                 HorizontalAlignment="Right">
                                                         <Button ToolTip.Tip="Remove" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=PrepositionList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16"
@@ -413,7 +414,7 @@
 
                                                         <Button ToolTip.Tip="Edit" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=PrepositionList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
@@ -470,7 +471,7 @@
                                                                 HorizontalAlignment="Right">
                                                         <Button ToolTip.Tip="Remove" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=ConjunctionList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16"
@@ -481,7 +482,75 @@
 
                                                         <Button ToolTip.Tip="Edit" Classes="wordCtrl"
                                                                 IsVisible="{Binding !IsDeletedOrModified^}"
-                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=NounsList}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=ConjunctionList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource ConjunctionDetailView}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+                            
+                            <Border 
+                                Classes="wordTableBorder"
+                                IsVisible="{Binding Adverbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Adverbs" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="AdverbList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Adverbs}">
+
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:AdverbViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Adverb}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=AdverbList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=AdverbList}"
                                                                 CommandParameter="{Binding}">
                                                             <Button.Content>
                                                                 <Svg Width="16" Height="16" Path="../Icons/pencil.svg"

@@ -9,7 +9,7 @@ public class ConjunctionFileHandler : BaseFileHandler<Conjunction, ConjunctionVi
 {
     public override string Header => "# conjunction | translations (comma-separated) | topics (comma-separated)";
 
-    private static readonly string[] _tokens = { "Conjunction", "Translations" };
+    private static readonly string[] _tokens = { "Conjunction", "Translations", "Topics" };
 
     protected override string[] Tokens => _tokens;
 

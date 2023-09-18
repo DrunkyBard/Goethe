@@ -8,6 +8,7 @@ public class FileNames
     public const string Adjectives   = "Adjectives.txt";
     public const string Prepositions = "Prepositions.txt";
     public const string Conjunctions = "Conjunctions.txt";
+    public const string Adverbs      = "Adverbs.txt";
     public const string Particles    = "Particles.txt";
     public const string Determiners  = "Determiners.txt";
 }

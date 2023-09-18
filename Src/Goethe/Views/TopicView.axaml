@@ -17,6 +17,7 @@
                 <ResourceInclude Source="PronounDetailFlyout.axaml" />
                 <ResourceInclude Source="PrepositionDetailFlyout.axaml" />
                 <ResourceInclude Source="ConjunctionDetailFlyout.axaml" />
+                <ResourceInclude Source="AdverbDetailFlyout.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -107,6 +108,7 @@
                         <b:AddDataTemplate Template="{StaticResource PronounDetailView}" />
                         <b:AddDataTemplate Template="{StaticResource PrepositionDetailView}" />
                         <b:AddDataTemplate Template="{StaticResource ConjunctionDetailView}" />
+                        <b:AddDataTemplate Template="{StaticResource AdverbDetailView}" />
                     </Interaction.Behaviors>
                 </ContentControl>
             </StackPanel>

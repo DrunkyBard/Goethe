@@ -13,6 +13,7 @@
         <ResourceInclude Source="EditPronounView.axaml" />
         <ResourceInclude Source="EditPrepositionView.axaml" />
         <ResourceInclude Source="EditConjunctionView.axaml" />
+        <ResourceInclude Source="EditAdverbView.axaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <DataTemplate x:Key="EditWordView" DataType="{x:Type vm:EditWordViewModel}">
@@ -29,6 +30,7 @@
                         <b:AddDataTemplate Template="{StaticResource EditPronounView}" />
                         <b:AddDataTemplate Template="{StaticResource EditPrepositionView}" />
                         <b:AddDataTemplate Template="{StaticResource EditConjunctionView}" />
+                        <b:AddDataTemplate Template="{StaticResource EditAdverbView}" />
                     </Interaction.Behaviors>
                 </ContentControl>
             </ScrollViewer>

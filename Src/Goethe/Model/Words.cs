@@ -13,6 +13,7 @@ public enum WordType
     Preposition,
     Conjunction,
     Particle,
+    Adverb,
     Determiner
 }
 
@@ -541,5 +542,25 @@ public sealed class Verb
 
             return verb.Infinitive.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
         };
+    }
+}
+
+public sealed class Adverb
+{
+    public int      Id           { get; }
+    public string   Text         { get; }
+    public string[] Translations { get; }
+    public string[] Topics       { get; }
+
+    public Adverb(int id, string adverb, string[] translations, string[] topics)
+    {
+        Code.NotNullOrWhitespace(adverb);
+        Code.NotNullOrEmpty(translations);
+        Code.NotNull(topics);
+
+        Id           = id;
+        Text         = adverb;
+        Translations = translations;
+        Topics       = topics;
     }
 }

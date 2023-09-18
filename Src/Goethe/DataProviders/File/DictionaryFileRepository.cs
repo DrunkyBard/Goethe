@@ -13,6 +13,7 @@ using ConjunctionDictFile = Goethe.DataProviders.File.DictionaryFile<Goethe.Mode
 using PronounDictFile = Goethe.DataProviders.File.DictionaryFile<Goethe.Model.Pronoun, Goethe.ViewModels.PronounViewModel>;
 using ParticleDictFile = Goethe.DataProviders.File.DictionaryFile<Goethe.Model.Particle, Goethe.ViewModels.ParticleViewModel>;
 using PrepositionDictFile = Goethe.DataProviders.File.DictionaryFile<Goethe.Model.Preposition, Goethe.ViewModels.PrepositionViewModel>;
+using AdverbDictFile = Goethe.DataProviders.File.DictionaryFile<Goethe.Model.Adverb, Goethe.ViewModels.AdverbViewModel>;
 
 namespace Goethe.DataProviders.File;
 
@@ -25,6 +26,7 @@ public class DictionaryFileRepository
     private readonly PronounDictFile     _pronounDictFile;
     private readonly ParticleDictFile    _particleDictFile;
     private readonly PrepositionDictFile _prepositionDictFile;
+    private readonly AdverbDictFile      _adverbDictFile;
     
     public SourceList<Noun>        CorrectNouns { get; }
     public SourceList<InvalidWord> InvalidNouns { get; }
@@ -46,16 +48,20 @@ public class DictionaryFileRepository
 
     public SourceList<Preposition> CorrectPrepositions { get; }
     public SourceList<InvalidWord> InvalidPrepositions { get; }
+    
+    public SourceList<Adverb>      CorrectAdverbs { get; }
+    public SourceList<InvalidWord> InvalidAdverbs { get; }
 
     public DictionaryFileRepository()
     {
-        _nounDictFile        = new DictionaryFile<Noun, NounViewModel>(FileNames.Nouns, new NounFileHandler());
-        _verbDictFile        = new DictionaryFile<Verb, VerbViewModel>(FileNames.Verbs, new VerbFileHandler());
-        _adjectiveDictFile   = new DictionaryFile<Adjective, AdjectiveViewModel>(FileNames.Adjectives, new AdjectiveFileHandler());
-        _conjunctionDictFile = new DictionaryFile<Conjunction, ConjunctionViewModel>(FileNames.Conjunctions, new ConjunctionFileHandler());
-        _pronounDictFile     = new DictionaryFile<Pronoun, PronounViewModel>(FileNames.Pronouns, new PronounFileHandler());
-        _particleDictFile    = new DictionaryFile<Particle, ParticleViewModel>(FileNames.Particles, new ParticleFileHandler());
-        _prepositionDictFile = new DictionaryFile<Preposition, PrepositionViewModel>(FileNames.Prepositions, new PrepositionFileHandler());
+        _nounDictFile        = new NounDictFile(FileNames.Nouns, new NounFileHandler());
+        _verbDictFile        = new VerbDictFile(FileNames.Verbs, new VerbFileHandler());
+        _adjectiveDictFile   = new AdjectiveDictFile(FileNames.Adjectives, new AdjectiveFileHandler());
+        _conjunctionDictFile = new ConjunctionDictFile(FileNames.Conjunctions, new ConjunctionFileHandler());
+        _pronounDictFile     = new PronounDictFile(FileNames.Pronouns, new PronounFileHandler());
+        _particleDictFile    = new ParticleDictFile(FileNames.Particles, new ParticleFileHandler());
+        _prepositionDictFile = new PrepositionDictFile(FileNames.Prepositions, new PrepositionFileHandler());
+        _adverbDictFile      = new AdverbDictFile(FileNames.Adverbs, new AdverbFileHandler());
 
         CorrectNouns = _nounDictFile.CorrectWords.ToSourceList(x => x);
         InvalidNouns = _nounDictFile.InvalidWords.ToSourceList(x => x);
@@ -77,6 +83,9 @@ public class DictionaryFileRepository
 
         CorrectPrepositions = _prepositionDictFile.CorrectWords.ToSourceList(x => x);
         InvalidPrepositions = _prepositionDictFile.InvalidWords.ToSourceList(x => x);
+        
+        CorrectAdverbs = _adverbDictFile.CorrectWords.ToSourceList(x => x);
+        InvalidAdverbs = _adverbDictFile.InvalidWords.ToSourceList(x => x);
     }
 
     public async Task SaveNewWords(
@@ -86,7 +95,8 @@ public class DictionaryFileRepository
         IReadOnlyList<PronounViewModel> newPronounViewModels,
         IReadOnlyList<PrepositionViewModel> newPrepositionsViewModels,
         IReadOnlyList<ConjunctionViewModel> newConjunctionsViewModels,
-        IReadOnlyList<ParticleViewModel> newParticlesViewModels)
+        IReadOnlyList<ParticleViewModel> newParticlesViewModels,
+        IReadOnlyList<AdverbViewModel> newAdverbViewModels)
     {
         var saveNounsTask     = _nounDictFile.PersistNewWords(newNounViewModels);
         var saveVerbsTask     = _verbDictFile.PersistNewWords(newVerbViewModels);
@@ -95,9 +105,10 @@ public class DictionaryFileRepository
         var savePrepsTask     = _prepositionDictFile.PersistNewWords(newPrepositionsViewModels);
         var saveConjsTask     = _conjunctionDictFile.PersistNewWords(newConjunctionsViewModels);
         var saveParticlesTask = _particleDictFile.PersistNewWords(newParticlesViewModels);
+        var saveAdverbsTask   = _adverbDictFile.PersistNewWords(newAdverbViewModels);
         
         await Task.WhenAll(
-            saveNounsTask, saveVerbsTask, saveAdjsTask, 
+            saveNounsTask, saveVerbsTask, saveAdjsTask, saveAdverbsTask,
             savePronounsTask, savePrepsTask, saveConjsTask, saveParticlesTask).ConfigureAwait(true);
         
         CorrectNouns.AddRange(saveNounsTask.Result);
@@ -107,5 +118,6 @@ public class DictionaryFileRepository
         CorrectPrepositions.AddRange(savePrepsTask.Result);
         CorrectConjunctions.AddRange(saveConjsTask.Result);
         CorrectParticles.AddRange(saveParticlesTask.Result);
+        CorrectAdverbs.AddRange(saveAdverbsTask.Result);
     }
 }

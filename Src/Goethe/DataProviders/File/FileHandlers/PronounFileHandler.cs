@@ -11,7 +11,7 @@ public class PronounFileHandler : BaseFileHandler<Pronoun, PronounViewModel>
                                      "pl. nom | pl. gen. | pl. dat. | pl. acc. | " + 
                                      "translations (comma-separated) | topics (comma-separated)";
 
-    private static readonly string[] _tokens = { "Singular", "Plural", "Translations" };
+    private static readonly string[] _tokens = { "Singular", "Plural", "Translations", "Topics" };
 
     protected override string[] Tokens => _tokens;
 

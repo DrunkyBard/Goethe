@@ -9,7 +9,7 @@ public class ParticleFileHandler : BaseFileHandler<Particle, ParticleViewModel>
 {
     public override string Header => "# particle | translations (comma-separated) | topics (comma-separated)";
 
-    private static readonly string[] _tokens = { "Particle", "Translations" };
+    private static readonly string[] _tokens = { "Particle", "Translations", "Topics" };
 
     protected override string[] Tokens => _tokens;
 
