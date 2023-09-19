@@ -280,6 +280,14 @@ public sealed class DeclensionViewModel : ViewModelBase
         Dative     = string.Empty;
         Accusative = string.Empty;
     }
+    
+    public void MakeEmpty()
+    {
+        Nominative = "-";
+        Genitive   = "-";
+        Dative     = "-";
+        Accusative = "-";
+    }
 
     public void Replace(DeclensionViewModel declensionViewModel)
     {
@@ -778,6 +786,14 @@ public sealed class PredicativeViewModel : ViewModelBase
         Neutral   = string.Empty;
         Plural    = string.Empty;
     }
+    
+    public void MakeEmpty()
+    {
+        Masculine = "-";
+        Feminine  = "-";
+        Neutral   = "-";
+        Plural    = "-";
+    }
 
     public void Replace(DeclensionViewModel declensionViewModel)
     {
@@ -1001,22 +1017,22 @@ public sealed class AdjectiveViewModel : WordViewModel
     {
         Adjective = string.Empty;
         
-        Strong.Masculine.Clear();
-        Strong.Feminine.Clear();
-        Strong.Neutral.Clear();
-        Strong.Plural.Clear();
+        Strong.Masculine.MakeEmpty();
+        Strong.Feminine.MakeEmpty();
+        Strong.Neutral.MakeEmpty();
+        Strong.Plural.MakeEmpty();
         
-        Weak.Masculine.Clear();
-        Weak.Feminine.Clear();
-        Weak.Neutral.Clear();
-        Weak.Plural.Clear();
+        Weak.Masculine.MakeEmpty();
+        Weak.Feminine.MakeEmpty();
+        Weak.Neutral.MakeEmpty();
+        Weak.Plural.MakeEmpty();
         
-        Mixed.Masculine.Clear();
-        Mixed.Feminine.Clear();
-        Mixed.Neutral.Clear();
-        Mixed.Plural.Clear();
+        Mixed.Masculine.MakeEmpty();
+        Mixed.Feminine.MakeEmpty();
+        Mixed.Neutral.MakeEmpty();
+        Mixed.Plural.MakeEmpty();
         
-        Predicative.Clear();
+        Predicative.MakeEmpty();
     }
 
     public static Func<AdjectiveViewModel, bool> GetFilter(string? filter)

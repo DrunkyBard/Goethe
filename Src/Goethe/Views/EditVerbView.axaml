@@ -47,7 +47,11 @@
             
             <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
                 <Label Content="Translation: " />
-                <TextBox Text="{Binding Translation}" />
+                <TextBox Text="{Binding Translation}">
+                    <TextBox.KeyBindings>
+                        <KeyBinding  Gesture="Ctrl+Enter" Command="{Binding AddTranslationCommand}"/>
+                    </TextBox.KeyBindings>
+                </TextBox>
                 <Button Command="{Binding AddTranslationCommand}" Margin="5,0">
                     <Button.Content>
                         <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
@@ -55,7 +59,11 @@
                 </Button>
                 
                 <Label Content="Topic: " Margin="10,0,0,0" />
-                <TextBox Text="{Binding Topic}" />
+                <TextBox Text="{Binding Topic}">
+                    <TextBox.KeyBindings>
+                        <KeyBinding  Gesture="Ctrl+Enter" Command="{Binding AddTopicCommand}"/>
+                    </TextBox.KeyBindings>
+                </TextBox>
                 <Button Command="{Binding AddTopicCommand}" Margin="5,0">
                     <Button.Content>
                         <Svg Width="16" Height="16" Path="../Icons/plus.svg"/>
