@@ -1,0 +1,65 @@
+﻿# adverb | translations (comma-separated) | topics (comma-separated)
+nie | никогда,never | A1,Время
+einmal | один раз,однажды,once,first of all | A1,Время
+oft | часто,often,frequently | A1,Время
+immer | всегда,always | A1,Время
+gestern | вчера,yesterday | A1,Время
+bald | soon,almost,nearly,скоро | A1,Время
+sofort | immediately,straight,right away,сейчас же | A1,Время
+heute | today,nowadays,these days,сегодня | A1,Время
+gerade | прямо сейчас,только что,straight,just | A1,Время
+zurzeit | at present,at the moment,в этот момент,прямо сейчас | A1,Время
+jetzt | now,nowadays,теперь,сейчас | A1,Время
+schon | already,уже | A1,Время
+spät | поздно,late | A1,Время
+morgen | tomorrow,завтра | A1,Время
+wo | where,где | A1,Вопросительные слова
+wie | how,как | A1,Вопросительные слова
+wann | when,когда | A1,Вопросительные слова
+warum | why,почему | A1,Вопросительные слова
+woher | where...from,откуда | A1,Вопросительные слова
+wohin | where,куда | A1,Вопросительные слова
+wie viel | how much,как много | A1,Вопросительные слова
+was für ein/eine/einen | что за,какой | Вопросительные слова,A1
+geradeaus | Прямо (идти или ехать),straight ahead | A1,География
+zurück | back,behind,назад,обратно | A1,География
+nach links | on the left,on the reverse,wrong side,налево | A1,География
+nach rechts | on the right,направо | A1,География
+hier | here,locally,здесь,тут | A1,Положение
+da | там,тут,there,here | A1,Положение
+dort | там,there | A1,Положение
+daneben | Рядом,next to him/her/that/it,beside him/her/that/it | A1,Положение
+draußen | снаружи,на улице,outside,out of doors,outdoors | A1,Положение
+links | слева,on the/to the left | A1,Положение
+rechts | справа,on the/to the right | A1,Положение
+oben | наверху,at the top,on the surface,upstairs,up | A1,Положение
+unten | внизу,at the bottom,down,below,underneath,downstairs | A1,Положение
+unter | под,under,underneath,below | A1,Положение
+hinten | сзади,behind,at the back | A1,Положение
+hinter | находиться позади (чего-либо),behind,after | A1,Положение
+weg sein | быть не здесь,отсутствовать,уйти,to be away,be gone | A1,Состояние
+zu sein | быть закрытым,to be shut,to be closed | A1,Состояние
+an sein | быть включенным или работать (о технике),to be on | A1,Состояние
+auf sein | быть открытым (об окне; двери; магазине),to be open | A1,Состояние
+aus sein | быть выключенным или не работать (о технике),to be out (Radio; TV; etc) | A1,Состояние
+ab | от,начиная с,off,away | A1
+sehr | очень,very,a lot | Разное,A1
+so | so,so much,like this,так | A1,Разное
+vielleicht | perharps,by any chance,может быть | A1,Разное
+nur | только,only,just | A1,Разное
+wunderbar | чудесный,чудный,wonderfully | A1,Разное
+nicht | not,не | A1,Разное
+klar | clearly,ясно | A1,Погода
+zusammen | together,вместе | A1,Друзья и знакомые
+geönnet | открыто,opened | A1,Покупки и одежда
+geschlossen | закрыто,closed | Покупки и одежда,A1
+Rad fahren | Ехать на велосипеде | A1,Транспорт и техника
+besetzt | занято | A1,Транспорт и техника
+manchmal | sometimes,иногда | A1
+mal | times,by,только | A1
+denn | because,for,than,потому-что | A1
+meistens | mostly,for the most part | A1
+ebenso | just as,as well,также | A1
+allerdings | though,however,хотя | A1
+erst | first,at first,only | A1
+normalerweise | normally,usually,обычно | A1

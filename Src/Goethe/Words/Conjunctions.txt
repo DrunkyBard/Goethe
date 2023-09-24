@@ -1,0 +1,6 @@
+﻿# conjunction | translations (comma-separated) | topics (comma-separated)
+aber | но,but | A1
+oder | или,or | A1
+und | and,и,а |A1
+also | so,therefore,well,итак | A1,Разное
+als | than,as if,though,as | A1

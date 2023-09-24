@@ -1,0 +1,305 @@
+﻿# gender | sg nom. | sg gen. | sg dat. | sg acc. | pl nom. | pl gen. | pl dat. | pl acc. | translations (comma-separated) | topics (comma-separated)
+N | Hallo | Hallos | Hallo | Hallo | Hallos | Hallos | Hallos | Hallos | Hello,Привет | A1
+F | Bitte | Bitte | Bitte | Bitte | Bitten | Bitten | Bitten | Bitten | Appeal,Please,Пожалуйста | A1,Приветствия/прощания/восклицания
+F | Achtung | Achtung | Achtung | Achtung | Achtungen | Achtungen | Achtungen | Achtungen | Danger,Caution,Warning,Опасность,Attention,Caution,Внимание | A1,Приветствия/прощания/восклицания
+F | Vorsicht | Vorsicht | Vorsicht | Vorsicht | - | - | - | - | Care,Caution,Danger,Attention,Осторожно | A1,Приветствия/прощания/восклицания
+N | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Bye,Пока (в разговорной) | A1,Приветствия/прощания/восклицания
+F | Zeit | Zeit | Zeit | Zeit | Zeiten | Zeiten | Zeiten | Zeiten | Time,Period,Time duration,Age,Время | A1,Время
+N | Datum | Datums | Datum | Datum | Daten | Daten | Daten | Daten | Дата,Число | A1,Время
+N | Jahr | Jahres/Jahrs | Jahr/Jahre | Jahr | Jahre | Jahre | Jahren | Jahre | Год | A1,Время
+M | Monat | Monates/Monats | Monat/Monate | Monat | Monate | Monate | Monaten | Monate | Месяц,Month | A1,Время
+F | Woche | Woche | Woche | Woche | Wochen | Wochen | Wochen | Wochen | Week,Неделя | A1,Время
+M | Tag | Tages/Tags | Tag/Tage | Tag | Tage | Tage | Tagen | Tage | Day,Period,Light,День | A1,Время
+F | Stunde | Stunde | Stunde | Stunde | Stunden | Stunden | Stunden | Stunden | Час,Урок,Hour,Time,Lesson,Moment | A1,Время
+F | Minute | Minute | Minute | Minute | Minuten | Minuten | Minuten | Minuten | Минута,Minute,Moment | A1,Время
+F | Sekunde | Sekunde | Sekunde | Sekunde | Sekunden | Sekunden | Sekunden | Sekunden | Секунда,Second | A1,Время
+M | Moment | Momentes/Moments | Moment/Momente | Moment | Momente | Momente | Momenten | Momente | Момент,Moment,Instant | A1,Время
+M | Morgen | Morgens | Morgen | Morgen | Morgen | Morgen | Morgen | Morgen | Утро,Morning,Good morning,Dawn | A1,Время
+M | Vormittag | Vormittags | Vormittag | Vormittag | Vormittage | Vormittage | Vormittagen | Vormittage | Первая половина дня,Morning,Forenoon | A1,Время
+M | Mittag | Mittags | Mittag | Mittag | Mittage | Mittage | Mittagen | Mittage | Полдень,Noon,Lunch break | A1,Время
+M | Nachmittag | Nachmittags | Nachmittag | Nachmittag | Nachmittage | Nachmittage | Nachmittagen | Nachmittage | Вторая половина дня,Afternoon | A1,Время
+M | Abend | Abends | Abend | Abend | Abende | Abende | Abenden | Abende | Вечер,Evening | A1,Время
+F | Nacht | Nacht | Nacht | Nacht | Nächte | Nächte | Nächten | Nächte | Ночь,Night | A1,Время
+M | Wochentag | Wochentages/Wochentags | Wochentag/Wochentage | Wochentag | Wochentage | Wochentage | Wochentagen | Wochentage | День недели,Weekday | A1,Дни недели
+M | Montag | Montages/Montags | Montag/Montage | Montag | Montage | Montage | Montagen | Montage | Понедельник,Monday | A1,Дни недели
+M | Dienstag | Dienstages/Dienstags | Dienstag/Dienstage | Dienstag | Dienstage | Dienstage | Dienstagen | Dienstage | Вторник,Tuesday | A1,Дни недели
+M | Mittwoch | Mittwoches/Mittwochs | Mittwoch/Mittwoche | Mittwoch | Mittwoche | Mittwoche | Mittwochen | Mittwoche | Среда,Wednesday | A1,Дни недели
+M | Donnerstag | Donnerstages/Donnerstags | Donnerstag/Donnerstage | Donnerstag | Donnerstage | Donnerstage | Donnerstagen | Donnerstage | Четверг,Thursday | A1,Дни недели
+M | Freitag | Freitages/Freitags | Freitag/Freitage | Freitag | Freitage | Freitage | Freitagen | Freitage | Пятница,Friday | A1,Дни недели
+M | Samstag | Samstages | Samstag/Samstage | Samstag | Samstage | Samstage | Samstagen | Samstage | Суббота,Saturday | A1,Дни недели
+M | Sonntag | Sonntags | Sonntag | Sonntag | Sonntage | Sonntage | Sonntagen | Sonntage | Воскресенье,Sunday | A1,Дни недели
+N | Wochenende | Wochenendes | Wochenende | Wochenende | Wochenenden | Wochenenden | Wochenenden | Wochenenden | Выходные,Weekend | A1,Дни недели
+F | Person | Person | Person | Person | Personen | Personen | Personen | Personen | Person,Character,Individual | A1
+M | Frühling | Frühlings | Frühling | Frühling | Frühlinge | Frühlinge | Frühlingen | Frühlinge | Spring,Весна | A1,Времена года и месяца
+M | Sommer | Sommers | Sommer | Sommer | Sommer | Sommer | Sommern | Sommer | Summer,Лето | A1,Времена года и месяца
+M | Herbst | Herbstes/Herbsts | Herbst/Herbste | Herbst | Herbste | Herbste | Herbsten | Herbste | Autumn,Осень | A1,Времена года и месяца
+M | Winter | Winters | Winter | Winter | Winter | Winter | Wintern | Winter | Winter,Зима | A1,Времена года и месяца
+M | Januar | Januars/Januar | Januar | Januar | Januare | Januare | Januaren | Januare | January,Январь | A1,Времена года и месяца
+M | Februar | Februars/Februar | Februar | Februar | Februare | Februare | Februaren | Februare | February,Февраль | A1,Времена года и месяца
+M | März | Märzes/März | März/Märze | März | Märze | Märze | Märzen | Märze | March,Март | A1,Времена года и месяца
+M | April | Aprils/April | April | April | Aprile | Aprile | Aprilen | Aprile | April,Апрель | A1,Времена года и месяца
+M | Mai | Maies/Mais | Mai | Mai | - | - | - | - | May,Май | A1,Времена года и месяца
+M | Juni | Junis | Juni | Juni | Junis | Junis | Junis | Junis | June,Июнь | A1,Времена года и месяца
+M | Juli | Julis | Juli | Juli | Julis | Julis | Julis | Julis | July,Июль | A1,Времена года и месяца
+M | August | Augustes/Augusts | August/Auguste | August | Auguste | Auguste | Augusten | Auguste | August,Август | A1,Времена года и месяца
+M | September | Septembers/September | September | September | September | September | Septembern | September | September,Сентябрь | A1,Времена года и месяца
+M | Oktober | Oktobers/Oktober | Oktober | Oktober | Oktober | Oktober | Oktobern | Oktober | October,Октябрь | A1,Времена года и месяца
+M | November | Novembers/November | November | November | November | November | Novembern | November | November,Ноябрь | A1,Времена года и месяца
+M | Dezember | Dezembers/Dezember | Dezember | Dezember | Dezember | Dezember | Dezembern | Dezember | December,Декабрь | A1,Времена года и месяца
+F | Million | Million | Million | Million | Millionen | Millionen | Millionen | Millionen | Million,Миллион | A1,Цифры и числа
+F | Milliarde | Milliarde | Milliarde | Milliarde | Milliarden | Milliarden | Milliarden | Milliarden | Billion,Миллиард | A1,Цифры и числа
+M | Meter | Meters | Meter | Meter | Meter | Meter | Metern | Meter | Meter,Метр | A1,Меры длины и веса
+M | Zentimeter | Zentimeters | Zentimeter | Zentimeter | Zentimeter | Zentimeter | Zentimetern | Zentimeter | Centimeter,Сантиметр | A1,Меры длины и веса
+M | Quadratmeter | Quadratmeters | Quadratmeter | Quadratmeter | Quadratmeter | Quadratmeter | Quadratmetern | Quadratmeter | Square meter,Квадратный метр | A1,Меры длины и веса
+N | Prozent | Prozentes/Prozents | Prozent/Prozente | Prozent | Prozente | Prozente | Prozenten | Prozente | Percent,Процент | A1,Меры длины и веса
+N | Liter | Liters | Liter | Liter | Liter | Liter | Litern | Liter | Liter,Литр | A1,Меры длины и веса
+N | Gramm | Gramms | Gramm | Gramm | Gramme | Gramme | Grammen | Gramme | Gram,Грамм | A1,Меры длины и веса
+N | Kilogramm | Kilogramms | Kilogramm | Kilogramm | Kilogramm | Kilogramm | Kilogramm | Kilogramm | Kilogram,Килограм | A1,Меры длины и веса
+N | Pfund | Pfundes/Pfunds | Pfund/Pfunde | Pfund | Pfunde | Pfunde | Pfunden | Pfunde | Pound,Фунт | A1,Меры длины и веса
+F | Welt | Welt | Welt | Welt | Welten | Welten | Welten | Welten | World,Earth,Мир | A1,География
+N | Land | Landes/Lands | Land/Lande | Land | Länder/Lande | Länder/Lande | Ländern/Landen | Länder/Lande | Land,Country,Nation,Страна | A1,География
+F | Stadt | Stadt | Stadt | Stadt | Städte | Städte | Städten | Städte | City,Town,Город | A1,География
+N | Dorf | Dorfes/Dorfs | Dorf/Dorfe | Dorf | Dörfer | Dörfer | Dörfern | Dörfer | Village,Деревня | A1,География
+M | Platz | Platzes | Platz/Platze | Platz | Plätze | Plätze | Plätzen | Plätze | Место,Площадь,Town square,Room,Circus,Spot | A1,География
+M | Ort | Ortes/Orts | Ort/Orte | Ort | Orte/Örter | Orte/Örter | Orten/Örtern | Orte/Örter | Место,Небольшой городок,Site,Spot,Place,Town,Settlement | География,A1
+F | Straße | Straße | Straße | Straße | Straßen | Straßen | Straßen | Straßen | Улица,Road,Street,Highway,Forest road | A1,География
+M | Anfang | Anfanges/Anfangs | Anfang/Anfange | Anfang | Anfänge | Anfänge | Anfängen | Anfänge | Начало,Start,Onset,Origin,Initial | A1,География
+F | Mitte | Mitte | Mitte | Mitte | Mitten | Mitten | Mitten | Mitten | Середина,Centre,Middle,Medium | A1,География
+N | Ende | Endes | Ende | Ende | Enden | Enden | Enden | Enden | Конец,End,Ending,Close,Finish,Conclusion | A1,География
+M | Teil | Teiles/Teils | Teil/Teile | Teil | Teile | Teile | Teilen | Teile | Часть,Part,Portion,Fraction,Section | A1,География
+M | Norden | Nordens | Norden | Norden | - | - | - | - | Север,North | A1,География
+M | Süden | Südens | Süden | Süden | - | - | - | - | Юг,South | География,A1
+M | Westen | Westens | Westen | Westen | - | - | - | - | Запад,West | A1,География
+M | Osten | Ostens | Osten | Osten | - | - | - | - | East,Восток | A1,География
+F | Nichts | Nichts | Nichts | Nichts | Nichtse | Nichtse | Nichtsen | Nichtse | void,nobody,nothing,ничего,ничто | A1,Разное
+N | Wetter | Wetters | Wetter | Wetter | Wetter | Wetter | Wettern | Wetter | Weather,Damp,Storm,Погода | A1,Природа
+M | Grad | Grades/Grads | Grad/Grade | Grad | Grade | Grade | Graden | Grade | Градус,Degree,Order,Grade,Rank,Level,Rate,Magnitude | A1,Природа
+F | Sonne | Sonne | Sonne | Sonne | Sonnen | Sonnen | Sonnen | Sonnen | Солнце,Sun,Shine,Sunshine,Star | A1,Природа
+M | Wind | Windes/Winds | Wind/Winde | Wind | Winde | Winde | Winden | Winde | Wind,Windiness,Ветер | A1,Природа
+M | Regen | Regens | Regen | Regen | Regen | Regen | Regen | Regen | Rain,Rainfall,Дождь | A1,Природа
+M | See | See | See | See | Seen | Seen | Seen | Seen | Озеро,Lake | A1,Природа
+N | Meer | Meeres/Meers | Meer/Meere | Meer | Meere | Meere | Meeren | Meere | Sea,Море | A1,Природа
+N | Feuer | Feuers | Feuer | Feuer | Feuer | Feuer | Feuern | Feuer | Fire,Blaze,Bonfire,Огонь | A1,Природа
+M | Baum | Baumes/Baums | Baum/Baume | Baum | Bäume | Bäume | Bäumen | Bäume | Tree,Дерево | A1,Природа
+F | Blume | Blume | Blume | Blume | Blumen | Blumen | Blumen | Blumen | Flower,Head,Цветок | A1,Природа
+N | Kind | Kindes/Kinds | Kind/Kinde | Kind | Kinder | Kinder | Kindern | Kinder | Kid,Child,Offspring,Ребенок | A1,Люди
+M | Junge | Jungen | Jungen | Jungen | Jungen/Jungs | Jungen/Jungs | Jungen/Jungs | Jungen/Jungs | Boy,Мальчик | A1,Люди
+N | Mädchen | Mädchens | Mädchen | Mädchen | Mädchen | Mädchen | Mädchen | Mädchen | Girl,Maid,Girlfriend,Девочка | A1,Люди
+M | Jugendliche | Jugendlicher | Jugendlicher | Jugendliche | Jugendliche | Jugendlicher | Jugendlichen | Jugendliche | Young person,Youth,Молодой человек,Девушка | A1,Люди
+M | Erwachsene | Erwachsene | Erwachsene | Erwachsene | Erwachsenen | Erwachsenen | Erwachsenen | Erwachsenen | Adult,Grown-up,Взрослый | A1,Люди
+M | Herr | Herrn/Herren | Herrn/Herren | Herrn/Herren | Herren | Herren | Herren | Herren | Gentleman,Sir,Mister,Мужчина,Господин | A1,Люди
+M | Mann | Mannes/Manns | Mann/Manne | Mann | Männer/Mannen | Männer/Mannen | Männern/Mannen | Männer/Mannen | Man,Spouse,Мужчина | A1,Люди
+F | Frau | Frau | Frau | Frau | Frauen | Frauen | Frauen | Frauen | Woman,Wife,Spouse,Mrs.,Женщина,Госпожа | A1,Люди
+F | Dame | Dame | Dame | Dame | Damen | Damen | Damen | Damen | Lady,Queen,Madam,Дама | A1,Люди
+M | Mensch | Menschen | Menschen | Menschen | Menschen | Menschen | Menschen | Menschen | Human being,Man,Human,Человек | A1,Люди
+F | Leute (pl.) | - | - | - | Leute | Leute | Leuten | Leute | People,Persons,Folks,Люди | A1,Люди
+M | Gruß | Grußes | Gruß/Gruße | Gruß | Grüße | Grüße | Grüßen | Grüße | Salute,Greeting,Приветствие | A1,Соц. контакты
+F | Frage | Frage | Frage | Frage | Fragen | Fragen | Fragen | Fragen | question,issue,demand,problem,Вопрос | A1,Соц. контакты
+F | Antwort | Antwort | Antwort | Antwort | Antworten | Antworten | Antworten | Antworten | Answer,Reply,Response,Ответ | A1,Соц. контакты
+F | Bitte | Bitte | Bitte | Bitte | Bitten | Bitten | Bitten | Bitten | Plea,Appeal,Please,Requiest,Просьба | A1,Соц. контакты
+M | Dank | Dankes/Danks | Dank/Danke | Dank | Danke | Danke | Danken | Danke | Graitiude,Thank,Thankfulness,Благодарность | A1,Соц. контакты
+F | Entschuldigung | Entschuldigung | Entschuldigung | Entschuldigung | Entschuldigen | Entschuldigen | Entschuldigen | Entschuldigen | Apology,Excuse,Извинение | A1,Соц. контакты
+F | Hilfe | Hilfe | Hilfe | Hilfe | Hilfen | Hilfen | Hilfen | Hilfen | Help,Helper,Помощь | A1,Соц. контакты
+N | Telefon | Telefons | Telefon | Telefon | Telefone | Telefone | Telefonen | Telefone | Телефон,Phone | Тел. разговор,A1
+N | Handy | Handys | Handy | Handy | Handys | Handys | Handys | Handys | Cellular phone,Мобильный телефон | A1,Тел. разговор
+M | Anruf | Anrufes/Anrufs | Anruf/Anrufe | Anruf | Anrufe | Anrufe | Anrufe | Anrufe | Phone call,Call,Телефонный звонок | A1,Тел. разговор
+M | Anrufbeantworter | Anrufbeantworters | Anrufbeantworter | Anrufbeantworter | Anrufbeantworter | Anrufbeantworter | Anrufbeantwortern | Anrufbeantworter | Voicemail box,Автоответчик | A1,Тел. разговор
+N | Glück | Glückes/Glücks | Glück/Glücke | Glück | Glücke | Glücke | Glücken | Glücke | luck,fortune,Happiness,Счастье | A1,Чувства и эмоции
+M | Hund | Hundes/Hunds | Hund/Hunde | Hund | Hunde | Hunde | Hunden | Hunde | Dog,Собака | A1,Животные
+F | Familie | Familie | Familie | Familie | Familien | Familien | Familien | Familien | Family,Семья | A1,Семья
+F | Ehefrau | Ehefrau | Ehefrau | Ehefrau | Ehefrauen | Ehefrauen | Ehefrauen | Ehefrauen | Wife,Spouse,Жена | A1,Семья
+M | Ehemann | Ehemannes/Ehemanns | Ehemann/Ehemanne | Ehemann | Ehemänner | Ehemänner | Ehemännern | Ehemänner | Муж,Husband | A1,Семья
+M | Partner | Partners | Partner | Partner | Partner | Partner | Partnern | Partner | Associate,Partner,Ally,Партнер | A1,Семья
+F | Mutter | Mutter | Mutter | Mutter | Mütter | Mütter | Müttern | Mütter | Mother,Мама | A1,Семья
+M | Vater | Vaters | Vater | Vater | Väter | Väter | Vätern | Väter | Father,Отец | A1,Семья
+F | Eltern (Pl.) | - | - | - | Eltern | Eltern | Eltern | Eltern | Parents,Родители | A1,Семья
+N | Baby | Babys | Baby | Baby | Babys | Babys | Babys | Babys | Baby,Младенец | A1,Семья
+M | Sohn | Sohnes/Sohns | Sohn/Sohne | Sohn | Söhne | Söhne | Söhnen | Söhne | Сын,Son | A1,Семья
+F | Tochter | Tochter | Tochter | Tochter | Töchter | Töchter | Töchtern | Töchter | Daughter,Дочь | A1,Семья
+M | Bruder | Bruders | Bruder | Bruder | Brüder | Brüder | Brüdern | Brüder | Brother,Брат,Monk | A1,Семья
+F | Schwester | Schwester | Schwester | Schwester | Schwestern | Schwestern | Schwestern | Schwestern | Sister,Nurse,Сестра | A1,Семья
+M | Verwandte | Verwandten | Verwandten | Verwandte | Verwandten | Verwandten | Verwandten | Verwandten | Relative,Relation,Родственник | A1,Семья
+F | Geschwister | Geschwisters | Geschwister | Geschwister | Geschwister | Geschwister | Geschwistern | Geschwister | Brother and sister,Братья и сестры,Siblings,Brothers and sisters,Брат и сестра | A1,Семья
+F | Großeltern (pl.) | - | - | - | Großeltern | Großeltern | Großeltern | Großeltern | Бабушки и дедушки,Grandparents | A1,Семья
+F | Großmutter | Großmutter | Großmutter | Großmutter | Großmütter | Großmütter | Großmüttern | Großmütter | Grandmother,Бабушка | A1,Семья
+M | Großvater | Großvaters | Großvater | Großvater | Großväter | Großväter | Großvätern | Großväter | Grandfather,Дедушка | A1,Семья
+F | Oma | Oma | Oma | Oma | Omas | Omas | Omas | Omas | Grandmother,Granny,Бабушка (разг.) | A1,Семья
+M | Opa | Opas | Opa | Opa | Opas | Opas | Opas | Opas | Grandpa,Old man,Дедушка (разг.) | A1,Семья
+M | Bekannte | Bekannten | Bekannten | Bekannte | Bekannten | Bekannten | Bekannten | Bekannten | Знакомый,Acquaintance | A1,Друзья и знакомые
+M | Freund | Freundes/Freunds | Freund/Freunde | Freund | Freunde | Freunde | Freunden | Freunde | Friend,Boyfriend,Girlfriend,Друг | A1,Друзья и знакомые
+F | Party | Party | Party | Party | Partys | Partys | Partys | Partys | Party,Вечеринка | A1,Праздники
+F | Disco | Disco | Disco | Disco | Discos | Discos | Discos | Discos | Disco,Club,Дискотека | Праздники,A1
+F | Hochzeit | Hochzeit | Hochzeit | Hochzeit | Hochzeiten | Hochzeiten | Hochzeiten | Hochzeiten | Marriage,Wedding,Свадьба | A1,Праздники
+F | Einladung | Einladung | Einladung | Einladung | Einladungen | Einladungen | Einladungen | Einladungen | Invitation,Invite,Приглашение | A1,Праздники
+M | Gast | Gastes/Gasts | Gast/Gaste | Gast | Gäste | Gäste | Gästen | Gäste | Guest,Visitor,Гость | A1,Праздники
+N | Geschenk | Geschenkes/Geschenks | Geschenk/Geschenke | Geschenk | Geschenke | Geschenke | Geschenken | Geschenke | Gift,Present,Подарок | A1,Праздники
+M | Glückwunsch | Glückwunsches/Glückwunschs | Glückwunsch/Glückwunsche | Glückwunsch | Glückwunsche | Glückwunsche | Glückwunschen | Glückwunsche | Congratulation,Felicitation,Пожелание счастья,Пожелание к празднику | A1,Праздники
+F | Bäckerei | Bäckerei | Bäckerei | Bäckerei | Bäckereien | Bäckereien | Bäckereien | Bäckereien | Bread shop,Bakery,Пекарня | A1,Рестораны и кафе
+N | Cafe | Cafes | Cafe | Cafe | Cafes | Cafes | Cafes | Cafes | Cafe,Кафе | A1,Рестораны и кафе
+N | Lokal | Lokals | Lokal | Lokal | Lokale | Lokale | Lokalen | Lokale | Pub,Bar,Club,Tavern,Restaurant,Кафе,Забегаловка | A1,Рестораны и кафе
+F | Speisekarte/Speisenkarte | Speisekarte/Speisenkarte | Speisekarte/Speisenkarte | Speisekarte/Speisenkarte | Speisekarten/Speisenkarten | Speisekarten/Speisenkarten | Speisekarten/Speisenkarten | Speisekarten/Speisenkarten | Menu,Меню | A1,Рестораны и кафе
+N | Restaurant | Restaurants | Restaurant | Restaurant | Restaurants | Restaurants | Restaurants | Restaurants | Restaurant,Eatery,Ресторан | A1,Рестораны и кафе
+N | Lebensmittel | Lebensmittels | Lebensmittel | Lebensmittel | Lebensmittel | Lebensmittel | Lebensmitteln | Lebensmittel | Food,Foodstuff,Griceries,Provisions,Продукты питания | A1,Продукты питания
+M | Fisch | Fisches/Fischs | Fisch/Fische | Fisch | Fische | Fische | Fischen | Fische | Fish,Рыба | A1,Продукты питания
+N | Fleisch | Fleisches/Fleischs | Fleisch/Fleische | Fleisch | Fleische | Fleische | Fleischen | Fleische | Meat,Flesh,Мясо | A1,Продукты питания
+N | Hähnchen | Hähnchens | Hähnchen | Hähnchen | Hähnchen | Hähnchen | Hähnchen | Hähnchen | Chicken,Broiler,Fryer,Курица (сырая или готовая) | A1,Продукты питания
+M | Schinken | Schinkens | Schinken | Schinken | Schinken | Schinken | Schinken | Schinken | Ветчина,Ham | A1,Продукты питания
+N | Öl | Öls | Öl | Öl | Öle | Öle | Ölen | Öle | Oil,Масло (растительное или моторное) | A1,Продукты питания
+N | Salz | Salzes | Salz/Salze | Salz | Salze | Salze | Salzen | Salze | Salt,Соль | A1,Продукты питания
+F | Butter | Butter | Butter | Butter | - | - | - | - | Butter,Сливочное масло | A1,Продукты питания
+N | Ei | Eies/Eis | Ei | Ei | Eier | Eier | Eier | Eier | Egg,Яйцо | A1,Продукты питания
+N | Brot | Brotes/Brots | Brot/Brote | Brot | Brote | Brote | Broten | Brote | Bread,Хлеб | A1,Продукты питания
+N | Brötchen | Brötchens | Brötchen | Brötchen | Brötchen | Brötchen | Brötchen | Brötchen | Bread roll,Roll,Bun,Булочка | A1,Продукты питания
+M | Kuchen | Kuchens | Kuchen | Kuchen | Kuchen | Kuchen | Kuchen | Kuchen | Cake,Пирог | A1,Продукты питания
+F | Pommes frites (Pl.) | - | - | - | Pommes frites | Pommes frites | Pommes frites | Pommes frites | French fry,Картошка фри | A1,Продукты питания
+M | Reis | Reises | Reis/Reise | Reis | Reiser | Reiser | Reisern | Reiser | Rice,Рис | A1,Продукты питания
+F | Tomate | Tomate | Tomate | Tomate | Tomaten | Tomaten | Tomaten | Tomaten | Tomato,Помидор | A1,Фрукты и овощи
+N | Obst | Obstes/Obsts | Obst/Obste | Obst | - | - | - | - | Fruit,Фрукты | A1,Фрукты и овощи
+M | Apfel | Apfels | Apfel | Apfel | Äpfel | Äpfel | Äpfeln | Äpfel | Apple,Яблоко,Apple tree (Äpfel) | A1,Фрукты и овощи
+F | Banane | Banane | Banane | Banane | Bananen | Bananen | Bananen | Bananen | Banana,Банан | A1,Фрукты и овощи
+F | Birne | Birne | Birne | Birne | Birnen | Birnen | Birnen | Birnen | Груша,Pear,Bulb | A1,Фрукты и овощи
+N | Gemüse | Gemüses | Gemüse | Gemüse | Gemüse | Gemüse | Gemüsen | Gemüse | Vegetable,Овощи | A1,Фрукты и овощи
+F | Kartoffel | Kartoffel | Kartoffel | Kartoffel | Kartoffeln | Kartoffeln | Kartoffeln | Kartoffeln | Potato,Картофель | A1,Фрукты и овощи
+M | Salat | Salates/Salats | Salat/Salate | Salat | Salate | Salate | Salaten | Salate | Salad,Салат | A1,Фрукты и овощи
+N | Getränk | Getränkes/Getränks | Getränk/Getränke | Getränk | Getränke | Getränke | Getränken | Getränke | Drink,Beverage,Напиток | A1,Фрукты и овощи
+M | Tee | Tees | Tee | Tee | Tees | Tees | Tees | Tees | Tea,Чай | A1,Фрукты и овощи
+M | Kaffee | Kaffees | Kaffee | Kaffee | Kaffees | Kaffees | Kaffees | Kaffees | Coffee,Кофе | A1,Фрукты и овощи
+F | Milch | Milch | Milch | Milch | Milchen/Milche | Milchen/Milche | Milchen/Milchen | Milchen/Milche | Молоко,Milk | A1,Фрукты и овощи
+M | Saft | Saftes/Safts | Saft/Safte | Saft | Säfte | Säfte | Säften | Säfte | Juice,Drink,Сок | A1,Фрукты и овощи
+N | Wasser | Wassers | Wasser | Wasser | Wasser/Wässer | Wasser/Wässer | Wassern/Wässern | Wasser/Wässer | Water,Вода | A1,Фрукты и овощи
+N | Bier | Bieres/Biers | Bier/Biere | Bier | Biere | Biere | Bieren | Biere | Beer,Пиво,Ale | A1,Фрукты и овощи
+M | Wein | Weines/Weins | Wein/Weine | Wein | Weine | Weine | Weinen | Weine | Вино,Wine | A1,Фрукты и овощи
+F | Anzeige | Anzeige | Anzeige | Anzeige | Anzeigen | Anzeigen | Anzeigen | Anzeigen | Announcement,Advertisement,Объявление (на бумаге),Заявление (в полицию) | Аренда жилья,A1
+F | Wohnung | Wohnung | Wohnung | Wohnung | Wohnungen | Wohnungen | Wohnungen | Wohnungen | Home,Accommodation,Apartment,Flat,Квартира | Аренда жилья,A1
+N | Zimmer | Zimmers | Zimmer | Zimmer | Zimmer | Zimmer | Zimmern | Zimmer | Room,Apartment | A1,Аренда жилья
+N | Apartment | Apartments | Apartment | Apartment | Apartments | Apartments | Apartments | Apartments | Apartment,Flat,Апартаменты | A1,Аренда жилья
+N | Haus | Hauses | Haus/Hause | Haus | Häuser | Häuser | Häusern | Häuser | Дом,House,Shell,Home | Аренда жилья,A1
+F | Miete | Miete | Miete | Miete | Mieten | Mieten | Mieten | Mieten | Арендная плата,Rent,Rental,Renting | A1,Аренда жилья
+M | Vermieter | Vermieters | Vermieter | Vermieter | Vermieter | Vermieter | Vermietern | Vermieter | Арендодатель,Landlord,Hirer | A1,Аренда жилья
+M | Eingang | Einganges/Eingangs | Eingang/Eingange | Eingang | Eingänge | Eingänge | Eingängen | Eingänge | Way in,Entrance,Вход | A1,Дом
+M | Ausgang | Ausganges/Ausgangs | Ausgang/Ausgange | Ausgang | Ausgänge | Ausgänge | Ausgängen | Ausgänge | Exit,Outcome,Way out,Gate,Output,Выход | A1,Дом
+F | Halle | Halle | Halle | Halle | Hallen | Hallen | Hallen | Hallen | Hall,Workshop,Hangar,Зал | A1,Дом
+M | Stock | Stockes/Stocks | Stock/Stocke | Stock | Stöcke | Stöcke | Stöcken | Stöcke | Floor,Stick,Level,Plant,Этаж | A1,Дом
+M | Aufzug | Aufzuges/Aufzugs | Aufzug/Aufzuge | Aufzug | Aufzüge | Aufzüge | Aufzügen | Aufzüge | Лифт,Lift,Eleveator,Act,Approach | A1,Дом
+F | Treppe | Treppe | Treppe | Treppe | Treppen | Treppen | Treppen | Treppen | Stairs,Лестница | A1,Дом
+F | Ecke | Ecke | Ecke | Ecke | Ecken | Ecken | Ecken | Ecken | Angle,Corner,Угол | A1,Дом
+M | Raum | Raumes/Raums | Raum/Raume | Raum | Räume | Räume | Räumen | Räume | Room,Комната,Помещение,Space,Region,Area,Zone | A1,Дом
+F | Farbe | Farbe | Farbe | Farbe | Farben | Farben | Farben | Farben | Paint,Tan,Suit,Color,Stain,Tint,Dye,Краска,Цвет | A1,Дом
+N | Bad | Bades/Bads | Bad/Bade | Bad | Bäder | Bäder | Bädern | Bäder | Bath,Spa,Ванна | A1,Дом
+F | Dusche | Dusche | Dusche | Dusche | Duschen | Duschen | Duschen | Duschen | Shower,Douche,Spray,Affusion,Душ | A1,Дом
+M | Balkon | Balkons | Balkon | Balkon | Balkons/Balkone | Balkons/Balkone | Balkons/Balkonen | Balkons/Balkone | Balcony,Балкон | A1,Дом
+F | Küche | Küche | Küche | Küche | Küchen | Küchen | Küchen | Küchen | Kitchen,Table,Kitchen staff,Кухня | A1,Дом
+F | Toilette | Toilette | Toilette | Toilette | Toiletten | Toiletten | Toiletten | Toiletten | Toilet,Rest room,Туалет | A1,Дом
+F | Reparatur | Reparatur | Reparatur | Reparatur | Reparaturen | Reparaturen | Reparaturen | Reparaturen | Repair,Mending,Repairing,Reparation,Починка,Ремонт | A1,Дом
+M | Anschluss | Anschlusses | Anschluss/Anschlusse | Anschluss | Anschlüsse | Anschlüsse | Anschlüssen | Anschlüsse | Connection,Alignment,Подключение | A1,Дом
+N | Möbel | Möbels | Möbel | Möbel | Möbel/Möbeln | Möbel/Möbeln | Möbeln/Möbeln | Möbel/Möbeln | Item,Furniture,Мебель | A1,Мебель и интерьер
+N | Bett | Bettes/Betts | Bett/Bette | Bett | Betten | Betten | Betten | Betten | Bed,Rack,Runway,Кровать | A1,Мебель и интерьер
+N | Sofa | Sofas | Sofa | Sofa | Sofas | Sofas | Sofas | Sofas | Sofa,Couch,Lounge,Диван | A1,Мебель и интерьер
+M | Tisch | Tisches/Tischs | Tisch/Tische | Tisch | Tische | Tische | Tischen | Tische | Desk,Стол,Table | A1,Мебель и интерьер
+N | Bild | Bildes/Bilds | Bild/Bilde | Bild | Bilder | Bilder | Bildern | Bilder | Picture,Photo,Image,Idea,Sight,Drawing,Pattern,Картина | A1,Мебель и интерьер
+F | Uhr | Uhr | Uhr | Uhr | Uhren | Uhren | Uhren | Uhren | Hour,Clock,Watch,Gauge,Часы | A1,Мебель и интерьер
+M | Schlüssel | Schlüssels | Schlüssel | Schlüssel | Schlüssel | Schlüssel | Schlüsseln | Schlüssel | Key,Wrench,Spanner,Clue,Code,Ключ | A1,Мебель и интерьер
+M | Schrank | Schrankes/Schranks | Schrank/Schranke | Schrank | Schränke | Schränke | Schränken | Schränke | Cupboard,Closet,Cabinet,Wardrobe,Шкаф | A1,Мебель и интерьер
+M | Kühlschrank | Kühlschrankes/Kühlschranks | Kühlschrank/Kühlschranke | Kühlschrank | Kühlschränke | Kühlschränke | Kühlschränken | Kühlschränke | Refrigerator,Fridge,Холодильник,Ice box | A1,Мебель и интерьер
+M | Herd | Herdes/Herds | Herd/Herde | Herd | Herde | Herde | Herden | Herde | Stove,Herth,Hotbed,Cooker,Кухонная плита | A1,Мебель и интерьер
+N | Licht | Lichtes/Lichts | Licht/Lichte | Licht | Lichter | Lichter | Lichtern | Lichter | Light,Candle,Daylight,Illumination,Свет | A1,Мебель и интерьер
+N | Hobby | Hobbys | Hobby | Hobby | Hobbys | Hobbys | Hobbys | Hobbys | Хобби,Hobby,Avocation | A1,Хобби и привычки
+F | Freizeit | Freizeit | Freizeit | Freizeit | Freizeiten | Freizeiten | Freizeiten | Freizeiten | time off,free time,leisure,свободное время | A1,Хобби и привычки
+N | Buch | Buches/Buchs | Buch/Buche | Buch | Bücher | Bücher | Büchern | Bücher | Книга,Book,Colume,Ledger | A1,Хобби и привычки
+F | Zeitung | Zeitung | Zeitung | Zeitung | Zeitungen | Zeitungen | Zeitungen | Zeitungen | News,Газета,Newspaper | A1,Хобби и привычки
+M | Film | Filmes/Films | Film/Filme | Film | Filme | Filme | Filmen | Filme | Movie,Photographic film,Фильм | A1,Хобби и привычки
+N | Kino | Kinos | Kino | Kino | Kinos | Kinos | Kinos | Kinos | Movie theatre,Cinema,Кинотеатр | A1,Хобби и привычки
+M | Garten | Gartens | Garten | Garten | Gärten | Gärten | Gärten | Gärten | Garden,Сад | Хобби и привычки,A1
+N | Lied | Liedes/Lieds | Lied/Liede | Lied | Lieder | Lieder | Liedern | Lieder | Song,Песня | A1,Хобби и привычки
+F | Zigarette | Zigarette | Zigarette | Zigarette | Zigaretten | Zigaretten | Zigaretten | Zigaretten | Cigarette,Сигарета | A1,Хобби и привычки
+M | Sport | Sportes/Sports | Sport/Sporte | Sport | Sporte | Sporte | Sporten | Sporte | Exercise,Sport,Спорт | A1,Спорт
+M | Verein | Vereines/Vereins | Verein/Vereine | Verein | Vereine | Vereine | Vereinen | Vereine | Club,Society,Association,Union,Crowd,Объединение,Общество | A1,Спорт
+M | Fußball | Fußballes/Fußballs | Fußball/Fußballe | Fußball | Fußbälle | Fußbälle | Fußbällen | Fußbälle | Soccer,Football,Футбол | A1,Спорт
+M | Bogen | Bogens | Bogen | Bogen | Bogen/Bögen | Bogen/Bögen | Bogen/Bögen | Bogen/Bögen | Arc,Bow,Piece of paper,Sheet,Дуга,Лук (оружие) | Спорт,A1
+N | Schwimmbad | Schwimmbades/Schwimmbads | Schwimmbad/Schwimmbade | Schwimmbad | Schwimmbäder | Schwimmbäder | Schwimmbädern | Schwimmbäder | Swimming pool,Бассейн | A1,Спорт
+M | Laden | Ladens | Laden | Laden | Läden/Laden | Läden/Laden | Läden/Laden | Läden/Laden | Shop,Магазин | A1,Покупки и одежда
+N | Geschäft | Geschäftes/Geschäfts | Geschäft/Geschäfte | Geschäft | Geschäfte | Geschäfte | Geschäften | Geschäfte | Business,Deal,Profit,Store,Bargain,Transaction | A1,Покупки и одежда
+M | Kiosk | Kioskes/Kiosks | Kiosk/Kioske | Kiosk | Kioske | Kioske | Kiosken | Kioske | Kiosk,Киоск | A1,Покупки и одежда
+N | Angebot | Angebotes/Angebots | Angebot/Angebote | Angebot | Angebote | Angebote | Angeboten | Angebote | Offer,Supply,Offering,Proposal,Предложение | A1,Покупки и одежда
+M | Prospekt | Prospektes.Prospekts | Prospekt.Prospekte | Prospekt | Prospekte | Prospekte | Prospekten | Prospekte | Leafet,Brochure,Pamphlet,Проспект (улица или реклама) | A1,Покупки и одежда
+M | Verkäufer | Verkäufers | Verkäufer | Verkäufer | Verkäufer | Verkäufer | Verkäufern | Verkäufer | Продавец,Shop assistent,Salesman,Seller | A1,Покупки и одежда
+M | Preis | Preises | Preis/Preise | Preis | Preise | Preise | Preisen | Preise | Price,Charge,Cost,Reward,Rate,Цена | A1,Покупки и одежда
+F | Kasse | Kasse | Kasse | Kasse | Kassen | Kassen | Kassen | Kassen | Cash register,Cash,Funds,Касса | A1,Покупки и одежда
+F | Tasche | Tasche | Tasche | Tasche | Taschen | Taschen | Taschen | Taschen | Purse,Pocket,Bag,Сумка | A1,Покупки и одежда
+F | Größe | Größe | Größe | Größe | Größen | Größen | Größen | Größen | Size,Quantity,Dimension,Magnitude,Extent,Размер | A1,Покупки и одежда
+F | Jacke | Jacke | Jacke | Jacke | Jacken | Jacken | Jacken | Jacken | Coat,jacket,Куртка | A1,Покупки и одежда
+F | Kleidung | Kleidung | Kleidung | Kleidung | Kleidungen | Kleidungen | Kleidungen | Kleidungen | Вкуыы,Сдщеруы,Сдщерштп,Щгеаше,Фззфкуд,Одежда | A1,Покупки и одежда
+F | Heimat | Heimat | Heimat | Heimat | Heimaten | Heimaten | Heimaten | Heimaten | Home,Homeland,Родина | A1,Путешествия
+F | Reise | Reise | Reise | Reise | Reisen | Reisen | Reisen | Reisen | Travel,Journey,Trip,Voyage,Путешествие | A1,Путешествия
+N | Reisebüro | Reisebüros | Reisebüro | Reisebüro | Reisebüros | Reisebüros | Reisebüros | Reisebüros | Travel agency,Travel agent,Бюро путешествий | A1,Путешествия
+M | Reiseführer | Reiseführers | Reiseführer | Reiseführer | Reiseführer | Reiseführer | Reiseführern | Reiseführer | Guide,Courier,Tour guide,Гид (человек/книга) | A1,Путешествия
+M | Koffer | Koffers | Koffer | Koffer | Koffer | Koffer | Koffern | Koffer | Suitcase,Чемодан | A1,Путешествия
+N | Gepäck | Gepäckes/Gepäcks | Gepäck/Gepäcke | Gepäck | - | - | - | - | Luggage,Baggage,Багаж | A1,Путешествия
+F | Abfahrt | Abfahrt | Abfahrt | Abfahrt | Abfahrten | Abfahrten | Abfahrten | Abfahrten | Start,Departure,Slope,Descent,Отправление,Отъезд | A1,Путешествия
+M | Abflug | Abfluges/Abflugs | Abflug/Abfluge | Abflug | Abflüge | Abflüge | Abflügen | Abflüge | Departure,Takeoff,Migration,Вылет | A1,Путешествия
+F | Ankunft | Ankunft | Ankunft | Ankunft | Ankünfte | Ankünfte | Ankünften | Ankünfte | Arrival,Advent,Прибытие | A1,Путешествия
+N | Ausland | Auslandes/Auslands | Ausland/Auslande | Ausland | - | - | - | - | Foreign country,Overseas,Заграница | A1,Путешествия
+M | Ausländer | Ausländers | Ausländer | Ausländer | Ausländer | Ausländer | Ausländern | Ausländer | Alien,Foreigner | A1,Путешествия
+N | Hotel | Hotels | Hotel | Hotel | Hotels | Hotels | Hotels | Hotels | Hotel,Отель | A1,Путешествия
+F | Rezeption | Rezeption | Rezeption | Rezeption | Rezeptionen | Rezeptionen | Rezeptionen | Rezeptionen | Reception desk | A1,Путешествия
+N | Doppelzimmer | Doppelzimmers | Doppelzimmer | Doppelzimmer | Doppelzimmer | Doppelzimmer | Doppelzimmern | Doppelzimmer | Twin room,Комната на двоих в отеле | A1,Путешествия
+N | Einzelzimmer | Einzelzimmers | Einzelzimmer | Einzelzimmer | Einzelzimmer | Einzelzimmer | Einzelzimmern | Einzelzimmer | Single room,Комната на одного в отеле | A1,Путешествия
+F | Halbpension | Halbpension | Halbpension | Halbpension | - | - | - | - | Half board,Demi-oension,Полупансион | A1,Путешествия
+F | Karte | Karte | Karte | Karte | Karten | Karten | Karten | Karten | Card,Map,Menu,Ticjet,Plan,Карта | A1,Путешествия
+M | Ausflug | Ausfluges/Ausflugs | Ausflug/Ausfluge | Ausflug | Ausflüge | Ausflüge | Ausflügen | Ausflüge | Outing,Excursion,Trip,Tour | A1,Путешествия
+M | Plan | Planes/Plans | Plan/Plane | Plan | Pläne | Pläne | Plänen | Pläne | План,Plan,Map,Blueprint,Plain,Schedule,Scheme,Project | A1,Путешествия
+F | Eile | Eile | Eile | Eile | - | - | - | - | Спешка,Rush,Hurry,Haste,Hastiness | A1,Путешествия
+F | Sehenswürdigkeit | Sehenswürdigkeit | Sehenswürdigkeit | Sehenswürdigkeit | Sehenswürdigkeiten | Sehenswürdigkeiten | Sehenswürdigkeiten | Sehenswürdigkeiten | Достопримечательность,Sight,Monument,Attraction | A1,Путешествия
+N | Auto | Autos | Auto | Auto | Autos | Autos | Autos | Autos | Car,Resolution,Order | A1,Транспорт и техника
+F | Autobahn | Autobahn | Autobahn | Autobahn | Autobahnen | Autobahnen | Autobahnen | Autobahnen | Highway,Freeway,Скоростная трасса | A1,Транспорт и техника
+N | Taxi | Taxis | Taxi | Taxi | Taxis | Taxis | Taxis | Taxis | Cab,Taxi | A1,Транспорт и техника
+M | Fahrer | Fahrers | Fahrer | Fahrer | Fahrer | Fahrer | Fahrern | Fahrer | Driver,Rider | A1,Транспорт и техника
+M | Bus | Busses | Bus | Bus | Busse | Busse | Bussen | Busse | Bus,Coach | A1,Транспорт и техника
+F | Haltestelle | Haltestelle | Haltestelle | Haltestelle | Haltestellen | Haltestellen | Haltestellen | Haltestellen | Stop,Station,Halt,Остановка общ. транспорта | A1,Транспорт и техника
+F | Bahn | Bahn | Bahn | Bahn | Bahnen | Bahnen | Bahnen | Bahnen | Train,Way,Railway,Железная дорога | A1,Транспорт и техника
+F | Straßenbahn | Straßenbahn | Straßenbahn | Straßenbahn | Straßenbahnen | Straßenbahnen | Straßenbahnen | Straßenbahnen | Tram,Tramway,Tramline,Трамвай | A1,Транспорт и техника
+M | Zug | Zuges/Zugs | Zug/Zuge | Zug | Züge | Züge | Zügen | Züge | Train,Traction,Breath,Поезд | A1,Транспорт и техника
+M | Bahnhof | Bahnhofes/Bahnhofs | Bahnhof/Bahnhofe | Bahnhof | Bahnhöfe | Bahnhöfe | Bahnhöfen | Bahnhöfe | Railway station,Вокзал | A1,Транспорт и техника
+M | Bahnsteig | Bahnsteiges/Bahnsteigs | Bahnsteig/Bahnsteige | Bahnsteig | Bahnsteige | Bahnsteige | Bahnsteigen | Bahnsteige | Platform,Track,Departure platform,Ж/Д платформа | A1,Транспорт и техника
+N | Gleis | Gleises | Gleis/Gleise | Gleis | Gleise | Gleise | Gleisen | Gleise | Rail track,Rail,Ж/Д путь | A1,Транспорт и техника
+N | Flugzeug | Flugzeuges/Flugzeugs | Flugzeug/Flugzeuge | Flugzeug | Flugzeuge | Flugzeuge | Flugzeugen | Flugzeuge | Самолет,Plane | A1,Транспорт и техника
+M | Flughafen | Flughafens | Flughafen | Flughafen | Flughäfen | Flughäfen | Flughäfen | Flughäfen | Airport,Аэропорт | A1,Транспорт и техника
+N | Fahrrad | Fahrrades/Fahrrad | Fahrrad/Fahrrade | Fahrrad | Fahrräder | Fahrräder | Fahrrädern | Fahrräder | Bicycle,Велосипед | A1,Транспорт и техника
+M | Lastkraftwagen (Lkw) | Lastkraftwagens | Lastkraftwagen | Lastkraftwagen | Lastkraftwagen/Lastkraftwägen | Lastkraftwagen/Lastkraftwägen | Lastkraftwagen/Lastkraftwägen | Lastkraftwagen/Lastkraftwägen | Lorry,Truck,Грузовик | A1,Транспорт и техника
+F | Fahrkarte | Fahrkarte | Fahrkarte | Fahrkarte | Fahrkarten | Fahrkarten | Fahrkarten | Fahrkarten | Ticket,Travel pass,Проездной билет | A1,Транспорт и техника
+N | Ticket | Tickets | Ticket | Ticket | Tickets | Tickets | Tickets | Tickets | Ticket,Билет | A1,Транспорт и техника
+M | Automat | Automaten | Automaten | Automaten | Automaten | Automaten | Automaten | Automaten | Automation,Vending machine,Cash dispenser,Автомат (устройство) | A1,Транспорт и техника
+F | Maschine | Maschine | Maschine | Maschine | Maschinen | Maschinen | Maschinen | Maschinen | Machine,Engine,Aircraft,Processor,Equipment,Механизм,Станок | A1,Транспорт и техника
+N | Schild | Schildes/Schilds | Schild/Schilde | Schild | Schilde | Schilde | Schilden | Schilde | Shield,Buckler,Знак (дорожный),Щит,Вывеска,Табличка | A1,Транспорт и техника
+N | Leben | Lebens | Leben | Leben | Leben | Leben | Leben | Leben | Life,Living,Lifetime,Existence,Animation | A1,Жизнь и смерть
+M | Hagel | Hagels | Hagel | Hagel | Hagel | Hagel | Hageln | Hagel | Hail,Storm | A1
+F | Kirche | Kirche | Kirche | Kirche | Kirchen | Kirchen | Kirchen | Kirchen | Church,Церковь | A1
+M | Essig | Essigs | Essig | Essig | Essige | Essige | Essigen | Essige | Vinegar,Уксус | A1
+F | Geschichte | Geschichte | Geschichte | Geschichte | Geschichten | Geschichten | Geschichten | Geschichten | History,Tale,Story | A1
+F | Lust | Lust | Lust | Lust | Lüste | Lüste | Lüsten | Lüste | Joy,Lust,Desire,Delight,Веселье | A1
+N | Konzert | Konzertes/Konzerts | Konzert/Konzerte | Konzert | Konzerte | Konzerte | Konzerten | Konzerte | Concert,Концерт | A1
+F | Komödie | Komödie | Komödie | Komödie | Komödien | Komödien | Komödien | Komödien | Comedy,Комедия | A1
+F | Verspätung | Verspätung | Verspätung | Verspätung | Verspätungen | Verspätungen | Verspätungen | Verspätungen | Delay,Later arrival,Задержка | A1
+N | Viertel | Viertels | Viertel | Viertel | Viertel | Viertel | Vierteln | Viertel | Quarter,Четверть | A1
+N | Frühstück | Frühstücks | Frühstück | Frühstück | Frühstücke | Frühstücke | Frühstücken | Frühstücke | Breakfast,Завтрак | A1,Продукты питания
+N | Abendbrot | Abendbrotes/Abendbrots | Abendbrot/Abendbrote | Abendbrot | Abendbrote | Abendbrote | Abendbroten | Abendbrote | Dinner,Ужин | A1,Продукты питания
+N | Mittagessen/Mittagsessen | Mittagessens/Mittagsessens | Mittagessen/Mittagsessen | Mittagessen/Mittagsessen | - | - | - | - | Lunch,Обед | A1,Продукты питания
+M | Honig | Honigs | Honig | Honig | Honige | Honige | Honigen | Honige | Honey,Мёд | A1,Продукты питания
+F | Marmelade | Marmelade | Marmelade | Marmelade | Marmeladen | Marmeladen | Marmeladen | Marmeladen | Jam,Варенье | A1,Продукты питания
+M | Käse | Käses | Käse | Käse | Käse | Käse | Käsen | Käse | Cheese,Сыр | A1,Продукты питания
+F | Schokolade | Schokolade | Schokolade | Schokolade | Schokoladen | Schokoladen | Schokoladen | Schokoladen | Chocolate,Шоколад | A1,Продукты питания
+M | Haferbrei | Haferbreies/Haferbreis | Haferbrei | Haferbrei | Haferbreie | Haferbreie | Haferbreien | Haferbreie | Oatmeal,Porridge,Каша | A1,Продукты питания
+F | Haferflocken (Pl.) | - | - | - | Haferflocken | Haferflocken | Haferflocken | Haferflocken | oat flakes,Porridge oats | A1
+N | Spiegelei | Spiegeleies/Spiegeleis | Spiegelei | Spiegelei | Spiegeleier | Spiegeleier | Spiegeleiern | Spiegeleier | Fried egg,Яичница | A1,Продукты питания
+M | Spiegel | Spiegels | Spiegel | Spiegel | Spiegel | Spiegel | Spiegeln | Spiegel | Looking glass,Mirror,Зеркало | A1
+F | Kartoffel | Kartoffel | Kartoffel | Kartoffel | Kartoffeln | Kartoffeln | Kartoffeln | Kartoffeln | Картофель,Potato | A1,Продукты питания
+F | Mahlzeit | Mahlzeit | Mahlzeit | Mahlzeit | Mahlzeiten | Mahlzeiten | Mahlzeiten | Mahlzeiten | Meal,Repast | A1,Продукты питания
+N | Beispiel | Beispiels | Beispiel | Beispiel | Beispiele | Beispiele | Beispielen | Beispiele | Example,Instance,Sample,Пример,Например | A1
+F | Suppe | Suppe | Suppe | Suppe | Suppen | Suppen | Suppen | Suppen | Soup,Суп | A1,Продукты питания
+F | Bratkartoffel | Bratkartoffel | Bratkartoffel | Bratkartoffel | Bratkartoffeln | Bratkartoffeln | Bratkartoffeln | Bratkartoffeln | Fried potatoes,Жареная картошка | A1,Продукты питания
+F | Beilage | Beilage | Beilage | Beilage | Beilagen | Beilagen | Beilagen | Beilagen | Side dish,Garnishings,Supplement,Гарнир,Украшение | A1,Продукты питания
+M | Kartoffelbrei | Kartoffelbreies/Kartoffelbreis | Kartoffelbrei | Kartoffelbrei | Kartoffelbreie | Kartoffelbreie | Kartoffelbreien | Kartoffelbreie | Mashed potato,Картофельное пюре | A1,Продукты питания
+M | Knödel | Knödels | Knödel | Knödel | Knödel | Knödel | Knödeln | Knödel | Dumpling,Пельмени | A1,Продукты питания
+N | Rührei | Rühreies/Rühreis | Rührei | Rührei | Rühreier | Rühreier | Rühreiern | Rühreier | Scrambled egg | A1,Продукты питания
+N | Omelett | Omelettes/Omeletts | Omelett/Omelette | Omelett | Omelette | Omelette | Omeletten | Omelette | Omelet,Омлет | A1,Продукты питания
+F | Mayonnaise | Mayonnaise | Mayonnaise | Mayonnaise | Mayonnaisen | Mayonnaisen | Mayonnaisen | Mayonnaisen | Mayo,Майонез | A1,Продукты питания

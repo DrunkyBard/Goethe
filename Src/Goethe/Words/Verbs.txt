@@ -1,0 +1,127 @@
+﻿# Infinitive | Regularity | Pres conj ich | Pres conj du | Pres conj er/sie/es | Pres conj wir | Pres conj ihr | Pres conj sie | Translations (comma-separated) | Topics (comma-separated)
+danken | False | dank(e) | dankst | dankt | danken | dankt | danken | Thanking,Благодарю,Спасибо | A1,Приветствия/прощания/восклицания
+dauern | False | dauere | dauerst | dauert | dauern | dauert | dauern | длиться,last,take time | A1,Время
+enden | False | ende | endest | endet | ednen | endet | enden | заканчивать,оканчивать | A1,Время
+anfangen | False | fange an | fängst an | fängt an | fangen an | fangt an | fangen an | начинать,начинаться,begin,start,become,get started,introduce | A1,Время
+haben | False | habe | hast | hat | haben | habt | haben | иметь,have,has,have to,must,feel | A1,Modal verbs
+sein | False | bin | bist | ist | sind | seid | sind | быть,be,stay,exist,been | A1,Modal verbs
+werden | False | werde | wirst | wird | werden | werdet | werden | становиться,will,become,get,going to,grow | A1,Modal verbs
+können | False | kann | kannst | kann | können | könnt | können | мочь,уметь,can,be able,may,know | A1,Modal verbs
+wollen | False | will | willst | will | wollen | wollt | wollen | хотеть,want,wish,claim,come on (to) | A1,Modal verbs
+möchten | False | möchte | möchtest | möchte | möchten | möchtet | möchten | хотеть (вежл.),wish,want | A1,Modal verbs
+dürfen | False | darf | darfst | darf | dürfen | dürft | dürfen | мочь,иметь право,разрешение,may,for allowance,be allowed to | A1,Modal verbs
+müssen | False | muss | musst | muss | müssen | müsst | müssen | быть должным,обязанным,have to,must,need to | A1,Modal verbs
+sollen | False | soll | sollst | soll | sollen | sollt | sollen | быть должным,иметь приказ,supposed to,must,should have,should | A1,Modal verbs
+heißen | False | heiße | heißt | heißt | heißen | heißt | heißen | зваться,называться | A1,Modal verbs
+brauchen | False | brauche | brauchst | braucht | brauchen | braucht | brauchen | нуждаться,require,need,use,spend,take,consume | A1,Modal verbs
+bekommen | False | bekomme | bekommst/bekömmst | bekommt/bekömmt | bekommen | bekommt | bekommen | получать,receive,get | A1,Modal verbs
+kriegen | False | kriege | kriegst | kriegt | kriegen | kriegt | kriegen | воевать,получать (разг.),get,catch,wage war,make war,get though | A1,Modal verbs
+gehören | False | gehöre | gehörst | gehört | gehören | gehört | gehören | принадлежать,belong,rank,fall (under) | A1,Modal verbs
+schlafen | False | schlafe | schläfst | schläft | schlafen | schlaft | schlafen | спать,sleep,stay over night | A1,Глаголы движения/положения/состояния
+stehen | False | stehe | stehst | steht | stehen | steht | stehen | стоять,stand,stand still,stand for,become | A1,Глаголы движения/положения/состояния
+aufstehen | False | stehe | stehst | steht | stehen | steht | stehen | вставать,get up,rise,stand up | A1,Глаголы движения/положения/состояния
+liegen | False | liege | liegst | liegt | liegen | liegt | liegen | лежать,lie,sit,stand | A1,Глаголы движения/положения/состояния
+sitzen | False | sitze | sitzt | sitzt | sitzen | sitzt | sitzen | сидеть,sit,fit,be seated | A1,Глаголы движения/положения/состояния
+gehen | False | gehe | gehst | geht | gehen | geht | gehen | идти,go,walk,leave | A1,Глаголы движения/положения/состояния
+laufen | False | laufe | läufst | läuft | laufen | lauft | laufen | бежать,run,walk,race,be in process | A1,Глаголы движения/положения/состояния
+fahren | False | fahre | fährst | fährt | fahren | fahrt | fahren | ехать,drive,ride,pedal | A1,Глаголы движения/положения/состояния
+fliegen | False | fliege | fliegst | fliegt | fliegen | fliegt | fliegen | летать,fly,aviate | A1,Глаголы движения/положения/состояния
+kommen | False | komme | kommst/kömmst | kommt/kömmt | kommen | kommt | kommen | приходить,come,arrive,return,advance,take place | A1,Глаголы движения/положения/состояния
+tanzen | False | tanze | tanzt | tanzt | tanzen | tanzt | tanzen | танцевать,dance | Глаголы движения/положения/состояния,A1
+spielen | False | spiele | spielst | spielt | spielen | spielt | spielen | играть,play | A1,Глаголы движения/положения/состояния
+scheinen | False | scheine | schenst | scheint | scheinen | scheint | scheinen | shine,seem,pierce,светить (о солнце) | A1,Природа
+regnen | False | regne | regnest | regnet | regnen | regnet | regnen | rain,идет дождь | A1,Природа
+vorstellen | False | stelle vor | stellst vor | stellt vor | stellen vor | stellt vor | stellen vor | imagine,introduce,present,propose,represent,представлять(ся) | A1,Соц. контакты
+sagen | False | sage | sagst | sagt | sagen | sagt | sagen | say something,sat,tell,сказать,говорить | A1,Соц. контакты
+sprechen | False | spreche | sprichst | spricht | sprechen | sprecht | sprechen | talk,speak,говорить,беседовать | A1,Соц. контакты
+fragen | False | frage | fragst | fragt | fragen | fragt | fragen | спрашивать,ask,ask for,inquire,request | A1,Соц. контакты
+antworten | False | antworte | antwortest | antwortet | antworten | antwortet | antworten | answer,reply to,отвечать | A1,Соц. контакты
+erzählen | False | erzähle | erzählst | erzählt | erzählen | erzählt | erzählen | narrate,tell,talk,рассказывать | A1,Соц. контакты
+bitten | False | bitte | bittest | bittet | bitten | bittet | bitten | request,please,ask,beg,appeal,просить | A1,Соц. контакты
+danken | False | danke | dankst | dankt | danken | dankt | danken | thank,thanking,decline,благодарить | A1,Соц. контакты
+entschuldigen | False | entschuldige | entschuldigst | entschuldigt | entschuldigen | entschuldigt | entschuldigen | apologise,excuse,forgive,извинять(ся) | A1,Соц. контакты
+helfen | False | helfe | hilfst | hilft | helfen | helft | helfen | help,aid (in),assist (in),помогать | A1,Соц. контакты
+anrufen | False | rufe an | rufst an | ruft an | rufen an | ruft an | rufen an | call,challenge,appeal,invoke,give a call,звонить по телефону | A1,Тел. разговор
+telefonieren | False | telefoniere | telefonierst | telefoniert | telefonieren | telefoniert | telefonieren | ring,call,use phone,говорить по телефону | A1,Тел. разговор
+wiederholen | False | hole wieder | holst wieder | holt wieder | holen wieder | holt wieder | holen wieder | repeat,restate,повторять | A1,Тел. разговор
+verstehen | False | verstehe | verstehst | versteht | verstehen | versteht | verstehen | понимать,understand | A1,Тел. разговор
+buchstabieren | False | buchstabiere | buchstabierst | buchstabiert | buchstabieren | buchstabiert | buchstabieren | диктовать по буквам,spell,spell out | A1,Тел. разговор
+hören | False | höre | hörst | hört | hören | hört | hören | слышать,listen,hearing,hear,obey | A1,Чувства и эмоции
+sehen | False | sehe | siehst | sieht | sehen | seht | sehen | смотреть,видеть,view,watch,look,see | A1,Чувства и эмоции
+schmecken | False | schmecke | schmeckst | schmeckt | schmecken | schmeckt | schmecken | taste,smack,smell,be (to) liking,чувствовать вкус,быть на вкус | A1,Чувства и эмоции
+riechen | False | rieche | riechst | riecht | riechen | riecht | riechen | smell,stink,reek,sniff,чувствовать запах,пахнуть | A1,Чувства и эмоции
+freuen | False | freue | freust | freut | freuen | freut | freuen | be glad,make happy,be happy,радовать(ся) | A1,Чувства и эмоции
+lachen | False | lache | lachst | lacht | lachen | lacht | lachen | chuckle,laugh,giggle,смеяться | A1,Чувства и эмоции
+gefallen | False | gefalle | gefällst | gefällt | gefallen | gefallt | gefallen | enjoy,like,be pleasing,delight,нравиться | A1,Чувства и эмоции
+mögen | False | mag | magst | mag | mögen | mögt | mögen | like,would love to,enjoy,want,испытывать симпатию,любить (неодуш. вещи) | A1,Чувства и эмоции
+lieben | False | liebe | liebst | liebt | lieben | liebt | lieben | love,make love (to),affect,cherish,любить | A1,Чувства и эмоции
+glauben | False | glaube | glaubst | glaubt | glauben | glaubt | glauben | верить,считать,иметь мнение,think,have faith,trust in,believe | A1,Чувства и эмоции
+heiraten | False | heirate | heiratest | heiratet | heiraten | heiratet | heiraten | marry,get married,жениться,выходить замуж | A1,Семья
+kümmern | False | kümmere | kümmerst | kümmert | kümmern | kümmert | kümmern | take care of,look after,заботиться,позаботиться | A1,Семья
+kennen | False | kenne | kennst | kennt | kennen | kennt | kennen | знать,быть знакомым,know,be acquainted with | A1,Друзья и знакомые
+kennenlernen | False | lerne kennen | lernst kennen | lernt kennen | lernen kennen | lernt kennen | lernen kennen | become acquainted (with),get to know,знакомиться | A1,Друзья и знакомые
+treffen | False | treffe | triffst | trifft | treffen | trefft | treffen | meet with,encounter,meet,affect,всречать(ся) | A1,Друзья и знакомые
+warten | False | warte | wartest | wartet | warten | wartet | warten | wait,maintain,watch (for),wait (for),ждать | A1,Друзья и знакомые
+besuchen | False | besuche | besuchst | besucht | besuchen | besucht | besuchen | attend,see,visit,call on,go to,посещать (обычно человека) | A1,Друзья и знакомые
+bleiben | False | bleibe | bleibst | bleibt | bleiben | bleibt | bleiben | stay,remain,last,adhere (to),stick (at),оставаться | A1,Друзья и знакомые
+übernachten | False | übernachte | übernachtest | übernachtet | übernachten | übernachtet | übernachten | spend the night,sleep over,переночевать | A1,Друзья и знакомые
+mitbringen | False | bringe mit | bringst mit | bringt mit | bringen mit | bringt mit | bringen mit | bring along,bring,bring to,приносить с собой | A1,Друзья и знакомые
+mitkommen | False | komme mit | kommst/kömmst mit | kommt/kömmt mit | kommen mit | kommt mit | kommen mit | accompany,come with,cope (with),прийти вместе с кем-либо | A1,Друзья и знакомые
+mitmachen | False | mache mit | machst mit | macht mit | machen mit | macht mit | machen mit | participate,function,take part (in),делать что-то вместе с кем-то | A1,Друзья и знакомые
+einladen | False | lade ein | lädst ein | lädt ein | laden ein | ladet ein | laden ein | invite,load in,load into,приглашать | A1,Праздники
+mitnehmen | False | nehme mit | nimmst mit | nimmt mit | nehmen mit | nehmt mit | nehmen mit | взять с собой,take with,keep,take,take with you | A1,Праздники
+gratulieren | False | gratuliere | gratulierst | gratuliert | gratulieren | gratuliert | gratulieren | congratulate,compliment on,поздравлять | A1,Праздники
+feiern | False | feiere | feierst | feiert | feiern | feiert | feiern | celebrate,feast,праздновать | A1,Праздники
+grillen | False | grille | grillst | grillt | grillen | grillt | grillen | frill,barbecue,cook out,жарить гриль | A1,Праздники
+wohnen | False | wohne | wohnst | wohnt | wohnen | wohnt | wohnen | Жить,Living,Live,Reside,Stay | A1,Аренда жилья
+mieten | False | miete | mietest | mietet | mieten | mietet | mieten | rent,ablocate,engage,hire,снимать жилье | A1,Аренда жилья
+vermieten | False | vermiete | vermietest | vermietet | vermieten | vermietet | vermieten | Сдавать,rent to,let | A1,Аренда жилья
+umziehen | False | ziehe um | ziehst um | zieht um | ziehen um | zieht um | ziehen um | переезжать | A1,Аренда жилья
+reparieren | False | repariere | reparierst | repariert | reparieren | repariert | reparieren | repair,cobble,doctor,recondition,чинить | A1,Дом
+machen | False | mache | machst | macht | machen | macht | machen | create,make,do,made,go,make for,делать | Действие и взаимодействие,A1
+ausmachen | False | mache aus | machst aus | macht aus | machen aus | macht aus | machen aus | put out,turn off,switch off,выключать | A1,Действие и взаимодействие
+anmachen | False | mache an | machst an | macht an | machen an | macht an | machen an | dress,light,turn on,switch on | A1,Действие и взаимодействие
+tun | False | tue | tust | tut | tun | tut | tun | do,put,work,act,happen,do smth,поступать,делать | A1,Действие и взаимодействие
+suchen | False | suche | suchst | sucht | suchen | sucht | suchen | look for,search,seek,hunt,искать | A1,Действие и взаимодействие
+finden | False | finde | findest | findet | finden | findet | finden | find,discover,spot,think,находить | A1,Действие и взаимодействие
+nehmen | False | nahme | nimmst | nimmt | nehmen | nehmt | nehmen | take,have,acquire,pick,брать | A1,Действие и взаимодействие
+halten | False | halte | hältst | hält | halten | haltet | halten | keep,stop,halt,hold,maintain,consider,regard,держать | A1,Действие и взаимодействие
+benutzen | False | benutze | benutzt | benutzt | benutzen | benutzt | benutzen | use,tilize,использовать,применять | A1,Действие и взаимодействие
+öffnen | False | öffne | öffnest | öffnet | öffnen | öffnet | öffnen | open,unlock,break open,open up,открывать | A1,Действие и взаимодействие
+schließen | False | schließe | schließt | schließt | schließen | schließt | schließen | close,shut,fasten,infer,guess,deduce,закрывать | A1,Действие и взаимодействие
+bringen | False | bringe | bringst | bringt | bringen | bringt | bringen | bring,take,convey,cause to,приносить,перемещать | A1,Действие и взаимодействие
+holen | False | hole | holst | holt | holen | holt | holen | get,fetch,take a breath,catch,kidnap,приносить,доставать | A1,Действие и взаимодействие
+geben | False | gebe | gibst | gibt | geben | gebt | geben | give to,give,put,add,pour,давать | A1,Действие и взаимодействие
+stellen | False | stelle | stellst | stellt | stellen | stellt | stellen | set,place,put,stand,adjust,ставить | A1,Действие и взаимодействие
+legen | False | lege | legst | legt | legen | legt | legen | lay,put,floor,класть | A1,Действие и взаимодействие
+beginnen | False | beginne | beginnst | beginnt | beginnen | beginnt | beginnen | start,begin,incept,начинать | A1,Действие и взаимодействие
+aufhören | False | höre auf | hörst auf | hört auf | hören auf | hört auf | hören auf | stop,quit,cease,end,conclude (with),прекращать | A1,Действие и взаимодействие
+lesen | False | lese | liest | liest | lesen | lest | lesen | читать,read,pick,select | Хобби и привычки,A1
+fernsehen | False | sehe fern | siehst fern | sieht fern | sehen fern | seht fern | sehen fern | watch TV,смотреть телевизор | A1,Хобби и привычки
+wandern | False | wandere | wanderst | wandert | wandern | wandert | wandern | ходить в поход,гулять в лесу,hike,travel,move | A1,Хобби и привычки
+rauchen | False | rauche | rauchst | raucht | rauchen | raucht | rauchen | smoke,курить | A1,Хобби и привычки
+schwimmen | False | schwimme | schwimmst | schwimmt | schwimmen | schwimmt | schwimmen | swim,плавать | A1,Спорт
+gewinnen | False | gewine | gewinnst | gewinnt | gewinnen | gewinnt | gewinnen | win,gain,ear,profit,выигрывать | A1,Спорт
+anbieten | False | biete an | bietest an | bietet an | bieten an | bietet an | bieten an | propose,offer,advertise,предлагать | A1,Покупки и одежда
+kaufen | False | kaufe | kaufst | kauft | kaufen | kauft | kaufen | purchase,buy,pay,corrupt,покупать | A1,Покупки и одежда
+einkaufen | False | kaufe ein | kaufst ein | kauft ein | kaufen ein | kauft ein | kaufen ein | shop,go shopping,buy,do the shopping,делать покупки | A1,Покупки и одежда
+verkaufen | False | verkaufe | verkaufst | verkauft | verkaufen | verkauft | verkaufen | продавать,sell,sell out | Покупки и одежда,A1
+kosten | False | koste | kostest | kostet | kosten | kostet | kosten | cost,be priced at,taste,стоить | A1,Покупки и одежда
+bestellen | False | bestelle | bestellst | bestellt | bestellen | bestellt | bestellen | send,order,convey,cultivate,заказывать | A1,Покупки и одежда
+zahlen | False | zahle | zahlst | zahlt | zahlen | zahlt | zahlen | pay,make payment,settle up,платить | A1,Покупки и одежда
+bezahlen | False | bezahle | bezahlst | bezahlt | bezahlen | bezahlt | bezahlen | оплачивать,pay,check out,discharge,settle up | A1,Покупки и одежда
+empfehlen | False | empfehle | empfiehlst | empfiehlt | empfehlen | empfehlt | empfehlen | recomment,advise,aproce,advocate,рекомендовать | A1,Покупки и одежда
+reisen | False | reise | reist | reist | reisen | reist | reisen | travel,fare,tour,journey,путешествовать | A1,Путешествия
+abfahren | False | fahre ab | fährst ab | fährt ab | fahren ab | fahrt ab | fahren ab | leave,depart,remove,выезжать,отъезжать,отправляться | A1,Путешествия
+abfliegen | False | fliege ab | fliegst ab | fliegt ab | fliegen ab | fliegt ab | fliegen ab | patrol,overfly,depart,вылутать (напр. на самолете) | A1,Путешествия
+ankommen | False | komme an | kommst/kömmst an | kommt/kömmt an | kommen an | kommt an | kommen an | arrive,depend,matter,appear,come,прибывать,приезжать | Путешествия,A1
+besichtigen | False | besichtige | besichtigst | besichtigt | besichtigen | besichtigt | besichtigen | view,visit,look around,посещать (место/достопримечательность) | A1,Путешествия
+einsteigen | False | steige ein | steigst ein | steigt ein | steigen ein | steigt ein | steigen ein | get in,board,access,climb in,get on,входить,садиться | A1,Транспорт и техника
+aussteigen | False | steige aus | steigst aus | steigt aus | steigen aus | steigt aus | steigen aus | to quit something,to bail out,to parachute,выходить (из транспорта/игры) | A1,Транспорт и техника
+besetzen | False | besetze | besetzt | besetzt | besetzen | besetzt | besetzen | occupy,decorate,занять | A1
+leben | False | lebe | lebst | lebt | leben | lebt | leben | live,inhabit,home,жить | A1,Жизнь и смерть
+sterben | False | sterbe | stirbst | stirbt | sterben | sterbt | sterben | die,perish,to cop it,умереть | A1,Жизнь и смерть
+schauen | False | schaue | schaust | schaut | schauen | schaut | schauen | take care of,watch,look,look after,заботиться | A1
+braten | False | brate | brätst | brät | braten | bratet | braten | Fry,Roast,Жарить | A1,Продукты питания
+essen | False | esse | isst | isst | essen | esst | essen | eat,кушать,consume | A1,Продукты питания
+verbieten | False | verbiete | verbietest | verbietet | verbieten | verbietet | verbieten | forbid,prohibit,veto,ban,запрещать | A1

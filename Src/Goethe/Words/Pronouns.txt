@@ -1,0 +1,12 @@
+﻿# sg. nom. | sg. gen. | sg. dat. | sg. acc. | pl. nom | pl. gen. | pl. dat. | pl. acc. | translations (comma-separated) | topics (comma-separated)
+ich | meiner | mir | mich | wir | unser | uns | uns | I,Я | A1
+du | deiner | dir | dich | ihr | euer | euch | euch | you,ты | A1
+er | seiner | ihm | ihn | sie | ihrer | ihnen | sie | he,он | A1
+sie/Sie | ihrer | ihr | sie | sie | ihrer | ihnen | sie | she,она | A1
+es | seiner | ihm | es | sie | ihrer | ihnen | sie | it,оно | A1
+wer | wessen | wem | wen | - | - | - | - | who,кто | A1,Вопросительные слова
+was | wessen | was | was | - | - | - | - | what,что | A1,Вопросительные слова
+etwas (things) | etwessen | etwas | etwas | - | - | - | - | some,something,anything | A1
+etwer (Persons) | etwessen | etwem | etwen | - | - | - | - | some,anything,something | A1
+beide | - | beidem | beides | beide | - | beiden | beide | both,оба/обе | A1,Друзья и знакомые
+welche | - | welcher | welche | welche | - | welchen | welche | what,which,который | A1

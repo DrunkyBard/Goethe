@@ -1,0 +1,24 @@
+﻿# preposition | translations (comma-separated) | topics (comma-separated)
+seit | since,с (даты времени),for | A1,Время
+an | at,on,у | A1
+aus | from,out of,из | A1
+in | in,inside,into,в | A1
+auf | on,на | A1
+von | от,from,by | A1
+bis | until,by,до | A1
+für | за,для,for,in favour | A1
+gegen | против,against,towards,around,round about | A1
+bei | при,у,near,at | A1
+vor | перед,in front of,outside,against | A1
+zwischen | между,between,among | A1
+über | о,над,over,across,beyond,about | A1
+um | вокруг,at (about time),about,by | A1
+ohne | без,without | A1
+durch | через,сквозь,through,via | A1
+nach | после,to,after,according to,in accordance with | A1
+zu | к,to,in,at,for | A1
+auch | also,также,тоже,too,as well | A1
+dann | тогда,then | A1
+denn | потому что,because,for,than | A1
+noch | еще,still,some time,one day |A1
+mit | with,с | A1
