@@ -28,7 +28,7 @@ public class PronounFileHandler : BaseFileHandler<Pronoun, PronounViewModel>
         var plAcc = tokenizedLine[7].Trim();
         
         var translations = tokenizedLine[8].Split(',').Select(x => x.Trim()).ToArray();
-        var topics       = tokenizedLine[9].Split(',').Select(x => x.Trim()).ToArray();
+        var topics       = tokenizedLine[9].Split(',').Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
         
         var isPronounValid = 
             !string.IsNullOrWhiteSpace(sgNom) && !string.IsNullOrWhiteSpace(sgGen) && !string.IsNullOrWhiteSpace(sgDat) && !string.IsNullOrWhiteSpace(sgAcc) && 

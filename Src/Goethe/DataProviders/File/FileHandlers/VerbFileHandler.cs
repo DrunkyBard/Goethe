@@ -35,7 +35,7 @@ public sealed class VerbFileHandler : BaseFileHandler<Verb, VerbViewModel>
         var presentSie  = tokenizedLine[7].Trim();
 
         var translations = tokenizedLine[8].Split(',').Select(x => x.Trim()).ToArray();
-        var topics       = tokenizedLine[9].Split(',').Select(x => x.Trim()).ToArray();
+        var topics       = tokenizedLine[9].Split(',').Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
         var isInfinitiveValid = !string.IsNullOrWhiteSpace(infinitive);
         var isRegularityValid = bool.TryParse(regularityString, out var isRegular);

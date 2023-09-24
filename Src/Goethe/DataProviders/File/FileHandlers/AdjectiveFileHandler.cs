@@ -119,7 +119,7 @@ public class AdjectiveFileHandler : BaseFileHandler<Adjective, AdjectiveViewMode
         var predicativePlural    = tokenizedLine[52].Trim();
 
         var translations = tokenizedLine[53].Split(',').Select(x => x.Trim()).ToArray();
-        var topics       = tokenizedLine[54].Split(',').Select(x => x.Trim()).ToArray();
+        var topics       = tokenizedLine[54].Split(',').Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
         
         var isAdjValid = !string.IsNullOrWhiteSpace(adjective) && 
                          !string.IsNullOrWhiteSpace(strInflNomMasculine) && !string.IsNullOrWhiteSpace(strInflNomFeminine) && 

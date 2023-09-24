@@ -564,3 +564,23 @@ public sealed class Adverb
         Topics       = topics;
     }
 }
+
+public sealed class Phrase
+{
+    public int      Id           { get; }
+    public string   Text         { get; }
+    public string[] Translations { get; }
+    public string[] Topics       { get; }
+
+    public Phrase(int id, string adverb, string[] translations, string[] topics)
+    {
+        Code.NotNullOrWhitespace(adverb);
+        Code.NotNullOrEmpty(translations);
+        Code.NotNull(topics);
+
+        Id           = id;
+        Text         = adverb;
+        Translations = translations;
+        Topics       = topics;
+    }
+}

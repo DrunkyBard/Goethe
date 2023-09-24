@@ -17,7 +17,7 @@ public class AdverbFileHandler : BaseFileHandler<Adverb, AdverbViewModel>
     {
         var adverb       = tokenizedLine[0].Trim();
         var translations = tokenizedLine[1].Split(',').Select(x => x.Trim()).ToArray();
-        var topics       = tokenizedLine[2].Split(',').Select(x => x.Trim()).ToArray();
+        var topics       = tokenizedLine[2].Split(',').Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
         
         if (string.IsNullOrWhiteSpace(adverb) || translations.Length == 0)
         {

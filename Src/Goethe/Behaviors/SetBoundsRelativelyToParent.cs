@@ -18,14 +18,14 @@ public class SetBoundsRelativelyToParent : Behavior<Control>
         {
             if (logicalChild is Layoutable layoutableChild && !ReferenceEquals(logicalChild, currentControl))
             {
-                var childBounds = layoutableChild.DesiredSize;
+                var childBounds = layoutableChild.Bounds;
                 
                 childHeight += childBounds.Height;
                 childWidth  += childBounds.Width;
             }
         }
         
-        return (Math.Max(0d, parent.DesiredSize.Width - childWidth), Math.Max(0d, parent.DesiredSize.Height - childHeight));
+        return (Math.Max(0d, parent.Bounds.Width - childWidth), Math.Max(0d, parent.Bounds.Height - childHeight));
     }
 
     protected override void OnAttached()
@@ -37,7 +37,7 @@ public class SetBoundsRelativelyToParent : Behavior<Control>
         
         var (w, h) = CalculateHeight(AssociatedObject, layoutable);
         
-        AssociatedObject.Width = w;
+        // AssociatedObject.Width = w;
         AssociatedObject.Height = h;
         
         layoutable.PropertyChanged += LayoutableOnPropertyChanged;
@@ -59,7 +59,7 @@ public class SetBoundsRelativelyToParent : Behavior<Control>
         {
             var (w, h) = CalculateHeight(AssociatedObject, e.Sender as Layoutable);
         
-            AssociatedObject.Width  = w;
+            // AssociatedObject.Width  = w;
             AssociatedObject.Height = h;
         }
     }

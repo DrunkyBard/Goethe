@@ -37,7 +37,7 @@ public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
         var plAcc = tokenizedLine[8].Trim();
 
         var translations = tokenizedLine[9].Split(',').Select(x => x.Trim()).ToArray();
-        var topics       = tokenizedLine[10].Split(',').Select(x => x.Trim()).ToArray();
+        var topics       = tokenizedLine[10].Split(',').Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
         var isValidGender = Enum.TryParse<Gender>(genderString, true, out var gender);
 

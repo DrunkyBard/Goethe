@@ -9,51 +9,53 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Goethe.Views.HomeView"
              x:DataType="vm:HomeViewModel">
-    <StackPanel Orientation="Vertical">
-        <Button Classes="path" ToolTip.Tip="Wörterbuch" VerticalAlignment="Top" HorizontalAlignment="Left"
+    <Grid RowDefinitions="Auto, Auto, *">
+        <Button Grid.Row="0" Classes="path" ToolTip.Tip="Wörterbuch" VerticalAlignment="Top" HorizontalAlignment="Left"
                 Command="{Binding ShowDictionary}">
             <Path
                 Data="m22.775 1.747a3.407 3.407 0 0 0 -2.795-.737l-5.9 1.073a4.348 4.348 0 0 0 -2.083 1 4.343 4.343 0 0 0 -2.083-1l-5.894-1.073a3.41 3.41 0 0 0 -4.02 3.354v16.524l12 2.182 12-2.182v-16.524a3.4 3.4 0 0 0 -1.225-2.617zm-12.275 18-7.5-1.363v-14.02a.41.41 0 0 1 .482-.4l5.9 1.073a1.363 1.363 0 0 1 1.118 1.338zm10.5-1.363-7.5 1.364v-13.373a1.363 1.363 0 0 1 1.12-1.341l5.9-1.072a.408.408 0 0 1 .482.4z" />
             <!-- <Svg Width="32" Height="32" Path="../Icons/book-alt (1).svg" /> -->
         </Button>
 
-        <WrapPanel Orientation="Horizontal">
-            <Button Classes="topicBtn" Content="Nouns" Command="{Binding StartNounsCommand}" 
-                    IsVisible="{Binding Repo.CorrectNouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
-            <Button Classes="topicBtn" Content="Verbs" Command="{Binding StartVerbsCommand}" 
-                    IsVisible="{Binding Repo.CorrectVerbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
-            <Button Classes="topicBtn" Content="Adjectives" Command="{Binding StartAdjectivesCommand}" 
-                    IsVisible="{Binding Repo.CorrectAdjectives.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
-            <Button Classes="topicBtn" Content="Pronouns" Command="{Binding StartPronounsCommand}" 
-                    IsVisible="{Binding Repo.CorrectPronouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
-            <Button Classes="topicBtn" Content="Conjunctions" Command="{Binding StartConjunctionsCommand}" 
-                    IsVisible="{Binding Repo.CorrectConjunctions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
-            <Button Classes="topicBtn" Content="Prepositions" Command="{Binding StartPrepositionsCommand}" 
-                    IsVisible="{Binding Repo.CorrectPrepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
-            <Button Classes="topicBtn" Content="Adverbs" Command="{Binding StartAdverbsCommand}" 
-                    IsVisible="{Binding Repo.CorrectAdverbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}"/>
+        <WrapPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Classes="topicBtn" Content="Nouns" Command="{Binding StartNounsCommand}"
+                    IsVisible="{Binding Repo.CorrectNouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Verbs" Command="{Binding StartVerbsCommand}"
+                    IsVisible="{Binding Repo.CorrectVerbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Adjectives" Command="{Binding StartAdjectivesCommand}"
+                    IsVisible="{Binding Repo.CorrectAdjectives.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Pronouns" Command="{Binding StartPronounsCommand}"
+                    IsVisible="{Binding Repo.CorrectPronouns.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Conjunctions" Command="{Binding StartConjunctionsCommand}"
+                    IsVisible="{Binding Repo.CorrectConjunctions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Prepositions" Command="{Binding StartPrepositionsCommand}"
+                    IsVisible="{Binding Repo.CorrectPrepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Adverbs" Command="{Binding StartAdverbsCommand}"
+                    IsVisible="{Binding Repo.CorrectAdverbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
         </WrapPanel>
 
-        <ItemsControl
-            Name="TopicList"
-            v:WordAttachedProperty.Home="{Binding}"
-            Margin="0,30,0,0"
-            ItemsSource="{Binding Topics}">
-            
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl
+                Name="TopicList"
+                v:WordAttachedProperty.Home="{Binding}"
+                Margin="0,30,0,0"
+                ItemsSource="{Binding Topics}">
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type s:String}">
-                    <Button Classes="topicBtn"
-                            Content="{Binding}" 
-                            Command="{Binding (v:WordAttachedProperty.Home).StartTopicCommand, ElementName=TopicList}"
-                            CommandParameter="{Binding}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </StackPanel>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type s:String}">
+                        <Button Classes="topicBtn"
+                                Content="{Binding}"
+                                Command="{Binding (v:WordAttachedProperty.Home).StartTopicCommand, ElementName=TopicList}"
+                                CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

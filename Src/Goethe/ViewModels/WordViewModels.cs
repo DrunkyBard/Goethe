@@ -546,7 +546,8 @@ public sealed class NounViewModel : WordViewModel
                 return true;
             }
 
-            return noun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return noun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   noun.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 }
@@ -673,7 +674,8 @@ public sealed class VerbViewModel : WordViewModel
                 return true;
             }
 
-            return verb.Infinitive.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return verb.Infinitive.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   verb.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 }
@@ -1044,7 +1046,8 @@ public sealed class AdjectiveViewModel : WordViewModel
                 return true;
             }
 
-            return adj.Adjective.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return adj.Adjective.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   adj.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 
@@ -1133,7 +1136,8 @@ public sealed class ConjunctionViewModel : WordViewModel
                 return true;
             }
 
-            return conjunction.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return conjunction.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   conjunction.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 
@@ -1222,7 +1226,8 @@ public sealed class ParticleViewModel : WordViewModel
                 return true;
             }
 
-            return particle.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return particle.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   particle.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 
@@ -1311,7 +1316,8 @@ public sealed class PrepositionViewModel : WordViewModel
                 return true;
             }
 
-            return preposition.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+            return preposition.Text.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   preposition.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 
@@ -1422,7 +1428,8 @@ public sealed class PronounViewModel : WordViewModel
             }
 
             return pronoun.Singular.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
-                   pronoun.Plural.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+                   pronoun.Plural.Nominative.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   pronoun.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 
@@ -1515,7 +1522,8 @@ public sealed class AdverbViewModel : WordViewModel
             }
 
             return pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
-                   pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+                   pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase) || 
+                   pronoun.Translations.Any(x => x.StartsWith(filter, StringComparison.OrdinalIgnoreCase));
         };
     }
 
@@ -1530,3 +1538,93 @@ public sealed class AdverbViewModel : WordViewModel
         Topics.AddRange(vm.Topics);
     }
 }
+
+// public sealed class PhraseViewModel : WordViewModel
+// {
+//     public static IComparer<AdverbViewModel> Comparer
+//         = new FuncComparer<AdverbViewModel>(
+//             (x, y) => string.Compare(x?.Adverb, y?.Adverb, StringComparison.OrdinalIgnoreCase));
+//     
+//     private string _adverb;
+//
+//     public string Adverb
+//     {
+//         get => _adverb;
+//         set => this.RaiseAndSetIfChanged(ref _adverb, value);
+//     }
+//     
+//     public AdverbViewModel(
+//         int id,
+//         string adverb,
+//         IEnumerable<string> translations, 
+//         IEnumerable<string> topics) : base(id, translations, topics)
+//     {
+//         Adverb = adverb;
+//         
+//         this.ValidationRule(
+//             x => x.Adverb,
+//             a => !string.IsNullOrWhiteSpace(a),
+//             "Should not be empty");
+//         
+//         PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+//     }
+//
+//     public AdverbViewModel()
+//         : this(
+//             0,
+//             string.Empty,
+//             Enumerable.Empty<string>(), 
+//             Enumerable.Empty<string>())
+//     {
+//     }
+//
+//     public AdverbViewModel(Adverb model)
+//         : this(
+//             model.Id,
+//             model.Text,
+//             model.Translations,
+//             model.Topics)
+//     {
+//     }
+//
+//     public AdverbViewModel(AdverbViewModel vm)
+//         : this(
+//             vm.Id,
+//             vm._adverb,
+//             vm.Translations,
+//             vm.Topics)
+//     {
+//     }
+//     
+//     public AdverbViewModel Copy() => new(this);
+//
+//     protected override void ClearInternal()
+//     {
+//         Adverb = string.Empty;
+//     }
+//     
+//     public static Func<AdverbViewModel, bool> GetFilter(string? filter)
+//     {
+//         return pronoun =>
+//         {
+//             if (string.IsNullOrWhiteSpace(filter))
+//             {
+//                 return true;
+//             }
+//
+//             return pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
+//                    pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+//         };
+//     }
+//
+//     public void Replace(AdverbViewModel vm)
+//     {
+//         Adverb = vm.Adverb;
+//         
+//         Translations.Clear();
+//         Translations.AddRange(vm.Translations);
+//         
+//         Topics.Clear();
+//         Topics.AddRange(vm.Topics);
+//     }
+// }
