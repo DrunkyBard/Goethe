@@ -23,7 +23,8 @@ public class NewWordViewModel : ViewModelBase
         WordType.Preposition,
         WordType.Conjunction,
         WordType.Adverb,
-        WordType.Particle
+        WordType.Particle,
+        WordType.Phrase,
     };
 
     private bool _modified;
@@ -38,6 +39,7 @@ public class NewWordViewModel : ViewModelBase
     private ConjunctionViewModel _newConjViewModel;
     private ParticleViewModel    _newParticleViewModel;
     private AdverbViewModel      _newAdverbViewModel;
+    private PhraseViewModel      _newPhraseViewModel;
 
     private NounViewModel        _nounViewModel;
     private VerbViewModel        _verbViewModel;
@@ -47,6 +49,7 @@ public class NewWordViewModel : ViewModelBase
     private ConjunctionViewModel _conjViewModel;
     private ParticleViewModel    _particleViewModel;
     private AdverbViewModel      _adverbViewModel;
+    private PhraseViewModel      _phraseViewModel;
 
     public bool Modified
     {
@@ -69,6 +72,8 @@ public class NewWordViewModel : ViewModelBase
     public ObservableCollection<ParticleViewModel> NewParticles { get; }
     
     public ObservableCollection<AdverbViewModel> NewAdverbs { get; }
+    
+    public ObservableCollection<PhraseViewModel> NewPhrases { get; }
 
     public ReactiveCommand<Unit, Unit> AddNewWordCommand { get; }
 
@@ -135,6 +140,12 @@ public class NewWordViewModel : ViewModelBase
         get => _adverbViewModel;
         set => this.RaiseAndSetIfChanged(ref _adverbViewModel, value);
     }
+    
+    public PhraseViewModel Phrase
+    {
+        get => _phraseViewModel;
+        set => this.RaiseAndSetIfChanged(ref _phraseViewModel, value);
+    }
 
     public IObservable<bool> IsEdit { get; }
 
@@ -154,6 +165,7 @@ public class NewWordViewModel : ViewModelBase
         _newConjViewModel     = _conjViewModel     = new ConjunctionViewModel();
         _newParticleViewModel = _particleViewModel = new ParticleViewModel();
         _newAdverbViewModel   = _adverbViewModel   = new AdverbViewModel();
+        _newPhraseViewModel   = _phraseViewModel   = new PhraseViewModel();
 
         NewNouns        = new ObservableCollection<NounViewModel>();
         NewVerbs        = new ObservableCollection<VerbViewModel>();
@@ -163,6 +175,7 @@ public class NewWordViewModel : ViewModelBase
         NewConjunctions = new ObservableCollection<ConjunctionViewModel>();
         NewParticles    = new ObservableCollection<ParticleViewModel>();
         NewAdverbs      = new ObservableCollection<AdverbViewModel>();
+        NewPhrases      = new ObservableCollection<PhraseViewModel>();
 
         var canAddWord = this.WhenAny(
             x => x.Noun.HasErrors,
@@ -173,9 +186,10 @@ public class NewWordViewModel : ViewModelBase
             x => x.Conjunction.HasErrors,
             x => x.Particle.HasErrors,
             x => x.Adverb.HasErrors,
+            x => x.Phrase.HasErrors,
             x => x.WordType,
             (nounChange, verbChange, adjChange, 
-             pronounChange, prepChange, conjChange, particleChange, adverbChange, 
+             pronounChange, prepChange, conjChange, particleChange, adverbChange, phraseChange, 
              wordTypeChange) =>
             {
                 switch (wordTypeChange.Value)
@@ -196,6 +210,8 @@ public class NewWordViewModel : ViewModelBase
                         return !particleChange.Value;
                     case WordType.Adverb:
                         return !adverbChange.Value;
+                    case WordType.Phrase:
+                        return !phraseChange.Value;
                     default:
                         throw new NotSupportedException();
                 }
@@ -210,11 +226,12 @@ public class NewWordViewModel : ViewModelBase
             x => x.NewConjunctions.Count,
             x => x.NewParticles.Count,
             x => x.NewAdverbs.Count,
+            x => x.NewPhrases.Count,
             (newNounsChange, newVerbsChange, newAdjChange,
-             newPronounsChange, newPrepsChange, newConjsChange, newParticlesChange, newAdverbsChange) => 
+             newPronounsChange, newPrepsChange, newConjsChange, newParticlesChange, newAdverbsChange, newPhrasesChange) => 
                 newNounsChange.Value > 0 || newVerbsChange.Value > 0 || newAdjChange.Value > 0 ||
                 newPronounsChange.Value > 0 || newPrepsChange.Value > 0 || newConjsChange.Value > 0 || newParticlesChange.Value > 0 ||
-                newAdverbsChange.Value > 0);
+                newAdverbsChange.Value > 0 || newPhrasesChange.Value > 0);
 
         IsEdit = this.WhenAny(
             x => x.WordType,
@@ -226,8 +243,9 @@ public class NewWordViewModel : ViewModelBase
             x => x.Conjunction,
             x => x.Particle,
             x => x.Adverb,
+            x => x.Phrase,
             (wordTypeChange, nounChange, verbChange, adjChange,
-             pronounChange, prepChange, conjChange, particleChange, adverbChange) =>
+             pronounChange, prepChange, conjChange, particleChange, adverbChange, phraseChange) =>
             {
                 switch (wordTypeChange.Value)
                 {
@@ -247,6 +265,8 @@ public class NewWordViewModel : ViewModelBase
                         return !ReferenceEquals(particleChange.Value, _newParticleViewModel);
                     case WordType.Adverb:
                         return !ReferenceEquals(adverbChange.Value, _newAdverbViewModel);
+                    case WordType.Phrase:
+                        return !ReferenceEquals(phraseChange.Value, _newPhraseViewModel);
                     default:
                         throw new NotSupportedException();
                 }
@@ -293,6 +313,10 @@ public class NewWordViewModel : ViewModelBase
                     WordType = WordType.Adverb;
                     Adverb = adverb;
                     break;
+                case PhraseViewModel phrase:
+                    WordType = WordType.Phrase;
+                    Phrase = phrase;
+                    break;
                 default:
                     throw new NotSupportedException();
             }
@@ -325,6 +349,9 @@ public class NewWordViewModel : ViewModelBase
                     break;
                 case WordType.Adverb:
                     Adverb = _newAdverbViewModel;
+                    break;
+                case WordType.Phrase:
+                    Phrase = _newPhraseViewModel;
                     break;
                 default:
                     throw new NotSupportedException();
@@ -359,6 +386,9 @@ public class NewWordViewModel : ViewModelBase
                 case AdverbViewModel adverb:
                     NewAdverbs.Remove(adverb);
                     break;
+                case PhraseViewModel phrase:
+                    NewPhrases.Remove(phrase);
+                    break;
                 default:
                     throw new NotSupportedException();
             }
@@ -369,7 +399,7 @@ public class NewWordViewModel : ViewModelBase
     {
         await _fileRepository.SaveNewWords(
             NewNouns, NewVerbs, NewAdjectives, 
-            NewPronouns, NewPrepositions, NewConjunctions, NewParticles, NewAdverbs);
+            NewPronouns, NewPrepositions, NewConjunctions, NewParticles, NewAdverbs, NewPhrases);
 
         _backToDictionary();
     }
@@ -409,6 +439,10 @@ public class NewWordViewModel : ViewModelBase
             case WordType.Adverb:
                 NewAdverbs.Add(_newAdverbViewModel.Copy());
                 _newAdverbViewModel.Clear();
+                break;
+            case WordType.Phrase:
+                NewPhrases.Add(_newPhraseViewModel.Copy());
+                _newPhraseViewModel.Clear();
                 break;
             default:
                 throw new NotSupportedException($"Word type {_wordType} is not supported");

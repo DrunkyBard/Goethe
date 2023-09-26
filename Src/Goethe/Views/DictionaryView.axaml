@@ -17,6 +17,7 @@
         <ResourceInclude Source="PrepositionDetailFlyout.axaml" />
         <ResourceInclude Source="ConjunctionDetailFlyout.axaml" />
         <ResourceInclude Source="AdverbDetailFlyout.axaml" />
+        <ResourceInclude Source="PhraseDetailFlyout.axaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplates x:Key="DictionaryView">
@@ -568,6 +569,74 @@
                                                                 <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
                                                                     <ContentControl Content="{Binding}"
                                                                         ContentTemplate="{StaticResource AdverbDetailView}" />
+                                                                </Flyout>
+                                                            </Button.Flyout>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </TreeView>
+                                </StackPanel>
+                            </Border>
+                            
+                            <Border 
+                                Classes="wordTableBorder"
+                                IsVisible="{Binding Phrases.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                                <StackPanel Classes="wordTable" Orientation="Vertical">
+                                    <TextBlock Classes="title" Text="Phrases" HorizontalAlignment="Center" />
+                                    <TreeView
+                                        Name="PhraseList"
+                                        Classes="notTree"
+                                        v:WordAttachedProperty.Dictionary="{Binding}"
+                                        ItemsSource="{Binding Phrases}">
+
+                                        <TreeView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Classes="notTreePanel" />
+                                            </ItemsPanelTemplate>
+                                        </TreeView.ItemsPanel>
+
+                                        <TreeView.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:PhraseViewModel}">
+                                                <DockPanel Classes="dictWordEntry">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               HorizontalAlignment="Left"
+                                                               Text="{Binding Phrase}" />
+
+                                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
+                                                        <Button ToolTip.Tip="Remove" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).RemoveWordCommand, ElementName=PhraseList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16"
+                                                                     Path="../Icons/trash (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Edit" Classes="wordCtrl"
+                                                                IsVisible="{Binding !IsDeletedOrModified^}"
+                                                                Command="{Binding  (v:WordAttachedProperty.Dictionary).EditWordCommand, ElementName=PhraseList}"
+                                                                CommandParameter="{Binding}">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/pencil.svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <Button ToolTip.Tip="Details" Classes="wordCtrl">
+                                                            <Button.Content>
+                                                                <Svg Width="16" Height="16" Path="../Icons/eye (1).svg"
+                                                                     HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                                            </Button.Content>
+
+                                                            <Button.Flyout>
+                                                                <Flyout Placement="Right" FlyoutPresenterClasses="detailFlyout">
+                                                                    <ContentControl Content="{Binding}"
+                                                                        ContentTemplate="{StaticResource PhraseDetailView}" />
                                                                 </Flyout>
                                                             </Button.Flyout>
                                                         </Button>

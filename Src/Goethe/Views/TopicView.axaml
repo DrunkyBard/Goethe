@@ -18,6 +18,7 @@
                 <ResourceInclude Source="PrepositionDetailFlyout.axaml" />
                 <ResourceInclude Source="ConjunctionDetailFlyout.axaml" />
                 <ResourceInclude Source="AdverbDetailFlyout.axaml" />
+                <ResourceInclude Source="PhraseDetailFlyout.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -101,6 +102,10 @@
                         <DataTemplate DataType="{x:Type vm:AdverbViewModel}">
                             <TextBlock Classes="title" Text="Adverb" />
                         </DataTemplate>
+                        
+                        <DataTemplate DataType="{x:Type vm:PhraseViewModel}">
+                            <TextBlock Classes="title" Text="Phrase" />
+                        </DataTemplate>
                     </ContentControl.DataTemplates>
                 </ContentControl>
                 
@@ -113,6 +118,7 @@
                         <b:AddDataTemplate Template="{StaticResource PrepositionDetailView}" />
                         <b:AddDataTemplate Template="{StaticResource ConjunctionDetailView}" />
                         <b:AddDataTemplate Template="{StaticResource AdverbDetailView}" />
+                        <b:AddDataTemplate Template="{StaticResource PhraseDetailView}" />
                     </Interaction.Behaviors>
                 </ContentControl>
             </StackPanel>

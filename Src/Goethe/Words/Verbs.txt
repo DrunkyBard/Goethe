@@ -125,3 +125,11 @@ schauen | False | schaue | schaust | schaut | schauen | schaut | schauen | take 
 braten | False | brate | brätst | brät | braten | bratet | braten | Fry,Roast,Жарить | A1,Продукты питания
 essen | False | esse | isst | isst | essen | esst | essen | eat,кушать,consume | A1,Продукты питания
 verbieten | False | verbiete | verbietest | verbietet | verbieten | verbietet | verbieten | forbid,prohibit,veto,ban,запрещать | A1
+lernen | False | lerne | lernst | lernt | lernen | lernt | lernen | учить,учиться,learn,study,teach | A1,Учеба
+studieren | False | studiere | studierst | studiert | studieren | studiert | studieren | учиться (в вузе),study | Учеба,A1
+erklären | False | erklärу | erklärst | erklärt | erklären | erklärt | erklären | explain,give an account of,interpret,объяснять | A1,Учеба
+schreiben | False | schreibe | schreibst | schreibt | schreiben | schreibt | schreiben | write,писать | A1,Учеба
+wissen | False | weiß | weißt | weiß | wissen | wisst | wissen | know,be conscious (of),be wise (of),знать | A1,Учеба
+fehlen | False | fehle | fehlst | fehlt | fehlen | fehlt | fehlen | be missing,be short,miss,lack,be wrong,отсутствовать | A1,Учеба
+bedeuten | False | bedeute | bedeutest | bedeutet | bedeuten | bedeutet | bedeuten | означать,значить,mean,mean to,involve,matter,stand for | A1,Языки
+arbeiten | False | arbeite | arbeitest | arbeitet | arbeiten | arbeitet | arbeiten | работать,work,function,warp,to be employed,work (on) | A1,Работа и профессии

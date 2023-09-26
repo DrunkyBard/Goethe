@@ -32,6 +32,8 @@
                     IsVisible="{Binding Repo.CorrectPrepositions.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
             <Button Classes="topicBtn" Content="Adverbs" Command="{Binding StartAdverbsCommand}"
                     IsVisible="{Binding Repo.CorrectAdverbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
+            <Button Classes="topicBtn" Content="Phrases" Command="{Binding StartPhrasesCommand}"
+                    IsVisible="{Binding Repo.CorrectPhrases.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}" />
         </WrapPanel>
 
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">

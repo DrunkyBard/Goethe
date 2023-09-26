@@ -303,3 +303,45 @@ M | Knödel | Knödels | Knödel | Knödel | Knödel | Knödel | Knödeln | Knö
 N | Rührei | Rühreies/Rühreis | Rührei | Rührei | Rühreier | Rühreier | Rühreiern | Rühreier | Scrambled egg | A1,Продукты питания
 N | Omelett | Omelettes/Omeletts | Omelett/Omelette | Omelett | Omelette | Omelette | Omeletten | Omelette | Omelet,Омлет | A1,Продукты питания
 F | Mayonnaise | Mayonnaise | Mayonnaise | Mayonnaise | Mayonnaisen | Mayonnaisen | Mayonnaisen | Mayonnaisen | Mayo,Майонез | A1,Продукты питания
+M | Kindergarten | Kindergartens | Kindergarten | Kindergarten | Kindergärten | Kindergärten | Kindergärten | Kindergärten | Kindergarten,Playschool,Детский сад | A1,Учеба
+F | Schule | Schule | Schule | Schule | Schulen | Schulen | Schulen | Schulen | School,Школа | A1,Учеба
+F | Klasse | Klasse | Klasse | Klasse | Klassen | Klassen | Klassen | Klassen | Classroom,Class,Category,Grade | A1,Учеба
+M | Schüler | Schülers | Schüler | Schüler | Schüler | Schüler | Schülern | Schüler | Disciple,Pupil,Student,Scholar,Ученик | A1,Учеба
+M | Lehrer | Lehrers | Lehrer | Lehrer | Lehrer | Lehrer | Lehrern | Lehrer | Tutor,Teacher,Instructor,Учитель | Учеба,A1
+N | Studium | Studiums | Studium | Studium | Studien | Studien | Studien | Studien | Studies,Учеба в вузе | A1,Учеба
+F | Gruppe | Gruppe | Gruppe | Gruppe | Gruppen | Gruppen | Gruppen | Gruppen | Group,Unit,Cluster,Gang,Squad,Band,Группа | A1,Учеба
+M | Student | Studenten | Studenten | Studenten | Studenten | Studenten | Studenten | Studenten | Student,Scholar,Студент | A1,Учеба
+M | Unterricht | Unterrichtes/Unterrichts | Unterricht/Unterrichte | Unterricht | Unterrichte | Unterrichte | Unterrichten | Unterrichte | Lessons,Classes,Instruction,Teaching,Занятие | A1,Учеба
+F | Pause | Pause | Pause | Pause | Pausen | Pausen | Pausen | Pausen | Break,Pause,Recess,Rest period | A1,Учеба
+N | Thema | Themas | Thema | Thema | Themen/Themata | Themen/Themata | Themen/Themata | Themen/Themata | Theme,Topic,Subject,Тема | A1,Учеба
+F | Information | Information | Information | Information | Informationen | Informationen | Informationen | Informationen | Information,Informing,Information desk,Информация | A1,Учеба
+F | Aufgabe | Aufgabe | Aufgabe | Aufgabe | Aufgaben | Aufgaben | Aufgaben | Aufgaben | Задание,Task,Business,Abandonment,Duty | A1,Учеба
+F | Hausaufgabe | Hausaufgabe | Hausaufgabe | Hausaufgabe | Hausaufgaben | Hausaufgaben | Hausaufgaben | Hausaufgaben | Homework,Домашнее задание | A1,Учеба
+M | Test | Testes/Tests | Test/Teste | Test | Tests/Teste | Tests/Teste | Tests/Testen | Tests/Teste | Тест,Test | A1,Учеба
+F | Prüfung | Prüfung | Prüfung | Prüfung | Prüfungen | Prüfungen | Prüfungen | Prüfungen | Check,Audit,Exam,Validation,Экзамен | A1,Учеба
+M | Bleistift | Bleistiftes/Bleistifts | Bleistift/Bleistifte | Bleistift | Bleistifte | Bleistifte | Bleistiften | Bleistifte | Pencil,Простой карандаш,Lead pencil | A1,Учеба
+M | Kugelschreiber | Kugelschreibers | Kugelschreiber | Kugelschreiber | Kugelschreiber | Kugelschreiber | Kugelschreibern | Kugelschreiber | Ballpoint pen,Pen,Шариковая ручка | A1,Учеба
+N | Papier | Papiers | Papier | Papier | Papiere | Papiere | Papieren | Papiere | Paper,Document,Security,Бумага,Документ | A1,Учеба
+F | Lösung | Lösung | Lösung | Lösung | Lösungen | Lösungen | Lösungen | Lösungen | Answer,Solution,Cancellation,Resolution,Решение,Ответ (к задаче) | A1,Учеба
+N | Ergebnis | Ergebnisses | Ergebnis | Ergebnis | Ergebnisse | Ergebnisse | Ergebnissen | Ergebnisse | Результат,Result,Outcome,Finding,Sum,Conclusion | A1,Учеба
+M | Fehler | Fehlers | Fehler | Fehler | Fehler | Fehler | Fehlern | Fehler | Error,Mistake,Flaw,Fault,Defect,Ошибка | A1,Учеба
+N | Praktikum | Praktikums | Praktikum | Praktikum | Praktika | Praktika | Praktika | Praktika | Work experience,Practical training,Практика | A1,Учеба
+M | Kurs | Kurses | Kurs/Kurse | Kurs | Kurse | Kurse | Kursen | Kurse | Course,Rate,Line,Route,Exchange rate,Курс (доп. образование/направление движения) | A1,Учеба
+M | Buchstabe/Buchstaben | Buchstabes | Buchstaben | Buchstaben | Buchstaben | Buchstaben | Buchstaben | Buchstaben | Letter,Alphabetic character,Буква | A1,Языки
+N | Wort | Wortes/Worts | Wort/Worte | Wort | Wörter/Worte | Wörter/Worte | Wörtern/Worten | Wörter/Worte | Слово,Word,Term,Expression | A1,Языки
+M | Satz | Satzes | Satz/Satze | Satz | Sätze | Sätze | Sätzen | Sätze | Предложение,Sentence,Period,Set,Grounds | A1,Языки
+M | Text | Textes/Texts | Text/Texte | Text | Texte | Texte | Texten | Texte | Text,Lyric,Words,Copy,Текст | A1,Языки
+F | Sprache | Sprache | Sprache | Sprache | Sprachen | Sprachen | Sprachen | Sprachen | Язык (немецкий/английски/итд),Language,Speech,Tongue,Way of speaking | A1,Языки
+F | Aussage | Aussage | Aussage | Aussage | Aussagen | Aussagen | Aussagen | Aussagen | Высказывание,Stated view,Statement,Evidence,Conclusion,Testimony | A1,Языки
+M | Beruf | Berufes/Berufs | Beruf/Berufe | Beruf | Berufe | Berufe | Berufen | Berufe | Job,Trade,Profession,Occupation,Business,Профессия | A1,Работа и профессии
+F | Arbeit | Arbeit | Arbeit | Arbeit | Arbeiten | Arbeiten | Arbeiten | Arbeiten | Work,Employment,Job,Business | A1,Работа и профессии
+M | Job | Jobs | Job | Job | Jobs | Jobs | Jobs | Jobs | Работа (чаще ручной или несложный труд),Job,Work,Task | A1,Работа и профессии
+F | Firma | Firma | Firma | Firma | Firmen | Firmen | Firmen | Firmen | Firm,Company,Business,Employer,Фирма | A1,Работа и профессии
+F | Praxis | Praxis | Praxis | Praxis | Praxen | Praxen | Praxen | Praxen | Practice,Doctor's office,Experience,Врачебный кабинет | A1,Работа и профессии
+F | Hausfrau | Hausfrau | Hausfrau | Hausfrau | Hausfrauen | Hausfrauen | Hausfrauen | Hausfrauen | Housewife,Домохозяйка,Homemaker,Landlady | A1,Работа и профессии
+M | Hausmann | Hausmannes/Hausmanns | Hausmann/Hausmanne | Hausmann | Hausmänner/Hausmannen | Hausmänner/Hausmannen | Hausmännern/Hausmannen | Hausmänner/Hausmannen | Домохозяин,Househusband | A1,Работа и профессии
+M | Arbeitsplatz | Arbeitsplatzes | Arbeitsplatz/Arbeitsplatze | Arbeitsplatz | Arbeitsplätze | Arbeitsplätze | Arbeitsplätzen | Arbeitsplätze | Рабочее место,Workplace,Job,Employment,Place of work | A1,Работа и профессии
+F | Stelle | Stelle | Stelle | Stelle | Stellen | Stellen | Stellen | Stellen | Место,Позиция,Должность,Job,Digit,Place,Office,Appointment | A1,Работа и профессии
+F | Führung | Führung | Führung | Führung | Führungen | Führungen | Führungen | Führungen | Управление,Руководство,Guidance,Guideway,Lead,Conduct | A1,Работа и профессии
+M | Chef | Chefs | Chef | Chef | Chefs | Chefs | Chefs | Chefs | Boss,Manager,Chief,Head,Director,Шеф | A1,Работа и профессии
+M | Kollege | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Workmate,Colleague,Co-worker,Associate,Коллега | A1,Работа и профессии

@@ -289,6 +289,101 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedAdverbs.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Adverbs" />
+
+                <ItemsControl 
+                    Name="EditAdverbList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedAdverbs}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:AdverbViewModel}">
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Adverb}" />
+                                        </DataTemplate>
+                                    </Grid.DataTemplates>
+                                    
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditAdverbList}"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditAdverbList}"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding EditedPhrases.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Phrases" />
+
+                <ItemsControl 
+                    Name="EditPhraseList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding EditedPhrases}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:OldNewWordViewModel}">
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto,Auto">
+                                    <Grid.DataTemplates>
+                                        <DataTemplate DataType="{x:Type vm:PhraseViewModel}">
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Phrase}" />
+                                        </DataTemplate>
+                                    </Grid.DataTemplates>
+                                    
+                                    <ContentControl Grid.Column="0" Content="{Binding NewWord}" DockPanel.Dock="Left" />
+
+                                    <Button Grid.Column="1" ToolTip.Tip="Edit" Classes="wordCtrl"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).ContinueEditWordCommand, ElementName=EditPhraseList}"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Grid.Column="2" ToolTip.Tip="Cancel" Classes="wordCtrl"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordEditCommand, ElementName=EditPhraseList}"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

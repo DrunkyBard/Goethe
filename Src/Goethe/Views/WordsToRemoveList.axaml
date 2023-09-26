@@ -253,6 +253,40 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </StackPanel>
+            
+            <StackPanel Orientation="Vertical"
+                        IsVisible="{Binding PhrasesToRemove.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                <TextBlock Text="Adverbs" />
+
+                <ItemsControl 
+                    Name="PhrasesToRemoveList"
+                    v:WordAttachedProperty.Dictionary="{Binding}"
+                    ItemsSource="{Binding PhrasesToRemove}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:PhraseViewModel}">
+                            <Border CornerRadius="1" Classes="dictWordEntry">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Phrase}" DockPanel.Dock="Left" />
+
+                                    <Button Grid.Column="1" ToolTip.Tip="Cancel" Classes="wordCtrl"
+                                            Command="{Binding (v:WordAttachedProperty.Dictionary).CancelWordDeletionCommand, ElementName=PhrasesToRemoveList}"
+                                            CommandParameter="{Binding}">
+                                        <Button.Content>
+                                            <Svg Width="16" Height="16" Path="../Icons/undo.svg" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

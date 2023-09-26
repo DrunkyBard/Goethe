@@ -27,6 +27,7 @@
                 <ResourceInclude Source="avares://Goethe/Views/EditPrepositionView.axaml" />
                 <ResourceInclude Source="avares://Goethe/Views/EditConjunctionView.axaml" />
                 <ResourceInclude Source="avares://Goethe/Views/EditAdverbView.axaml" />
+                <ResourceInclude Source="avares://Goethe/Views/EditPhraseView.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -93,6 +94,11 @@
                                 Content="{Binding Adverb}"
                                 ContentTemplate="{StaticResource EditAdverbView}"
                                 IsVisible="{Binding WordType, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:WordType.Adverb}}" />
+                            
+                            <ContentControl
+                                Content="{Binding Phrase}"
+                                ContentTemplate="{StaticResource EditPhraseView}"
+                                IsVisible="{Binding WordType, Converter={c:EqualsConverter}, ConverterParameter={x:Static m:WordType.Phrase}}" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -288,6 +294,31 @@
                                 <DataTemplate DataType="{x:Type vm:AdverbViewModel}">
                                     <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
                                         <TextBlock Text="{Binding Adverb}" HorizontalAlignment="Left" />
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
+                                                Command="{Binding #This.ViewModel.EditWordCommand}"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/pencil.svg" />
+                                        </Button>
+                                        <Button Classes="wordCtrl" ToolTip.Tip="Remove" HorizontalAlignment="Right"
+                                                Command="{Binding #This.ViewModel.RemoveWordCommand}"
+                                                CommandParameter="{Binding}">
+                                            <Svg Width="16" Height="16" Path="../Icons/trash (1).svg" />
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Vertical"
+                                IsVisible="{Binding NewPhrases.Count, Converter={c:IntGreaterThan}, ConverterParameter={StaticResource Zero}}">
+                        <TextBlock Classes="subTitle" Text="Phrases" />
+    
+                        <ItemsControl ItemsSource="{Binding NewPhrases}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:PhraseViewModel}">
+                                    <StackPanel Classes="dictWordEntry" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Phrase}" HorizontalAlignment="Left" />
                                         <Button Classes="wordCtrl" ToolTip.Tip="Edit" HorizontalAlignment="Right"
                                                 Command="{Binding #This.ViewModel.EditWordCommand}"
                                                 CommandParameter="{Binding}">

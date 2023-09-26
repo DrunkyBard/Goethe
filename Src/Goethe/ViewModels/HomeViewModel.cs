@@ -28,6 +28,7 @@ public class HomeViewModel : ViewModelBase
     public ICommand StartConjunctionsCommand { get; }
     public ICommand StartPrepositionsCommand { get; }
     public ICommand StartAdverbsCommand      { get; }
+    public ICommand StartPhrasesCommand      { get; }
 
     public ObservableCollection<string> Topics { get; }
 
@@ -70,6 +71,9 @@ public class HomeViewModel : ViewModelBase
         StartAdverbsCommand =
             ReactiveCommand.Create(
                 () => _showView(new TopicViewModel("Adverbs", _dictionary.Adverbs, ShowHome)));
+        StartPhrasesCommand =
+            ReactiveCommand.Create(
+                () => _showView(new TopicViewModel("Phrases", _dictionary.Phrases, ShowHome)));
 
         UpdateTopicList();
     }
@@ -100,6 +104,7 @@ public class HomeViewModel : ViewModelBase
         AddWords(_dictionary.Conjunctions);
         AddWords(_dictionary.Prepositions);
         AddWords(_dictionary.Adverbs);
+        AddWords(_dictionary.Phrases);
 
         _showView(new TopicViewModel(topic, words, ShowHome));
     }
@@ -141,6 +146,11 @@ public class HomeViewModel : ViewModelBase
         }
         
         foreach (var topic in _repo.CorrectAdverbs.Items.SelectMany(x => x.Topics))
+        {
+            topics.Add(topic);
+        }
+        
+        foreach (var topic in _repo.CorrectPhrases.Items.SelectMany(x => x.Topics))
         {
             topics.Add(topic);
         }

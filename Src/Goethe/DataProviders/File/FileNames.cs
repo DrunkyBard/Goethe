@@ -11,4 +11,5 @@ public class FileNames
     public const string Adverbs      = "Adverbs.txt";
     public const string Particles    = "Particles.txt";
     public const string Determiners  = "Determiners.txt";
+    public const string Phrases      = "Phrases.txt";
 }

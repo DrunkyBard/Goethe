@@ -31,6 +31,7 @@ public class DictionaryViewModel : ViewModelBase
     public ReadOnlyObservableCollection<ConjunctionViewModel> Conjunctions { get; }
     public ReadOnlyObservableCollection<ParticleViewModel>    Particles    { get; }
     public ReadOnlyObservableCollection<AdverbViewModel>      Adverbs      { get; }
+    public ReadOnlyObservableCollection<PhraseViewModel>      Phrases      { get; }
 
     public ReadOnlyObservableCollection<OldNewWordViewModel> EditedNouns        { get; }
     public ReadOnlyObservableCollection<OldNewWordViewModel> EditedVerbs        { get; }
@@ -40,6 +41,7 @@ public class DictionaryViewModel : ViewModelBase
     public ReadOnlyObservableCollection<OldNewWordViewModel> EditedConjunctions { get; }
     public ReadOnlyObservableCollection<OldNewWordViewModel> EditedParticles    { get; }
     public ReadOnlyObservableCollection<OldNewWordViewModel> EditedAdverbs      { get; }
+    public ReadOnlyObservableCollection<OldNewWordViewModel> EditedPhrases      { get; }
 
     public ReadOnlyObservableCollection<NounViewModel>        NounsToRemove        { get; }
     public ReadOnlyObservableCollection<VerbViewModel>        VerbsToRemove        { get; }
@@ -49,6 +51,7 @@ public class DictionaryViewModel : ViewModelBase
     public ReadOnlyObservableCollection<ConjunctionViewModel> ConjunctionsToRemove { get; }
     public ReadOnlyObservableCollection<ParticleViewModel>    ParticlesToRemove    { get; }
     public ReadOnlyObservableCollection<AdverbViewModel>      AdverbsToRemove      { get; }
+    public ReadOnlyObservableCollection<PhraseViewModel>      PhrasesToRemove      { get; }
 
     public IObservable<bool> HasEdits { get; }
 
@@ -196,6 +199,17 @@ public class DictionaryViewModel : ViewModelBase
             out var toEditAdverbs,
             out var toRemoveAdverbs,
             subs);
+        BuildWordsSubscription(
+            Repo.CorrectPhrases,
+            BuildFilter(PhraseViewModel.GetFilter),
+            PhraseViewModel.Comparer,
+            m => new PhraseViewModel(m),
+            m => m.Copy(),
+            (oldWord, newWord) => newWord.Replace(oldWord),
+            out var phrases,
+            out var toEditPhrases,
+            out var toRemovePhrases,
+            subs);
 
         _cleanup = new CompositeDisposable(subs);
 
@@ -206,7 +220,8 @@ public class DictionaryViewModel : ViewModelBase
         Prepositions = prepositions;
         Conjunctions = conjunctions;
         Particles    = particles;
-        Adverbs = adverbs;
+        Adverbs      = adverbs;
+        Phrases      = phrases;
 
         EditedNouns        = toEditNouns;
         EditedVerbs        = toEditVerbs;
@@ -216,6 +231,7 @@ public class DictionaryViewModel : ViewModelBase
         EditedConjunctions = toEditConjunctions;
         EditedParticles    = toEditParticles;
         EditedAdverbs      = toEditAdverbs;
+        EditedPhrases      = toEditPhrases;
 
         HasEdits = this.WhenAny(
             x => x.EditedNouns.Count,
@@ -226,10 +242,11 @@ public class DictionaryViewModel : ViewModelBase
             x => x.EditedConjunctions.Count,
             x => x.EditedParticles.Count,
             x => x.EditedAdverbs.Count,
-            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount, advCount) =>
+            x => x.EditedPhrases.Count,
+            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount, advCount, phraseCount) =>
                 nounCount.Value > 0 || verbCount.Value > 0 ||
                 pronounCount.Value > 0 || adjCount.Value > 0 ||
-                prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0 || advCount.Value > 0);
+                prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0 || advCount.Value > 0 || phraseCount.Value > 0);
 
         HasDeletions = this.WhenAny(
             x => x.NounsToRemove.Count,
@@ -240,10 +257,11 @@ public class DictionaryViewModel : ViewModelBase
             x => x.ConjunctionsToRemove.Count,
             x => x.ParticlesToRemove.Count,
             x => x.AdverbsToRemove.Count,
-            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount, advCount) =>
+            x => x.PhrasesToRemove.Count,
+            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount, advCount, phraseCount) =>
                 nounCount.Value > 0 || verbCount.Value > 0 ||
                 pronounCount.Value > 0 || adjCount.Value > 0 ||
-                prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0 || advCount.Value > 0);
+                prepCount.Value > 0 || conjCount.Value > 0 || partCount.Value > 0 || advCount.Value > 0 || phraseCount.Value > 0);
         
         TotalWords = this.WhenAny(
             x => x.Nouns.Count,
@@ -254,8 +272,9 @@ public class DictionaryViewModel : ViewModelBase
             x => x.Conjunctions.Count,
             x => x.Particles.Count,
             x => x.Adverbs.Count,
-            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount, adverbCount) =>
-                nounCount.Value + verbCount.Value + pronounCount.Value + adjCount.Value + prepCount.Value + conjCount.Value + partCount.Value + adverbCount.Value);
+            x => x.Phrases.Count,
+            (nounCount, verbCount, pronounCount, adjCount, prepCount, conjCount, partCount, adverbCount, phraseCount) =>
+                nounCount.Value + verbCount.Value + pronounCount.Value + adjCount.Value + prepCount.Value + conjCount.Value + partCount.Value + adverbCount.Value + phraseCount.Value);
 
         HasChanges = HasEdits.CombineLatest(HasDeletions, (hasEdits, hasDeletion) => hasEdits || hasDeletion);
 
@@ -267,6 +286,7 @@ public class DictionaryViewModel : ViewModelBase
         ConjunctionsToRemove = toRemoveConjunctions;
         ParticlesToRemove    = toRemoveParticles;
         AdverbsToRemove      = toRemoveAdverbs;
+        PhrasesToRemove      = toRemovePhrases;
     }
 
     private void BuildWordsSubscription<TModel, TViewModel>(

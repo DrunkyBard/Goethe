@@ -14,7 +14,8 @@ public enum WordType
     Conjunction,
     Particle,
     Adverb,
-    Determiner
+    Determiner,
+    Phrase
 }
 
 public enum Gender

@@ -1539,92 +1539,92 @@ public sealed class AdverbViewModel : WordViewModel
     }
 }
 
-// public sealed class PhraseViewModel : WordViewModel
-// {
-//     public static IComparer<AdverbViewModel> Comparer
-//         = new FuncComparer<AdverbViewModel>(
-//             (x, y) => string.Compare(x?.Adverb, y?.Adverb, StringComparison.OrdinalIgnoreCase));
-//     
-//     private string _adverb;
-//
-//     public string Adverb
-//     {
-//         get => _adverb;
-//         set => this.RaiseAndSetIfChanged(ref _adverb, value);
-//     }
-//     
-//     public AdverbViewModel(
-//         int id,
-//         string adverb,
-//         IEnumerable<string> translations, 
-//         IEnumerable<string> topics) : base(id, translations, topics)
-//     {
-//         Adverb = adverb;
-//         
-//         this.ValidationRule(
-//             x => x.Adverb,
-//             a => !string.IsNullOrWhiteSpace(a),
-//             "Should not be empty");
-//         
-//         PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
-//     }
-//
-//     public AdverbViewModel()
-//         : this(
-//             0,
-//             string.Empty,
-//             Enumerable.Empty<string>(), 
-//             Enumerable.Empty<string>())
-//     {
-//     }
-//
-//     public AdverbViewModel(Adverb model)
-//         : this(
-//             model.Id,
-//             model.Text,
-//             model.Translations,
-//             model.Topics)
-//     {
-//     }
-//
-//     public AdverbViewModel(AdverbViewModel vm)
-//         : this(
-//             vm.Id,
-//             vm._adverb,
-//             vm.Translations,
-//             vm.Topics)
-//     {
-//     }
-//     
-//     public AdverbViewModel Copy() => new(this);
-//
-//     protected override void ClearInternal()
-//     {
-//         Adverb = string.Empty;
-//     }
-//     
-//     public static Func<AdverbViewModel, bool> GetFilter(string? filter)
-//     {
-//         return pronoun =>
-//         {
-//             if (string.IsNullOrWhiteSpace(filter))
-//             {
-//                 return true;
-//             }
-//
-//             return pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
-//                    pronoun.Adverb.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
-//         };
-//     }
-//
-//     public void Replace(AdverbViewModel vm)
-//     {
-//         Adverb = vm.Adverb;
-//         
-//         Translations.Clear();
-//         Translations.AddRange(vm.Translations);
-//         
-//         Topics.Clear();
-//         Topics.AddRange(vm.Topics);
-//     }
-// }
+public sealed class PhraseViewModel : WordViewModel
+{
+    public static IComparer<PhraseViewModel> Comparer
+        = new FuncComparer<PhraseViewModel>(
+            (x, y) => string.Compare(x?.Phrase, y?.Phrase, StringComparison.OrdinalIgnoreCase));
+    
+    private string _phrase;
+
+    public string Phrase
+    {
+        get => _phrase;
+        set => this.RaiseAndSetIfChanged(ref _phrase, value);
+    }
+    
+    public PhraseViewModel(
+        int id,
+        string phrase,
+        IEnumerable<string> translations, 
+        IEnumerable<string> topics) : base(id, translations, topics)
+    {
+        Phrase = phrase;
+        
+        this.ValidationRule(
+            x => x.Phrase,
+            a => !string.IsNullOrWhiteSpace(a),
+            "Should not be empty");
+        
+        PropertyChanged += (_, _) => FireChange.OnNext(Unit.Default);
+    }
+
+    public PhraseViewModel()
+        : this(
+            0,
+            string.Empty,
+            Enumerable.Empty<string>(), 
+            Enumerable.Empty<string>())
+    {
+    }
+
+    public PhraseViewModel(Phrase model)
+        : this(
+            model.Id,
+            model.Text,
+            model.Translations,
+            model.Topics)
+    {
+    }
+
+    public PhraseViewModel(PhraseViewModel vm)
+        : this(
+            vm.Id,
+            vm._phrase,
+            vm.Translations,
+            vm.Topics)
+    {
+    }
+    
+    public PhraseViewModel Copy() => new(this);
+
+    protected override void ClearInternal()
+    {
+        Phrase = string.Empty;
+    }
+    
+    public static Func<PhraseViewModel, bool> GetFilter(string? filter)
+    {
+        return pronoun =>
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                return true;
+            }
+
+            return pronoun.Phrase.StartsWith(filter, StringComparison.OrdinalIgnoreCase) ||
+                   pronoun.Phrase.StartsWith(filter, StringComparison.OrdinalIgnoreCase);
+        };
+    }
+
+    public void Replace(PhraseViewModel vm)
+    {
+        Phrase = vm.Phrase;
+        
+        Translations.Clear();
+        Translations.AddRange(vm.Translations);
+        
+        Topics.Clear();
+        Topics.AddRange(vm.Topics);
+    }
+}
