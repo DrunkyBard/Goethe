@@ -77,7 +77,7 @@ M | Grad | Grades/Grads | Grad/Grade | Grad | Grade | Grade | Graden | Grade | �
 F | Sonne | Sonne | Sonne | Sonne | Sonnen | Sonnen | Sonnen | Sonnen | Солнце,Sun,Shine,Sunshine,Star | A1,Природа
 M | Wind | Windes/Winds | Wind/Winde | Wind | Winde | Winde | Winden | Winde | Wind,Windiness,Ветер | A1,Природа
 M | Regen | Regens | Regen | Regen | Regen | Regen | Regen | Regen | Rain,Rainfall,Дождь | A1,Природа
-M | See | See | See | See | Seen | Seen | Seen | Seen | Озеро,Lake | A1,Природа
+F | See | See | See | See | Seen | Seen | Seen | Seen | Озеро,Lake | A1,Природа
 N | Meer | Meeres/Meers | Meer/Meere | Meer | Meere | Meere | Meeren | Meere | Sea,Море | A1,Природа
 N | Feuer | Feuers | Feuer | Feuer | Feuer | Feuer | Feuern | Feuer | Fire,Blaze,Bonfire,Огонь | A1,Природа
 M | Baum | Baumes/Baums | Baum/Baume | Baum | Bäume | Bäume | Bäumen | Bäume | Tree,Дерево | A1,Природа
@@ -345,3 +345,32 @@ F | Stelle | Stelle | Stelle | Stelle | Stellen | Stellen | Stellen | Stellen | 
 F | Führung | Führung | Führung | Führung | Führungen | Führungen | Führungen | Führungen | Управление,Руководство,Guidance,Guideway,Lead,Conduct | A1,Работа и профессии
 M | Chef | Chefs | Chef | Chef | Chefs | Chefs | Chefs | Chefs | Boss,Manager,Chief,Head,Director,Шеф | A1,Работа и профессии
 M | Kollege | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Workmate,Colleague,Co-worker,Associate,Коллега | A1,Работа и профессии
+F | Lücke | Lücke | Lücke | Lücke | Lücken | Lücken | Lücken | Lücken | Gap,Hole,Distance,Break | A1
+M | Urlaub | Urlaubs/Urlaubes | Urlaub | Urlaub | Urlaube | Urlaube | Urlauben | Urlaube | Holiday,Vacation,Отпуск | A1
+M | Kunde | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Client,Клиент | Работа и профессии,A1
+F | Anrede | Anrede | Anrede | Anrede | Anreden | Anreden | Anreden | Anreden | Form of address,SalutatoryAddress,Title,Обращение,Официальная речь | A1,Работа и профессии
+F | Ansage | Ansage | Ansage | Ansage | Ansagen | Ansagen | Ansagen | Ansagen | Announcement,Объявление,Оповещение о чем-либо,Bid | A1,Работа и профессии
+F | Durchsage | Durchsage | Durchsage | Durchsage | Durchsagen | Durchsagen | Durchsagen | Durchsagen | Announcement,Message,Объявление (через громкоговоритель/аудиосистему) | A1,Работа и профессии
+N | Gespräch | Gespräches/Gesprächs | Gespräch/Gespräche | Gespräch | Gespräche | Gespräche | Gesprächen | Gespräche | Conversation,Talk,Call,Discussion,Interview,Разговор | A1,Работа и профессии
+M | Problem | Problems | Problem | Problem | Probleme | Probleme | Problemen | Probleme | Problem,Trouble,Issue,Challenge,Проблема | A1,Работа и профессии
+M | Schluss | Schlusses | Schluss/Schlusse | Schluss | Schlüsse | Schlüsse | Schlüssen | Schlüsse | end,close,termination,conclusion,union,finish,конец,завершение | A1,Работа и профессии
+M | Urlaub | Urlaubes/Urlaubs | Urlaub/Urlaube | Urlaub | Urlaube | Urlaube | Urlauben | Urlaube | Holiday,Vacation,Leave,Отпуск | A1,Работа и профессии
+M | Computer | Computers | Computer | Computer | Computer | Computer | Computern | Computer | Компьютер,Computer | Компьютерная техника,A1
+N | Internet | Internets | Internet | Internet | - | - | - | - | Internet | A1,Компьютерная техника
+N | Fax | Fax | Fax | Fax | Faxe | Faxe | Faxen | Faxe | Fax | A1,Компьютерная техника
+M | Drucker | Druckers | Drucker | Drucker | Drucker | Drucker | Druckern | Drucker | Printer | A1,Компьютерная техника
+F | Reservierung | Reservierung | Reservierung | Reservierung | Reservierungen | Reservierungen | Reservierungen | Reservierungen | Reservation,Booking,Arrangement | A1
+F | Bestellung | Bestellung | Bestellung | Bestellung | Bestellungen | Bestellungen | Bestellungen | Bestellungen | Order,Ordering,Engagement,Reservation,Booking | A1
+F | Bezahlung | Bezahlung | Bezahlung | Bezahlung | Bezahlungen | Bezahlungen | Bezahlungen | Bezahlungen | Wage,Payment,Pay,Settlement | A1
+F | Vorspeise | Vorspeise | Vorspeise | Vorspeise | Vorspeisen | Vorspeisen | Vorspeisen | Vorspeisen | Starter,Appetizer | A1
+M | Nachtisch | Nachtisches/Nachtischs | Nachtisch/Nachtische | Nachtisch | Nachtische | Nachtische | Nachtischen | Nachtische | Sweet,Afters,Dessert | A1
+N | Besteck | Besteckes/Bestecks | Besteck/Bestecke | Besteck | Bestecke | Bestecke | Bestecken | Bestecke | Cutlery,Flatware,Utensils | A1
+F | Serviette | Serviette | Serviette | Serviette | Servietten | Servietten | Servietten | Servietten | Napkin | A1
+N | Gerät | Gerätes/Geräts | Gerät/Geräte | Gerät | Geräte | Geräte | Geräten | Geräte | Device,Machine,Appliance,Equipment,Gadget | A1
+N | Trinkgeld | Trinkgeldes/Trinkgelds | Trinkgeld/Trinkgelde | Trinkgeld | Trinkgelder | Trinkgelder | Trinkgeldern | Trinkgelder | Top,Gratuity | A1
+F | Rechnung | Rechnung | Rechnung | Rechnung | Rechnungen | Rechnungen | Rechnungen | Rechnungen | Bill,Invoice,Check | A1
+F | Regel | Regel | Regel | Regel | Regeln | Regeln | Regeln | Regeln | Rule,Period,Norm,Habit | A1
+F | Tür | Tür | Tür | Tür | Türen | Türen | Türen | Türen | Door | A1
+F | Reihenfolge | Reihenfolge | Reihenfolge | Reihenfolge | Reihenfolgen | Reihenfolgen | Reihenfolgen | Reihenfolgen | Order,Sequence | A1
+N | Wortfeld | Wortfeldes/Wortfelds | Wortfeld/Wortfelde | Wortfeld | Wortfelder | Wortfelder | Wortfeldern | Wortfelder | Semantic field,Lexical field,Word field | A1
+N | Nomen | Nomens | Nomen | Nomen | Nomina/Nomen | Nomina/Nomen | Nomina/Nomen | Nomina/Nomen | Noun | A1

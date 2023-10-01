@@ -1,1 +1,3 @@
 ﻿# phrase | translations (comma-separated) | topics (comma-separated)
+stimmt so | keep the change,сдачи не надо | A1
+Achte auf | Pay attention to | A1

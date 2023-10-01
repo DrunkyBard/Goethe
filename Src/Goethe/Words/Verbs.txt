@@ -133,3 +133,24 @@ wissen | False | weiß | weißt | weiß | wissen | wisst | wissen | know,be cons
 fehlen | False | fehle | fehlst | fehlt | fehlen | fehlt | fehlen | be missing,be short,miss,lack,be wrong,отсутствовать | A1,Учеба
 bedeuten | False | bedeute | bedeutest | bedeutet | bedeuten | bedeutet | bedeuten | означать,значить,mean,mean to,involve,matter,stand for | A1,Языки
 arbeiten | False | arbeite | arbeitest | arbeitet | arbeiten | arbeitet | arbeiten | работать,work,function,warp,to be employed,work (on) | A1,Работа и профессии
+passen | False | passe | passt | passt | passen | passt | passen | please,fit,suit | A1
+entdecken | False | entdecke | entdeckst | entdeckt | entdecken | entdeckt | entdecken | Descry,Discover,Spy,Find,Recover,Detect,Spot | A1
+kochen | False | koche | kochst | kocht | kochen | kocht | kochen | cooking,cook,готовить,boil | A1,Продукты питания
+verdienen | False | verdiene | verdienst | verdient | verdienen | verdient | verdienen | earn,deserve,make money out (of),зарабатывать | A1,Работа и профессии
+drucken | False | drucke | druckst | druckt | drucken | druckt | drucken | print,press,publish,strike off | A1,Компьютерная техника
+drücken | False | drücke | drückst | drückt | drücken | drückt | drücken | push,shake,hug,be too tight,нажимать | A1,Компьютерная техника
+anklicken | False | klicke an | klickst an | klickt an | klicken an | klickt an | klicken an | press,click on,click,кликнуть | A1,Компьютерная техника
+reservieren | False | reserviere | reservierst | reserviert | reservieren | reserviert | reservieren | reserve,dedicate (to),allocate,arrange,book | A1
+trinken | False | trinke | trinkst | trinkt | trinken | trinkt | trinken | drinks,drink,pledge | A1
+stimmen | False | stimme | stimmst | stimmt | stimmen | stimmt | stimmen | be correct,tune,vote,agree | A1
+trennen | False | trenne | trennst | trennt | trennen | trennt | trennen | to separate,sort,distinguish,split up,break up | A1
+geben | False | gebe | gibst | gibt | geben | gebt | geben | give to,give,there is,put,add,pour | A1
+vergessen | False | vergesse | vergisst | vergisst | vergessen | vergesst | vergessen | forgot,forget | A1
+waschen | False | wasche | wäschst | wäscht | wäschen | wäscht | wäschen | wash | A1
+werfen | False | werfe | wirfst | wirft | werfen | werft | werfen | throw,give birth,warp,cast | A1
+spazieren | False | spaziere | spazierst | spaziert | spazieren | spaziert | spazieren | walk,stroll | A1
+wählen | False | wähle | stwähl | wählt | wählen | wählt | wählen | adopt,choose,select | A1
+fehlen | False | fehle | fehlst | fehlt | fehlen | fehlt | fehlen | be missing,be short,miss,lack | A1
+vervollständigen | False | vervollständige | vervollständigst | vervollständigt | vervollständigen | vervollständigt | vervollständigen | complete,round off,round out | A1
+passieren | False | passiere | passierst | passiert | passieren | passiert | passieren | happen,come to pass,come about | A1
+vernetzen | False | vernetze | vernetzt | vernetzt | vernetzen | vernetzt | vernetzen | network,connect,cure | A1

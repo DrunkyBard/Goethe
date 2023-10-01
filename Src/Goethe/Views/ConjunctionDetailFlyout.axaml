@@ -20,6 +20,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type s:String}">
                         <TextBlock
+                            Classes="translation"
                             Text="{Binding Converter={x:Static c:TranslationWithSeparatorConverter.Instance}}"
                             FontStyle="Italic" />
                     </DataTemplate>

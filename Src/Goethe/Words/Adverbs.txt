@@ -63,3 +63,4 @@ ebenso | just as,as well,также | A1
 allerdings | though,however,хотя | A1
 erst | first,at first,only | A1
 normalerweise | normally,usually,обычно | A1
+vorn | in front,upfront | A1
