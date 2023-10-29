@@ -1,3 +1,6 @@
 ﻿# phrase | translations (comma-separated) | topics (comma-separated)
 stimmt so | keep the change,сдачи не надо | A1
 Achte auf | Pay attention to | A1
+Es sieht schön aus | Красиво выглядит | A1
+noch einmal | once again | A1
+wohin willst du? | where do you want to go? | A1

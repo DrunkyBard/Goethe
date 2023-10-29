@@ -374,3 +374,52 @@ F | Tür | Tür | Tür | Tür | Türen | Türen | Türen | Türen | Door | A1
 F | Reihenfolge | Reihenfolge | Reihenfolge | Reihenfolge | Reihenfolgen | Reihenfolgen | Reihenfolgen | Reihenfolgen | Order,Sequence | A1
 N | Wortfeld | Wortfeldes/Wortfelds | Wortfeld/Wortfelde | Wortfeld | Wortfelder | Wortfelder | Wortfeldern | Wortfelder | Semantic field,Lexical field,Word field | A1
 N | Nomen | Nomens | Nomen | Nomen | Nomina/Nomen | Nomina/Nomen | Nomina/Nomen | Nomina/Nomen | Noun | A1
+F | Kirsche | Kirsche | Kirsche | Kirsche | Kirschen | Kirschen | Kirschen | Kirschen | Cherry,Cherry tree | A1,Фрукты и овощи
+F | Rolle | Rolle | Rolle | Rolle | Rollen | Rollen | Rollen | Rollen | Roll,Roller,Reel | A1
+M | Auflauf | Auflaufes/Auflaufs | Auflauf/Auflaufe | Auflauf | Aufläufe | Aufläufe | Aufläufen | Aufläufe | Crowd,Baked pudding,Hotpot,Запеканка | A1
+M | Pfannkuchen | Pfannkuchens | Pfannkuchen | Pfannkuchen | Pfannkuchen | Pfannkuchen | Pfannkuchen | Pfannkuchen | Pancake,Блины | A1
+M | Tafelspitz | Tafelspitzes | Tafelspitz/Tafelspitze | Tafelspitz | Tafelspitze | Tafelspitze | Tafelspitzen | Tafelspitze | Boiled beef,Вареная говядина | A1
+N | Griechisch | Griechischs | Griechisch | Griechisch | Griechisch | Griechisch | Griechisch | Griechisch | Greek,Грек | A1
+M | Löffel | Löffels | Löffel | Löffel | Löffel | Löffel | Löffeln | Löffel | Spoon,Ложка | A1
+M | Ruhetag | Ruhetages/Ruhetags | Ruhetag/Ruhetage | Ruhetag | Ruhetage | Ruhetage | Ruhetagen | Ruhetage | Day of rest,Day off | A1
+F | Flasche | Flasche | Flasche | Flasche | Flaschen | Flaschen | Flaschen | Flaschen | Bottle,Flask | A1
+N | Eishockey | Eishockeys | Eishockey | Eishockey | - | - | - | - | Ice Hockey | A1
+M | Inliner | Inliners | Inliner | Inliner | Inliner | Inliner | Inlinern | Inliner | Роликовые коньки,In-line skate | A1
+N | Brettspiel | Brettspieles/Brettspiels | Brettspiel/Brettspiele | Brettspiel | Brettspiele | Brettspiele | Brettspielen | Brettspiele | Board game | A1
+M | Ski | Skis | Ski | Ski | Skier/Ski | Skier/Ski | Skiern/Ski | Skier/Ski | Ski,Лыжи | A1
+F | Gitarre | Gitarre | Gitarre | Gitarre | Gitarren | Gitarren | Gitarren | Gitarren | Guitar | A1
+M | Hauptgang | Hauptganges/Hauptgangs | Hauptgang/Hauptgange | Hauptgang | Hauptgänge | Hauptgänge | Hauptgängen | Hauptgänge | Main course,Основное блюдо | A1
+N | Gericht | Gerichtes/Gerichts | Gericht/Gerichte | Gericht | Gerichte | Gerichte | Gerichten | Gerichte | Dish,Court,Court of law,Justice,Forum | A1
+N | Schwein | Schweines/Schweins | Schwein/Schweine | Schwein | Schweine | Schweine | Schweinen | Schweine | Pig | A1
+F | Gabel | Gabel | Gabel | Gabel | Gabeln | Gabeln | Gabeln | Gabeln | Fork,Вилка | A1
+N | Messer | Messers | Messer | Messer | Messer | Messer | Messern | Messer | Knife,Нож,Cutter,Blade | A1
+M | Besuch | Besuches/Besuchs | Besuch/Besuche | Besuch | Besuche | Besuche | Besuchen | Besuche | Visit,Visitors,Attendance | A1
+N | Mehr | Mehrs/Mehr | Mehr | Mehr | Mehre/Mehren | Mehre/Mehren | Mehren/Mehren | Mehre/Mehren | Plus,More,Excess,Majority | A1
+N | Lehrbuch | Lehrbuches/Lehrbuchs | Lehrbuch/Lehrbuche | Lehrbuch | Lehrbücher | Lehrbücher | Lehrbüchern | Lehrbücher | Textbook,Coursebook | A1
+F | Buchhandlung | Buchhandlung | Buchhandlung | Buchhandlung | Buchhandlungen | Buchhandlungen | Buchhandlungen | Buchhandlungen | Bookshop,Bookstore | A1
+N | Lieblingsessen | Lieblingsessens | Lieblingsessen | Lieblingsessen | Lieblingsessen | Lieblingsessen | Lieblingsessen | Lieblingsessen | Favorite food | A1
+F | Telefonnummer | Telefonnummer | Telefonnummer | Telefonnummer | Telefonnummern | Telefonnummern | Telefonnummern | Telefonnummern | Telephone number | A1
+F | Adresse | Adresse | Adresse | Adresse | Adressen | Adressen | Adressen | Adressen | Address,Mailing address,Label | A1
+N | Ufer | Ufers | Ufer | Ufer | Ufer | Ufer | Ufern | Ufer | bank,shore,coast,waterside | A1
+N | Leiden | Leidens | Leiden | Leiden | Leiden | Leiden | Leiden | Leiden | Suffering,Complaint,Distress,Affliction,Trouble,Cross,Sickness,Ill | A1
+F | Umwelt | Umwelt | Umwelt | Umwelt | Umwelten | Umwelten | Umwelten | Umwelten | Окружающая среда,Environment,Ambience,Surroundings | A1
+M | Wald | Waldes/Walds | Wald/Walde | Wald | Wälder | Wälder | Wäldern | Wälder | Wood,Forest | A1
+M | Strand | Strandes/Strands | Strand/Strande | Strand | Strände | Strände | Stränden | Strände | Beach,Shore,Seaside,Sands | A1
+M | Fluss | Flusses | Fluss/Flusse | Fluss | Flüsse | Flüsse | Flüssen | Flüsse | River,Flow,Flux,Stream | A1
+N | Feld | Feldes/Felds | Feld/Felde | Feld | Felder | Felder | Feldern | Felder | Field,Margin,Group,Domain,Array,Panel,Zone,Area | A1
+F | Wüste | Wüste | Wüste | Wüste | Wüsten | Wüsten | Wüsten | Wüsten | Desert,Waste,Wasteland | A1
+N | Klima | Klimas | Klima | Klima | Klimata/Klimas | Klimata/Klimas | Klimata/Klimas | Klimata/Klimas | Climate,Clime | A1
+F | Wolke | Wolke | Wolke | Wolke | Wolken | Wolken | Wolken | Wolken | Cloud | A1
+M | Schnee | Schnees | Schnee | Schnee | - | - | - | - | Snow | A1
+M | Nebel | Nebels | Nebel | Nebel | Nebel | Nebel | Nebeln | Nebel | Veil,Cloud,Fog,Mist,Туман | A1
+N | Glatteis | Glatteises | Glatteis/Glatteise | Glatteis | - | - | - | - | Glaze,Clear ice,Гололед | A1
+N | Regal | Regals | Regal | Regal | Regale | Regale | Regalen | Regale | Rack,Shelf | A1
+M | Champagner | Champagners | Champagner | Champagner | Champagner | Champagner | Champagnern | Champagner | Champagne | A1
+F | Sache | Sache | Sache | Sache | Sachen | Sachen | Sachen | Sachen | Thing,Matter,Business,Affair,Article,Clothes | A1
+F | Szene | Szene | Szene | Szene | Szenen | Szenen | Szenen | Szenen | Scene,Stage | A1
+F | Weintraube | Weintraube | Weintraube | Weintraube | Weintrauben | Weintrauben | Weintrauben | Weintrauben | Grape | A1
+F | Verabschiedung | Verabschiedung | Verabschiedung | Verabschiedung | Verabschiedungen | Verabschiedungen | Verabschiedungen | Verabschiedungen | Farewells,Discharge,Sendoff,Leave-taking,Adoption | A1
+M | Abschied | Abschiedes/Abschieds | Abschied/Abschiede | Abschied | Abschiede | Abschiede | Abschieden | Abschiede | Parting,Goodbyes,Farewell,Goodbye | A1
+N | Mittel | Mittels | Mittel | Mittel | Mittel | Mittel | Mitteln | Mittel | Tool,Means,Remedy,Device,Method,Average,Medium | A1
+M | Abschiedsgruß | Abschiedsgrußes | Abschiedsgruß/Abschiedsgruße | Abschiedsgruß | Abschiedsgrüße | Abschiedsgrüße | Abschiedsgrüßen | Abschiedsgrüße | Farewell,Goodbye | A1
+F | Übung | Übung | Übung | Übung | Übungen | Übungen | Übungen | Übungen | Training,Practice,Excercise,Drill | A1

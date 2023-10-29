@@ -42,10 +42,10 @@ zu sein | быть закрытым,to be shut,to be closed | A1,Состоян�
 an sein | быть включенным или работать (о технике),to be on | A1,Состояние
 auf sein | быть открытым (об окне; двери; магазине),to be open | A1,Состояние
 aus sein | быть выключенным или не работать (о технике),to be out (Radio; TV; etc) | A1,Состояние
-ab | от,начиная с,off,away | A1
+ab | от,начиная с,off,away,from,as of,as from | A1
 sehr | очень,very,a lot | Разное,A1
 so | so,so much,like this,так | A1,Разное
-vielleicht | perharps,by any chance,может быть | A1,Разное
+vielleicht | perharps,by any chance,maybe,может быть | A1,Разное
 nur | только,only,just | A1,Разное
 wunderbar | чудесный,чудный,wonderfully | A1,Разное
 nicht | not,не | A1,Разное
@@ -64,3 +64,9 @@ allerdings | though,however,хотя | A1
 erst | first,at first,only | A1
 normalerweise | normally,usually,обычно | A1
 vorn | in front,upfront | A1
+dazu | there,with it,for that/about that/it | A1
+gar | at all,even,really,indeed | A1
+zuerst | first,for the first time,at first | A1
+sogar | even,даже | A1
+besonders | particularly,especially | A1
+wieder | again | A1

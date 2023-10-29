@@ -10,3 +10,6 @@ etwas (things) | etwessen | etwas | etwas | - | - | - | - | some,something,anyth
 etwer (Persons) | etwessen | etwem | etwen | - | - | - | - | some,anything,something | A1
 beide | - | beidem | beides | beide | - | beiden | beide | both,оба/обе | A1,Друзья и знакомые
 welche | - | welcher | welche | welche | - | welchen | welche | what,which,который | A1
+anderer/andere/aderes | anderen/anderer/anderen | anderem/anderer/anderem | anderen/andere/anderes | andere | anderer | anderen | andere | other,different | A1
+aller/alle/alles | alles/allen (masc) aller (fem) alles/allen (neut) | allem/aller/allem | allen/alle/alles | alle | aller | allen | alle | all | A1
+dieser/diese/dieses | dieses/dieser/dieses | diesem/dieser/diesem | diesen/diese/dieses | diese | dieser | diesen | diese | this | A1

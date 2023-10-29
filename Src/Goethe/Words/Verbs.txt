@@ -110,7 +110,7 @@ kosten | False | koste | kostest | kostet | kosten | kostet | kosten | cost,be p
 bestellen | False | bestelle | bestellst | bestellt | bestellen | bestellt | bestellen | send,order,convey,cultivate,заказывать | A1,Покупки и одежда
 zahlen | False | zahle | zahlst | zahlt | zahlen | zahlt | zahlen | pay,make payment,settle up,платить | A1,Покупки и одежда
 bezahlen | False | bezahle | bezahlst | bezahlt | bezahlen | bezahlt | bezahlen | оплачивать,pay,check out,discharge,settle up | A1,Покупки и одежда
-empfehlen | False | empfehle | empfiehlst | empfiehlt | empfehlen | empfehlt | empfehlen | recomment,advise,aproce,advocate,рекомендовать | A1,Покупки и одежда
+empfehlen | False | empfehle | empfiehlst | empfiehlt | empfehlen | empfehlt | empfehlen | recommend,advise,aproce,advocate,рекомендовать | A1,Покупки и одежда
 reisen | False | reise | reist | reist | reisen | reist | reisen | travel,fare,tour,journey,путешествовать | A1,Путешествия
 abfahren | False | fahre ab | fährst ab | fährt ab | fahren ab | fahrt ab | fahren ab | leave,depart,remove,выезжать,отъезжать,отправляться | A1,Путешествия
 abfliegen | False | fliege ab | fliegst ab | fliegt ab | fliegen ab | fliegt ab | fliegen ab | patrol,overfly,depart,вылутать (напр. на самолете) | A1,Путешествия
@@ -149,8 +149,29 @@ vergessen | False | vergesse | vergisst | vergisst | vergessen | vergesst | verg
 waschen | False | wasche | wäschst | wäscht | wäschen | wäscht | wäschen | wash | A1
 werfen | False | werfe | wirfst | wirft | werfen | werft | werfen | throw,give birth,warp,cast | A1
 spazieren | False | spaziere | spazierst | spaziert | spazieren | spaziert | spazieren | walk,stroll | A1
-wählen | False | wähle | stwähl | wählt | wählen | wählt | wählen | adopt,choose,select | A1
-fehlen | False | fehle | fehlst | fehlt | fehlen | fehlt | fehlen | be missing,be short,miss,lack | A1
+wählen | False | wähle | wählst | wählt | wählen | wählt | wählen | adopt,choose,select | A1
 vervollständigen | False | vervollständige | vervollständigst | vervollständigt | vervollständigen | vervollständigt | vervollständigen | complete,round off,round out | A1
 passieren | False | passiere | passierst | passiert | passieren | passiert | passieren | happen,come to pass,come about | A1
 vernetzen | False | vernetze | vernetzt | vernetzt | vernetzen | vernetzt | vernetzen | network,connect,cure | A1
+servieren | False | serviere | servierst | serviert | servieren | serviert | servieren | serve,wait at table | A1
+enthalten | False | enthalte | enthältst | enthält | enthalten | enthaltet | enthalten | embody,include,contain,abstain,convey,enclose,implicate | A1
+verwenden | False | verwende | verwendest | verwendet | verwenden | verwendet | verwenden | use,utilise,appropriate,use as,use in | A1
+klingen | False | klinge | klingst | klingt | klingen | klingt | klingen | ring,sound,chime | A1
+trennen | False | trenne | trennst | trennt | trennen | trennt | trennen | separate,sort,distinguish,split up,break up | A1
+tragen | False | trage | trägst | trägt | tragen | tragt | tragen | wear,carry,drag,yield,absorb,crop | A1
+hoffen | False | hoffe | hoffst | hofft | hoffen | hofft | hoffen | hope (for),trust | A1
+denken | False | denke | denkst | denkt | denken | denkt | denken | think,be mindful (of),think (about),remember (to do) | A1
+fangen  | False | fange | fängst | fängt | fangen | fangt | fangen | catch,capture,trap | A1
+bieten | False | biete | bietest | bietet | bietest | bietet | bieten | bid,offer,oppose,grant,provide,allow,accept | A1
+angeln | False | angele | angelst | angelt | angeln | angelt | angeln | fishing,finsh,angle,pull,hook | A1
+schützen | False | schütze | schützt | schützt | schützen | schützt | schützen | protect,uphold,preserve,protect (against),protect (from) | A1
+bewölkt | False | bewölke | bewölkst | bewölkt | bewölken | bewölkt | bewölken | Overcast,Overcloud,Cloud,Become overcast,облачно | A1
+schneien | False | schneie | schneist | schneit | schneien | schneit | schneien | snow,идти (о снеге) | A1
+hageln | False | hagele | hagelst | hagelt | hageln | hagelt | hageln | hail,идти (о граде) | A1
+regnen | False | regne | regst | regt | regen | regt | regen | stir,идти (о дожде) | A1
+buchen | False | buche | buchst | bucht | buchen | bucht | buchen | book,make a reservation,reserve | A1
+lassen | False | lasse | lässt | lässt | lassen | lasst | lassen | let,leave,give up,stop,quit,allow,make,have,cause | A1
+unterscheiden | False | unterscheide | unterscheidest | unterscheidet | unterscheiden | unterscheidet | unterscheiden | distinguish,tell apart,differ | A1
+entscheiden | False | entscheide | entscheidest | entscheidet | entscheiden | entscheidet | entscheiden | decide,conclude | A1
+überprüfen | False | überprüfe | überprüfst | überprüft | überprüfen | überprüft | überprüfen | vet,check,review,examine | A1
+lösen | False | löse | löst | lös | lösen | löst | lösen | solve,figure out,buy,untie,detach | A1
