@@ -15,10 +15,14 @@ zwischen | между,between,among | A1
 um | вокруг,at (about time),about,by | A1
 ohne | без,without | A1
 durch | через,сквозь,through,via | A1
-nach | после,to,after,according to,in accordance with | A1
+nach | после,to,after,according to,in accordance with,like (like smth) | A1
 zu | к,to,in,at,for | A1
 auch | also,также,тоже,too,as well | A1
 dann | тогда,then | A1
 denn | потому что,because,for,than | A1
-noch | еще,still,some time,one day |A1
+noch | еще,still,some time,one day,(only) just,nor,yet |A1
 mit | with,с | A1
+zur | to | A1
+beim | at the | A1
+außer | out of,except,in addition to | A1
+neben | beside,next to,apart from,besides,aside from | A1

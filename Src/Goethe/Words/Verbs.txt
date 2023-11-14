@@ -16,7 +16,7 @@ heißen | False | heiße | heißt | heißt | heißen | heißt | heißen | зва
 brauchen | False | brauche | brauchst | braucht | brauchen | braucht | brauchen | нуждаться,require,need,use,spend,take,consume | A1,Modal verbs
 bekommen | False | bekomme | bekommst/bekömmst | bekommt/bekömmt | bekommen | bekommt | bekommen | получать,receive,get | A1,Modal verbs
 kriegen | False | kriege | kriegst | kriegt | kriegen | kriegt | kriegen | воевать,получать (разг.),get,catch,wage war,make war,get though | A1,Modal verbs
-gehören | False | gehöre | gehörst | gehört | gehören | gehört | gehören | принадлежать,belong,rank,fall (under) | A1,Modal verbs
+gehören | False | gehöre | gehörst | gehört | gehören | gehört | gehören | принадлежать,belong,rank,fall (under),be part of | A1,Modal verbs
 schlafen | False | schlafe | schläfst | schläft | schlafen | schlaft | schlafen | спать,sleep,stay over night | A1,Глаголы движения/положения/состояния
 stehen | False | stehe | stehst | steht | stehen | steht | stehen | стоять,stand,stand still,stand for,become | A1,Глаголы движения/положения/состояния
 aufstehen | False | stehe | stehst | steht | stehen | steht | stehen | вставать,get up,rise,stand up | A1,Глаголы движения/положения/состояния
@@ -91,7 +91,7 @@ benutzen | False | benutze | benutzt | benutzt | benutzen | benutzt | benutzen |
 schließen | False | schließe | schließt | schließt | schließen | schließt | schließen | close,shut,fasten,infer,guess,deduce,закрывать | A1,Действие и взаимодействие
 bringen | False | bringe | bringst | bringt | bringen | bringt | bringen | bring,take,convey,cause to,приносить,перемещать | A1,Действие и взаимодействие
 holen | False | hole | holst | holt | holen | holt | holen | get,fetch,take a breath,catch,kidnap,приносить,доставать | A1,Действие и взаимодействие
-geben | False | gebe | gibst | gibt | geben | gebt | geben | give to,give,put,add,pour,давать | A1,Действие и взаимодействие
+geben | False | gebe | gibst | gibt | geben | gebt | geben | give to,give,put,add,pour,давать,предоставлять | A1,Действие и взаимодействие
 stellen | False | stelle | stellst | stellt | stellen | stellt | stellen | set,place,put,stand,adjust,ставить | A1,Действие и взаимодействие
 legen | False | lege | legst | legt | legen | legt | legen | lay,put,floor,класть | A1,Действие и взаимодействие
 beginnen | False | beginne | beginnst | beginnt | beginnen | beginnt | beginnen | start,begin,incept,начинать | A1,Действие и взаимодействие
@@ -114,7 +114,7 @@ empfehlen | False | empfehle | empfiehlst | empfiehlt | empfehlen | empfehlt | e
 reisen | False | reise | reist | reist | reisen | reist | reisen | travel,fare,tour,journey,путешествовать | A1,Путешествия
 abfahren | False | fahre ab | fährst ab | fährt ab | fahren ab | fahrt ab | fahren ab | leave,depart,remove,выезжать,отъезжать,отправляться | A1,Путешествия
 abfliegen | False | fliege ab | fliegst ab | fliegt ab | fliegen ab | fliegt ab | fliegen ab | patrol,overfly,depart,вылутать (напр. на самолете) | A1,Путешествия
-ankommen | False | komme an | kommst/kömmst an | kommt/kömmt an | kommen an | kommt an | kommen an | arrive,depend,matter,appear,come,прибывать,приезжать | Путешествия,A1
+ankommen | False | komme an | kommst/kömmst an | kommt/kömmt an | kommen an | kommt an | kommen an | arrive,depend,matter,appear,come,get to,reach,wander in,get in,прибывать,приезжать | Путешествия,A1
 besichtigen | False | besichtige | besichtigst | besichtigt | besichtigen | besichtigt | besichtigen | view,visit,look around,посещать (место/достопримечательность) | A1,Путешествия
 einsteigen | False | steige ein | steigst ein | steigt ein | steigen ein | steigt ein | steigen ein | get in,board,access,climb in,get on,входить,садиться | A1,Транспорт и техника
 aussteigen | False | steige aus | steigst aus | steigt aus | steigen aus | steigt aus | steigen aus | to quit something,to bail out,to parachute,выходить (из транспорта/игры) | A1,Транспорт и техника
@@ -144,7 +144,6 @@ reservieren | False | reserviere | reservierst | reserviert | reservieren | rese
 trinken | False | trinke | trinkst | trinkt | trinken | trinkt | trinken | drinks,drink,pledge | A1
 stimmen | False | stimme | stimmst | stimmt | stimmen | stimmt | stimmen | be correct,tune,vote,agree | A1
 trennen | False | trenne | trennst | trennt | trennen | trennt | trennen | to separate,sort,distinguish,split up,break up | A1
-geben | False | gebe | gibst | gibt | geben | gebt | geben | give to,give,there is,put,add,pour | A1
 vergessen | False | vergesse | vergisst | vergisst | vergessen | vergesst | vergessen | forgot,forget | A1
 waschen | False | wasche | wäschst | wäscht | wäschen | wäscht | wäschen | wash | A1
 werfen | False | werfe | wirfst | wirft | werfen | werft | werfen | throw,give birth,warp,cast | A1
@@ -175,3 +174,32 @@ unterscheiden | False | unterscheide | unterscheidest | unterscheidet | untersch
 entscheiden | False | entscheide | entscheidest | entscheidet | entscheiden | entscheidet | entscheiden | decide,conclude | A1
 überprüfen | False | überprüfe | überprüfst | überprüft | überprüfen | überprüft | überprüfen | vet,check,review,examine | A1
 lösen | False | löse | löst | lös | lösen | löst | lösen | solve,figure out,buy,untie,detach | A1
+umsteigen | False | steige um | steigst um | steigt um | steigen um | steigt um | steigen um | change,switch,change for,change (transport),transfer | A1
+wiegen | False | wiege | wiegst | wiegt | wiegen | wiegt | wiegen | weigh,scale,balance | A1
+schaffen | False | schaffe | schaffst | schafft | schaffen | schafft | schaffen | make,create,shape,establish,bring into being,develop,set up,form | A1
+voraussagen | False | sage voraus | sagst voraus | sagt voraus | sagen voraus | sagt voraus | sagen voraus | predict,forecast,betoken | A1
+überqueren | False | überquere | überquerst | überquert | überqueren | überquert | überqueren | cross,traverse,go across,pass | A1
+wachsen | False | wachse | wächst | wächst | wachsen | wachst | wachsen | grow,increase,develop,prosper,expand,mount,crop | A1
+blasen | False | blase | bläst | bläst | blasen | blast | blasen | blow,puff,suck off,breahe (on) | A1
+zeihen | False | ziehe | zeihst | zeiht | zeihen | zeiht | zeihen | pull,accuse | A1
+vernichten | False | vernichte | vernichtest | vernichtet | vernichten | vernichtet | vernichten | annihilate,defeat,break up,consme,demolish | A1
+bilden | False | bilde | bildest | bildet | bilden | bildet | bilden | form,generate,compose,develop,shape,male | A1
+verbinden | False | verbinde | verbindest | verbindet | verbinden | verbindet | verbinden | bandage,connect,associate,unite,combine,put through | A1
+durchfahren | False | fahre durch | fährst durch | fährt durch | fahren durch | fahrt durch | fahren durch | go through,sail through,drive straight (through) | A1
+kontrollieren | False | kontrolliere | kontrollierst | kontrolliert | kontrollieren | kontrolliert | kontrollieren | control,audit,inspect,check,make a check,examine | A1
+buttern | False | buttere | butterst | buttert | buttern | buttert | buttern | churn,butter,seep,grease,сбивать | A1
+entwickeln | False | entwick(e)l(e) | stentwickel | entwickelt | entwickeln | entwickelt | entwickeln | develop | A1
+bearbeiten | False | bearbeite | bearbeitest | bearbeitet | bearbeiten | bearbeitet | bearbeiten | handle,edit,ply (with),arrange,process,revise | A1
+jobben | False | jobbe | jobbst | jobbt | jobben | jobbt | jobben | job,do (casual) jobs | A1
+unterrichten | False | unterrichte | unterrichtest | unterrichtet | unterrichten | unterrichtet | unterrichten | educate,unform,teach | A1
+ziehen | False | ziehe | ziehst | zieht | ziehen | zieht | ziehen | pull,migrate,roam,move | A1
+wechseln | False | wechs(e)l(e) | wechselst | wechselt | wechseln | wechselt | wechseln | change | A1
+promovieren | False | promoviere | promovierst | promoviert | promovieren | promoviert | promovieren | Confer a doctorate,Proceed (to),do one's Ph.D,Take a doctoral degree | A1
+unterstützen | False | unterstütze | unterstützt | unterstützt | unterstützen | unterstützt | unterstützen | support,stand by,bear up,provide,relieve | A1
+anstellen | False | stelle an | stellst an | stellt an | stellen an | stellt an | stellen an | hire,employ,manage,turn on,queue,activate,recruit | A1
+beantworten | False | beantworte | beantwortest | beantwortet | beantworten | beantwortet | beantworten | reply,answer,respond | A1
+weiterarbeiten | False | arbeite weiter | arbeitest weiter | arbeitet weiter | arbeiten weiter | arbeitet weiter | arbeiten weiter | Carry on with one's work,Continue to work,Go on working | A1
+entspannen | False | entspanne | entspannst | entspannt | entspannen | entspannt | enstpannen | relax,wind down | A1
+vereinbaren | False | vereinbare | vereinbarst | vereinbart | vereinbaren | vereinbart | vereinbaren | agree,reconcile,agree upon,set up,arrange with for,arrange | A1
+besprechen | False | bespreche | besprichst | bespricht | besprechen | besprecht | besprechen | discuss,conjure,review,talk over,parley | A1
+untersuchen | False | untersuche | untersuchst | untersucht | untersuchen | untersucht | untersuchen | examine,investigate,look (into),test (for),analyze | A1

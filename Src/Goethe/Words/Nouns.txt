@@ -347,7 +347,7 @@ M | Chef | Chefs | Chef | Chef | Chefs | Chefs | Chefs | Chefs | Boss,Manager,Ch
 M | Kollege | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Workmate,Colleague,Co-worker,Associate,Коллега | A1,Работа и профессии
 F | Lücke | Lücke | Lücke | Lücke | Lücken | Lücken | Lücken | Lücken | Gap,Hole,Distance,Break | A1
 M | Urlaub | Urlaubs/Urlaubes | Urlaub | Urlaub | Urlaube | Urlaube | Urlauben | Urlaube | Holiday,Vacation,Отпуск | A1
-M | Kunde | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Client,Клиент | Работа и профессии,A1
+M | Kunde | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Client,Purchaser,Клиент | Работа и профессии,A1
 F | Anrede | Anrede | Anrede | Anrede | Anreden | Anreden | Anreden | Anreden | Form of address,SalutatoryAddress,Title,Обращение,Официальная речь | A1,Работа и профессии
 F | Ansage | Ansage | Ansage | Ansage | Ansagen | Ansagen | Ansagen | Ansagen | Announcement,Объявление,Оповещение о чем-либо,Bid | A1,Работа и профессии
 F | Durchsage | Durchsage | Durchsage | Durchsage | Durchsagen | Durchsagen | Durchsagen | Durchsagen | Announcement,Message,Объявление (через громкоговоритель/аудиосистему) | A1,Работа и профессии
@@ -423,3 +423,85 @@ M | Abschied | Abschiedes/Abschieds | Abschied/Abschiede | Abschied | Abschiede 
 N | Mittel | Mittels | Mittel | Mittel | Mittel | Mittel | Mitteln | Mittel | Tool,Means,Remedy,Device,Method,Average,Medium | A1
 M | Abschiedsgruß | Abschiedsgrußes | Abschiedsgruß/Abschiedsgruße | Abschiedsgruß | Abschiedsgrüße | Abschiedsgrüße | Abschiedsgrüßen | Abschiedsgrüße | Farewell,Goodbye | A1
 F | Übung | Übung | Übung | Übung | Übungen | Übungen | Übungen | Übungen | Training,Practice,Excercise,Drill | A1
+N | Frühstücksbüfett | Frühstücksbüfetts/Frühstücksbüfettes | Frühstücksbüfett | Frühstücksbüfett | Frühstücksbüfette/Frühstücksbüfetts | Frühstücksbüfette/Frühstücksbüfetts | Frühstücksbüfetten/Frühstücksbüfetts | Frühstücksbüfette/Frühstücksbüfetts | Breakfast buffet | A1
+N | Handtuch | Handtuches/Handtuchs | Handtuch/Handtuche | Handtuch | Handtücher/Handtuche | Handtücher/Handtuche | Handtüchern/Handtuchen | Handtücher/Handtuche | Towel,Hand towel | A1
+M | Mitarbeiter | Mitarbeiters | Mitarbeiter | Mitarbeiter | Mitarbeiter | Mitarbeiter | Mitarbeitern | Mitarbeiter | Employee,Coworker,Assistant | A1
+F | Zahnbürste | Zahnbürste | Zahnbürste | Zahnbürste | Zahnbürsten | Zahnbürsten | Zahnbürsten | Zahnbürsten | Toothbrush | A1
+M | Zahn | Zahnes/Zahns | Zahn/Zahne | Zahn | Zähne | Zähne | Zähnen | Zähne | Tooth,Cog,Tine | A1
+F | Bürste | Bürste | Bürste | Bürste | Bürsten | Bürsten | Bürsten | Bürsten | Brush | A1
+F | Vollpension | Vollpension | Vollpension | Vollpension | - | - | - | - | Full board,Все включено (отель) | A1
+F | Halbpension | Halbpension | Halbpension | Halbpension | - | - | - | - | Half board,Demi-pension | A1
+M | Verkehr | Verkehrs | Verkehr | Verkehr | Verkehre | Verkehre | Verkehren | Verkehre | Traffic,Contact,Intercourse,Communication,Transport | A1
+N | Verkehrsmittel/Verkehrmittel | Verkehrsmittels/Verkehrmittels | Verkehrsmittel/Verkehrmittel | Verkehrsmittel/Verkehrmittel | Verkehrsmittel/Verkehrmittel | Verkehrsmittel/Verkehrmittel | Verkehrsmitteln/Verkehrmitteln | Verkehrsmittel/Verkehrmittel | Means of transport,Vehicle | A1
+F | Straßenbahn | Straßenbahn | Straßenbahn | Straßenbahn | Straßenbahnen | Straßenbahnen | Straßenbahnen | Straßenbahnen | Tram,Tramway,Streetcar,Tramline,Trolley car,Trolley | A1
+M | Schein | Scheines/Scheins | Schein/Scheine | Schein | Scheine | Scheine | Scheinen | Scheine | Shine,Gleam,Slip,Certificate,Appearance,Banknote,Note,Light,Brithness | A1
+F | Tafel | Tafel | Tafel | Tafel | Tafeln | Tafeln | Tafeln | Tafeln | Tablet,Board,Blackboard,Banquet,Food bank,Panel,Plate | A1
+F | Anzeigetafel/Anzeigentafel | Anzeigetafel/Anzeigentafel | Anzeigetafel/Anzeigentafel | Anzeigetafel/Anzeigentafel | Anzeigetafeln/Anzeigentafeln | Anzeigetafeln/Anzeigentafeln | Anzeigetafeln/Anzeigentafeln | Anzeigetafeln/Anzeigentafeln | Destination board,Display panel,Scoreboard | A1
+N | Gegenteil | Gegenteiles/Gegenteils | Gegenteil/Gegenteile | Gegenteil | Gegenteile | Gegenteile | Gegenteilen | Gegenteile | Opposite,Contrary,Converse,Reverse | A1
+F | Gepäckaufgabe | Gepäckaufgabe | Gepäckaufgabe | Gepäckaufgabe | - | - | - | - | Luggace office,Checking of baggage | A1
+F | Sicherheit | Sicherheit | Sicherheit | Sicherheit | Sicherheiten | Sicherheiten | Sicherheiten | Sicherheiten | Safety,Surety,Security,Certainty,Cover,Assurance,Guarantee,Confidence | A1
+M | Behälter | Behälters | Behälter | Behälter | Behälter | Behälter | Behältern | Behälter | Bin,Container,Repository,Reservoir,Tank,Vessel | A1
+F | Flüssigkeit | Flüssigkeit | Flüssigkeit | Flüssigkeit | Flüssigkeiten | Flüssigkeiten | Flüssigkeiten | Flüssigkeiten | Fluid,Liquid,Liquor,Fluidity | A1
+F | Ordnung | Ordnung | Ordnung | Ordnung | Ordnungen | Ordnungen | Ordnungen | Ordnungen | Order,Tidiness,Regime,Arrangement,Organization | A1
+N | Übergepäck | Übergepäcks | Übergepäck | Übergepäck | - | - | - | - | Excess baggage,Excess luggage | A1
+M | Gepäckwagen | Gepäckwagens | Gepäckwagen | Gepäckwagen | Gepäckwagen/Gepäckwägen | Gepäckwagen/Gepäckwägen | Gepäckwagen/Gepäckwägen | Gepäckwagen/Gepäckwägen | Baggage car,Luggage van | A1
+N | Gepäckband | Gepäckbandes/Gepäckbands | Gepäckband/Gepäckbande | Gepäckband | Gepäckbänder/Gepäckbande | Gepäckbänder/Gepäckbande | Gepäckbändern/Gepäckbanden | Gepäckbänder/Gepäckbande | Automatic baggage conveyer,Baggage belt | A1
+F | Verbindung | Verbindung | Verbindung | Verbindung | Verbindungen | Verbindungen | Verbindungen | Verbindungen | Connection,Compound,Combination,Link | A1
+M | Begleiter | Begleiters | Begleiter | Begleiter | Begleiter | Begleiter | Begleitern | Begleiter | Companion,Accompanist,Article,Attendant,Escort,Tutor,Date | A1
+M | Flugbegleiter | Flugbegleiters | Flugbegleiter | Flugbegleiter | Flugbegleiter | Flugbegleiter | Flugbegleitern | Flugbegleiter | Flight attendant,Air host,Steward,Stewardess (Flugbegleiterin) | A1
+F | Feier | Feier | Feier | Feier | Feiern | Feiern | Feiern | Feiern | Party,Ceremony,Celebration,Праздник | A1
+F | Insel | Insel | Insel | Insel | Inseln | Inseln | Inseln | Inseln | Isle,Island,Pocket | A1
+M | Himmel | Himmels | Himmel | Himmel | Himmel | Himmel | Himmeln | Himmel | Sky,Heaven,Space,Firmament | A1
+F | Apfelblüte | Apfelblüte | Apfelblüte | Apfelblüte | Apfelblüten | Apfelblüten | Apfelblüten | Apfelblüten | Apple blossom | A1
+F | Zahnpasta | Zahnpasta | Zahnpasta | Zahnpasta | Zahnpasten | Zahnpasten | Zahnpasten | Zahnpasten | Toothpaste | A1
+M | Begriff | Begriffes/Begriffs | Begriff/Begriffe | Begriff | Begriffe | Begriffe | Begriffen | Begriffe | Term,Concept,Perception,Idea,Notion,Expression,Definition | A1
+M | Flug | Fluges/Flugs | Flug/Fluge | Flug | Flüge | Flüge | Flügen | Flüge | Flight,Covey,Fly | A1
+M | Umstieg | Umstieges/Umstiegs | Umstieg/Umstiege | Umstieg | Umstiege | Umstiege | Umstiegen | Umstiege | Пересадка,Transition | A1
+F | Buchung | Buchung | Buchung | Buchung | Buchungen | Buchungen | Buchungen | Buchungen | Accounting,Booking,Ticketing,Reservation,Entry | A1
+F | Kontrolle | Kontrolle | Kontrolle | Kontrolle | Kontrollen | Kontrollen | Kontrollen | Kontrollen | Control,Checking,Monitoring,Supervision | A1
+N | Leder | Leders | Leder | Leder | Leder | Leder | Ledern | Leder | Leather,Shammy,Football | A1
+N | Aus | Aus | Aus | Aus | - | - | - | - | End,Touch | A1
+F | Hauptstadt | Hauptstadt | Hauptstadt | Hauptstadt | Hauptstädte | Hauptstädte | Hauptstädten | Hauptstädte | Capital city | A1
+F | Kultur | Kultur | Kultur | Kultur | Kulturen | Kulturen | Kulturen | Kulturen | Culture,Civilization | A1
+F | Musik | Musik | Musik | Musik | Musiken | Musiken | Musiken | Musiken | Music | A1
+F | Brücke | Brücke | Brücke | Brücke | Brücken | Brücken | Brücken | Brücken | Bridge | A1
+F | Formel | Formel | Formel | Formel | Formeln | Formeln | Formeln | Formeln | Formula,Set phrase,Notation | A1
+M | Nächste | Nächsten | Nächsten | Nächsten | Nächsten | Nächsten | Nächsten | Nächsten | Next | A1
+N | Lagerhaus | Lagerhauses | Lagerhaus/Lagerhause | Lagerhaus | Lagerhäuser | Lagerhäuser | Lagerhäusern | Lagerhäuser | Store,Storehouse,Depot | A1
+N | Museum | Museums | Museum | Museum | Museen | Museen | Museen | Museen | Museum | A1
+F | Bibliothek | Bibliothek | Bibliothek | Bibliothek | Bibliotheken | Bibliotheken | Bibliotheken | Bibliotheken | Library | A1
+N | Manuskript | Manuskriptes/Manuskripts | Manuskript/Manuskripte | Manuskript | Manuskripte | Manuskripte | Manuskripten | Manuskripte | Manuscript,Copy,Script,Draft | A1
+F | Malerei | Malerei | Malerei | Malerei | Malereien | Malereien | Malereien | Malereien | Painting,Picture | A1
+F | Währung | Währung | Währung | Währung | Währungen | Währungen | Währungen | Währungen | Currency | A1
+F | Krankenversicherung | Krankenversicherung | Krankenversicherung | Krankenversicherung | Krankenversicherungen | Krankenversicherungen | Krankenversicherungen | Krankenversicherungen | Health insurance | A1
+M | Pass | Passes | Pass/Passe | Pass | Pässe | Pässe | Pässen | Pässe | Passport | A1
+N | Tuch | Tuches/Tuchs | Tuch/Tuche | Tuch | Tücher/Tuche | Tücher/Tuche | Tüchern/Tuchen | Tücher/Tuche | Cloth,Rag,Scarf | A1
+M | Pullover | Pullovers | Pullover | Pullover | Pullover | Pullover | Pullovern | Pullover | Sweater,Pullover,Jumper | A1
+F | Jacke | Jacke | Jacke | Jacke | Jacken | Jacken | Jacken | Jacken | Coat,Jacket | A1
+F | - | - | - | - | Jeans | Jeans | Jeans | Jeans | Jeans | A1
+M | Schal | Schals | Schal | Schal | Schals/Schale | Schals/Schale | Schals/Schalen | Schals/Schale | Scarf,Muffer,Shawl | A1
+M | Regenschirm | Regenschirmes/Regenschirms | Regenschirm/Regenschirme | Regenschirm | Regenschirme | Regenschirme | Regenschirmen | Regenschirme | Umbrella | A1
+N | Herkunftsland | Herkunftslandes/Herkunftslands | Herkunftsland/Herkunftslande | Herkunftsland | Herkunftsländer/Herkunftslande | Herkunftsländer/Herkunftslande | Herkunftsländern/Herkunftslanden | Herkunftsländer/Herkunftslande | Country of origin,Home country | A1
+F | Herkunft | Herkunft | Herkunft | Herkunft | Herkünfte | Herkünfte | Herkünften | Herkünfte | Origin,Source,Descent,Etymology,Birth | A1
+M | Kellner | Kellners | Kellner | Kellner | Kellner | Kellner | Kellnern | Kellner | Waiter,Cellarer,Server | A1
+M | Bereich | Bereiches/Bereichs | Bereich/Bereiche | Bereich | Bereiche | Bereiche | Bereichen | Bereiche | Area,Field,Sphere,Ring,Sector,Zone | A1
+M | Gehalt | Gehaltes/Gehalts | Gehalt/Gehalte | Gehalt | Gehalte | Gehalte | Gehalten | Gehalte | Salary,Contents,Percentage,Matter,Wage,Level | A1
+F | Modebranche | Modebranche | Modebranche | Modebranche | Modebranchen | Modebranchen | Modebranchen | Modebranchen | Fashion | A1
+N | Forschungsprojekt | Forschungsprojektes/Forschungsprojekts | Forschungsprojekt/Forschungsprojekte | Forschungsprojekt | Forschungsprojekte | Forschungsprojekte | Forschungsprojekten | Forschungsprojekte | Research project | A1
+F | Werkstofftechnik | Werkstofftechnik | Werkstofftechnik | Werkstofftechnik | Werkstofftechniken | Werkstofftechniken | Werkstofftechniken | Werkstofftechniken | Materials,Materials engineering | A1
+M | Werkstoff | Werkstoffes/Werkstoffs | Werkstoff/Werkstoffe | Werkstoff | Werkstoffe | Werkstoffe | Werkstoffen | Werkstoffe | Material | A1
+F | Forschung | Forschung | Forschung | Forschung | Forschungen | Forschungen | Forschungen | Forschungen | Research | A1
+F | Niederlassung | Niederlassung | Niederlassung | Niederlassung | Niederlassungen | Niederlassungen | Niederlassungen | Niederlassungen | Settlement,Establishment,Branch,Location,Office,Settling,Branch office | A1
+N | Unternehmen | Unternehmens | Unternehmen | Unternehmen | Unternehmen | Unternehmen | Unternehmen | Unternehmen | Business,Enterprise,Venture,Corporation,Company | A1
+M | Bau | Baues/Baus | Bau | Bau | Baue | Baue | Bauen | Baue | Construction,Building side,Jail,Prison | A1
+M | Maschinenbau | Maschinenbaues/Maschinenbaus | Maschinenbau | Maschinenbau | - | - | - | - | Mechanical engineering,Engineering | A1
+F | Arbeitsbedingung | Arbeitsbedingung | Arbeitsbedingung | Arbeitsbedingung | Arbeitsbedingungen | Arbeitsbedingungen | Arbeitsbedingungen | Arbeitsbedingungen | Working condition | A1
+F | Bedingung | Bedingung | Bedingung | Bedingung | Bedingungen | Bedingungen | Bedingungen | Bedingungen | Condition,Requirement,Circumstance | A1
+N | Team | Teams | Team | Team | Teams | Teams | Teams | Teams | Team | A1
+F | Arbeitskraft | Arbeitskraft | Arbeitskraft | Arbeitskraft | Arbeitskräfte | Arbeitskräfte | Arbeitskräften | Arbeitskräfte | Worker,Manpower,Labour,Hand,Labour power | A1
+M | Spaß | Spaßes | Spaß/Spaße | Spaß | Späße | Späße | Späßen | Späße | Fun,Humour,Amusement,Entertainment,Joke | A1
+F | Ausbildung | Ausbildung | Ausbildung | Ausbildung | Ausbildungen | Ausbildungen | Ausbildungen | Ausbildungen | Training,Education,FormationDevelopment,Qualification | A1
+M | Feierabend | Feierabends | Feierabend | Feierabend | Feierabende | Feierabende | Feierabenden | Feierabende | Quitting time,Closing time,Finishing time,After-work hours,End of work | A1
+M | Wecker | Weckers | Wecker | Wecker | Wecker | Wecker | Weckern | Wecker | Alarm clock,Alarm | A1
+N | Spiel | Spieles/Spiels | Spiel/Spiele | Spiel | Spiele | Spiele | Spielen | Spiele | Game | A1
+F | Pasta | Pasta | Pasta | Pasta | Pasten | Pasten | Pasten | Pasten | Spread,Pasta | A1

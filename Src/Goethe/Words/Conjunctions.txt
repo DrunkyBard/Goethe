@@ -5,3 +5,4 @@ und | and,и,а |A1
 also | so,therefore,well,итак | A1,Разное
 als | than,as if,though,as | A1
 sondern | but | A1
+wenn | if | A1

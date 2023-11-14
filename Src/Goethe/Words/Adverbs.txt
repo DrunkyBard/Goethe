@@ -70,3 +70,12 @@ zuerst | first,for the first time,at first | A1
 sogar | even,даже | A1
 besonders | particularly,especially | A1
 wieder | again | A1
+drüben | over there,on the other side | A1
+irgendwo | someplace,somewhere (or other),anywhere,any place | A1
+gleich | equally,alike,the same,right,just,immediately,in a minute | A1
+diesmal | this time | A1
+zuerst | first,for the first time | A1
+dafür | for that,instead,in its place | A1
+außerdem | besides,кроме того,in addition,as well | A1
+bisschen | a bit,a little,a little bit | A1
+danach | after that/it,afterwards,behind that/it/him/them,after that/it/him/them | A1
