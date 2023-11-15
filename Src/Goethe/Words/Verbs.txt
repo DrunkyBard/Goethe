@@ -203,3 +203,4 @@ entspannen | False | entspanne | entspannst | entspannt | entspannen | entspannt
 vereinbaren | False | vereinbare | vereinbarst | vereinbart | vereinbaren | vereinbart | vereinbaren | agree,reconcile,agree upon,set up,arrange with for,arrange | A1
 besprechen | False | bespreche | besprichst | bespricht | besprechen | besprecht | besprechen | discuss,conjure,review,talk over,parley | A1
 untersuchen | False | untersuche | untersuchst | untersucht | untersuchen | untersucht | untersuchen | examine,investigate,look (into),test (for),analyze | A1
+wecken | False | wecke | weckst | weckt | wecken | weckt | wecken | wake up,wake,bring about,cause,call | A1
