@@ -1,6 +1,5 @@
 ﻿# gender | sg nom. | sg gen. | sg dat. | sg acc. | pl nom. | pl gen. | pl dat. | pl acc. | translations (comma-separated) | topics (comma-separated)
 N | Hallo | Hallos | Hallo | Hallo | Hallos | Hallos | Hallos | Hallos | Hello,Привет | A1
-F | Bitte | Bitte | Bitte | Bitte | Bitten | Bitten | Bitten | Bitten | Appeal,Please,Пожалуйста | A1,Приветствия/прощания/восклицания
 F | Achtung | Achtung | Achtung | Achtung | Achtungen | Achtungen | Achtungen | Achtungen | Danger,Caution,Warning,Опасность,Attention,Caution,Внимание | A1,Приветствия/прощания/восклицания
 F | Vorsicht | Vorsicht | Vorsicht | Vorsicht | - | - | - | - | Care,Caution,Danger,Attention,Осторожно | A1,Приветствия/прощания/восклицания
 N | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Tschüss | Bye,Пока (в разговорной) | A1,Приветствия/прощания/восклицания
@@ -180,7 +179,7 @@ M | Eingang | Einganges/Eingangs | Eingang/Eingange | Eingang | Eingänge | Eing
 M | Ausgang | Ausganges/Ausgangs | Ausgang/Ausgange | Ausgang | Ausgänge | Ausgänge | Ausgängen | Ausgänge | Exit,Outcome,Way out,Gate,Output,Выход | A1,Дом
 F | Halle | Halle | Halle | Halle | Hallen | Hallen | Hallen | Hallen | Hall,Workshop,Hangar,Зал | A1,Дом
 M | Stock | Stockes/Stocks | Stock/Stocke | Stock | Stöcke | Stöcke | Stöcken | Stöcke | Floor,Stick,Level,Plant,Этаж | A1,Дом
-M | Aufzug | Aufzuges/Aufzugs | Aufzug/Aufzuge | Aufzug | Aufzüge | Aufzüge | Aufzügen | Aufzüge | Лифт,Lift,Eleveator,Act,Approach | A1,Дом
+M | Aufzug | Aufzuges/Aufzugs | Aufzug/Aufzuge | Aufzug | Aufzüge | Aufzüge | Aufzügen | Aufzüge | Лифт,Lift,Elevator,Act,Approach | A1,Дом
 F | Treppe | Treppe | Treppe | Treppe | Treppen | Treppen | Treppen | Treppen | Stairs,Лестница | A1,Дом
 F | Ecke | Ecke | Ecke | Ecke | Ecken | Ecken | Ecken | Ecken | Angle,Corner,Угол | A1,Дом
 M | Raum | Raumes/Raums | Raum/Raume | Raum | Räume | Räume | Räumen | Räume | Room,Комната,Помещение,Space,Region,Area,Zone | A1,Дом
@@ -228,7 +227,7 @@ F | Kasse | Kasse | Kasse | Kasse | Kassen | Kassen | Kassen | Kassen | Cash reg
 F | Tasche | Tasche | Tasche | Tasche | Taschen | Taschen | Taschen | Taschen | Purse,Pocket,Bag,Сумка | A1,Покупки и одежда
 F | Größe | Größe | Größe | Größe | Größen | Größen | Größen | Größen | Size,Quantity,Dimension,Magnitude,Extent,Размер | A1,Покупки и одежда
 F | Jacke | Jacke | Jacke | Jacke | Jacken | Jacken | Jacken | Jacken | Coat,jacket,Куртка | A1,Покупки и одежда
-F | Kleidung | Kleidung | Kleidung | Kleidung | Kleidungen | Kleidungen | Kleidungen | Kleidungen | Вкуыы,Сдщеруы,Сдщерштп,Щгеаше,Фззфкуд,Одежда | A1,Покупки и одежда
+F | Kleidung | Kleidung | Kleidung | Kleidung | Kleidungen | Kleidungen | Kleidungen | Kleidungen | Dress,Clothes,Clothing,Outfit,Costume,Одежда | A1,Покупки и одежда
 F | Heimat | Heimat | Heimat | Heimat | Heimaten | Heimaten | Heimaten | Heimaten | Home,Homeland,Родина | A1,Путешествия
 F | Reise | Reise | Reise | Reise | Reisen | Reisen | Reisen | Reisen | Travel,Journey,Trip,Voyage,Путешествие | A1,Путешествия
 N | Reisebüro | Reisebüros | Reisebüro | Reisebüro | Reisebüros | Reisebüros | Reisebüros | Reisebüros | Travel agency,Travel agent,Бюро путешествий | A1,Путешествия
@@ -292,7 +291,6 @@ M | Haferbrei | Haferbreies/Haferbreis | Haferbrei | Haferbrei | Haferbreie | Ha
 F | Haferflocken (Pl.) | - | - | - | Haferflocken | Haferflocken | Haferflocken | Haferflocken | oat flakes,Porridge oats | A1
 N | Spiegelei | Spiegeleies/Spiegeleis | Spiegelei | Spiegelei | Spiegeleier | Spiegeleier | Spiegeleiern | Spiegeleier | Fried egg,Яичница | A1,Продукты питания
 M | Spiegel | Spiegels | Spiegel | Spiegel | Spiegel | Spiegel | Spiegeln | Spiegel | Looking glass,Mirror,Зеркало | A1
-F | Kartoffel | Kartoffel | Kartoffel | Kartoffel | Kartoffeln | Kartoffeln | Kartoffeln | Kartoffeln | Картофель,Potato | A1,Продукты питания
 F | Mahlzeit | Mahlzeit | Mahlzeit | Mahlzeit | Mahlzeiten | Mahlzeiten | Mahlzeiten | Mahlzeiten | Meal,Repast | A1,Продукты питания
 N | Beispiel | Beispiels | Beispiel | Beispiel | Beispiele | Beispiele | Beispielen | Beispiele | Example,Instance,Sample,Пример,Например | A1
 F | Suppe | Suppe | Suppe | Suppe | Suppen | Suppen | Suppen | Suppen | Soup,Суп | A1,Продукты питания
@@ -415,7 +413,6 @@ M | Nebel | Nebels | Nebel | Nebel | Nebel | Nebel | Nebeln | Nebel | Veil,Cloud
 N | Glatteis | Glatteises | Glatteis/Glatteise | Glatteis | - | - | - | - | Glaze,Clear ice,Гололед | A1
 N | Regal | Regals | Regal | Regal | Regale | Regale | Regalen | Regale | Rack,Shelf | A1
 M | Champagner | Champagners | Champagner | Champagner | Champagner | Champagner | Champagnern | Champagner | Champagne | A1
-F | Sache | Sache | Sache | Sache | Sachen | Sachen | Sachen | Sachen | Thing,Matter,Business,Affair,Article,Clothes | A1
 F | Szene | Szene | Szene | Szene | Szenen | Szenen | Szenen | Szenen | Scene,Stage | A1
 F | Weintraube | Weintraube | Weintraube | Weintraube | Weintrauben | Weintrauben | Weintrauben | Weintrauben | Grape | A1
 F | Verabschiedung | Verabschiedung | Verabschiedung | Verabschiedung | Verabschiedungen | Verabschiedungen | Verabschiedungen | Verabschiedungen | Farewells,Discharge,Sendoff,Leave-taking,Adoption | A1
@@ -505,3 +502,141 @@ M | Feierabend | Feierabends | Feierabend | Feierabend | Feierabende | Feieraben
 M | Wecker | Weckers | Wecker | Wecker | Wecker | Wecker | Weckern | Wecker | Alarm clock,Alarm | A1
 N | Spiel | Spieles/Spiels | Spiel/Spiele | Spiel | Spiele | Spiele | Spielen | Spiele | Game | A1
 F | Pasta | Pasta | Pasta | Pasta | Pasten | Pasten | Pasten | Pasten | Spread,Pasta | A1
+F | Besserung | Besserung | Besserung | Besserung | - | - | - | - | Recovery,Amendment,Improvement,Betterment,Reform | A1
+F | Häufigkeit | Häufigkeit | Häufigkeit | Häufigkeit | Häufigkeiten | Häufigkeiten | Häufigkeiten | Häufigkeiten | Frequency,Incidence,Occurrence | A1
+M | Stuhl | Stuhles/Stuhls | Stuhl/Stuhle | Stuhl | Stühle | Stühle | Stühlen | Stühle | Chair,Stool | A1
+M | Abschluss | Abschlusses | Abschluss/Abschlusse | Abschluss | Abschlüsse | Abschlüsse | Abschlüssen | Abschlüsse | Degree,Graduation,Exclusion,Completion | A1
+F | Nachricht | Nachricht | Nachricht | Nachricht | Nachrichten | Nachrichten | Nachrichten | Nachrichten | News,Message,Notification,Notice | A1
+F | Einzelheit | Einzelheit | Einzelheit | Einzelheit | Einzelheiten | Einzelheiten | Einzelheiten | Einzelheiten | Detail,Particular,Item | A1
+N | Gewicht | Gewichtes/Gewichts | Gewicht/Gewichte | Gewicht | Gewichte | Gewichte | Gewichten | Gewichte | Weight | A1
+F | Geschäftsreise | Geschäftsreise | Geschäftsreise | Geschäftsreise | Geschäftsreisen | Geschäftsreisen | Geschäftsreisen | Geschäftsreisen | Business trip | A1
+M | Dozent | Dozenten | Dozenten | Dozenten | Dozenten | Dozenten | Dozenten | Dozenten | University lecturer,Lecturer,Academic | A1
+F | Dienstreise | Dienstreise | Dienstreise | Dienstreise | Dienstreisen | Dienstreisen | Dienstreisen | Dienstreisen | Official trip,Business trip | A1
+M | Dienst | Dienstes/Diensts | Dienst/Dienste | Dienst | Dienste | Dienste | Diensten | Dienste | Duty,Work,Service,Shift,Employment | A1
+N | Arbeitsklima | Arbeitsklimas | Arbeitsklima | Arbeitsklima | - | - | - | - | Work climate,Working atmosphere | A1
+N | Office | Office | Office | Office | Offices | Offices | Offices | Offices | Store,Office | A1
+N | Büro | Büros | Büro | Büro | Büros | Büros | Büros | Büros | Office,Agency | A1
+N | Mal | Males/Mals | Mal/Male | Mal | Mäler/Male | Mäler/Male | Mälern/Malen | Mäler/Male | Brand,Time,Mark,Marking,Scar,Mole | A1
+N | Werk | Werkes/Werks | Werk/Werke | Werk | Werke | Werke | Werken | Werke | Work,Labour,Act,Plant,Factory | A1
+M | Geburtstag | Geburtstages/Geburtstags | Geburtstag/Geburtstage | Geburtstag | Geburtstage | Geburtstage | Geburtstagen | Geburtstage | Birthday | A1
+M | Pulli | Pullis | Pulli | Pulli | Pullis | Pullis | Pullis | Pullis | Jumper,Sweater | A1
+F | Brust | Brust | Brust | Brust | Brüste | Brüste | Brüsten | Brüste | Chest,Breast,Thorax | A1
+N | Kraut | Krautes/Krauts | Kraut/Kraute | Kraut | Kräuter | Kräuter | Kräutern | Kräuter | Herb,Greens,Cabbage | A1
+N | Deo | Deos | Deo | Deo | Deos | Deos | Deos | Deos | Deodorant | A1
+N | Kleid | Kleides/Kleids | Kleid/Kleide | Kleid | Kleider | Kleider | Kleidern | Kleider | Dress,Clothes,Clothing | A1
+F | Gurke | Gurke | Gurke | Gurke | Gurken | Gurken | Gurken | Gurken | Cucumber | A1
+F | Zwiebel | Zwiebel | Zwiebel | Zwiebel | Zwiebeln | Zwiebeln | Zwiebeln | Zwiebeln | Onion | A1
+F | Nuss | Nuss | Nuss | Nuss | Nüsse | Nüsse | Nüssen | Nüsse | Nut,Hazelnut,Орех | A1
+F | Seife | Seife | Seife | Seife | Seifen | Seifen | Seifen | Seifen | Soap | A1
+F | Erbse | Erbse | Erbse | Erbse | Erbsen | Erbsen | Erbsen | Erbsen | Pea | A1
+F | Torte | Torte | Torte | Torte | Torten | Torten | Torten | Torten | Cake,Tart | A1
+F | Bohne | Bohne | Bohne | Bohne | Bohnen | Bohnen | Bohnen | Bohnen | Bean | A1
+N | Bonbon | Bonbons | Bonbon | Bonbon | Bonbons | Bonbons | Bonbons | Bonbons | Candy,Sweetie | A1
+F | Aprikose | Aprikose | Aprikose | Aprikose | Aprikosen | Aprikosen | Aprikosen | Aprikosen | Apricot,Абрикос | A1
+F | Zitrone | Zitrone | Zitrone | Zitrone | Zitronen | Zitronen | Zitronen | Zitronen | Lemon,Lemon tree | A1
+F | Aubergine | Aubergine | Aubergine | Aubergine | Auberginen | Auberginen | Auberginen | Auberginen | Melongene,Eggplant,Баклажан | A1
+F | Praline | Praline | Praline | Praline | Pralinen | Pralinen | Pralinen | Pralinen | Chocolate candy,Praline | A1
+M | Paprika | Paprikas | Paprika | Paprika | Paprikas/Paprika | Paprikas/Paprika | Paprikas/Paprika | Paprikas/Paprika | Pepper,Bell pepper | A1
+M | Spargel | Spargels | Spargel | Spargel | Spargel/Spargeln | Spargel/Spargeln | Spargeln | Spargel/Spargeln | Asparagus | A1
+M | Spinat | Spinates/Spinats | Spinat/Spinate | Spinat | Spinate | Spinate | Spinaten | Spinate | Spinach,Шпинат | A1
+F | Selbstbedienung | Selbstbedienung | Selbstbedienung | Selbstbedienung | Selbstbedienungen | Selbstbedienungen | Selbstbedienungen | Selbstbedienungen | Self-service | A1
+N | Selbst | Selbst | Selbst | Selbst | - | - | - | - | Self | A1
+F | Ware | Ware | Ware | Ware | Waren | Waren | Waren | Waren | Wares,Goods,Article,Mechandise,Product | A1
+M | Supermarkt | Supermarktes/Supermarkts | Supermarkt/Supermarkte | Supermarkt | Supermärkte | Supermärkte | Supermärkten | Supermärkte | Supermarket | A1
+F | Abteilung | Abteilung | Abteilung | Abteilung | Abteilungen | Abteilungen | Abteilungen | Abteilungen | Department,Unit,Division | A1
+M | Teig | Teiges/Teigs | Teig/Teige | Teig | Teige | Teige | Teigen | Teige | Dough,Pastry,Paste,Тесто | A1
+N | Fertiggericht | Fertiggerichtes/Fertiggerichts | Fertiggericht/Fertiggerichte | Fertiggericht | Fertiggerichte | Fertiggerichte | Fertiggerichten | Fertiggerichte | TV dinner,Instant meal,Convenience food,Ready meal | A1
+M | Händler | Händlers | Händler | Händler | Händler | Händler | Händlern | Händler | Dealer,Trader,Merchant | A1
+N | Gewürz | Gewürzes | Gewürz/Gewürze | Gewürz | Gewürze | Gewürze | Gewürzen | Gewürze | Spice,Flavoring,Seasoning | A1
+M | Treffpunkt | Treffpunktes/Treffpunkts | Treffpunkt/Treffpunkte | Treffpunkt | Treffpunkte | Treffpunkte | Treffpunkten | Treffpunkte | Meeting point,Venue,Meeting place | A1
+M | Flohmarkt | Flohmarktes/Flohmarkts | Flohmarkt/Flohmarkte | Flohmarkt | Flohmärkte | Flohmärkte | Flohmärkten | Flohmärkte | Flea market,Jumble sale | A1
+M | Stand | Standes/Stands | Stand/Stande | Stand | Stände | Stände | Ständen | Stände | Stand,Standing position,Position,Booth,Stall,Stage,Level,Degree | A1
+M | Gegenstand | Gegenstandes/Gegenstands | Gegenstand/Gegenstande | Gegenstand | Gegenstände | Gegenstände | Gegenständen | Gegenstände | Item,Subject,Article,Topic,Object | A1
+N | Geschirr | Geschirres/Geschirrs | Geschirr/Geschirre | Geschirr | Geschirre | Geschirre | Geschirren | Geschirre | Tableware,Harness,Crockery,Dishes,Dinnerware | A1
+M | Schmuck | Schmuckes/Schmucks | Schmuck/Schmucke | Schmuck | Schmucke | Schmucke | Schmucken | Schmucke | Ornament,Jewellery,Jewelry | A1
+F | Etage | Etage | Etage | Etage | Etagen | Etagen | Etagen | Etagen | Floor,Level,Storey,Tier | A1
+F | Filiale | Filiale | Filiale | Filiale | Filialen | Filialen | Filialen | Filialen | Branch,Branch offic,Store | A1
+F | Ladenkette | Ladenkette | Ladenkette | Ladenkette | Ladenketten | Ladenketten | Ladenketten | Ladenketten | Multiple shop,Chain of shops | A1
+M | Ganze | Ganzen | Ganzen | Ganzen | Ganzen | Ganzen | Ganzen | Ganzen | Whole | A1
+F | Zeitschrift | Zeitschrift | Zeitschrift | Zeitschrift | Zeitschriften | Zeitschriften | Zeitschriften | Zeitschriften | Journal,Magazine | A1
+N | Bundesland | Bundeslandes/Bundeslands | Bundesland/Bundeslande | Bundesland | Bundesländer/Bundeslande | Bundesländer/Bundeslande | Bundesländern/Bundeslanden | Bundesländer/Bundeslande | Federal land,Federal state,State,Land | A1
+F | Mitternacht | Mitternacht | Mitternacht | Mitternacht | - | - | - | - | Midnight | A1
+N | Paar | Paares/Paars | Paar/Paare | Paar | Paare | Paare | Paaren | Paare | Couple,Pair | A1
+M | Geschmack | Geschmackes/Geschmacks | Geschmack/Geschmacke | Geschmack | Geschmäcke/Geschmäcker | Geschmäcke/Geschmäcker | Geschmäcken/Geschmäckern | Geschmäcke/Geschmäcker | Taste,Flavour,Smack | A1
+F | Beratung | Beratung | Beratung | Beratung | Beratungen | Beratungen | Beratungen | Beratungen | Advice,Consultation,Discussion,Deliberation | A1
+M | Wunsch | Wunsches/Wunschs | Wunsch/Wunsche | Wunsch | Wünsche | Wünsche | Wünschen | Wünsche | Wish,Request,Desire | A1
+M | Becher | Bechers | Becher | Becher | Becher | Becher | Bechern | Becher | Glass,Cup,Mug | A1
+F | Weihnachtsfeier | Weihnachtsfeier | Weihnachtsfeier | Weihnachtsfeier | Weihnachtsfeiern | Weihnachtsfeiern | Weihnachtsfeiern | Weihnachtsfeiern | Christmas celebrations | A1
+M | Schalter | Schalters | Schalter | Schalter | Schalter | Schalter | Schaltern | Schalter | Switch,Counter,Window,Shifter,Counter window,Desk | A1
+F | Bewertung | Bewertung | Bewertung | Bewertung | Bewertungen | Bewertungen | Bewertungen | Bewertungen | Evaluation,Rating,Review,Valuation,Assessment | A1
+M | Inhalt | Inhaltes/Inhalts | Inhalt/Inhalte | Inhalt | Inhalte | Inhalte | Inhalten | Inhalte | Content,Plot,meaning,Significance,Area,Topic | A1
+F | Auskunft | Auskunft | Auskunft | Auskunft | Auskünfte | Auskünfte | Auskünften | Auskünfte | Information,Information desk,Advice | A1
+F | Kommende | Kommende | Kommende | Kommende | Kommenden | Kommenden | Kommenden | Kommenden | Coming | A1
+F | Statt | Statt | Statt | Statt | Stätten | Stätten | Stätten | Stätten | Stead | A1
+N | Schiff | Schiffes/Schiffs | Schiff/Schiffe | Schiff | Schiffe | Schiffe | Schiffen | Schiffe | Boat,Ship,Vessel | A1
+M | Boden | Bodens | Boden | Boden | Böden | Böden | Böden | Böden | Floor,Earth,Ground,Soil,Bottom,Loft | A1
+N | Familienunternehmen | Familienunternehmens | Familienunternehmen | Familienunternehmen | Familienunternehmen | Familienunternehmen | Familienunternehmen | Familienunternehmen | Family business | A1
+N | Geld | Geldes/Gelds | Geld/Gelde | Geld | Gelder | Gelder | Geldern | Gelder | Money,Currency,Cash | A1
+N | Fahrgeld | Fahrgeldes/Fahrgelds | Fahrgeld/Fahrgelde | Fahrgeld | Fahrgelder | Fahrgelder | Fahrgeldern | Fahrgelder | Fare,Carfare,Transportation expenses | A1
+N | Bargeld | Bargeldes/Bargelds | Bargeld/Bargelde | Bargeld | Bargelder | Bargelder | Bargeldern | Bargelder | Cash,Bar money,Currency | A1
+N | Essen | Essens | Essen | Essen | Essen | Essen | Essen | Essen | Meal,Food,Dish | A1
+M | Einkauf | Einkaufes/Einkaufs | Einkauf/Einkaufe | Einkauf | Einkäufe | Einkäufe | Einkäufen | Einkäufe | Buying,Shopping,Purchase | A1
+F | Gurke | Gurke | Gurke | Gurke | Gurken | Gurken | Gurken | Gurken | Cucumber,Огурец | A1
+F | Wurst | Wurst | Wurst | Wurst | Würste | Würste | Würsten | Würste | Sausage | A1
+N | Miteinander | Miteinanders | Miteinander | Miteinander | Miteinander | Miteinander | Miteinander | Miteinander | Cooperation | A1
+F | Ärztin | Ärztin | Ärztin | Ärztin | Ärztinnen | Ärztinnen | Ärztinnen | Ärztinnen | Doctor,Woman doctor,Physician | A1
+F | Beziehung | Beziehung | Beziehung | Beziehung | Beziehungen | Beziehungen | Beziehungen | Beziehungen | Feeling,Relation,Relationship,Concern,Connections | A1
+F | Freiheit | Freiheit | Freiheit | Freiheit | Freiheiten | Freiheiten | Freiheiten | Freiheiten | Liberty,Freedom,Privilege,Licence | A1
+M | Familienstand | Familienstandes/Familienstands | Familienstand/Familienstande | Familienstand | - | - | - | - | Family status,Marital status | A1
+F | Ausstellung | Ausstellung | Ausstellung | Ausstellung | Ausstellungen | Ausstellungen | Ausstellungen | Ausstellungen | Exhibition,Exposition,Issue,Presentation,Exhibit,Show | A1
+N | Schlagzeug | Schlagzeuges/Schlagzeugs | Schlagzeug/Schlagzeuge | Schlagzeug | Schlagzeuge | Schlagzeuge | Schlagzeugen | Schlagzeuge | Drum kit,Drum set,Percussion | A1
+M | Wanderweg | Wanderweges/Wanderwegs | Wanderweg/Wanderwege | Wanderweg | Wanderwege | Wanderwege | Wanderwegen | Wanderwege | Hiking trail,Walk,Trail,Hike path | A1
+M | Maler | Maler | Maler | Maler | Maler | Maler | Malern | Maler | Artist,Painter | A1
+M | Schlittschuh | Schlittschuhes/Schlittschuhs | Schlittschuh/Schlittschuhe | Schlittschuh | Schlittschuhe | Schlittschuhe | Schlittschuhen | Schlittschuhe | Ice skate,Коньки | A1
+M | Bäcker | Bäckers | Bäcker | Bäcker | Bäcker | Bäcker | Bäckern | Bäcker | Baker | A1
+F | Hose | Hose | Hose | Hose | Hosen | Hosen | Hosen | Hosen | Trousers,Pants | A1
+M | Bauch | Bauches/Bauchs | Bauch/Bauche | Bauch | Bäuche | Bäuche | Bäuchen | Bäuche | Belly,Stomach,Heart,Bulge,Waist | A1
+M | Termin | Termins | Termin | Termin | Termine | Termine | Terminen | Termine | Appointment,Time limit,Deadline | A1
+M | Kopf | Kopfes/Kopf | Kopf/Kopfe | Kopf | Köpfe | Köpfe | Köpfen | Köpfe | Head,Owner,Mind,Memory | A1
+M | Unfall | Unfalles/Unfalls | Unfall/Unfalle | Unfall | Unfälle | Unfälle | Unfällen | Unfälle | Accident,Crash,Casualty | A1
+F | Möglichkeit | Möglichkeit | Möglichkeit | Möglichkeit | Möglichkeiten | Möglichkeiten | Möglichkeiten | Möglichkeiten | Option,Possibility,Chance,Way,Potential | A1
+M | Einwohner | Einwohners | Einwohner | Einwohner | Einwohner | Einwohner | Einwohnern | Einwohner | Inhabitant,Resident | A1
+M | Rock | Rockes/Rocks | Rock/Rocke | Rock | Röcke | Röcke | Röcken | Röcke | Skirt,Dress | A1
+F | Unterwäsche | Unterwäsche | Unterwäsche | Unterwäsche | - | - | - | - | Underwear | A1
+M | Anzug | Anzuges/Anzugs | Anzug/Anzuge | Anzug | Anzüge | Anzüge | Anzügen | Anzüge | Approach,Attire,Suit,Draft,Batter | A1
+M | Weg | Weges/Wegs | Weg/Wege | Weg | Wege | Wege | Wegen | Wege | Way,Route,Track,Path,Method,Errand,Alley | A1
+M | Satz | Satzes | Satz/Satze | Satz | Sätze | Sätze | Sätzen | Sätze | Sentence,Period,Set,Leap,Stride | A1
+M | Brief | Briefes/Briefs | Brief/Briefe | Brief | Briefe | Briefe | Briefen | Briefe | Letter,Epistle,Письмо | A1
+F | Tasse | Tasse | Tasse | Tasse | Tassen | Tassen | Tassen | Tassen | Cup | A1
+N | Bein | Beines/Beins | Bein/Beine | Bein | Beine/Beiner | Beine/Beiner | Beinen/Beinern | Beine/Beiner | Leg,Bone | A1
+N | Ohr | Ohres/Ohrs | Ohr/Ohre | Ohr | Ohren | Ohren | Ohren | Ohren | Ear,Hearing | A1
+N | Auge | Auges | Auge | Auge | Augen | Augen | Augen | Augen | Eye | A1
+M | Fuß | Fußes | Fuß/Fuße | Fuß | Füße | Füße | Füßen | Füße | Foot,Leg,Base | A1
+F | Nase | Nase | Nase | Nase | Nasen | Nasen | Nasen | Nasen | Nose | A1
+M | Mund | Mundes/Munds/Munde | Mund/Munde | Mund | Münder/Münde | Münder/Münde | Mündern/Münden | Münder/Münde | Mouth,Lips | A1
+F | Lippe | Lippe | Lippe | Lippe | Lippen | Lippen | Lippen | Lippen | Lip | A1
+F | Rettung | Rettung | Rettung | Rettung | Rettungen | Rettungen | Rettungen | Rettungen | Rescue,Preservation,Resort,Salvage | A1
+M | Schnupfen | Schnupfens | Schnupfen | Schnupfen | Schnupfen | Schnupfen | Schnupfen | Schnupfen | Sniffles,Cold,Простуда | A1
+M | Patient | Patienten | Patienten | Patienten | Patienten | Patienten | Patienten | Patienten | Patient | A1
+M | Schuh | Schuhes/Schuhs | Schuh/Schuhe | Schuh | Schuhe/Schuh | Schuhe/Schuh | Schuhen/Schuh | Schuhe/Schuh | Shoe | A1
+M | Streit | Streites/Streits | Streit/Streite | Streit | Streite | Streite | Streiten | Streite | Aggro,Dispute,Contest,Argument,Disagreement | A1
+F | Sache | Sache | Sache | Sache | Sachen | Sachen | Sachen | Sachen | Thing,Matter,Business,Case,Clothes,Pieces,Property | A1
+N | Nahrungsmittel | Nahrungsmittels | Nahrungsmittel | Nahrungsmittel | Nahrungsmittel | Nahrungsmittel | Nahrungsmitteln | Nahrungsmittel | Food,Foodstuff,Aliment | A1
+M | Bescheid | Bescheides/Bescheids | Bescheid/Bescheide | Bescheid | Bescheide | Bescheide | Bescheiden | Bescheide | Answer,Information,Communication,Note,News,Verdict,Decision | A1
+N | Hemd | Hemdes/Hemds | Hemd/Hemde | Hemd | Hemden | Hemden | Hemden | Hemden | Shirt,Vest,Nightshirt,Undershirt | A1
+M | Grund | Grundes/Grunds | Grund/Grunde | Grund | Gründe | Gründe | Gründen | Gründe | Reason,Land,Bottom,Basis,Cause,Grounds,Bed,Background,Soil,Plot,Valley | A1
+F | Anmeldung | Anmeldung | Anmeldung | Anmeldung | Anmeldungen | Anmeldungen | Anmeldungen | Anmeldungen | Registration,Application,Notification,Declaration,Notice | A1
+N | Rathaus/Ratshaus | Rathauses/Ratshauses | Rathaus/Rathause/Ratshause | Rathaus/Ratshaus | Rathäuser/Ratshäuser | Rathäuser/Ratshäuser | Rathäusern/Ratshäusern | Rathäuser/Ratshäuser | Town hall,Cityhall | A1
+F | Anzahl | Anzahl | Anzahl | Anzahl | Anzahlen | Anzahlen | Anzahlen | Anzahlen | Number,Quantity,Count,Passel | A1
+F | Bedienung | Bedienung | Bedienung | Bedienung | Bedienungen | Bedienungen | Bedienungen | Bedienungen | Service,Operation,Crew,Waiter | A1
+F | Sahne | Sahne | Sahne | Sahne | - | - | - | - | Cream,Whipped cream | A1
+M | Aufenthalt | Aufenthaltes/Aufenthalts | Aufenthalt/Aufenthalte | Aufenthalt | Aufenthalte | Aufenthalte | Aufenthalten | Aufenthalte | Stay,Residence,Stop,Halt,Delay | A1
+F | Einrichtung | Einrichtung | Einrichtung | Einrichtung | Einrichtungen | Einrichtungen | Einrichtungen | Einrichtungen | Organization,Design,Layout,Interior,Device,Instutution | A1
+F | Pflanze | Pflanze | Pflanze | Pflanze | Pflanzen | Pflanzen | Pflanzen | Pflanzen | Plant,Crop | A1
+F | Unterkunft | Unterkunft | Unterkunft | Unterkunft | Unterkünfte | Unterkünfte | Unterkünften | Unterkünfte | Lodging,Accomodation,Housing,Dwelling | A1
+F | Höhe | Höhe | Höhe | Höhe | Höhen | Höhen | Höhen | Höhen | Height,Elevation,Depth,Summit,Peak | A1
+M | Absender | Absenders | Absender | Absender | Absender | Absender | Absendern | Absender | Sender,Shipper,Data source,Dispatcher | A1
+F | Ampel | Ampel | Ampel | Ampel | Ampeln | Ampeln | Ampeln | Ampeln | Traffic light | A1
+F | Seite | Seite | Seite | Seite | Seiten | Seiten | Seiten | Seiten | Side,Page,Wing,Aspect,Point | A1
+M | Friseur | Friseurs | Friseur | Friseur | Friseure | Friseure | Friseuren | Friseure | Barber,Hairdresser | A1
+F | Bushaltestelle | Bushaltestelle | Bushaltestelle | Bushaltestelle | Bushaltestellen | Bushaltestellen | Bushaltestellen | Bushaltestellen | Bus stop | A1

@@ -44,14 +44,14 @@ auf sein | быть открытым (об окне; двери; магазин�
 aus sein | быть выключенным или не работать (о технике),to be out (Radio; TV; etc) | A1,Состояние
 ab | от,начиная с,off,away,from,as of,as from | A1
 sehr | очень,very,a lot | Разное,A1
-so | so,so much,like this,так | A1,Разное
+so | so,so much,like this,like this,that,this way,thus,так | A1,Разное
 vielleicht | perharps,by any chance,maybe,может быть | A1,Разное
 nur | только,only,just | A1,Разное
 wunderbar | чудесный,чудный,wonderfully | A1,Разное
 nicht | not,не | A1,Разное
 klar | clearly,ясно | A1,Погода
 zusammen | together,вместе | A1,Друзья и знакомые
-geönnet | открыто,opened | A1,Покупки и одежда
+geöffnet | открыто,opened | A1,Покупки и одежда
 geschlossen | закрыто,closed | Покупки и одежда,A1
 Rad fahren | Ехать на велосипеде | A1,Транспорт и техника
 besetzt | занято | A1,Транспорт и техника
@@ -74,8 +74,12 @@ drüben | over there,on the other side | A1
 irgendwo | someplace,somewhere (or other),anywhere,any place | A1
 gleich | equally,alike,the same,right,just,immediately,in a minute | A1
 diesmal | this time | A1
-zuerst | first,for the first time | A1
 dafür | for that,instead,in its place | A1
 außerdem | besides,кроме того,in addition,as well | A1
 bisschen | a bit,a little,a little bit | A1
 danach | after that/it,afterwards,behind that/it/him/them,after that/it/him/them | A1
+sonst | else,other,otherwise,in other ways,usually | A1
+nun | now,then,come on | A1
+nahe | near,close,nearby | A1
+deswegen | because of this,therefore,поэтому,из-за этого | A1
+davon | of that,on that,thereof,of it,away,from that | A1

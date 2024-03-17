@@ -84,7 +84,7 @@ anmachen | False | mache an | machst an | macht an | machen an | macht an | mach
 tun | False | tue | tust | tut | tun | tut | tun | do,put,work,act,happen,do smth,поступать,делать | A1,Действие и взаимодействие
 suchen | False | suche | suchst | sucht | suchen | sucht | suchen | look for,search,seek,hunt,искать | A1,Действие и взаимодействие
 finden | False | finde | findest | findet | finden | findet | finden | find,discover,spot,think,находить | A1,Действие и взаимодействие
-nehmen | False | nahme | nimmst | nimmt | nehmen | nehmt | nehmen | take,have,acquire,pick,брать | A1,Действие и взаимодействие
+nehmen | False | nehme | nimmst | nimmt | nehmen | nehmt | nehmen | take,have,acquire,pick,брать | A1,Действие и взаимодействие
 halten | False | halte | hältst | hält | halten | haltet | halten | keep,stop,halt,hold,maintain,consider,regard,держать | A1,Действие и взаимодействие
 benutzen | False | benutze | benutzt | benutzt | benutzen | benutzt | benutzen | use,tilize,использовать,применять | A1,Действие и взаимодействие
 öffnen | False | öffne | öffnest | öffnet | öffnen | öffnet | öffnen | open,unlock,break open,open up,открывать | A1,Действие и взаимодействие
@@ -113,7 +113,7 @@ bezahlen | False | bezahle | bezahlst | bezahlt | bezahlen | bezahlt | bezahlen 
 empfehlen | False | empfehle | empfiehlst | empfiehlt | empfehlen | empfehlt | empfehlen | recommend,advise,aproce,advocate,рекомендовать | A1,Покупки и одежда
 reisen | False | reise | reist | reist | reisen | reist | reisen | travel,fare,tour,journey,путешествовать | A1,Путешествия
 abfahren | False | fahre ab | fährst ab | fährt ab | fahren ab | fahrt ab | fahren ab | leave,depart,remove,выезжать,отъезжать,отправляться | A1,Путешествия
-abfliegen | False | fliege ab | fliegst ab | fliegt ab | fliegen ab | fliegt ab | fliegen ab | patrol,overfly,depart,вылутать (напр. на самолете) | A1,Путешествия
+abfliegen | False | fliege ab | fliegst ab | fliegt ab | fliegen ab | fliegt ab | fliegen ab | patrol,overfly,depart,вылетать (напр. на самолете) | A1,Путешествия
 ankommen | False | komme an | kommst/kömmst an | kommt/kömmt an | kommen an | kommt an | kommen an | arrive,depend,matter,appear,come,get to,reach,wander in,get in,прибывать,приезжать | Путешествия,A1
 besichtigen | False | besichtige | besichtigst | besichtigt | besichtigen | besichtigt | besichtigen | view,visit,look around,посещать (место/достопримечательность) | A1,Путешествия
 einsteigen | False | steige ein | steigst ein | steigt ein | steigen ein | steigt ein | steigen ein | get in,board,access,climb in,get on,входить,садиться | A1,Транспорт и техника
@@ -127,7 +127,7 @@ essen | False | esse | isst | isst | essen | esst | essen | eat,кушать,con
 verbieten | False | verbiete | verbietest | verbietet | verbieten | verbietet | verbieten | forbid,prohibit,veto,ban,запрещать | A1
 lernen | False | lerne | lernst | lernt | lernen | lernt | lernen | учить,учиться,learn,study,teach | A1,Учеба
 studieren | False | studiere | studierst | studiert | studieren | studiert | studieren | учиться (в вузе),study | Учеба,A1
-erklären | False | erklärу | erklärst | erklärt | erklären | erklärt | erklären | explain,give an account of,interpret,объяснять | A1,Учеба
+erklären | False | erkläre | erklärst | erklärt | erklären | erklärt | erklären | explain,give an account of,interpret,объяснять | A1,Учеба
 schreiben | False | schreibe | schreibst | schreibt | schreiben | schreibt | schreiben | write,писать | A1,Учеба
 wissen | False | weiß | weißt | weiß | wissen | wisst | wissen | know,be conscious (of),be wise (of),знать | A1,Учеба
 fehlen | False | fehle | fehlst | fehlt | fehlen | fehlt | fehlen | be missing,be short,miss,lack,be wrong,отсутствовать | A1,Учеба
@@ -167,7 +167,6 @@ schützen | False | schütze | schützt | schützt | schützen | schützt | sch�
 bewölkt | False | bewölke | bewölkst | bewölkt | bewölken | bewölkt | bewölken | Overcast,Overcloud,Cloud,Become overcast,облачно | A1
 schneien | False | schneie | schneist | schneit | schneien | schneit | schneien | snow,идти (о снеге) | A1
 hageln | False | hagele | hagelst | hagelt | hageln | hagelt | hageln | hail,идти (о граде) | A1
-regnen | False | regne | regst | regt | regen | regt | regen | stir,идти (о дожде) | A1
 buchen | False | buche | buchst | bucht | buchen | bucht | buchen | book,make a reservation,reserve | A1
 lassen | False | lasse | lässt | lässt | lassen | lasst | lassen | let,leave,give up,stop,quit,allow,make,have,cause | A1
 unterscheiden | False | unterscheide | unterscheidest | unterscheidet | unterscheiden | unterscheidet | unterscheiden | distinguish,tell apart,differ | A1
@@ -188,7 +187,7 @@ verbinden | False | verbinde | verbindest | verbindet | verbinden | verbindet | 
 durchfahren | False | fahre durch | fährst durch | fährt durch | fahren durch | fahrt durch | fahren durch | go through,sail through,drive straight (through) | A1
 kontrollieren | False | kontrolliere | kontrollierst | kontrolliert | kontrollieren | kontrolliert | kontrollieren | control,audit,inspect,check,make a check,examine | A1
 buttern | False | buttere | butterst | buttert | buttern | buttert | buttern | churn,butter,seep,grease,сбивать | A1
-entwickeln | False | entwick(e)l(e) | stentwickel | entwickelt | entwickeln | entwickelt | entwickeln | develop | A1
+entwickeln | False | entwick(e)l(e) | entwickelst | entwickelt | entwickeln | entwickelt | entwickeln | develop | A1
 bearbeiten | False | bearbeite | bearbeitest | bearbeitet | bearbeiten | bearbeitet | bearbeiten | handle,edit,ply (with),arrange,process,revise | A1
 jobben | False | jobbe | jobbst | jobbt | jobben | jobbt | jobben | job,do (casual) jobs | A1
 unterrichten | False | unterrichte | unterrichtest | unterrichtet | unterrichten | unterrichtet | unterrichten | educate,unform,teach | A1
@@ -204,3 +203,80 @@ vereinbaren | False | vereinbare | vereinbarst | vereinbart | vereinbaren | vere
 besprechen | False | bespreche | besprichst | bespricht | besprechen | besprecht | besprechen | discuss,conjure,review,talk over,parley | A1
 untersuchen | False | untersuche | untersuchst | untersucht | untersuchen | untersucht | untersuchen | examine,investigate,look (into),test (for),analyze | A1
 wecken | False | wecke | weckst | weckt | wecken | weckt | wecken | wake up,wake,bring about,cause,call | A1
+rufen | False | rufe | rufst | ruft | rufen | ruft | rufen | ring up,shriek,call,shout | A1
+verschieben | False | verschiebe | verschiebst | verschiebt | verschieben | verschiebt | verschieben | move,postpone,reschedule,delay doing | A1
+absagen | False | sage ab | sagst ab | sagt ab | sagen ab | sagt ab | sagen ab | cancel,decline,turn down,write off,call off | A1
+melden | False | melde | meldest | meldet | melden | meldet | melden | let know,notify,report | A1
+entwerten | False | entwerte | entwertest | entwertet | entwerten | entwertet | entwerten | depreciate,validate | A1
+weilen | False | weile | weilst | weilt | weilen | weilt | weilen | stay,abide,linger,reside,because | A1
+entmenschen | False | entmensche | entmenschst | entmenscht | entmenschen | entmenscht | entmenschen | dehumanise | A1
+bezahlen | False | bezahle | bezahlst | bezahlt | bezahlen | bezahlt | bezahlen | pay,check out,defray,discharge,settle up | A1
+tiefkühlen | False | kühle tief | kühlst tief | kühlt tief | kühlen tief | kühlt tief | kühlen tief | deep-freeze,refrigerate,quick-freeze,freeze | A1
+ketten | False | kette | kettest | kettet | ketten | kettet | ketten | link to,chain to,connect | A1
+aufwachsen | False | wachse auf | wächst auf | wächst auf | wachsen auf | wachst auf | wachsen auf | grow up,be raisen (on) | A1
+kreuzen | False | kreuze | kreuzt | kreuzt | kreuzen | kreuzt | kreuzen | cross,meet,intersect,hybridize | A1
+erreichen | False | erreiche | erreichst | erreicht | erreichen | erreicht | erreichen | reach,acquire,attain,achieve,accomplish | A1
+laden | False | lade | lädst | lädt | laden | ladet | laden | load,download,charge,invite,summon | A1
+besitzen | False | besitze | besitzt | besitzt | besitzen | besitzt | besitzen | own,possess,be invested with,have got,have,exhibit | A1
+leiten | False | leite | leitest | leitet | leiten | leitet | leiten | lead,manage,conduct,oversee,moderate,govern,be in control | A1
+meinen | False | meine | meinst | meint | meinen | meint | meinen | mean,think,speak about,intend,signify,allude | A1
+verloben | False | verlobe | verlobst | verlobt | verloben | verlobt | verloben | get engaged,become engaged,affiance | A1
+erziehen | False | erziehe | erziehst | erzieht | erziehen | erzieht | erziehen | teach,raise,educate,breed | A1
+vermissen | False | vermisse | vermisst | vermisst | vermissen | vermisst | vermissen | miss,want for,regret the absence (of) | A1
+genießen | False | genieße | genießt | genießt | genießen | genießt | genießen | enjoy,relish,savor,savour | A1
+erkunden | False | erkunde | erkundest | erkundet | erkunden | erkundet | erkunden | explore,investigate,determine,prospect | A1
+proben | False | probe | probst | probt | proben | probt | proben | rehearse,practice | A1
+singen | False | singe | singst | singt | singen | singt | singen | sing,vocalize | A1
+joggen | False | jogge | joggst | joggt | joggen | joggt | joggen | jog,ходить на пробежку | A1
+klettern | False | klettere | ktellerst | klettert | klettern | klettert | klettern | climb,scale,cliff climbing | A1
+reiten | False | reite | reitest | reitet | reiten | reitet | reiten | ride,go riding,ride on horseback | A1
+sammeln | False | sammele | sammelst | sammelt | sammeln | sammelt | sammeln | collect,gather,accumulate,concentrate,aggreagate | A1
+malen | False | male | malst | malt | malen | malt | malen | paint,draw,color,reflect,portray | A1
+fotografieren | False | fotografiere | stfotografier | fotografiert | fotografieren | fotografiert | fotografieren | take a photograph,take a picture | A1
+basteln | False | bastele | bastelst | bastelt | basteln | bastelt | basteln | tinker,do handicrafts,perform hanicraft work,мастерить | A1
+nähen | False | nähe | nähst | näht | nähen | näht | nähen | sew,stitch,шить | A1
+backen | False | backe | backst | backt | backen | backt | backen | bake,cake,fry | A1
+wehtun | False | tue weh | tust weh | tut weh | tun weh | tut weh | tun weh | pain,hurt,be sore,give pain,be painful,ache | A1
+schicken | False | schicke | schickst | schickt | schicken | schickt | schicken | send,dispatch,drop,ship | A1
+segeln | False | segele | segelst | segelt | segeln | segelt | segeln | sail,plane,glide | A1
+schenken | False | schenke | schenkst | schenkt | schenken | schenkt | schenken | gift,donate,pour out,pour,skip,dedicate | A1
+vorlegen | False | lege vor | legst vor | legt vor | legen vor | legt vor | legen vor | provide,present,lay before,make smth public | A1
+atmen | False | atme | atmest | atmet | atmen | atmet | atmen | breathe,respire | A1
+ansehen | False | sehe an | siehst an | sieht an | sehen an | seht an | sehen an | examine,watch,look at,behold,face,account,take a look (at),treat as | A1
+ausfüllen | False | fülle aus | füllst aus | füllt aus | füllen aus | füllt aus | füllen aus | fill in,fill out,complete,fill | A1
+informieren | False | informiere | informierst | informiert | informieren | informiert | informieren | inform about,let know,inform | A1
+erkälten | False | erkälte | erkältest | erkältet | erkälten | erkältet | erkälten | catch a cold | A1
+kranken | False | kranke | krankst | krankt | kranken | krankt | kranken | suffer,sick | A1
+angehen | False | gehe an | gehst an | geht an | gehen an | geht an | gehen an | lay into,ask for,tap for,approach | A1
+verfolgen | False | verfloge | verfolgst | verfolgt | verfolgen | verfolgt | verfolgen | trace,follow,pursue,hunt | A1
+abholen | False | hole ab | holst ab | holt ab | holen ab | holt ab | holen ab | pick up,collect,take away | A1
+aussehen | False | sehe aus | siehst aus | sieht aus | sehen aus | seht aus | sehen aus | look like,look | A1
+aufpassen | False | passe auf | passt auf | passt auf | passen auf | passt auf | passen auf | watch out,look out,take care (of) | A1
+erlauben | False | erlaube | erlaubst | erlaubt | erlauben | erlaubt | erlauben | allow,permit,indulge | A1
+ankreuzen | False | kreuze an | kreuzt an | kreuzt an | kreuzen an | kreuzt an | kreuzen an | check,tick | A1
+streiten | False | streite | streitest | streitet | streiten | streitet | streiten | fight,argue,battle | A1
+anmelden | False | melde an | meldest an | meldet an | melden an | meldet an | melden an | announce,enroll,register,declare | A1
+lauten | False | laute | lautest | lautet | lauten | lautet | lauten | go,sound,read,run | A1
+betragen | False | beträge | beträgst | beträgt | betragen | betragt | betragen | amount to,behave,account for | A1
+abheben | False | hebe ab | hebst ab | hebt ab | heben ab | hebt ab | heben ab | cut,take off,withdraw,pick up | A1
+zeigen | False | zeige | zeigst | zeigt | zeigen | zeigt | zeigen | present,expose,show,point,indicate | A1
+anzahlen | False | zahle an | zahlst an | zahlt an | zahlen an | zahlt an | zahlen an | pay on account,pay down | A1
+abbiegen | False | biege ab | biegst ab | biegt ab | biegen ab | biegt ab | biegen ab | turn,turn off,bend | A1
+pflanzen | False | pflanze | pflanzt | pflanzt | pflanzen | pflanzt | pflanzen | plant,tease,line out | A1
+abgeben | False | gebe ab | gibst ab | gibt ab | geben ab | gebt ab | geben ab | deliver,concede,concern,drop,provide,quote,hand,generate,yield | A1
+landen | False | lande | landest | landet | landen | landet | landen | land,disembark,alight,end up | A1
+ausgehen | False | gehe aus | gehst aus | geht aus | gehen aus | geht aus | gehen aus | go out,go places,burn out | A1
+ausgeben | False | gebe aus | gibst aus | gibt aus | geben aus | gebt aus | geben aus | spend,administer,issue,dispense,emit | A1
+verlassen | False | verlasse | verlässt | verlässt | verlassen | verlasst | verlassen | dump,quit,leave,abandon,forsake | A1
+erfahren | False | erfahre | erfährst | erfährt | erfahren | erfahrt | erfahren | experience,find out,learn,hear about,be told,get to know,gain knowledge | A2
+zerreißen | False | zerreiße | zerreißt | zerreißt | zerreißen | zerreißt | zerreißen | tear,rupture,break,rip | A2
+vorzeigen | False | zeige vor | zeigst vor | zeigt vor | zeigen vor | zeigt vor | zeigen vor | show,produce,bespeak | A2
+unterhalten | False | unterhalte | unterhältst | unterhält | unterhalten | unterhaltet | unterhalten | entertain,talk,chat,have a conversation | A1
+aufwachen | False | wache auf | wachst auf | wacht auf | wachen auf | wacht auf | wachen auf | get real,awaken,wake up | A1
+baden | False | bade | badest | badet | baden | badet | baden | swim,bathe,bath,have a bath,take a bath | A1
+putzen | False | putze | putzt | putzt | putzen | putzt | putzen | clean,clean up,adorn,buff,clean out | A1
+schminken | False | schminke | schminkst | schminkt | schminken | schminkt | schminken | make up,paint,put face on,paint face | A2
+räumen | False | räume | räumst | räumt | räumen | räumt | räumen | clear,countersink,wash away,clean | A1
+aufräumen | False | räume auf | räumst auf | räumt auf | räumen auf | räumt auf | räumen auf | tidy,tidy up,clean up,clean house | A1
+ausruhen | False | ruhe aus | ruhst aus | ruht aus | ruhen aus | ruht aus | ruhen aus | rest,cotch,roost,have a rest,take a rest | A2
+kämmen | False | kämme | kämmst | kämmt | kämmen | kämmt | kämmen | comb,tease,comb hair | A2

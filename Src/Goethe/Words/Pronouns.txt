@@ -14,3 +14,7 @@ anderer/andere/aderes | anderen/anderer/anderen | anderem/anderer/anderem | ande
 aller/alle/alles | alles/allen (masc) aller (fem) alles/allen (neut) | allem/aller/allem | allen/alle/alles | alle | aller | allen | alle | all | A1
 dieser/diese/dieses | dieses/dieser/dieses | diesem/dieser/diesem | diesen/diese/dieses | diese | dieser | diesen | diese | this | A1
 - | seiner/ihrer/seiner | sich | sich | - | ihrer | sich | sich | itself,himself,herself,oneself | A1
+- | - | - | - | mehrere | mehrerer | mehreren/mehrern | mehrere | several,various | A1
+jeder/jede/jedes | jedes/jeden/jederjedes/jeden | jedem/jeder/jedem | jeden/jede/jedes | - | - | - | - | each,every,everyone,everybody | A1
+solcher/solche/solches | solchen/solcher/solchen | solchem/solcher/solchem | solchen/solche/solches | solche | solcher | solchen | solche | such | A1
+beides | - | beidem | beides | beide | - | beiden | beide | both | A1
