@@ -217,7 +217,7 @@ M | Fußball | Fußballes/Fußballs | Fußball/Fußballe | Fußball | Fußbälle
 M | Bogen | Bogens | Bogen | Bogen | Bogen/Bögen | Bogen/Bögen | Bogen/Bögen | Bogen/Bögen | Arc,Bow,Piece of paper,Sheet,Дуга,Лук (оружие) | Спорт,A1
 N | Schwimmbad | Schwimmbades/Schwimmbads | Schwimmbad/Schwimmbade | Schwimmbad | Schwimmbäder | Schwimmbäder | Schwimmbädern | Schwimmbäder | Swimming pool,Бассейн | A1,Спорт
 M | Laden | Ladens | Laden | Laden | Läden/Laden | Läden/Laden | Läden/Laden | Läden/Laden | Shop,Магазин | A1,Покупки и одежда
-N | Geschäft | Geschäftes/Geschäfts | Geschäft/Geschäfte | Geschäft | Geschäfte | Geschäfte | Geschäften | Geschäfte | Business,Deal,Profit,Store,Bargain,Transaction | A1,Покупки и одежда
+N | Geschäft | Geschäftes/Geschäfts | Geschäft/Geschäfte | Geschäft | Geschäfte | Geschäfte | Geschäften | Geschäfte | Business,Deal,Profit,Shop,Store,Bargain,Transaction | A1,Покупки и одежда
 M | Kiosk | Kioskes/Kiosks | Kiosk/Kioske | Kiosk | Kioske | Kioske | Kiosken | Kioske | Kiosk,Киоск | A1,Покупки и одежда
 N | Angebot | Angebotes/Angebots | Angebot/Angebote | Angebot | Angebote | Angebote | Angeboten | Angebote | Offer,Supply,Offering,Proposal,Предложение | A1,Покупки и одежда
 M | Prospekt | Prospektes.Prospekts | Prospekt.Prospekte | Prospekt | Prospekte | Prospekte | Prospekten | Prospekte | Leafet,Brochure,Pamphlet,Проспект (улица или реклама) | A1,Покупки и одежда
@@ -344,7 +344,6 @@ F | Führung | Führung | Führung | Führung | Führungen | Führungen | Führu
 M | Chef | Chefs | Chef | Chef | Chefs | Chefs | Chefs | Chefs | Boss,Manager,Chief,Head,Director,Шеф | A1,Работа и профессии
 M | Kollege | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Kollegen | Workmate,Colleague,Co-worker,Associate,Коллега | A1,Работа и профессии
 F | Lücke | Lücke | Lücke | Lücke | Lücken | Lücken | Lücken | Lücken | Gap,Hole,Distance,Break | A1
-M | Urlaub | Urlaubs/Urlaubes | Urlaub | Urlaub | Urlaube | Urlaube | Urlauben | Urlaube | Holiday,Vacation,Отпуск | A1
 M | Kunde | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Kunden | Client,Purchaser,Клиент | Работа и профессии,A1
 F | Anrede | Anrede | Anrede | Anrede | Anreden | Anreden | Anreden | Anreden | Form of address,SalutatoryAddress,Title,Обращение,Официальная речь | A1,Работа и профессии
 F | Ansage | Ansage | Ansage | Ansage | Ansagen | Ansagen | Ansagen | Ansagen | Announcement,Объявление,Оповещение о чем-либо,Bid | A1,Работа и профессии
@@ -605,7 +604,6 @@ M | Rock | Rockes/Rocks | Rock/Rocke | Rock | Röcke | Röcke | Röcken | Röcke
 F | Unterwäsche | Unterwäsche | Unterwäsche | Unterwäsche | - | - | - | - | Underwear | A1
 M | Anzug | Anzuges/Anzugs | Anzug/Anzuge | Anzug | Anzüge | Anzüge | Anzügen | Anzüge | Approach,Attire,Suit,Draft,Batter | A1
 M | Weg | Weges/Wegs | Weg/Wege | Weg | Wege | Wege | Wegen | Wege | Way,Route,Track,Path,Method,Errand,Alley | A1
-M | Satz | Satzes | Satz/Satze | Satz | Sätze | Sätze | Sätzen | Sätze | Sentence,Period,Set,Leap,Stride | A1
 M | Brief | Briefes/Briefs | Brief/Briefe | Brief | Briefe | Briefe | Briefen | Briefe | Letter,Epistle,Письмо | A1
 F | Tasse | Tasse | Tasse | Tasse | Tassen | Tassen | Tassen | Tassen | Cup | A1
 N | Bein | Beines/Beins | Bein/Beine | Bein | Beine/Beiner | Beine/Beiner | Beinen/Beinern | Beine/Beiner | Leg,Bone | A1
@@ -640,3 +638,25 @@ F | Ampel | Ampel | Ampel | Ampel | Ampeln | Ampeln | Ampeln | Ampeln | Traffic 
 F | Seite | Seite | Seite | Seite | Seiten | Seiten | Seiten | Seiten | Side,Page,Wing,Aspect,Point | A1
 M | Friseur | Friseurs | Friseur | Friseur | Friseure | Friseure | Friseuren | Friseure | Barber,Hairdresser | A1
 F | Bushaltestelle | Bushaltestelle | Bushaltestelle | Bushaltestelle | Bushaltestellen | Bushaltestellen | Bushaltestellen | Bushaltestellen | Bus stop | A1
+F | Besprechung | Besprechung | Besprechung | Besprechung | Besprechungen | Besprechungen | Besprechungen | Besprechungen | Discussion,Meeting,Conference,Talk,Review | A2
+M | Heuschnupfen | Heuschnupfens | Heuschnupfen | Heuschnupfen | Heuschnupfen | Heuschnupfen | Heuschnupfen | Heuschnupfen | Allergic coryza | A2
+M | Pollen | Pollens | Pollen | Pollen | Pollen | Pollen | Pollen | Pollen | Pollen,Цветочная пыльца | A2
+M | Husten | Hustens | Husten | Husten | Husten | Husten | Husten | Husten | Cough | A2
+F | Klamotte | Klamotte | Klamotte | Klamotte | Klamotten | Klamotten | Klamotten | Klamotten | Lump of rock,Rag,Dirt,Gear,Шмотки | A2
+F | Krawatte | Krawatte | Krawatte | Krawatte | Krawatten | Krawatten | Krawatten | Krawatten | Tie,Necktie | A2
+M | Absatz | Absatzes | Absatz/Absatze | Absatz | Absätze | Absätze | Absätzen | Absätze | Break,Paragraph,Heel,Landing,Sales,Section | A2
+M | Ausschnitt | Ausschnittes/Ausschnitts | Ausschnitt/Ausschnitte | Ausschnitt | Ausschnitte | Ausschnitte | Ausschnitten | Ausschnitte | Clip,Detail,Extract,Clipping,Neckline,Sector | A2
+M | Lederschuh | Lederschuhes/Lederschuhs | Lederschuh/Lederschuhe | Lederschuh | Lederschuhe/Lederschuh | Lederschuhe/Lederschuh | Lederschuhen/Lederschuh | Lederschuhe/Lederschuh | Leather shoe | A2
+F | Metzgerei | Metzgerei | Metzgerei | Metzgerei | Metzgereien | Metzgereien | Metzgereien | Metzgereien | Butcher shop,Meat market | A1
+F | Nähe | Nähe | Nähe | Nähe | - | - | - | - | Vicinity,Proximity,Neighbourhood,Nearness | A1
+M | Fleck | Fleckes/Flecks | Fleck/Flecke | Fleck | Flecke | Flecke | Flecken | Flecke | Spot,Stain,Place,Piece | A2
+M | Nagel | Nagels | Nagel | Nagel | Nägel | Nägel | Nägeln | Nägel | Nail,Pin | A2
+M | Wollmantel | Wollmantels | Wollmantel | Wollmantel | Wollmäntel | Wollmäntel | Wollmänteln | Wollmäntel | Wool coat | A2
+M | Ehering | Eheringes/Eherings | Ehering/Eheringe | Ehering | Eheringe | Eheringe | Eheringen | Eheringe | Wedding ring | A2
+N | Konto | Kontos | Konto | Konto | Konten/Kontos | Konten/Kontos | Konten/Kontos | Konten/Kontos | Account,Ledger | A1
+M | Rabatt | Rabattes/Rabatts | Rabatt/Rabatte | Rabatt | Rabatte | Rabatte | Rabatten | Rabatte | Discount,Rebate,Deduction,Reduction | A1
+F | Postleitzahl | Postleitzahl | Postleitzahl | Postleitzahl | Postleitzahlen | Postleitzahlen | Postleitzahlen | Postleitzahlen | Post code,Postal code | A1
+N | Fenster | Fensters | Fenster | Fenster | Fenster | Fenster | Fenstern | Fenster | Window | A1
+F | Unterschrift | Unterschrift | Unterschrift | Unterschrift | Unterschriften | Unterschriften | Unterschriften | Unterschriften | Signature,Caption,Signing | A1
+F | Vorwahl | Vorwahl | Vorwahl | Vorwahl | Vorwahlen | Vorwahlen | Vorwahlen | Vorwahlen | Area code,Primary election,Primary | A1
+M | Zoll | Zolles/Zolls | Zoll/Zolle | Zoll | Zölle | Zölle | Zöllen | Zölle | Customs,Duty,Toll | A1

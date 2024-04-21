@@ -7,3 +7,5 @@ als | than,as if,though,as | A1
 sondern | but | A1
 wenn | if | A1
 weil | because | A1
+dass | что,that | A2
+ob | if,whether | A2

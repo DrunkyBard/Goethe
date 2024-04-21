@@ -207,7 +207,7 @@ rufen | False | rufe | rufst | ruft | rufen | ruft | rufen | ring up,shriek,call
 verschieben | False | verschiebe | verschiebst | verschiebt | verschieben | verschiebt | verschieben | move,postpone,reschedule,delay doing | A1
 absagen | False | sage ab | sagst ab | sagt ab | sagen ab | sagt ab | sagen ab | cancel,decline,turn down,write off,call off | A1
 melden | False | melde | meldest | meldet | melden | meldet | melden | let know,notify,report | A1
-entwerten | False | entwerte | entwertest | entwertet | entwerten | entwertet | entwerten | depreciate,validate | A1
+entwerten | False | entwerte | entwertest | entwertet | entwerten | entwertet | entwerten | depreciate,validate,destroy,obliterate | A1
 weilen | False | weile | weilst | weilt | weilen | weilt | weilen | stay,abide,linger,reside,because | A1
 entmenschen | False | entmensche | entmenschst | entmenscht | entmenschen | entmenscht | entmenschen | dehumanise | A1
 bezahlen | False | bezahle | bezahlst | bezahlt | bezahlen | bezahlt | bezahlen | pay,check out,defray,discharge,settle up | A1
@@ -280,3 +280,29 @@ räumen | False | räume | räumst | räumt | räumen | räumt | räumen | clear
 aufräumen | False | räume auf | räumst auf | räumt auf | räumen auf | räumt auf | räumen auf | tidy,tidy up,clean up,clean house | A1
 ausruhen | False | ruhe aus | ruhst aus | ruht aus | ruhen aus | ruht aus | ruhen aus | rest,cotch,roost,have a rest,take a rest | A2
 kämmen | False | kämme | kämmst | kämmt | kämmen | kämmt | kämmen | comb,tease,comb hair | A2
+einschlafen | False | schlafe ein | schläfst ein | schläft ein | schlafen ein | schlaft ein | schlafen ein | sleep,fall asleep,pass away,go to sleep | A1
+bestätigen | False | bestätige | bestätigst | bestätigt | bestätigen | bestätigt | bestätigen | confirm,authenticate,assert | A2
+ablehnen | False | lehne ab | lehnst ab | lehnt ab | lehnen ab | lehnt ab | lehnen ab | dismiss,refuse,decline,deny | A2
+wischen | False | wische | wischst | wischt | wischen | wischt | wischen | wipe,smear | A2
+dazwischenkommen  | False | komme dazwischen | kommst dazwischen | kommt dazwischen | kommen dazwischen | kommt dazwischen | kommen dazwischen | come up,intervene,come amiss,interfere | A2
+verlegen | False | verlege | verlegst | verlegt | verlegen | verlegt | verlegen | mislay,misplace,lay,reschedule,transfer | A2
+festlegen | False | lege fest | legst fest | legt fest | legen fest | legt fest | legen fest | appoint,constitute,declare,determine | A2
+verabreden | False | verabrede | verabredest | verabredet | verabreden | verabredet | verabreden | make an appointment,agree,arrange,appoint | A1
+ärgern | False | ärgere | ärgerst | ärgert | ärgeren | ärgert | ärgern | be mad,annoy,tease,bite,bother | A2
+rasieren | False | rasiere | rasierst | rasiert | rasieren | rasiert | rasieren | shave,barber | A2
+ruhen | False | ruhe | ruhst | ruht | ruhen | ruht | ruhen | rest,halt,stop,stall,stay | A2
+abspülen | False | spüle ab | spülst ab | spült ab | spülen ab | spült ab | spülen ab | wash,rinse out,do the dishes,wash up | A2
+reißen | False | reiße | reißt | reißt | reißen | reißt | reißen | rip,tear,craze,get torn,break | A2
+wachen | False | wache | wachst | wacht | wachen | wacht | wachen | keep watch,picket,wake | A2
+vorschlagen | False | schlage vor | schlägst vor | schlägt vor | schlägen vor | schlägt vor | schlägen vor | propose,suggest,lay before | A2
+saufen | False | saufe | säufst | säuft | saufen | sauft | saufen | drink,booze,soak,souse,swill | A2
+vertragen | False | vertrage | verträgst | verträgt | vertragen | vertragt | vertragen | tolerate,get along with | A2
+verheiraten | False | verheirate | verheiratest | verheiratet | verheiraten | verheiratet | verheiraten | marry | A1
+höhen | False | höhe | höhst | höht | höhen | höht | höhen | elevate,heighten,raise | A2
+verbringen | False | verbringe | verbringst | verbringt | verbringen | verbringt | verbringen | take,spend,pass,acquire,manage,achieve | A2
+überweisen | False | überweise | überweist | überweist | überweisen | überweist | überweisen | transfer,refer (to) | A1
+erholen | False | erhole | erholst | erholt | erholen | erholt | erholen | recover (from),relax,recover,rest | A1
+einschalten | False | schalte ein | schaltest ein | schaltet ein | schalten ein | schaltet ein | schalten ein | turn on,switch on,put into operation,pu on,intervene | A2
+ausschalten | False | schalte aus | schaltest aus | schaltet aus | schalten aus | schaltet aus | schalten aus | turn off,switch off,eliminate,close,disconnect,neutralize | A2
+weisen | False | weise | weist | weist | weisen | weist | weisen | point,show,direct,point (to),deny,indicate,point out | A1
+unterschreiben | False | unterschreibe | unterschreibst | unterschreibt | unterschreiben | unterschreibt | unterschreiben | signation,sin,subscribe | A1

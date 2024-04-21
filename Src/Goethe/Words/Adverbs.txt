@@ -83,3 +83,8 @@ nun | now,then,come on | A1
 nahe | near,close,nearby | A1
 deswegen | because of this,therefore,поэтому,из-за этого | A1
 davon | of that,on that,thereof,of it,away,from that | A1
+dabei | with it,included,at the same time | A1
+endlich | finally | A1
+hinunter | down,downward | A2
+deshalb | for that reason,hence,therefore,thus | A1
+unbedingt | absolutely,absolute,implicitly,necessarily | A2
