@@ -31,11 +31,14 @@ public class ParticleFileHandler : BaseFileHandler<Particle, ParticleViewModel>
     {
         var particle = new Particle(id, newWord.Text, newWord.Translations.ToArray(), newWord.Topics.ToArray());
 
-        var translations = string.Join(',', particle.Translations);
-        var topics       = string.Join(',', particle.Topics);
+        return (particle, BuildString(particle));
+    }
 
-        var fileInput = $"{newWord.Text} | {translations} | {topics}";
+    public override string BuildString(Particle wordModel)
+    {
+        var translations = string.Join(',', wordModel.Translations);
+        var topics       = string.Join(',', wordModel.Topics);
 
-        return (particle, fileInput);
+        return $"{wordModel.Text} | {translations} | {topics}";
     }
 }

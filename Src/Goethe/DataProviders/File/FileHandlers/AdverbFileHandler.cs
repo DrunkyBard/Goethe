@@ -31,11 +31,16 @@ public class AdverbFileHandler : BaseFileHandler<Adverb, AdverbViewModel>
     {
         var adverb = new Adverb(id, newWord.Adverb, newWord.Translations.ToArray(), newWord.Topics.ToArray());
 
-        var translations = string.Join(',', adverb.Translations);
-        var topics       = string.Join(',', adverb.Topics);
+        return (adverb, BuildString(adverb));
+    }
 
-        var fileInput = $"{adverb.Text} | {translations} | {topics}";
+    public override string BuildString(Adverb wordModel)
+    {
+        var translations = string.Join(',', wordModel.Translations);
+        var topics       = string.Join(',', wordModel.Topics);
 
-        return (adverb, fileInput);
+        var fileInput = $"{wordModel.Text} | {translations} | {topics}";
+        
+        return fileInput;
     }
 }

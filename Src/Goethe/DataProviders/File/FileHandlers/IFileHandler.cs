@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Goethe.Common;
 using Goethe.Model;
 
@@ -8,9 +9,11 @@ public interface IFileHandler<TWord, in TViewModel>
 {
     string Header { get; }
 
-    Either<InvalidWord, TWord> Parse(int id, string line);
+    TWord Parse(int id, string line);
     
-    (TWord newWord, string fileInput) HandleNewWords(int id, TViewModel newWordViewModel);
+    (TWord newWord, string fileInput) HandleNewWords(Ref<int> id, TViewModel newWordViewModel);
+    
+    string BuildString(TWord wordModel);
 }
 
 public abstract class BaseFileHandler<TWord, TViewModel> : IFileHandler<TWord, TViewModel>
@@ -39,20 +42,23 @@ public abstract class BaseFileHandler<TWord, TViewModel> : IFileHandler<TWord, T
         return new InvalidWord(id, result);
     }
     
-    protected abstract Either<InvalidWord, TWord> ParseInternal(int id, string[] tokenizedLine); 
+    protected abstract TWord ParseInternal(int id, string[] tokenizedLine); 
     
-    public Either<InvalidWord, TWord> Parse(int id, string line)
+    public TWord Parse(int id, string line)
     {
         var tokenizedLine = line.Split('|');
         var tokens = Tokens;
 
         if (tokenizedLine.Length < tokens.Length)
         {
-            return Either.Left<InvalidWord, TWord>(CreateInvalid(id, tokens, tokenizedLine));
+            var missingTokens = Enumerable.Repeat("|", tokens.Length - tokenizedLine.Length - 1);
+            tokenizedLine = tokenizedLine.Concat(missingTokens).ToArray();
         }
         
         return ParseInternal(id, tokenizedLine);
     }
 
-    public abstract (TWord newWord, string fileInput) HandleNewWords(int id, TViewModel newWordViewModel);
+    public abstract (TWord newWord, string fileInput) HandleNewWords(Ref<int> id, TViewModel newWordViewModel);
+    
+    public abstract string BuildString(TWord wordModel);
 }

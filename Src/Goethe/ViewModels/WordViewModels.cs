@@ -14,7 +14,7 @@ namespace Goethe.ViewModels;
 
 public abstract class WordViewModel : ViewModelBase
 {
-    public readonly int Id;
+    public readonly Ref<int> Idx;
 
     private string _translation;
     private string _topic;
@@ -65,13 +65,13 @@ public abstract class WordViewModel : ViewModelBase
     public ReactiveCommand<string, Unit> RemoveTopicCommand { get; }
 
     protected WordViewModel(
-        int                 id,
+        int idx,
         IEnumerable<string> translations,
         IEnumerable<string> topics)
     {
         FireChange = new Subject<Unit>();
 
-        Id = id;
+        Idx = idx;
 
         IsDeletedOrModified = this.WhenAny(
             x => x.ToDelete,
@@ -463,12 +463,12 @@ public sealed class NounViewModel : WordViewModel
     }
 
     private NounViewModel(
-        int                 id,
+        int                 idx,
         Gender              gender,
         DeclensionViewModel singular,
         DeclensionViewModel plural,
         IEnumerable<string> translations,
-        IEnumerable<string> topics) : base(id, translations, topics)
+        IEnumerable<string> topics) : base(idx, translations, topics)
     {
         Gender = gender;
 
@@ -504,7 +504,7 @@ public sealed class NounViewModel : WordViewModel
 
     private NounViewModel(NounViewModel nounViewModel)
         : this(
-            nounViewModel.Id,
+            nounViewModel.Idx,
             nounViewModel.Gender,
             nounViewModel.Singular.Copy(),
             nounViewModel.Plural.Copy(),
@@ -633,7 +633,7 @@ public sealed class VerbViewModel : WordViewModel
 
     private VerbViewModel(VerbViewModel viewModel)
         : this(
-            viewModel.Id,
+            viewModel.Idx,
             viewModel.IsRegular,
             viewModel.Infinitive,
             viewModel.Present.Copy(),
@@ -987,7 +987,7 @@ public sealed class AdjectiveViewModel : WordViewModel
 
     public AdjectiveViewModel(AdjectiveViewModel vm)
         : this(
-            vm.Id,
+            vm.Idx,
             vm.Adjective,
             
             new(
@@ -1115,7 +1115,7 @@ public sealed class ConjunctionViewModel : WordViewModel
 
     public ConjunctionViewModel(ConjunctionViewModel viewModel)
         : this(
-            viewModel.Id,
+            viewModel.Idx,
             viewModel.Text,
             viewModel.Translations,
             viewModel.Topics)
@@ -1205,7 +1205,7 @@ public sealed class ParticleViewModel : WordViewModel
 
     public ParticleViewModel(ParticleViewModel viewModel)
         : this(
-            viewModel.Id,
+            viewModel.Idx,
             viewModel.Text,
             viewModel.Translations,
             viewModel.Topics)
@@ -1295,7 +1295,7 @@ public sealed class PrepositionViewModel : WordViewModel
 
     public PrepositionViewModel(PrepositionViewModel viewModel)
         : this(
-            viewModel.Id,
+            viewModel.Idx,
             viewModel.Text,
             viewModel.Translations,
             viewModel.Topics)
@@ -1404,7 +1404,7 @@ public sealed class PronounViewModel : WordViewModel
 
     public PronounViewModel(PronounViewModel viewModel)
         : this(
-            viewModel.Id,
+            viewModel.Idx,
             viewModel.Singular.Copy(),
             viewModel.Plural.Copy(),
             viewModel.Translations,
@@ -1498,7 +1498,7 @@ public sealed class AdverbViewModel : WordViewModel
 
     public AdverbViewModel(AdverbViewModel vm)
         : this(
-            vm.Id,
+            vm.Idx,
             vm._adverb,
             vm.Translations,
             vm.Topics)
@@ -1589,7 +1589,7 @@ public sealed class PhraseViewModel : WordViewModel
 
     public PhraseViewModel(PhraseViewModel vm)
         : this(
-            vm.Id,
+            vm.Idx,
             vm._phrase,
             vm.Translations,
             vm.Topics)

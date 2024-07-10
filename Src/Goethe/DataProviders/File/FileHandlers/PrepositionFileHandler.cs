@@ -31,11 +31,16 @@ public class PrepositionFileHandler : BaseFileHandler<Preposition, PrepositionVi
     {
         var preposition = new Preposition(id, newWord.Text, newWord.Translations.ToArray(), newWord.Topics.ToArray());
 
-        var translations = string.Join(',', preposition.Translations);
-        var topics       = string.Join(',', preposition.Topics);
+        return (preposition, BuildString(preposition));
+    }
 
-        var fileInput = $"{preposition.Text} | {translations} | {topics}";
+    public override string BuildString(Preposition wordModel)
+    {
+        var translations = string.Join(',', wordModel.Translations);
+        var topics       = string.Join(',', wordModel.Topics);
 
-        return (preposition, fileInput);
+        var fileInput = $"{wordModel.Text} | {translations} | {topics}";
+        
+        return fileInput;
     }
 }

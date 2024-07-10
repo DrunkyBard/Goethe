@@ -1,5 +1,4 @@
 using System.Linq;
-using Goethe.Common;
 using Goethe.Model;
 using Goethe.ViewModels;
 
@@ -49,7 +48,7 @@ public class AdjectiveFileHandler : BaseFileHandler<Adjective, AdjectiveViewMode
 
     protected override string[] Tokens => _tokens;
 
-    protected override Either<InvalidWord, Adjective> ParseInternal(int id, string[] tokenizedLine)
+    protected override Adjective ParseInternal(int id, string[] tokenizedLine)
     {
         var adjective        = tokenizedLine[0].Trim();
         
@@ -154,11 +153,6 @@ public class AdjectiveFileHandler : BaseFileHandler<Adjective, AdjectiveViewMode
             
                          translations.Length != 0;
 
-        if (!isAdjValid)
-        {
-            return Either.Left<InvalidWord, Adjective>(CreateInvalid(id, _tokens, tokenizedLine));
-        }
-        
         var strongMasculineInfl = new Declension(strInflNomMasculine, strInflGenMasculine, strInflDatMasculine, strInflAccMasculine);
         var strongFeminineInfl  = new Declension(strInflNomFeminine,  strInflGenFeminine,  strInflDatFeminine,  strInflAccFeminine);
         var strongNeutralInfl   = new Declension(strInflNomNeutral,   strInflGenNeutral,   strInflDatNeutral,   strInflAccNeutral);
@@ -182,9 +176,10 @@ public class AdjectiveFileHandler : BaseFileHandler<Adjective, AdjectiveViewMode
             weakMasculineInfl, weakFeminineInfl, weakNeutralInfl, weakPluralInfl,
             mixedMasculineInfl, mixedFeminineInfl, mixedNeutralInfl, mixedPluralInfl,
             predicative,
-            translations, topics);
+            translations, topics,
+            isAdjValid);
 
-        return Either.Right<InvalidWord, Adjective>(adjectiveModel);
+        return adjectiveModel;
     }
 
     private static string BuildFileInput(Adjective m)
@@ -239,8 +234,10 @@ public class AdjectiveFileHandler : BaseFileHandler<Adjective, AdjectiveViewMode
             weakMascInfl, weakFemInfl, weakNeutInfl, weakPlInfl,
             mixedMascInfl, mixedFemInfl, mixedNeutInfl, mixedPlInfl,
             predicative,
-            newWord.Translations.ToArray(), newWord.Topics.ToArray());
+            newWord.Translations.ToArray(), newWord.Topics.ToArray(), true);
         
         return (adjModel, BuildFileInput(adjModel));
     }
+
+    public override string BuildString(Adjective wordModel) => BuildFileInput(wordModel);
 }

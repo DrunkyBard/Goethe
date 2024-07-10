@@ -82,9 +82,6 @@ public sealed class VerbFileHandler : BaseFileHandler<Verb, VerbViewModel>
         var translations = newWordViewModel.Translations.Select(t => t.Trim()).ToArray();
         var topics       = newWordViewModel.Topics.Select(t => t.Trim()).ToArray();
 
-        var translationInput = string.Join(',', translations);
-        var topicInput       = string.Join(',', topics);
-
         var newVerb = new Verb(
             id,
             newWordViewModel.Infinitive,
@@ -92,11 +89,19 @@ public sealed class VerbFileHandler : BaseFileHandler<Verb, VerbViewModel>
             presentConjugation,
             translations,
             topics);
+        
+        return (newVerb, BuildString(newVerb));
+    }
 
-        var fileInput = $"{newVerb.Infinitive} | {newVerb.IsRegular} | " +
-                        $"{newVerb.Present.Ich} | {newVerb.Present.Du} | {newVerb.Present.ErSieEs} | {newVerb.Present.Wir} | {newVerb.Present.Ihr} | {newVerb.Present.Sie} | " +
+    public override string BuildString(Verb wordModel)
+    {
+        var translationInput = string.Join(',', wordModel.Translations);
+        var topicInput       = string.Join(',', wordModel.Topics);
+
+        var fileInput = $"{wordModel.Infinitive} | {wordModel.IsRegular} | " +
+                        $"{wordModel.Present.Ich} | {wordModel.Present.Du} | {wordModel.Present.ErSieEs} | {wordModel.Present.Wir} | {wordModel.Present.Ihr} | {wordModel.Present.Sie} | " +
                         $"{translationInput} | {topicInput}";
-
-        return (newVerb, fileInput);
+        
+        return fileInput;
     }
 }

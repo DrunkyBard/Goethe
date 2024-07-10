@@ -49,6 +49,19 @@ public enum DeclensionType
     Accusative
 }
 
+public abstract class Word
+{
+    public Ref<int> Id { get; }
+
+    public bool IsValid { get; set; }
+    
+    public Word(Ref<int> id, bool isValid)
+    {
+        Id      = id;
+        IsValid = isValid;
+    }
+}
+
 public sealed class InvalidWord
 {
     public static IEqualityComparer<InvalidWord> Comparer
@@ -80,7 +93,7 @@ public sealed class InvalidTerm
     }
 }
 
-public sealed class Adjective
+public sealed class Adjective : Word
 {
     public static IEqualityComparer<Adjective> EqualityComparer
         = new FuncEqualityComparer<Adjective>((x, y) => x.Id == y.Id, x => x.Id);
@@ -88,7 +101,6 @@ public sealed class Adjective
     public static IComparer<Adjective> Comparer
         = new FuncComparer<Adjective>((x, y) => string.Compare(x?.Adj, y?.Adj, StringComparison.OrdinalIgnoreCase));
 
-    public int      Id           { get; }
     public string   Adj          { get; }
     public string[] Translations { get; }
     public string[] Topics       { get; }
@@ -116,31 +128,8 @@ public sealed class Adjective
         Declension  weakMasculine,   Declension weakFeminine,   Declension weakNeutral,   Declension weakPlural,
         Declension  mixedMasculine,  Declension mixedFeminine,  Declension mixedNeutral,  Declension mixedPlural,
         Predicative predicative,
-        string[]    translations, string[] topics)
+        string[]    translations, string[] topics, bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(adjective);
-
-        Code.NotNull(strongMasculine);
-        Code.NotNull(strongFeminine);
-        Code.NotNull(strongNeutral);
-        Code.NotNull(strongPlural);
-
-        Code.NotNull(weakMasculine);
-        Code.NotNull(weakFeminine);
-        Code.NotNull(weakNeutral);
-        Code.NotNull(weakPlural);
-
-        Code.NotNull(mixedMasculine);
-        Code.NotNull(mixedFeminine);
-        Code.NotNull(mixedNeutral);
-        Code.NotNull(mixedPlural);
-
-        Code.NotNull(predicative);
-
-        Code.NotNull(translations);
-        Code.NotNull(topics);
-
-        Id  = id;
         Adj = adjective;
 
         StrongMasculineInflection = strongMasculine;
@@ -178,7 +167,7 @@ public sealed class Adjective
     }
 }
 
-public sealed class Pronoun
+public sealed class Pronoun : Word
 {
     public static IEqualityComparer<Pronoun> EqualityComparer
         = new FuncEqualityComparer<Pronoun>((x, y) => x.Id == y.Id, x => x.Id);
@@ -187,20 +176,17 @@ public sealed class Pronoun
         = new FuncComparer<Pronoun>(
             (x, y) => string.Compare(x?.Singular?.Nominative, y?.Singular?.Nominative, StringComparison.OrdinalIgnoreCase));
 
-    public int        Id           { get; }
     public Declension Singular     { get; }
     public Declension Plural       { get; }
     public string[]   Translations { get; }
     public string[]   Topics       { get; }
 
-    public Pronoun(int id, Declension singular, Declension plural, string[] translations, string[] topics)
+    public Pronoun(
+        int id,
+        Declension singular, Declension plural,
+        string[] translations, string[] topics,
+        bool isValid) : base(id, isValid)
     {
-        Code.NotNull(singular);
-        Code.NotNull(plural);
-        Code.NotNull(translations);
-        Code.NotNull(topics);
-
-        Id           = id;
         Singular     = singular;
         Plural       = plural;
         Translations = translations;
@@ -222,7 +208,7 @@ public sealed class Pronoun
     }
 }
 
-public sealed class Preposition
+public sealed class Preposition : Word
 {
     public static IEqualityComparer<Preposition> EqualityComparer
         = new FuncEqualityComparer<Preposition>((x, y) => x.Id == y.Id, x => x.Id);
@@ -231,18 +217,12 @@ public sealed class Preposition
         new FuncComparer<Preposition>(
             (x, y) => string.Compare(x?.Text, y?.Text, StringComparison.CurrentCultureIgnoreCase));
 
-    public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
     public string[] Topics       { get; }
 
-    public Preposition(int id, string text, string[] translations, string[] topics)
+    public Preposition(int id, string text, string[] translations, string[] topics, bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(text);
-        Code.NotNull(translations);
-        Code.NotNull(topics);
-
-        Id           = id;
         Text         = text;
         Translations = translations;
         Topics       = topics;
@@ -262,7 +242,7 @@ public sealed class Preposition
     }
 }
 
-public sealed class Conjunction
+public sealed class Conjunction : Word
 {
     public static IEqualityComparer<Conjunction> EqualityComparer
         = new FuncEqualityComparer<Conjunction>((x, y) => x.Id == y.Id, x => x.Id);
@@ -270,18 +250,12 @@ public sealed class Conjunction
     public static IComparer<Conjunction> Comparer
         = new FuncComparer<Conjunction>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
 
-    public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
     public string[] Topics       { get; }
 
-    public Conjunction(int id, string text, string[] translations, string[] topics)
+    public Conjunction(int id, string text, string[] translations, string[] topics, bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(text);
-        Code.NotNull(translations);
-        Code.NotNull(topics);
-
-        Id           = id;
         Text         = text;
         Translations = translations;
         Topics       = topics;
@@ -301,7 +275,7 @@ public sealed class Conjunction
     }
 }
 
-public sealed class Particle
+public sealed class Particle : Word
 {
     public static IEqualityComparer<Particle> EqualityComparer
         = new FuncEqualityComparer<Particle>((x, y) => x.Id == y.Id, x => x.Id);
@@ -309,18 +283,12 @@ public sealed class Particle
     public static IComparer<Particle> Comparer
         = new FuncComparer<Particle>((x, y) => string.Compare(x?.Text, y?.Text, StringComparison.OrdinalIgnoreCase));
 
-    public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
     public string[] Topics       { get; }
 
-    public Particle(int id, string text, string[] translations, string[] topics)
+    public Particle(int id, string text, string[] translations, string[] topics, bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(text);
-        Code.NotNull(translations);
-        Code.NotNull(topics);
-
-        Id           = id;
         Text         = text;
         Translations = translations;
         Topics       = topics;
@@ -340,21 +308,17 @@ public sealed class Particle
     }
 }
 
-public readonly struct Determiner
+public class Determiner : Word
 {
-    public readonly int    Id;
-    public readonly string Text;
+    public string Text { get; }
 
-    public Determiner(int id, string text)
+    public Determiner(int id, string text, bool isValid) : base(id, isValid) 
     {
-        Code.NotNullOrWhitespace(text);
-
-        Id   = id;
         Text = text;
     }
 }
 
-public sealed class Noun
+public sealed class Noun : Word
 {
     public static IEqualityComparer<Noun> EqualityComparer
         = new FuncEqualityComparer<Noun>((x, y) => x.Id == y.Id, x => x.Id);
@@ -363,21 +327,20 @@ public sealed class Noun
         = new FuncComparer<Noun>((x, y) => string.Compare(x?.Singular.Nominative, y?.Singular.Nominative,
                                                           StringComparison.OrdinalIgnoreCase));
 
-    public int        Id           { get; }
     public Gender     Gender       { get; }
     public Declension Singular     { get; }
     public Declension Plural       { get; }
     public string[]   Translations { get; }
     public string[]   Topics       { get; }
 
-    public Noun(int id, Gender gender, Declension singular, Declension plural, string[] translations, string[] topics)
+    public Noun(
+        Ref<int> id,
+        Gender gender,
+        Declension singular, 
+        Declension plural, 
+        string[] translations, string[] topics, 
+        bool isValid) : base(id, isValid)
     {
-        Code.NotNull(singular);
-        Code.NotNull(plural);
-        Code.NotNullOrEmpty(translations);
-        Code.NotNullOrEmpty(topics);
-
-        Id           = id;
         Gender       = gender;
         Singular     = singular;
         Plural       = plural;
@@ -436,13 +399,6 @@ public readonly struct Conjugations
         string ihr,
         string sie)
     {
-        Code.NotNullOrWhitespace(ich);
-        Code.NotNullOrWhitespace(du);
-        Code.NotNullOrWhitespace(erSieEs);
-        Code.NotNullOrWhitespace(wir);
-        Code.NotNullOrWhitespace(ihr);
-        Code.NotNullOrWhitespace(sie);
-
         Ich     = ich;
         Du      = du;
         ErSieEs = erSieEs;
@@ -465,11 +421,6 @@ public sealed class Predicative
         string neutral,
         string plural)
     {
-        Code.NotNullOrWhitespace(masculine);
-        Code.NotNullOrWhitespace(feminine);
-        Code.NotNullOrWhitespace(neutral);
-        Code.NotNullOrWhitespace(plural);
-
         Masculine = masculine;
         Feminine  = feminine;
         Neutral   = neutral;
@@ -490,11 +441,6 @@ public sealed class Declension
         string dative,
         string accusative)
     {
-        Code.NotNullOrWhitespace(nominative);
-        Code.NotNullOrWhitespace(genitive);
-        Code.NotNullOrWhitespace(dative);
-        Code.NotNullOrWhitespace(accusative);
-
         Nominative = nominative;
         Genitive   = genitive;
         Dative     = dative;
@@ -502,7 +448,7 @@ public sealed class Declension
     }
 }
 
-public sealed class Verb
+public sealed class Verb : Word
 {
     public static IEqualityComparer<Verb> EqualityComparer
         = new FuncEqualityComparer<Verb>((x, y) => x.Id == y.Id, x => x.Id);
@@ -511,20 +457,20 @@ public sealed class Verb
         = new FuncComparer<Verb>(
             (x, y) => string.Compare(x?.Infinitive, y?.Infinitive, StringComparison.OrdinalIgnoreCase));
 
-    public int          Id           { get; }
     public string       Infinitive   { get; }
     public bool         IsRegular    { get; }
     public Conjugations Present      { get; }
     public string[]     Translations { get; }
     public string[]     Topics       { get; }
 
-    public Verb(int id, string infinitive, bool isRegular, Conjugations present, string[] translations, string[] topics)
+    public Verb(
+        int id, 
+        string infinitive, 
+        bool isRegular, 
+        Conjugations present,
+        string[] translations, string[] topics,
+        bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(infinitive);
-        Code.NotNullOrEmpty(translations);
-        Code.NotNullOrEmpty(topics);
-
-        Id           = id;
         Infinitive   = infinitive;
         IsRegular    = isRegular;
         Present      = present;
@@ -546,19 +492,18 @@ public sealed class Verb
     }
 }
 
-public sealed class Adverb
+public sealed class Adverb : Word
 {
-    public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
     public string[] Topics       { get; }
 
-    public Adverb(int id, string adverb, string[] translations, string[] topics)
+    public Adverb(
+        int id, 
+        string adverb, 
+        string[] translations, string[] topics,
+        bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(adverb);
-        Code.NotNullOrEmpty(translations);
-        Code.NotNull(topics);
-
         Id           = id;
         Text         = adverb;
         Translations = translations;
@@ -566,19 +511,18 @@ public sealed class Adverb
     }
 }
 
-public sealed class Phrase
+public sealed class Phrase : Word
 {
-    public int      Id           { get; }
     public string   Text         { get; }
     public string[] Translations { get; }
     public string[] Topics       { get; }
 
-    public Phrase(int id, string adverb, string[] translations, string[] topics)
+    public Phrase(
+        int id, 
+        string adverb, 
+        string[] translations, string[] topics,
+        bool isValid) : base(id, isValid)
     {
-        Code.NotNullOrWhitespace(adverb);
-        Code.NotNullOrEmpty(translations);
-        Code.NotNull(topics);
-
         Id           = id;
         Text         = adverb;
         Translations = translations;

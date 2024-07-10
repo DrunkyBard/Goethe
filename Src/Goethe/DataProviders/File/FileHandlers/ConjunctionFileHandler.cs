@@ -31,11 +31,18 @@ public class ConjunctionFileHandler : BaseFileHandler<Conjunction, ConjunctionVi
     {
         var conjunction = new Conjunction(id, newWord.Text, newWord.Translations.ToArray(), newWord.Topics.ToArray());
 
-        var translations = string.Join(',', conjunction.Translations);
-        var topics       = string.Join(',', conjunction.Topics);
+        
 
-        var fileInput = $"{conjunction.Text} | {translations} | {topics}";
+        return (conjunction, BuildString(conjunction));
+    }
 
-        return (conjunction, fileInput);
+    public override string BuildString(Conjunction wordModel)
+    {
+        var translations = string.Join(',', wordModel.Translations);
+        var topics       = string.Join(',', wordModel.Topics);
+
+        var fileInput = $"{wordModel.Text} | {translations} | {topics}";
+        
+        return fileInput;
     }
 }

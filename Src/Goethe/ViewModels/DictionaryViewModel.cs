@@ -290,16 +290,16 @@ public class DictionaryViewModel : ViewModelBase
     }
 
     private void BuildWordsSubscription<TModel, TViewModel>(
-        SourceList<TModel>                                                source,
-        IObservable<Func<TViewModel, bool>>                               filter,
-        IComparer<TViewModel>                                             comparer,
-        Func<TModel, TViewModel>                                          map,
-        Func<TViewModel, TViewModel>                                      copy,
-        Action<TViewModel, TViewModel>                                    replace,
-        out ReadOnlyObservableCollection<TViewModel>                      collection,
+        SourceList<TModel>                                    source,
+        IObservable<Func<TViewModel, bool>>                   filter,
+        IComparer<TViewModel>                                 comparer,
+        Func<TModel, TViewModel>                              map,
+        Func<TViewModel, TViewModel>                          copy,
+        Action<TViewModel, TViewModel>                        replace,
+        out ReadOnlyObservableCollection<TViewModel>          collection,
         out ReadOnlyObservableCollection<OldNewWordViewModel> toEditCollection,
-        out ReadOnlyObservableCollection<TViewModel>                      toRemoveCollection,
-        List<IDisposable>                                                 subs) where TViewModel : WordViewModel
+        out ReadOnlyObservableCollection<TViewModel>          toRemoveCollection,
+        List<IDisposable>                                     subs) where TViewModel : WordViewModel
     {
         var shared = source
                      .Connect()
@@ -414,12 +414,13 @@ public class DictionaryViewModel : ViewModelBase
             _changeView(this);
         }
 
-        void Save()
+        void SaveEdit()
         {
+            newWord.ToEdit = true;
             _changeView(this);
         }
 
-        var editWordVm = new EditWordViewModel(newWord, CancelEdit, Save);
+        var editWordVm = new EditWordViewModel(newWord, CancelEdit, SaveEdit);
         _changeView(editWordVm);
     }
 

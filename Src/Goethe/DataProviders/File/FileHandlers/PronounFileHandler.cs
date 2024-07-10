@@ -55,13 +55,18 @@ public class PronounFileHandler : BaseFileHandler<Pronoun, PronounViewModel>
             newWord.Singular.ToModel(), newWord.Plural.ToModel(), 
             newWord.Translations.ToArray(), newWord.Topics.ToArray());
 
-        var translations = string.Join(',', newWord.Translations);
-        var topics       = string.Join(',', newWord.Topics);
+        return (pronoun, BuildString(pronoun));
+    }
 
-        var fileInput = $"{newWord.Singular.Nominative} | {newWord.Singular.Genitive} | {newWord.Singular.Dative} | {newWord.Singular.Accusative} | " +
-                        $"{newWord.Plural.Nominative} | {newWord.Plural.Genitive} | {newWord.Plural.Dative} | {newWord.Plural.Accusative} | " +
+    public override string BuildString(Pronoun wordModel)
+    {
+        var translations = string.Join(',', wordModel.Translations);
+        var topics       = string.Join(',', wordModel.Topics);
+
+        var fileInput = $"{wordModel.Singular.Nominative} | {wordModel.Singular.Genitive} | {wordModel.Singular.Dative} | {wordModel.Singular.Accusative} | " +
+                        $"{wordModel.Plural.Nominative} | {wordModel.Plural.Genitive} | {wordModel.Plural.Dative} | {wordModel.Plural.Accusative} | " +
                         $"{translations} | {topics}";
-
-        return (pronoun, fileInput);
+        
+        return fileInput;
     }
 }

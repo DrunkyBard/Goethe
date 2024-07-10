@@ -31,11 +31,16 @@ public class PhraseFileHandler : BaseFileHandler<Phrase, PhraseViewModel>
     {
         var phrase = new Phrase(id, newWord.Phrase, newWord.Translations.ToArray(), newWord.Topics.ToArray());
 
-        var translations = string.Join(',', phrase.Translations);
-        var topics       = string.Join(',', phrase.Topics);
+        return (phrase, BuildString(phrase));
+    }
 
-        var fileInput = $"{phrase.Text} | {translations} | {topics}";
+    public override string BuildString(Phrase wordModel)
+    {
+        var translations = string.Join(',', wordModel.Translations);
+        var topics       = string.Join(',', wordModel.Topics);
 
-        return (phrase, fileInput);
+        var fileInput = $"{wordModel.Text} | {translations} | {topics}";
+        
+        return fileInput;
     }
 }

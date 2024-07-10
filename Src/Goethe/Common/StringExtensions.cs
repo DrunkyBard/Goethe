@@ -8,7 +8,7 @@ public static class StringExtensions
     {
         if (string.IsNullOrWhiteSpace(s))
         {
-            throw new ArgumentNullException(nameof(s));
+            return s;
         }
         
         return s[0].ToString().ToUpper() + s.Substring(1);

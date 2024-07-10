@@ -34,9 +34,7 @@ public class EditWordViewModel : ViewModelBase
         var canSave = word
             .ChangeSignal
             .ObserveOn(SynchronizationContext.Current)
-            .Select(x => true)
-            .DistinctUntilChanged()
-            .StartWith(false);
+            .Select(_ => !word.HasErrors);
         
         SaveEditCommand = ReactiveCommand.Create(save, canSave);
         

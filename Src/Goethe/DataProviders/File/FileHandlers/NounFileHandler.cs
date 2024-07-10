@@ -56,11 +56,6 @@ public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
                           isValidPlNom && isValidPlGen && isValidPlDat && isValidPlAcc &&
                           translations.Length != 0;
 
-        if (!isNounValid)
-        {
-            return Either.Left<InvalidWord, Noun>(CreateInvalid(id, Tokens, tokenizedLine));
-        }
-
         sNom = sNom.ToFirstLetterUpper();
         sGen = sGen.ToFirstLetterUpper();
         sDat = sDat.ToFirstLetterUpper();
@@ -82,7 +77,7 @@ public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
         return Either.Right<InvalidWord, Noun>(noun);
     }
 
-    public override (Noun newWord, string fileInput) HandleNewWords(int id, NounViewModel newWordViewModel)
+    public override (Noun newWord, string fileInput) HandleNewWords(Ref<int> id, NounViewModel newWordViewModel)
     {
         var singularDeclension = new Declension(
             newWordViewModel.Singular.Nominative.Trim(),
@@ -102,14 +97,21 @@ public sealed class NounFileHandler : BaseFileHandler<Noun, NounViewModel>
             newWordViewModel.Translations.Select(t => t.Trim()).ToArray(),
             newWordViewModel.Topics.Select(t => t.Trim()).ToArray());
 
-        var translationsInput = string.Join(',', newNoun.Translations);
-        var topicsInput       = string.Join(',', newNoun.Topics);
+        
+        
+        return (newNoun, BuildString(newNoun));
+    }
 
-        var fileInput = $"{newNoun.Gender} | " +
-                        $"{newNoun.Singular.Nominative} | {newNoun.Singular.Genitive} | {newNoun.Singular.Dative} | {newNoun.Singular.Accusative} | " +
-                        $"{newNoun.Plural.Nominative} | {newNoun.Plural.Genitive} | {newNoun.Plural.Dative} | {newNoun.Plural.Accusative} | " +
+    public override string BuildString(Noun wordModel)
+    {
+        var translationsInput = string.Join(',', wordModel.Translations);
+        var topicsInput       = string.Join(',', wordModel.Topics);
+
+        var fileInput = $"{wordModel.Gender} | " +
+                        $"{wordModel.Singular.Nominative} | {wordModel.Singular.Genitive} | {wordModel.Singular.Dative} | {wordModel.Singular.Accusative} | " +
+                        $"{wordModel.Plural.Nominative} | {wordModel.Plural.Genitive} | {wordModel.Plural.Dative} | {wordModel.Plural.Accusative} | " +
                         $"{translationsInput} | {topicsInput}";
         
-        return (newNoun, fileInput);
+        return fileInput;
     }
 }
